@@ -1,6 +1,8 @@
 # [jQuery sectionNav][1]
 
-A jQuery plugin to build a sticky navigation of a article’s sections with highlighting while scrolling.
+A jQuery plugin to build a sticky navigation from the content of an article.
+
+Check out [the homepage][1] to see it in action or [this demo][2] to get an idea of how it all works.
 
 ## Usage
 
@@ -51,8 +53,6 @@ To keep the plugin simple there are no styles added to the navigation, that’s 
 		<li class=“section-list-item”>
 			<a class=“section-link”>
 ```
-
-Check out [this demo][2] to get an idea on what you can do.
 
 ## Options
 
