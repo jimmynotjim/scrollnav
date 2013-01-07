@@ -14,7 +14,7 @@
 		var $sectionArray	= [];
 		var $container		= this;
 		var $sections		= $container.find(settings.sections);
-		var $nav			= $('<nav />', {'class': 'scroll-nav'});
+		var $nav			= $('<nav />', {'class': 'section-nav'});
 
 		// Find the article container and either grab it's id or give it one
 		// Initial setup of the section array
@@ -50,12 +50,12 @@
 		// the section array we built
 
 		var setupNav = function() {
-			var $headline	= $('<span />', {'class': 'scroll-heading', text: settings.titleText});
-			var $list		= $('<ol />', {'class': 'scroll-list'});
+			var $headline	= $('<span />', {'class': 'section-heading', text: settings.titleText});
+			var $list		= $('<ol />', {'class': 'section-list'});
 
 			$.each($sectionArray, function(i) {
-				var $item	= (i === 0) ? $('<li />', {'class': 'scroll-item active'}) : $('<li />', {'class': 'scroll-item'});
-				var $link	= $('<a />').attr('href', '#' + this.id).attr('class', 'scrollPage').html(this.text);
+				var $item	= (i === 0) ? $('<li />', {'class': 'section-item active'}) : $('<li />', {'class': 'scroll-item'});
+				var $link	= $('<a />').attr('href', '#' + this.id).html(this.text);
 
 				$list.append( $item.append($link) );
 			});
@@ -113,7 +113,7 @@
 
 		/* Animate Scrolling on click*/
 
-		$('.scroll-nav').find('a').click(function() {
+		$('.section-nav').find('a').click(function() {
 			var elementClicked	= $(this).attr("href");
 			var destination		= $(elementClicked).offset().top;
 
