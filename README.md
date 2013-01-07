@@ -14,18 +14,19 @@ Start by import the script to your page, the best location is in the footer, but
 
 Include a class or id hook in the element you want to apply the plugin to and include an `<h3>` for each section you want to inlcude in the navigation.
 
-	html
-	<div class=“main”>
-		<article class=“post-article”>
-			<h1 class=“post-heading”>This is the main heading for the article</h1>
-			<h2 class=“post-sub-headling”>This is a sub-heading for the article</h2>
-			<p>Yada yada yada...</p>
-			<h3>This is a section heading</h3>
-			<p>More yada yada...</p>
-			<h3>Another section heading</h3>
-			<p>More more yada...</p>
-		</article>
-	</div>
+```html
+<div class=“main”>
+	<article class=“post-article”>
+		<h1 class=“post-heading”>This is the main heading for the article</h1>
+		<h2 class=“post-sub-headling”>This is a sub-heading for the article</h2>
+		<p>Yada yada yada...</p>
+		<h3>This is a section heading</h3>
+		<p>More yada yada...</p>
+		<h3>Another section heading</h3>
+		<p>More more yada...</p>
+	</article>
+</div>
+```
 
 ### Initialise
 
