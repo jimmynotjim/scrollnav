@@ -54,7 +54,7 @@
 			var $list		= $('<ol />', {'class': 'section-list'});
 
 			$.each($sectionArray, function(i) {
-				var $item	= (i === 0) ? $('<li />', {'class': 'section-item active'}) : $('<li />', {'class': 'section-item'});
+				var $item	= (i === 0) ? $('<li />', {'class': 'section-list-item active'}) : $('<li />', {'class': 'section-list-item'});
 				var $link	= $('<a />', {'href': '#' + this.id, 'class': 'section-link', text: this.text});
 
 				$list.append( $item.append($link) );
