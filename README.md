@@ -8,7 +8,9 @@ A jQuery plugin to build a sticky navigation of a article’s sections with high
 
 Start by import the script to your page, the best location is in the footer, but no matter what make sure it follows your jquery file.
 
-	<script src=“jquery.sectionNav.min.js”></script>
+```html
+<script src=“jquery.sectionNav.min.js”></script>
+```
 
 ### Build your page
 
@@ -32,7 +34,9 @@ Include a class or id hook in the element you want to apply the plugin to and in
 
 Now initialise the plugin with your hook for the article
 
-	$(‘.post-article’).sectionNav();
+```javascript
+$(‘.post-article’).sectionNav();
+```
 
 and the plugin scans the article, grabs all the `<h3>`s, adds them to the navigation list and inserts the list before the article. It’s that easy...well almost.
 
@@ -40,11 +44,13 @@ and the plugin scans the article, grabs all the `<h3>`s, adds them to the naviga
 
 To keep the plugin simple there are no styles added to the navigation, that’s all up to you. The nav structure looks like this and includes class names in [@csswizardry’s][3] [inuit.css][4] framework style:
 
-	<nav class=“section-nav”>
-		<span class=“section-nav-heading”>
-		<ol class=“section-list”>
-			<li class=“section-list-item”>
-				<a class=“section-link”>
+```html
+<nav class=“section-nav”>
+	<span class=“section-nav-heading”>
+	<ol class=“section-list”>
+		<li class=“section-list-item”>
+			<a class=“section-link”>
+```
 
 Check out [this demo][2] to get an idea on what you can do.
 
@@ -52,11 +58,12 @@ Check out [this demo][2] to get an idea on what you can do.
 
 There are a few customizable options in sectionNav besides the element you apply it to using key: value pairs. Here are the defaults.
 
-	$(‘.post-article’).sectionNav({
-		sections: ‘h3’, 
-		tittleText: ‘Jump To’,
-		fixedMargin: 40
-	});
+```javascript
+$(‘.post-article’).sectionNav({
+	sections: ‘h3’, 
+	tittleText: ‘Jump To’,
+	fixedMargin: 40
+});
 
 ### Sections
 
