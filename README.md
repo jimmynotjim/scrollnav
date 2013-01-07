@@ -14,6 +14,7 @@ Start by import the script to your page, the best location is in the footer, but
 
 Include a class or id hook in the element you want to apply the plugin to and include an `<h3>` for each section you want to inlcude in the navigation.
 
+	html
 	<div class=“main”>
 		<article class=“post-article”>
 			<h1 class=“post-heading”>This is the main heading for the article</h1>
