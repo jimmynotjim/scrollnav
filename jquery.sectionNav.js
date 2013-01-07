@@ -110,10 +110,13 @@
 
 		// Now add the nav to our page
 
-		if ($sections.length !== 0) {
+		if ($container.length !== 0 && $sections.length !== 0) {
 			$nav.insertBefore($container);
 		}
-		else {
+		else if ($container.length === 0) {
+			console.log("Build failed, sectionNav could not find '" + $container.selector + "'");
+		}
+		else if ($sections.length === 0) {
 			console.log("Build failed, sectionNav could not find any '" + settings.sections + "'s inside '" + $container.selector + "'");
 		}
 

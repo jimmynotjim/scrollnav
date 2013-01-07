@@ -90,6 +90,10 @@ sectionNav’s default title text is ‘Jump To’, but feel free to change it t
 
 This is the `top` dimension you set for the `.section-nav.fixed` class, which is applied as the user scrolls down the page and is removed as they scroll above the article. You definitely want to set this if you don’t use the default 40px, otherwise the nav will jump around as the user scrolls past the top of the article.
 
+## Errors
+
+The plugin will refuse to build and log an error message if it doesn't find your desired container or any sections within the container. If the nav doesn't show up on load, check your browser's console.
+
 ## License
 
 sectionNav is released under the [CC Attribution-ShareAlike license][6]. This means you can recreate, edit or share the plugin as long as you maintain the same open licensing.
