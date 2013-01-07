@@ -1,6 +1,11 @@
 (function($) {
 
 	$.fn.sectionNav = function(options) {
+
+		// Add loading hook to the body element
+
+		$('body').addClass('sn-loading');
+
 		var settings = {
 			sections: 'h3',
 			titleText: 'Jump To',
@@ -106,6 +111,10 @@
 		// Now add the nav to our page
 
 		$nav.insertBefore($container);
+
+		// Remove loading hook and add a loaded hook to the body
+
+		$('body').removeClass('sn-loading').addClass('sn-loaded');
 
 		// Add Scrolling //
 
