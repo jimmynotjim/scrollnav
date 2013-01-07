@@ -6,7 +6,7 @@ A jQuery plugin to build a sticky navigation of a article’s sections with high
 
 ### Import
 
-Start by import the script to your page, the best location is in the footer, but no matter what make sure it follows your jquery file.
+Start by importing the script to your page, the best location is in the footer, but no matter what make sure it follows your jquery file.
 
 ```html
 <script src=“jquery.sectionNav.min.js”></script>
@@ -61,7 +61,7 @@ There are a few customizable options in sectionNav besides the element you apply
 ```
 $(‘.post-article’).sectionNav({
 	sections: ‘h3’, 
-	tittleText: ‘Jump To’,
+	titleText: ‘Jump To’,
 	fixedMargin: 40
 });
 ```
@@ -88,7 +88,7 @@ sectionNav is released under the [CC Attribution-ShareAlike license][6]. This me
 
 With a bit of guidance from [Eric Clemmons (@ericclemmons)][8]
 
-[1]: #
+[1]: http://jimmynotjim.github.com/sectionNav
 [2]: #
 [3]: https://twitter.com/csswizardry
 [4]: http://inuitcss.com/
