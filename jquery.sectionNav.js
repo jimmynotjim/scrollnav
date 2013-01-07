@@ -118,7 +118,7 @@
 			console.log("Build failed, sectionNav could not find '" + $container.selector + "'");
 		}
 		else if ($sections.length === 0) {
-			console.log("Build failed, sectionNav could not find any '" + settings.sections + "'s inside '" + $container.selector + "'");
+			console.log("Build failed, sectionNav could not find any '" + settings.sections + "'s inside of '" + $container.selector + "'");
 		}
 
 		// Add Scrolling //
