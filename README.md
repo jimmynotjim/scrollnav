@@ -1,4 +1,4 @@
-# [jQuery sectionNav][1]
+# [jQuery scrollNav][1]
 
 A jQuery plugin to build a sticky navigation from the content of an article.
 
@@ -11,7 +11,7 @@ Check out [the homepage][1] to see it in action or [this demo][2] to get an idea
 Start by importing the script to your page, the best location is in the footer, but no matter what make sure it follows your jquery file.
 
 ```html
-<script src=“jquery.sectionNav.min.js”></script>
+<script src=“jquery.scrollNav.min.js”></script>
 ```
 
 ### Build your page
@@ -37,7 +37,7 @@ Include a class or id hook in the element you want to apply the plugin to and in
 Now initialise the plugin with your hook for the article
 
 ```
-$(‘.post-article’).sectionNav();
+$(‘.post-article’).scrollNav();
 ```
 
 and the plugin scans the article, grabs all the `<h3>`s, adds them to the navigation list and inserts the list before the article. It’s that easy...well almost.
@@ -47,11 +47,11 @@ and the plugin scans the article, grabs all the `<h3>`s, adds them to the naviga
 To keep the plugin simple there are no styles added to the navigation, that’s all up to you. The nav structure looks like this and includes class names in [@csswizardry’s][3] [inuit.css][4] framework style:
 
 ```html
-<nav class=“section-nav”>
-	<span class=“section-nav-heading”>
-	<ol class=“section-list”>
-		<li class=“section-list-item”>
-			<a class=“section-link”>
+<nav class=“scroll-nav”>
+	<span class=“scroll-nav-heading”>
+	<ol class=“scroll-nav-list”>
+		<li class=“scroll-nav-item”>
+			<a class=“scroll-nav-link”>
 ```
 
 There are also loaded and loading hooks added to the body element (similar to how Typekit handles font loading) to allow for css transitions or any other changes in css you’d need.
@@ -68,10 +68,10 @@ turns into
 
 ## Options
 
-There are a few customizable options in sectionNav besides the element you apply it to using key: value pairs. Here are the defaults.
+There are a few customizable options in scrollNav besides the element you apply it to using key : value pairs. Here are the defaults.
 
 ```
-$(‘.post-article’).sectionNav({
+$(‘.post-article’).scrollNav({
 	sections: ‘h3’, 
 	titleText: ‘Jump To’,
 	fixedMargin: 40
@@ -80,15 +80,15 @@ $(‘.post-article’).sectionNav({
 
 ### Sections
 
-As mentioned, the script automatically searches for `<h3>`s within the target article. If your page structure differs, feel free to target another element, like a `<h2>` or `<h4>` or even a class, like `.section-headline`.
+As mentioned, the script automatically searches for `<h3>`s within the target article. If your page structure differs, feel free to target another element, like a `<h2>` or `<h4>` or even a class, like `.scroll-headline`.
 
 ### Title Text
 
-sectionNav’s default title text is ‘Jump To’, but feel free to change it to whatever works for you, like ‘Article Sections’ or ‘Page Navigation’
+scrollNav’s default title text is ‘Jump To’, but feel free to change it to whatever works for you, like ‘Article Sections’ or ‘Page Navigation’
 
 ### Fixed Margin
 
-This is the `top` dimension you set for the `.section-nav.fixed` class, which is applied as the user scrolls down the page and is removed as they scroll above the article. You definitely want to set this if you don’t use the default 40px, otherwise the nav will jump around as the user scrolls past the top of the article.
+This is the `top` dimension you set for the `.scroll-nav.fixed` class, which is applied as the user scrolls down the page and is removed as they scroll above the article. You definitely want to set this if you don’t use the default 40px, otherwise the nav will jump around as the user scrolls past the top of the article.
 
 ## Errors
 
@@ -96,15 +96,15 @@ The plugin will refuse to build and log an error message if it doesn't find your
 
 ## License
 
-sectionNav is released under the [CC Attribution-ShareAlike license][6]. This means you can recreate, edit or share the plugin as long as you maintain the same open licensing.
+scrollNav is released under the [CC Attribution-ShareAlike license][6]. This means you can recreate, edit or share the plugin as long as you maintain the same open licensing.
 
 ## Authors
 
-[James Wilson (@jimmynotjim)][7]
+Written by [James Wilson (@jimmynotjim)][7]
 
 With a bit of guidance from [Eric Clemmons (@ericclemmons)][8]
 
-[1]: http://jimmynotjim.github.com/sectionNav
+[1]: http://jimmynotjim.github.com/scrollNav
 [2]: #
 [3]: https://twitter.com/csswizardry
 [4]: http://inuitcss.com/
