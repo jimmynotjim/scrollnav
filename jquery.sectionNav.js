@@ -103,14 +103,23 @@
 		};
 
 		// BUILD!!!!
-
-		setupContainer();
-		setupSections();
-		setupNav();
+		if ($container.length !== 0) {
+			setupContainer();
+			setupSections();
+			setupNav();
+		}
 
 		// Now add the nav to our page
 
-		$nav.insertBefore($container);
+		if ($container.length !== 0 && $sections.length !== 0) {
+			$nav.insertBefore($container);
+		}
+		else if ($container.length === 0) {
+			console.log("Build failed, sectionNav could not find '" + $container.selector + "'");
+		}
+		else if ($sections.length === 0) {
+			console.log("Build failed, sectionNav could not find any '" + settings.sections + "'s inside of '" + $container.selector + "'");
+		}
 
 		// Add Scrolling //
 
