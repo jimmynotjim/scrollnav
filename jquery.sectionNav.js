@@ -103,10 +103,11 @@
 		};
 
 		// BUILD!!!!
-
-		setupContainer();
-		setupSections();
-		setupNav();
+		if ($container.length !== 0) {
+			setupContainer();
+			setupSections();
+			setupNav();
+		}
 
 		// Now add the nav to our page
 
