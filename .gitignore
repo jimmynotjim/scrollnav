@@ -1,0 +1,8 @@
+# System Files
+
+*.DS_Store
+
+
+# Codekit Files
+
+/codekit-config.json
