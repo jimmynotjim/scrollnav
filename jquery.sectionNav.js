@@ -1,6 +1,6 @@
 (function($) {
 
-	$.fn.sectionNav = function(options) {
+	$.fn.scrollNav = function(options) {
 
 		// Add loading hook to the body element
 
@@ -19,7 +19,7 @@
 		var $sectionArray	= [];
 		var $container		= this;
 		var $sections		= $container.find(settings.sections);
-		var $nav			= $('<nav />', {'class': 'section-nav'});
+		var $nav			= $('<nav />', {'class': 'scroll-nav'});
 
 		// Find the article container and either grab it's id or give it one
 		// Initial setup of the section array
@@ -55,12 +55,12 @@
 		// the section array we built
 
 		var setupNav = function() {
-			var $headline	= $('<span />', {'class': 'section-heading', text: settings.titleText});
-			var $list		= $('<ol />', {'class': 'section-list'});
+			var $headline	= $('<span />', {'class': 'scroll-nav-heading', text: settings.titleText});
+			var $list		= $('<ol />', {'class': 'scroll-nav-list'});
 
 			$.each($sectionArray, function(i) {
-				var $item	= (i === 0) ? $('<li />', {'class': 'section-list-item active'}) : $('<li />', {'class': 'section-list-item'});
-				var $link	= $('<a />', {'href': '#' + this.id, 'class': 'section-link', text: this.text});
+				var $item	= (i === 0) ? $('<li />', {'class': 'scroll-nav-item active'}) : $('<li />', {'class': 'scroll-nav-item'});
+				var $link	= $('<a />', {'href': '#' + this.id, 'class': 'scroll-nav-link', text: this.text});
 
 				$list.append( $item.append($link) );
 			});
@@ -115,10 +115,10 @@
 			$nav.insertBefore($container);
 		}
 		else if ($container.length === 0) {
-			console.log("Build failed, sectionNav could not find '" + $container.selector + "'");
+			console.log("Build failed, scrollNav could not find '" + $container.selector + "'");
 		}
 		else if ($sections.length === 0) {
-			console.log("Build failed, sectionNav could not find any '" + settings.sections + "'s inside of '" + $container.selector + "'");
+			console.log("Build failed, scrollNav could not find any '" + settings.sections + "'s inside of '" + $container.selector + "'");
 		}
 
 		// Add Scrolling //
@@ -127,7 +127,7 @@
 
 		/* Animate Scrolling on click*/
 
-		$('.section-nav').find('a').click(function() {
+		$('.scroll-nav-link').click(function() {
 			var elementClicked	= $(this).attr("href");
 			var destination		= $(elementClicked).offset().top;
 
