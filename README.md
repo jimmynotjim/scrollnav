@@ -34,7 +34,7 @@ Include a class or id hook in the element you want to apply the plugin to and in
 
 Now initialise the plugin with your hook for the article
 
-```javascript
+```
 $(‘.post-article’).sectionNav();
 ```
 
@@ -58,12 +58,13 @@ Check out [this demo][2] to get an idea on what you can do.
 
 There are a few customizable options in sectionNav besides the element you apply it to using key: value pairs. Here are the defaults.
 
-```javascript
+```js
 $(‘.post-article’).sectionNav({
 	sections: ‘h3’, 
 	tittleText: ‘Jump To’,
 	fixedMargin: 40
 });
+```
 
 ### Sections
 
