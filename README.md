@@ -54,6 +54,18 @@ To keep the plugin simple there are no styles added to the navigation, that’s 
 			<a class=“section-link”>
 ```
 
+There are also loaded and loading hooks added to the body element (similar to how Typekit handles font loading) to allow for css transitions or any other changes in css you’d need.
+
+```html
+<body class=“sn-loading”>
+```
+
+turns into
+
+```html
+<body class=“sn-active”>
+```
+
 ## Options
 
 There are a few customizable options in sectionNav besides the element you apply it to using key: value pairs. Here are the defaults.
