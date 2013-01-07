@@ -114,7 +114,7 @@
 
 		// Remove loading hook and add a loaded hook to the body
 
-		$('body').removeClass('sn-loading').addClass('sn-loaded');
+		$('body').removeClass('sn-loading').addClass('sn-active');
 
 		// Add Scrolling //
 
