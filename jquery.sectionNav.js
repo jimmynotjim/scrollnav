@@ -110,7 +110,12 @@
 
 		// Now add the nav to our page
 
-		$nav.insertBefore($container);
+		if ($sections) {
+			$nav.insertBefore($container);
+		}
+		else {
+			console.log('Build failed, could not find any sections');
+		}
 
 		// Add Scrolling //
 
