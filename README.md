@@ -58,7 +58,7 @@ Check out [this demo][2] to get an idea on what you can do.
 
 There are a few customizable options in sectionNav besides the element you apply it to using key: value pairs. Here are the defaults.
 
-```js
+```
 $(‘.post-article’).sectionNav({
 	sections: ‘h3’, 
 	tittleText: ‘Jump To’,
