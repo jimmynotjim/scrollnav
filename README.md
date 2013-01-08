@@ -2,7 +2,7 @@
 
 A jQuery plugin for building a scrolling side nav
 
-Check out [the homepage][1] to see it in action or [this demo][2] to get an idea of how it all works.
+*Check out [the homepage][1] to see it in action.*
 
 ## Features ##
 
@@ -127,7 +127,7 @@ Written by [James Wilson (@jimmynotjim)][7]
 
 With a bit of guidance from [Eric Clemmons (@ericclemmons)][8]
 
-[1]: http://jimmynotjim.github.com/scrollNav
+[1]: http://scrollnav.com
 [2]: #
 [3]: https://twitter.com/csswizardry
 [4]: http://inuitcss.com/
