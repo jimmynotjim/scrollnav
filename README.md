@@ -74,7 +74,8 @@ There are a few customizable options in scrollNav besides the element you apply 
 $('.post-article').scrollNav({
 	sections: 'h3', 
 	titleText: 'Jump To',
-	fixedMargin: 40
+	fixedMargin: 40,
+	animated: true
 });
 ```
 
@@ -89,6 +90,10 @@ scrollNav's default title text is 'Jump To', but feel free to change it to whate
 ### Fixed Margin
 
 This is the `top` dimension you set for the `.scroll-nav.fixed` class, which is applied as the user scrolls down the page and is removed as they scroll above the article. You definitely want to set this if you don't use the default 40px, otherwise the nav will jump around as the user scrolls past the top of the article.
+
+### Animated Scrolling
+
+The plugin animates the page scroll when clicking on a nav link by default. Set this to `false` if you do not wish to animate the scroll.
 
 ## Errors
 
