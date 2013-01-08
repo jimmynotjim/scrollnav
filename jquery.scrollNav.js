@@ -10,7 +10,7 @@
 			sections: 'h3',
 			titleText: 'Jump To',
 			fixedMargin: 40,
-			anitmated: true
+			animated: true
 		};
 
 		$.extend(settings, options);
