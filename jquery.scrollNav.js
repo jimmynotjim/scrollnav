@@ -8,7 +8,7 @@
 
 		var settings = {
 			sections: 'h3',
-			titleText: 'Jump To',
+			titleText: 'Scroll To',
 			fixedMargin: 40,
 			animated: true
 		};

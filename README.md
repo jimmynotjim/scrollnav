@@ -1,14 +1,28 @@
 # [jQuery scrollNav][1]
 
-A jQuery plugin to build a sticky navigation from the content of an article.
+A jQuery plugin for building a scrolling side nav
 
 Check out [the homepage][1] to see it in action or [this demo][2] to get an idea of how it all works.
+
+## Features ##
+
+*	### Simple to set up
+
+	With a single file import and function in your footer, you're on your way.
+
+*	### Fully customizable
+
+	Very little styling is set for you, but the bit that is, is fully customizable.
+
+*	### Tiny Size
+
+	At 1.8kb min'd, scrollNav is pretty unintrusive. If you use Ajax to import and initiate it, it's almost negligable.
 
 ## Usage
 
 ### Import
 
-Start by importing the script to your page, the best location is in the footer, but no matter what make sure it follows your jquery file.
+Start by importing the script to your page, the best location is in the footer, but no matter what, make sure it follows your jquery file.
 
 ```html
 <script src="jquery.scrollNav.min.js"></script>
@@ -16,7 +30,7 @@ Start by importing the script to your page, the best location is in the footer, 
 
 ### Build your page
 
-Include a class or id hook in the element you want to apply the plugin to and include an `<h3>` for each section you want to inlcude in the navigation.
+Include a class or id hook on the element you want to apply the plugin to and include an `<h3>` for each section you want to inlcude in the navigation.
 
 ```html
 <div class="main">
@@ -68,7 +82,7 @@ turns into
 
 ## Options
 
-There are a few customizable options in scrollNav besides the element you apply it to using key : value pairs. Here are the defaults.
+There are a few customizable options in scrollNav using key : value pairs. Here are the defaults.
 
 ```
 $('.post-article').scrollNav({
@@ -85,7 +99,7 @@ As mentioned, the script automatically searches for `<h3>`s within the target ar
 
 ### Title Text
 
-scrollNav's default title text is 'Jump To', but feel free to change it to whatever works for you, like 'Article Sections' or 'Page Navigation'
+scrollNav's default title text is 'Scroll To', but feel free to change it to whatever works for you, like 'Article Sections' or 'Page Navigation'
 
 ### Fixed Margin
 
@@ -98,6 +112,10 @@ The plugin animates the page scroll when clicking on a nav link by default. Set 
 ## Errors
 
 The plugin will refuse to build and log an error message if it doesn't find your desired container or any sections within the container. If the nav doesn't show up on load, check your browser's console.
+
+## Issues
+
+There are a few known issues, including poor location updating when scrolling on touch devices. If you find any others please submit them to the issue tracker.
 
 ## License
 
