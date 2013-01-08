@@ -11,7 +11,7 @@ Check out [the homepage][1] to see it in action or [this demo][2] to get an idea
 Start by importing the script to your page, the best location is in the footer, but no matter what make sure it follows your jquery file.
 
 ```html
-<script src=“jquery.scrollNav.min.js”></script>
+<script src="jquery.scrollNav.min.js"></script>
 ```
 
 ### Build your page
@@ -19,10 +19,10 @@ Start by importing the script to your page, the best location is in the footer, 
 Include a class or id hook in the element you want to apply the plugin to and include an `<h3>` for each section you want to inlcude in the navigation.
 
 ```html
-<div class=“main”>
-	<article class=“post-article”>
-		<h1 class=“post-heading”>This is the main heading for the article</h1>
-		<h2 class=“post-sub-headling”>This is a sub-heading for the article</h2>
+<div class="main">
+	<article class="post-article">
+		<h1 class="post-heading">This is the main heading for the article</h1>
+		<h2 class="post-sub-headling">This is a sub-heading for the article</h2>
 		<p>Yada yada yada...</p>
 		<h3>This is a section heading</h3>
 		<p>More yada yada...</p>
@@ -37,33 +37,33 @@ Include a class or id hook in the element you want to apply the plugin to and in
 Now initialise the plugin with your hook for the article
 
 ```
-$(‘.post-article’).scrollNav();
+$('.post-article').scrollNav();
 ```
 
-and the plugin scans the article, grabs all the `<h3>`s, adds them to the navigation list and inserts the list before the article. It’s that easy...well almost.
+and the plugin scans the article, grabs all the `<h3>`s, adds them to the navigation list and inserts the list before the article. It's that easy...well almost.
 
 ### Styling
 
-To keep the plugin simple there are no styles added to the navigation, that’s all up to you. The nav structure looks like this and includes class names in [@csswizardry’s][3] [inuit.css][4] framework style:
+To keep the plugin simple there are no styles added to the navigation, that's all up to you. The nav structure looks like this and includes class names in [@csswizardry's][3] [inuit.css][4] framework style:
 
 ```html
-<nav class=“scroll-nav”>
-	<span class=“scroll-nav-heading”>
-	<ol class=“scroll-nav-list”>
-		<li class=“scroll-nav-item”>
-			<a class=“scroll-nav-link”>
+<nav class="scroll-nav">
+	<span class="scroll-nav-heading">
+	<ol class="scroll-nav-list">
+		<li class="scroll-nav-item">
+			<a class="scroll-nav-link">
 ```
 
-There are also loaded and loading hooks added to the body element (similar to how Typekit handles font loading) to allow for css transitions or any other changes in css you’d need.
+There are also loaded and loading hooks added to the body element (similar to how Typekit handles font loading) to allow for css transitions or any other changes in css you'd need.
 
 ```html
-<body class=“sn-loading”>
+<body class="sn-loading">
 ```
 
 turns into
 
 ```html
-<body class=“sn-active”>
+<body class="sn-active">
 ```
 
 ## Options
@@ -71,9 +71,9 @@ turns into
 There are a few customizable options in scrollNav besides the element you apply it to using key : value pairs. Here are the defaults.
 
 ```
-$(‘.post-article’).scrollNav({
-	sections: ‘h3’, 
-	titleText: ‘Jump To’,
+$('.post-article').scrollNav({
+	sections: 'h3', 
+	titleText: 'Jump To',
 	fixedMargin: 40
 });
 ```
@@ -84,11 +84,11 @@ As mentioned, the script automatically searches for `<h3>`s within the target ar
 
 ### Title Text
 
-scrollNav’s default title text is ‘Jump To’, but feel free to change it to whatever works for you, like ‘Article Sections’ or ‘Page Navigation’
+scrollNav's default title text is 'Jump To', but feel free to change it to whatever works for you, like 'Article Sections' or 'Page Navigation'
 
 ### Fixed Margin
 
-This is the `top` dimension you set for the `.scroll-nav.fixed` class, which is applied as the user scrolls down the page and is removed as they scroll above the article. You definitely want to set this if you don’t use the default 40px, otherwise the nav will jump around as the user scrolls past the top of the article.
+This is the `top` dimension you set for the `.scroll-nav.fixed` class, which is applied as the user scrolls down the page and is removed as they scroll above the article. You definitely want to set this if you don't use the default 40px, otherwise the nav will jump around as the user scrolls past the top of the article.
 
 ## Errors
 

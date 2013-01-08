@@ -9,7 +9,8 @@
 		var settings = {
 			sections: 'h3',
 			titleText: 'Jump To',
-			fixedMargin: 40
+			fixedMargin: 40,
+			anitmated: true
 		};
 
 		$.extend(settings, options);
@@ -127,14 +128,16 @@
 
 		/* Animate Scrolling on click*/
 
-		$('.scroll-nav-link').click(function() {
-			var elementClicked	= $(this).attr("href");
-			var destination		= $(elementClicked).offset().top;
+		if (settings.anitmated === true) {
+			$('.scroll-nav-link').click(function() {
+				var elementClicked	= $(this).attr("href");
+				var destination		= $(elementClicked).offset().top;
 
-			$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination-20 }, 500 );
+				$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination-20 }, 500 );
 
-			return false;
-		});
+				return false;
+			});
+		}
 
 		/* End Animated Scrolling */
 
