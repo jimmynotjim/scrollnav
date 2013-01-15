@@ -20,7 +20,7 @@
 		var $sectionArray	= [];
 		var $container		= this;
 		var $sections		= $container.find(settings.sections);
-		var $nav			= $('<nav />', {'class': 'scroll-nav'});
+		var $nav			= $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
 
 		// Find the article container and either grab it's id or give it one
 		// Initial setup of the section array
