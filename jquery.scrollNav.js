@@ -10,7 +10,9 @@
 			sections: 'h3',
 			titleText: 'Scroll To',
 			fixedMargin: 40,
-			animated: true
+			animated: true,
+			speed: 500,
+			showHeadline: true
 		};
 
 		$.extend(settings, options);
@@ -66,7 +68,12 @@
 				$list.append( $item.append($link) );
 			});
 
-			$nav.append($headline).append($list);
+			if (settings.showHeadline === true) {
+				$nav.append($headline).append($list);
+			} else {
+				$nav.append($list);
+			}
+
 		};
 
 		// Set nav to fixed after scrolling past the header and
@@ -133,7 +140,7 @@
 				var elementClicked	= $(this).attr("href");
 				var destination		= $(elementClicked).offset().top;
 
-				$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination-40 }, 500 );
+				$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination-40 }, settings.speed );
 
 				return false;
 			});
