@@ -12,7 +12,8 @@
 			fixedMargin: 40,
 			animated: true,
 			speed: 500,
-			showHeadline: true
+			showHeadline: true,
+			showTopLink: true
 		};
 
 		$.extend(settings, options);
@@ -28,6 +29,8 @@
 		// Initial setup of the section array
 
 		var setupContainer = function() {
+			if ( settings.showTopLink === false ) { return; }
+
 			var containerID	= $container.attr('id');
 			var offset		= $container.offset().top;
 
