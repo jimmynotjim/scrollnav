@@ -47,7 +47,7 @@
 			$sections.each(function(i) {
 				var sectionID	= 'jumpNav-' + (i + 1);
 				var $offset		= $(this).offset().top;
-				var $text		= $(this).html();
+				var $text		= $(this).text();
 
 				$(this).attr('id', sectionID);
 				$sectionArray.push( {id: sectionID, offset: $offset, text: $text} );
