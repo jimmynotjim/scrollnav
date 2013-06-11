@@ -13,7 +13,8 @@
 			animated: true,
 			speed: 500,
 			showHeadline: true,
-			showTopLink: true
+			showTopLink: true,
+			location: 'insertBefore'
 		};
 
 		$.extend(settings, options);
@@ -123,7 +124,7 @@
 		// Now add the nav to our page
 
 		if ($container.length !== 0 && $sections.length !== 0) {
-			$nav.insertBefore($container);
+			$nav[settings.location]($container);
 		}
 		else if ($container.length === 0) {
 			console.log("Build failed, scrollNav could not find '" + $container.selector + "'");
