@@ -89,7 +89,11 @@ $('.post-article').scrollNav({
 	sections: 'h3', 
 	titleText: 'Jump To',
 	fixedMargin: 40,
-	animated: true
+	animated: true,
+	speed: 500,
+	showHeadline: true,
+	showTopLink: true,
+	location: 'insertBefore'
 });
 ```
 
@@ -108,6 +112,22 @@ This is the `top` dimension you set for the `.scroll-nav.fixed` class, which is 
 ### Animated Scrolling
 
 The plugin animates the page scroll when clicking on a nav link by default. Set this to `false` if you do not wish to animate the scroll.
+
+### Scrolling Speed
+
+Change this to either increase or decrease the animated page scroll speed.
+
+### Show Headline
+
+Set this to `false` to remove the `titleText` entirely.
+
+### Show Top Link
+
+Set this to `false` to remove the `Top` nav item entirely.
+
+### Location
+
+You can pass any of the following jQuery insertion methods to change where scrollNav is inserted in relation to the targeted container. 'insertBefore', `prependTo`, `appendTo`, or `insertAfter`
 
 ## Errors
 
