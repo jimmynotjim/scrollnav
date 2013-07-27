@@ -1,5 +1,5 @@
 //  Added option for choosing insertion element
-// locationElem
+//  locationElem
 
 
 (function($) {
