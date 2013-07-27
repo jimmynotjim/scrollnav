@@ -1,4 +1,5 @@
-//  - locationElem
+//  Added option for choosing insertion element
+// locationElem
 
 
 (function($) {
