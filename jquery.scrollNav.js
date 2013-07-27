@@ -1,5 +1,7 @@
 //  Added option for choosing insertion element
 //  locationElem
+//  Added option for scrollTop destination
+//  scrollTop
 
 
 (function($) {
