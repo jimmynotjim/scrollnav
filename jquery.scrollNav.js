@@ -1,3 +1,9 @@
+//  Added option for choosing insertion element
+//  locationElem
+//  Added option for scrollTop destination
+//  scrollTop
+
+
 (function($) {
 
 	$.fn.scrollNav = function(options) {
@@ -5,6 +11,8 @@
 		// Add loading hook to the body element
 
 		$('body').addClass('sn-loading');
+		
+		var $locationElem = this;
 
 		var settings = {
 			sections: 'h3',
@@ -14,7 +22,8 @@
 			speed: 500,
 			showHeadline: true,
 			showTopLink: true,
-			location: 'insertBefore'
+			location: 'insertBefore',
+			locationElem: $locationElem,
 		};
 
 		$.extend(settings, options);
@@ -66,7 +75,7 @@
 			var $list		= $('<ol />', {'class': 'scroll-nav-list'});
 
 			$.each($sectionArray, function(i) {
-				var $item	= (i === 0) ? $('<li />', {'class': 'scroll-nav-item active'}) : $('<li />', {'class': 'scroll-nav-item'});
+				var $item	= (i === 0) ? $('<li />', {'class': 'scroll-nav-item active ' + this.id}) : $('<li />', {'class': 'scroll-nav-item ' + this.id});
 				var $link	= $('<a />', {'href': '#' + this.id, 'class': 'scroll-nav-link', text: this.text});
 
 				$list.append( $item.append($link) );
@@ -124,7 +133,8 @@
 		// Now add the nav to our page
 
 		if ($container.length !== 0 && $sections.length !== 0) {
-			$nav[settings.location]($container);
+			$nav[settings.location]([settings.locationElem]);
+		//	$nav[settings.location];
 		}
 		else if ($container.length === 0) {
 			console.log("Build failed, scrollNav could not find '" + $container.selector + "'");
@@ -144,7 +154,7 @@
 				var elementClicked	= $(this).attr("href");
 				var destination		= $(elementClicked).offset().top;
 
-				$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination-40 }, settings.speed );
+				$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination-settings.scrollTop }, settings.speed );
 
 				return false;
 			});
