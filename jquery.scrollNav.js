@@ -14,7 +14,8 @@
 			speed: 500,
 			showHeadline: true,
 			showTopLink: true,
-			location: 'insertBefore'
+			location: 'insertBefore',
+      topLinkText: 'Top'
 		};
 
 		$.extend(settings, options);
@@ -36,11 +37,11 @@
 			var offset		= $container.offset().top;
 
 			if (containerID) {
-				$sectionArray.push({id: containerID, offset: offset, text: 'Top'});
+				$sectionArray.push({id: containerID, offset: offset, text: settings.topLinkText});
 			}
 			else {
 				$container.attr('id', 'jumpNav-0');
-				$sectionArray.push({id: 'jumpNav-0', offset: offset, text: 'Top'});
+				$sectionArray.push({id: 'jumpNav-0', offset: offset, text: settings.topLinkText});
 			}
 		};
 
