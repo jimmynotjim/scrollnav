@@ -15,7 +15,7 @@
 			showHeadline: true,
 			showTopLink: true,
 			location: 'insertBefore',
-      topLinkText: 'Top'
+			topLinkText: 'Top'
 		};
 
 		$.extend(settings, options);
