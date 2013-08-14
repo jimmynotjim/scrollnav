@@ -132,7 +132,7 @@ scrollNav's default return to the top link is 'Top', but feel free to change it 
 
 ### Location
 
-You can pass any of the following jQuery insertion methods to change where scrollNav is inserted in relation to the targeted container. 'insertBefore', `prependTo`, `appendTo`, or `insertAfter`
+You can pass any of the following jQuery insertion methods to change where scrollNav is inserted in relation to the targeted container. `insertBefore`, `prependTo`, `appendTo`, or `insertAfter`
 
 ## Errors
 
