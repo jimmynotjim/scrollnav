@@ -1,6 +1,6 @@
 # [jQuery scrollNav][1]
 
-A jQuery plugin for building a scrolling side nav
+A jQuery plugin for building a scrolling side navigation menu
 
 *Check out [the homepage][1] to see it in action.*
 
