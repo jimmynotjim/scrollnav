@@ -86,7 +86,7 @@ There are a few customizable options in scrollNav using key : value pairs. Here 
 
 ```
 $('.post-article').scrollNav({
-	sections: 'h3', 
+	sections: 'h3',
 	titleText: 'Jump To',
 	fixedMargin: 40,
 	animated: true,
@@ -139,7 +139,7 @@ There are a few known issues, including poor location updating when scrolling on
 
 ## License
 
-scrollNav is released under the [CC Attribution-ShareAlike license][6]. This means you can recreate, edit or share the plugin as long as you maintain the same open licensing.
+scrollNav is Copyright &copy; 2012 James Wilson, released under the [MIT license][6]. This means you can recreate, edit or share the plugin as long as you maintain the same open licensing.
 
 ## Authors
 
@@ -151,9 +151,8 @@ With a bit of guidance from [Eric Clemmons (@ericclemmons)][8]
 [2]: #
 [3]: https://twitter.com/csswizardry
 [4]: http://inuitcss.com/
-[6]: http://creativecommons.org/licenses/by-sa/3.0/
+[6]: https://github.com/jimmynotjim/scrollNav/blob/master/LICENSE-MIT
 [7]: http://jimmynotjim.com
 [8]: https://github.com/ericclemmons
-	
-	
-	
+
+
