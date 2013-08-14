@@ -14,8 +14,8 @@
 			speed: 500,
 			showHeadline: true,
 			showTopLink: true,
-			location: 'insertBefore',
-			topLinkText: 'Top'
+			topLinkText: 'Top',
+			location: 'insertBefore'
 		};
 
 		$.extend(settings, options);

@@ -93,6 +93,7 @@ $('.post-article').scrollNav({
 	speed: 500,
 	showHeadline: true,
 	showTopLink: true,
+	topLinkText: 'Top',
 	location: 'insertBefore'
 });
 ```
@@ -124,6 +125,10 @@ Set this to `false` to remove the `titleText` entirely.
 ### Show Top Link
 
 Set this to `false` to remove the `Top` nav item entirely.
+
+### Top Link Text
+
+scrollNav's default return to the top link is 'Top', but feel free to change it to whatever works for you.
 
 ### Location
 
