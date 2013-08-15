@@ -106,7 +106,7 @@
 				if( winTop > (navOffset - settings.fixedMargin) ) { $nav.addClass('fixed'); }
 				else { $nav.removeClass('fixed'); }
 
-				$.each($sectionArray, function() {
+				$.each($sectionArray.slice(0).reverse(), function() {
 					if( this.offset > winTop - settings.fixedMargin &&  this.offset < (winTop + halfVP) ) {
 						$nav.find('li').removeClass('active');
 						$nav.find('a[href="#' + this.id + '"]').parents('li').addClass('active');
