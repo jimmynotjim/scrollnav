@@ -41,14 +41,19 @@
 			if (settings.subSections) {
 				var $subSections	= $thisSection.filter(settings.subSections);
 
-				$subSections.each(function(i) {
-					var subID		= 'scrollNav-0-' + (i + 1);
-					var subOffset	= $(this).offset().top;
-					var subText		= $(this).text();
+				if ($subSections.length > 0) {
+					$subSections.each(function(i) {
+						var subID		= 'scrollNav-0-' + (i + 1);
+						var subOffset	= $(this).offset().top;
+						var subText		= $(this).text();
+						var $thisSub	= $thisSection.filter($(this).nextUntil($subSections).andSelf());
 
-					$(this).attr('id', subID);
-					$subArray.push( {id: subID, offset: subOffset, text: subText} );
-				});
+						$thisSub.wrapAll('<div id="' + subID + '" class="scroll-nav__sub-section" />');
+						$subArray.push( {id: subID, offset: subOffset, text: subText} );
+					});
+
+					$thisSection = $(this).nextUntil($sections).andSelf();
+				}
 			}
 
 			$thisSection.wrapAll('<section id="scrollNav-0" />');
@@ -72,16 +77,19 @@
 				if (settings.subSections) {
 					var $subSections	= $thisSection.filter(settings.subSections);
 
-					$subSections.each(function(i) {
-						var subID		= sectionID + '-' + (i + 1);
-						var subOffset	= $(this).offset().top;
-						var subText		= $(this).text();
-						var $thisSub	= $(this).nextUntil($subSections).andSelf();
-						console.log($thisSub);
+					if ($subSections.length > 0) {
+						$subSections.each(function(i) {
+							var subID		= sectionID + '-' + (i + 1);
+							var subOffset	= $(this).offset().top;
+							var subText		= $(this).text();
+							var $thisSub	= $thisSection.filter($(this).nextUntil($subSections).andSelf());
 
-						$(this).attr('id', subID);
-						$subArray.push( {id: subID, offset: subOffset, text: subText} );
-					});
+							$thisSub.wrapAll('<div id="' + subID + '" class="scroll-nav__sub-section" />');
+							$subArray.push( {id: subID, offset: subOffset, text: subText} );
+						});
+
+						$thisSection = $(this).nextUntil($sections).andSelf();
+					}
 				}
 
 				$thisSection.wrapAll('<section id="' + sectionID + '" />');
@@ -89,18 +97,20 @@
 			});
 		};
 
+
 		// Populate the nav with a headline and ordered list from
 		// the section array we built
 
 		var setupNav = function() {
 			var $navList	= $('<ol />', {'class': 'scroll-nav__list'});
-			var $subNavList;
 
 			$.each($sectionArray, function(i) {
 				var $item			= (i === 0) ? $('<li />', {'class': 'scroll-nav__item active'}) : $('<li />', {'class': 'scroll-nav__item'});
 				var $link			= $('<a />', {'href': '#' + this.id, 'class': 'scroll-nav__link', text: this.text});
+				var $subNavList;
 
 				if (this.subSections.length > 0) {
+					$item.addClass('is-parent-item');
 					$subNavList	= $('<ol />', {'class': 'scroll-nav__sub-list'});
 
 					$.each(this.subSections, function() {
@@ -182,13 +192,13 @@
 		/* Animate Scrolling on click*/
 
 		if (settings.animated === true) {
-			$('.scroll-nav').find('a').click(function() {
+			$('.scroll-nav').find('a').click(function(e) {
+				e.preventDefault();
+
 				var elementClicked	= $(this).attr("href");
 				var destination		= $(elementClicked).offset().top;
 
-				$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination-40 }, settings.speed );
-
-				return false;
+				$('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination-40 }, settings.speed );
 			});
 		}
 
