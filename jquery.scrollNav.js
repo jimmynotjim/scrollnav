@@ -169,7 +169,7 @@
 			addLoadingClass();
 			findSections();
 
-			if (sections.length > 0) {
+			if ($container.find(settings.sections).length > 0) {
 				// Now add the nav to our page
 
 				setupSections();
