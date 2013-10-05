@@ -212,7 +212,7 @@
 				animateClicks();
 				swapLoadingClass(true);
 			} else {
-				console.log('Build failed, scrollNav could not find any "' + settings.sections + '\'s inside of "' + $container.selector + '"');
+				console.log('Build failed, scrollNav could not find any "' + settings.sections + 's" inside of "' + $container.selector + '"');
 				swapLoadingClass(false);
 			}
 
