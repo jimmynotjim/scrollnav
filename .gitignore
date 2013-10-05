@@ -1,1 +1,5 @@
+# System Files
+.DS_Store
+
+# Node Files
 /node_modules/
