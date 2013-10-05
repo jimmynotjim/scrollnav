@@ -23,7 +23,8 @@
 		var sectionArray	= [];
 		var $container		= this;
 		var $headline		= $('<span />', {'class': 'scroll-nav__heading', text: settings.headlineText});
-		var $nav			= (settings.showHeadline === true) ? $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'}).append($headline) : $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
+		var $wrapper		= $('<div />', {'class': 'scroll-nav__wrapper'});
+		var $nav			= $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
 
 		// Add loading hook to the body element
 
@@ -109,12 +110,11 @@
 				$navList.append( $item.append($link).append($subNavList) );
 			});
 
-			if (settings.showHeadline === true) {
-				$nav.append($headline).append($navList);
+			if (settings.showHeadline) {
+				$nav.append( $wrapper.append($headline).append($navList) );
 			} else {
-				$nav.append($navList);
+				$nav.append( $wrapper.append($navList) );
 			}
-
 		};
 
 		// Add the nav to our page
@@ -182,7 +182,7 @@
 		// Animate Scrolling on click
 
 		var animateClicks = function() {
-			if (settings.animated === true) {
+			if (settings.animated) {
 				$('.scroll-nav').find('a').click(function(e) {
 					e.preventDefault();
 
