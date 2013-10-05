@@ -9,6 +9,7 @@
 			showTopLink: true,
 			topLinkText: 'Top',
 			fixedMargin: 40,
+			scrollOffset: 40,
 			animated: true,
 			speed: 500,
 			location: 'insertBefore'
@@ -16,11 +17,14 @@
 
 		// Set the variables from our page elements
 
+		var viewPort;
+		var navOffset;
 		var sections		= [];
 		var sectionArray	= [];
 		var $container		= this;
 		var $headline		= $('<span />', {'class': 'scroll-nav__heading', text: settings.headlineText});
-		var $nav			= (settings.showHeadline === true) ? $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'}).append($headline) : $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
+		var $wrapper		= $('<div />', {'class': 'scroll-nav__wrapper'});
+		var $nav			= $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
 
 		// Add loading hook to the body element
 
@@ -80,8 +84,8 @@
 			});
 		};
 
-		// Populate the nav with a headline and ordered list from
-		// the section array we built
+
+		// Populate an ordered list from the section array we built
 
 		var setupNav = function() {
 			var $navList	= $('<ol />', {'class': 'scroll-nav__list'});
@@ -106,80 +110,109 @@
 				$navList.append( $item.append($link).append($subNavList) );
 			});
 
-			if (settings.showHeadline === true) {
-				$nav.append($headline).append($navList);
+			if (settings.showHeadline) {
+				$nav.append( $wrapper.append($headline).append($navList) );
 			} else {
-				$nav.append($navList);
+				$nav.append( $wrapper.append($navList) );
 			}
-
 		};
 
-		// Set nav to fixed after scrolling past the header and
-		// add an active class to whichever section currently in
-		// view when the user clicks or scrolls
+		// Add the nav to our page
+
+		var insertNav = function() {
+			$nav[settings.location]($container);
+		};
+
+		// Find the offset positions of each section
+
+		var setupPositions = function() {
+			viewPort	= $(window).height();
+			navOffset	= $nav.offset().top;
+
+			$.each(sectionArray, function() {
+				var $thisSection	= $('#' + this.id);
+				var thisHeight		= $thisSection.height();
+				this.topOffset		= $thisSection.offset().top;
+				this.bottomOffset	= this.topOffset + thisHeight;
+			});
+		};
+
+		// Set nav to fixed after scrolling past the header and add an active
+		// class to any sections currently within the bounds of our view
+
+		var positionCheck = function() {
+			var winTop			= $(window).scrollTop();
+			var topBoundry		= winTop + settings.scrollOffset;
+			var bottomBoundry	= winTop + viewPort - settings.scrollOffset;
+			var activeArray	= [];
+
+			if ( winTop > (navOffset - settings.fixedMargin) ) { $nav.addClass('fixed'); }
+			else { $nav.removeClass('fixed'); }
+
+			$.each(sectionArray, function() {
+				if ( (this.topOffset > topBoundry && this.topOffset < bottomBoundry) || (this.bottomOffset > topBoundry && this.bottomOffset < bottomBoundry) || (this.topOffset < topBoundry && this.bottomOffset > bottomBoundry) ) {
+					activeArray.push(this);
+				}
+			});
+
+			$nav.find('.scroll-nav__item').removeClass('active');
+
+			$.each(activeArray, function() {
+				$nav.find('a[href="#' + this.id + '"]').parents('.scroll-nav__item').addClass('active');
+			});
+		};
 
 		var navScrolling = function() {
-			var navOffset = $nav.offset().top;
 
 			// Set a resize listener to change the offset values
 
 			$(window).resize(function() {
-				$.each(sectionArray, function() {
-					this.offset	= $('#' + this.id).offset().top;
-				});
+				setupPositions();
+				positionCheck();
 			});
 
 			// Set a scroll listener to update the fixed and
 			// active classes
 
 			$(window).scroll(function() {
-				var winTop		= $(window).scrollTop();
-				var halfVP		= $(window).height() * 0.5;
-
-				if ( winTop > (navOffset - settings.fixedMargin) ) { $nav.addClass('fixed'); }
-				else { $nav.removeClass('fixed'); }
-
-				$.each(sectionArray, function() {
-					if ( this.offset > winTop - settings.fixedMargin &&  this.offset < (winTop + halfVP) ) {
-						$nav.find('li').removeClass('active');
-						$nav.find('a[href="#' + this.id + '"]').parents('li').addClass('active');
-					}
-				});
+				positionCheck();
 			});
 		};
 
 		// Animate Scrolling on click
 
 		var animateClicks = function() {
-			if (settings.animated === true) {
+			if (settings.animated) {
 				$('.scroll-nav').find('a').click(function(e) {
 					e.preventDefault();
 
 					var elementClicked	= $(this).attr("href");
 					var destination		= $(elementClicked).offset().top;
 
-					$('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination-40 }, settings.speed );
+					$('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination - settings.scrollOffset }, settings.speed );
 				});
 			}
 		};
 
 		if ($container.length > 0) {
-			// BUILD!!!!
+			// Initialize
 
 			addLoadingClass();
 			findSections();
 
 			if ($container.find(settings.sections).length > 0) {
-				// Now add the nav to our page
+				// BUILD!!!!
 
 				setupSections();
 				setupNav();
-				$nav[settings.location]($container);
+				insertNav();
+				setupPositions();
+				positionCheck();
 				navScrolling();
 				animateClicks();
 				swapLoadingClass(true);
 			} else {
-				console.log('Build failed, scrollNav could not find any "' + settings.sections + '\'s inside of "' + $container.selector + '"');
+				console.log('Build failed, scrollNav could not find any "' + settings.sections + 's" inside of "' + $container.selector + '"');
 				swapLoadingClass(false);
 			}
 
