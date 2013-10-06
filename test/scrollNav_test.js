@@ -151,7 +151,7 @@
     equal(this.nav.length, true, 'nav should exist');
   });
 
-  test('first nav lik has correct text', function() {
+  test('first nav link has correct text', function() {
     expect(3);
     var headingText = this.sections.eq(0).children().eq(0).text();
     var linkText = this.nav.find('li').eq(0).text();
@@ -161,17 +161,17 @@
     notStrictEqual(linkText, 'Another Test Heading', 'should not be Another Test Heading');
   });
 
-  test('second nav lik has correct text', function() {
+  test('second nav link has correct text', function() {
     expect(3);
     var headingText = this.sections.eq(1).children().eq(0).text();
     var linkText = this.nav.find('li').eq(1).text();
 
-    strictEqual(linkText, headingText, 'should be Test Heading');
+    strictEqual(linkText, headingText, 'should be Another Test Heading');
     notStrictEqual(linkText, 'lame test markup', 'should not be lame test');
     notStrictEqual(linkText, 'Test Heading', 'should not be Test Heading');
   });
 
-  test('first nav lik has correct url', function() {
+  test('first nav link has correct url', function() {
     expect(3);
     var sectionID = this.sections.eq(0).attr('id');
     var linkURL = this.nav.find('li').eq(0).find('a').attr('href');
@@ -181,12 +181,12 @@
     notStrictEqual(linkURL, 'Another Test Heading', 'should not be #scrollNav-2');
   });
 
-  test('second nav lik has correct url', function() {
+  test('second nav link has correct url', function() {
     expect(3);
     var sectionID = this.sections.eq(1).attr('id');
     var linkURL = this.nav.find('li').eq(1).find('a').attr('href');
 
-    strictEqual(linkURL, '#' + sectionID, 'should be #scrollNav-1');
+    strictEqual(linkURL, '#' + sectionID, 'should be #scrollNav-2');
     notStrictEqual(linkURL, 'lame test markup', 'should not be #scrollNav-1');
     notStrictEqual(linkURL, 'Another Test Heading', 'should not be #scrollNav-3');
   });
