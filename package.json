@@ -1,6 +1,14 @@
 {
-  "name": "jquery-plugin",
-  "version": "0.0.0-ignored",
+  "name": "scrollNav",
+  "version": "2.0.0",
+  "author": "James Wilson <jimmynotjim@me.com>",
+  "description": "A jQuery plugin for building a scrolling side navigation menu",
+  "keywords": [
+    "jquery",
+    "navigation",
+    "scrolling"
+  ],
+  "license": "MIT",
   "engines": {
     "node": ">= 0.8.0"
   },
