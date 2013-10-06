@@ -66,11 +66,13 @@
 
     var setupSections = function() {
       $(sections).each(function(i) {
-        var subArray    = [];
+        var subArray      = [];
         var $thisSection  = $(this);
-        var sectionID   = 'scrollNav-' + (i + 1);
-        var offset      = $thisSection.offset().top;
-        var text      = (settings.showTopLink && i === 0) ? settings.topLinkText : $thisSection.filter(settings.sections).text();
+        var sectionID     = 'scrollNav-' + (i + 1);
+        var offset        = $thisSection.offset().top;
+        var isFirst       = function() { return i === 0; };
+        var hasHeading    = function() { return !$thisSection.eq(0).is('h2'); };
+        var text          = ( settings.showTopLink && isFirst() && hasHeading() ) ? settings.topLinkText : $thisSection.filter(settings.sections).text();
 
         if (settings.subSections) {
           var $subSections  = $thisSection.filter(settings.subSections);
