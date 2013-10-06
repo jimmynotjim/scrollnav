@@ -145,6 +145,12 @@
     }
   });
 
+  test('nav is inserted', function() {
+    expect(1);
+
+    equal(this.nav.length, true, 'nav should exist');
+  });
+
   test('first nav lik has correct text', function() {
     expect(3);
     var headingText = this.sections.eq(0).children().eq(0).text();
