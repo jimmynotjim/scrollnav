@@ -24,6 +24,8 @@
   // This will run before each test in this module.
     setup: function() {
       this.elems = $('#qunit-fixture');
+    }, teardown: function() {
+      $('.scroll-nav').remove();
     }
  });
 
@@ -38,6 +40,8 @@
     setup: function() {
       this.elems = $('#qunit-fixture');
       this.sections = this.elems.scrollNav().children();
+    }, teardown: function() {
+      $('.scroll-nav').remove();
     }
   });
 
@@ -52,9 +56,9 @@
   test('correct number of children in first section', function() {
     expect(3);
 
-    strictEqual(this.sections.eq(0).children().length, 4, 'should be four');
-    notStrictEqual(this.sections.eq(0).children().length, 3, 'should not be three');
+    strictEqual(this.sections.eq(0).children().length, 6, 'should be six');
     notStrictEqual(this.sections.eq(0).children().length, 5, 'should not be five');
+    notStrictEqual(this.sections.eq(0).children().length, 7, 'should not be seven');
   });
 
   test('correct number of children in second section', function() {
@@ -105,6 +109,30 @@
     notStrictEqual(sectionID, 'scrollNav-2-1', 'should not be scrollNav-2-1');
   });
 
+  module('subSections', {
+    // This will run before each test in this module.
+    setup: function() {
+      this.elems = $('#qunit-fixture');
+      this.scrollNav = this.elems.scrollNav({
+        sections: 'h2',
+        subSections: 'h3',
+        showHeadline: true
+      });
+      this.sections = this.scrollNav.children();
+    }, teardown: function() {
+      $('.scroll-nav').remove();
+    }
+  });
+
+  test('correct total number of sub-sections in first section', function() {
+    expect(3);
+    var $subSections = this.sections.eq(0).find('.scroll-nav__sub-section');
+
+    strictEqual($subSections.length, 2, 'should be two');
+    notStrictEqual($subSections.length, 1, 'should not be one');
+    notStrictEqual($subSections.length, 0, 'should not be zero');
+  });
+
   module('nav', {
     // This will run before each test in this module.
     setup: function() {
@@ -112,6 +140,8 @@
       this.scrollNav = this.elems.scrollNav();
       this.sections = this.scrollNav.children();
       this.nav = this.scrollNav.siblings('.scroll-nav');
+    }, teardown: function() {
+      $('.scroll-nav').remove();
     }
   });
 
