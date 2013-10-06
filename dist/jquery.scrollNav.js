@@ -1,4 +1,4 @@
-/*! Scrollnav - v2.0.0 - 2013-10-05
+/*! Scrollnav - v2.0.0 - 2013-10-06
 * http://scrollnav.com
 * Copyright (c) 2013 James Wilson; Licensed MIT */
 (function($) {
@@ -22,12 +22,12 @@
 
     var viewPort;
     var navOffset;
-    var sections    = [];
-    var sectionArray  = [];
-    var $container    = this;
-    var $headline   = $('<span />', {'class': 'scroll-nav__heading', text: settings.headlineText});
-    var $wrapper    = $('<div />', {'class': 'scroll-nav__wrapper'});
-    var $nav      = $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
+    var sections     = [];
+    var sectionArray = [];
+    var $container   = this;
+    var $headline    = $('<span />', {'class': 'scroll-nav__heading', text: settings.headlineText});
+    var $wrapper     = $('<div />', {'class': 'scroll-nav__wrapper'});
+    var $nav         = $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
 
     // Get url hash if one exists
 
@@ -53,7 +53,7 @@
     var findSections = function() {
       if (settings.showTopLink) {
         var $firstElem = $container.children().first();
-        if ( !$firstElem.is('h2') ) {
+        if ( !$firstElem.is(settings.sections) ) {
           sections.push( $firstElem.nextUntil(settings.sections).andSelf() );
         }
       }
@@ -72,7 +72,7 @@
         var sectionID     = 'scrollNav-' + (i + 1);
         var offset        = $thisSection.offset().top;
         var isFirst       = function() { return i === 0; };
-        var hasHeading    = function() { return !$thisSection.eq(0).is('h2'); };
+        var hasHeading    = function() { return !$thisSection.eq(0).is(settings.sections); };
         var text          = ( settings.showTopLink && isFirst() && hasHeading() ) ? settings.topLinkText : $thisSection.filter(settings.sections).text();
 
         if (settings.subSections) {
@@ -80,7 +80,7 @@
 
           if ($subSections.length > 0) {
             $subSections.each(function(i) {
-              var subID   = sectionID + '-' + (i + 1);
+              var subID     = sectionID + '-' + (i + 1);
               var subOffset = $(this).offset().top;
               var subText   = $(this).text();
               var $thisSub  = $thisSection.filter($(this).nextUntil($subSections).andSelf());
@@ -114,8 +114,8 @@
           $subNavList = $('<ol />', {'class': 'scroll-nav__sub-list'});
 
           $.each(this.subSections, function() {
-            var $subItem  = $('<li />', {'class': 'scroll-nav__sub-item'});
-            var $subLink  = $('<a />', {'href': '#' + this.id, 'class': 'scroll-nav__sub-link', text: this.text});
+            var $subItem = $('<li />', {'class': 'scroll-nav__sub-item'});
+            var $subLink = $('<a />', {'href': '#' + this.id, 'class': 'scroll-nav__sub-link', text: this.text});
 
             $subNavList.append( $subItem.append($subLink) );
           });
@@ -155,10 +155,10 @@
     // class to any sections currently within the bounds of our view
 
     var positionCheck = function() {
-      var winTop      = $(window).scrollTop();
+      var winTop        = $(window).scrollTop();
       var topBoundry    = winTop + settings.scrollOffset;
       var bottomBoundry = winTop + viewPort - settings.scrollOffset;
-      var activeArray = [];
+      var activeArray   = [];
 
       if ( winTop > (navOffset - settings.fixedMargin) ) { $nav.addClass('fixed'); }
       else { $nav.removeClass('fixed'); }
