@@ -29,6 +29,12 @@
     var $wrapper    = $('<div />', {'class': 'scroll-nav__wrapper'});
     var $nav      = $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
 
+    // Get url hash if one exists
+
+    var getHash = function() {
+      return window.location.hash;
+    };
+
     // Add loading hook to the body element
 
     var addLoadingClass = function() {
@@ -187,18 +193,31 @@
       });
     };
 
-    // Animate Scrolling on click
+    // Animate scrolling to hash
+
+    var scrollTo = function(value) {
+      var destination = $(value).offset().top;
+
+      $('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination - settings.scrollOffset }, settings.speed );
+    };
+
+    // Animate scrolling on click
 
     var animateClicks = function() {
       if (settings.animated) {
         $('.scroll-nav').find('a').click(function(e) {
           e.preventDefault();
 
-          var elementClicked  = $(this).attr("href");
-          var destination   = $(elementClicked).offset().top;
-
-          $('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination - settings.scrollOffset }, settings.speed );
+          scrollTo( $(this).attr('href') );
         });
+      }
+    };
+
+    // If page url contains hash scroll to it
+
+    var scrollToHash = function(value) {
+      if ( value ) {
+        scrollTo( value);
       }
     };
 
@@ -219,6 +238,7 @@
         navScrolling();
         animateClicks();
         swapLoadingClass(true);
+        scrollToHash( getHash() );
       } else {
         console.log('Build failed, scrollNav could not find any "' + settings.sections + 's" inside of "' + $container.selector + '"');
         swapLoadingClass(false);
