@@ -15,7 +15,8 @@
 			showHeadline: true,
 			showTopLink: true,
 			topLinkText: 'Top',
-			location: 'insertBefore'
+			location: 'insertBefore',
+			target: '' //Added 'target' option that user can select element to insert nav 
 		};
 
 		$.extend(settings, options);
@@ -125,7 +126,9 @@
 		// Now add the nav to our page
 
 		if ($container.length !== 0 && $sections.length !== 0) {
-			$nav[settings.location]($container);
+			//Added 'target' option that user can select element to insert nav 
+			if(settings.target !== '' && $(settings.target).length > 0) $nav[settings.location]($(settings.target));
+			else $nav[settings.location]($container);
 		}
 		else if ($container.length === 0) {
 			console.log("Build failed, scrollNav could not find '" + $container.selector + "'");
