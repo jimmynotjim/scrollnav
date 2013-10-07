@@ -24,7 +24,7 @@ Download the [production version][min] or the [development version][max].
 
 * ### Tiny Size
 
-	At 3kb min'd, scrollNav is pretty unintrusive. If you use Ajax to import and initiate it, it's almost negligable.
+	At 1.5kb min'd and GZip'd, scrollNav is pretty unintrusive. If you use Ajax to import and initiate it, it's almost negligable.
 
 ## Usage
 
@@ -114,7 +114,7 @@ The plugin supports nesting sub-sections within each section in the final nav. A
 
 ### Show Headline
 
-Set this to `false` to remove the `headlineText` entirely.
+Set this to `false` to remove the Headline Text entirely.
 
 ### Headline Text
 
@@ -122,7 +122,7 @@ scrollNav's default title text is 'Scroll To', but feel free to modify it to wha
 
 ### Show Top Link
 
-Set this to `false` to remove the `Top` nav item entirely.
+Set this to `false` to remove the Top Link nav item entirely.
 
 ### Top Link Text
 
@@ -166,18 +166,7 @@ scrollNav is Copyright &copy; 2013 James Wilson, released under the [MIT license
 
 ## Version
 
-Latest stable version is 1.2.0 *[view the changelog][13]*
-
-Releases are be numbered in the semantic versioning format:
-
-`<major>.<minor>.<patch>`
-
-And constructed with these guidelines:
-
-Breaking backwards compatibility bumps the major
-New additions without breaking backwards compatibility bumps the minor
-Bug fixes and misc changes bump the patch
-For more information on semantic versioning, please visit http://semver.org/.
+Latest stable version is 2.0.0. Make sure to view [the changelog][13] before updating, v2 is a complete re-write of the plugin.
 
 ## Testing
 
@@ -187,7 +176,7 @@ Tests are written using QUnit. To run the test suite with PhantomJS, run `$ grun
 
 Please read the [contributing guidelines][12] and [issue tracker][5] before starting on code.
 
-In order to build and test scrollNav.js, you'll need to install its dev dependencies ($ npm install) and have grunt-cli installed ($ npm install -g grunt-cli). Below is an overview of the available Grunt tasks that'll be useful in development.
+In order to build and test scrollNav.js, you'll need to install its dev dependencies ($ npm install) and have grunt-cli globally installed ($ npm install -g grunt-cli). Below is an overview of the available Grunt tasks that'll be useful in development.
 
 * grunt jshint – Runs source and test files through JSHint.
 * grunt qunit – Runs the test suite with PhantomJS.
