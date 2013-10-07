@@ -12,7 +12,8 @@
 			scrollOffset: 40,
 			animated: true,
 			speed: 500,
-			location: 'insertBefore'
+			location: 'insertBefore',
+			target: this
 		}, options);
 
 		// Set the variables from our page elements
@@ -22,9 +23,10 @@
 		var sections		= [];
 		var sectionArray	= [];
 		var $container		= this;
+		var $target		= $(settings.target);
 		var $headline		= $('<span />', {'class': 'scroll-nav__heading', text: settings.headlineText});
 		var $wrapper		= $('<div />', {'class': 'scroll-nav__wrapper'});
-		var $nav			= $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
+		var $nav		= $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
 
 		// Add loading hook to the body element
 
@@ -120,7 +122,7 @@
 		// Add the nav to our page
 
 		var insertNav = function() {
-			$nav[settings.location]($container);
+			$nav[settings.location]($target);
 		};
 
 		// Find the offset positions of each section
@@ -194,7 +196,7 @@
 			}
 		};
 
-		if ($container.length > 0) {
+		if ($target.length > 0) {
 			// Initialize
 
 			addLoadingClass();
@@ -217,7 +219,7 @@
 			}
 
 		} else {
-			console.log('Build failed, scrollNav could not find "' + $container.selector + '"');
+			console.log('Build failed, scrollNav could not find "' + $target.selector + '"');
 			swapLoadingClass(false);
 		}
 	};
