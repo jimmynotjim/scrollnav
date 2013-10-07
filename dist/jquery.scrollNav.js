@@ -1,4 +1,4 @@
-/*! Scrollnav - v2.0.0 - 2013-10-06
+/*! Scrollnav - v2.0.0 - 2013-10-07
 * http://scrollnav.com
 * Copyright (c) 2013 James Wilson; Licensed MIT */
 (function($) {
@@ -22,8 +22,11 @@
 
     var viewPort;
     var navOffset;
+    var topBoundry;
+    var bottomBoundry;
     var sections     = [];
     var sectionArray = [];
+    var activeArray  = [];
     var $container   = this;
     var $headline    = $('<span />', {'class': 'scroll-nav__heading', text: settings.headlineText});
     var $wrapper     = $('<div />', {'class': 'scroll-nav__wrapper'});
@@ -155,10 +158,10 @@
     // class to any sections currently within the bounds of our view
 
     var positionCheck = function() {
-      var winTop        = $(window).scrollTop();
-      var topBoundry    = winTop + settings.scrollOffset;
-      var bottomBoundry = winTop + viewPort - settings.scrollOffset;
-      var activeArray   = [];
+      var winTop          = $(window).scrollTop();
+      topBoundry          = winTop + settings.scrollOffset;
+      bottomBoundry       = winTop + viewPort - settings.scrollOffset;
+      activeArray.length  = 0;
 
       if ( winTop > (navOffset - settings.fixedMargin) ) { $nav.addClass('fixed'); }
       else { $nav.removeClass('fixed'); }
@@ -169,10 +172,15 @@
         }
       });
 
-      $nav.find('.scroll-nav__item').removeClass('active');
+      $nav.find('.scroll-nav__item').removeClass('active').removeClass('in-view');
 
-      $.each(activeArray, function() {
-        $nav.find('a[href="#' + this.id + '"]').parents('.scroll-nav__item').addClass('active');
+      $.each(activeArray, function(i) {
+        if (i === 0) {
+          $nav.find('a[href="#' + this.id + '"]').parents('.scroll-nav__item').addClass('active').addClass('in-view');
+        } else {
+          $nav.find('a[href="#' + this.id + '"]').parents('.scroll-nav__item').addClass('in-view');
+        }
+        i++;
       });
     };
 
@@ -197,27 +205,30 @@
 
     var scrollTo = function(value) {
       var destination = $(value).offset().top;
+      var speed = (settings.animated) ? settings.speed : 0;
 
-      $('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination - settings.scrollOffset }, settings.speed );
+      $('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination - settings.scrollOffset }, speed );
     };
 
-    // Animate scrolling on click
+    // Scroll to section on click
 
-    var animateClicks = function() {
-      if (settings.animated) {
-        $('.scroll-nav').find('a').click(function(e) {
-          e.preventDefault();
+    var initiateClickListeners = function() {
+      $('.scroll-nav').find('a').click(function(e) {
+        e.preventDefault();
 
-          scrollTo( $(this).attr('href') );
-        });
-      }
+        scrollTo( $(this).attr('href') );
+      });
     };
 
-    // If page url contains hash scroll to it
+    // Scroll to section if url has hash
 
     var scrollToHash = function(value) {
-      if ( value ) {
-        scrollTo( value);
+      if (value) {
+        var position = $(value).offset().top;
+
+        if ( position < topBoundry || position > bottomBoundry ) {
+          scrollTo(value);
+        }
       }
     };
 
@@ -236,7 +247,7 @@
         setupPositions();
         positionCheck();
         navScrolling();
-        animateClicks();
+        initiateClickListeners();
         swapLoadingClass(true);
         scrollToHash( getHash() );
       } else {

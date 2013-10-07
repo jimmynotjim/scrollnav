@@ -177,10 +177,15 @@
         }
       });
 
-      $nav.find('.scroll-nav__item').removeClass('active');
+      $nav.find('.scroll-nav__item').removeClass('active').removeClass('in-view');
 
-      $.each(activeArray, function() {
-        $nav.find('a[href="#' + this.id + '"]').parents('.scroll-nav__item').addClass('active');
+      $.each(activeArray, function(i) {
+        if (i === 0) {
+          $nav.find('a[href="#' + this.id + '"]').parents('.scroll-nav__item').addClass('active').addClass('in-view');
+        } else {
+          $nav.find('a[href="#' + this.id + '"]').parents('.scroll-nav__item').addClass('in-view');
+        }
+        i++;
       });
     };
 
@@ -225,7 +230,6 @@
     var scrollToHash = function(value) {
       if (value) {
         var position = $(value).offset().top;
-        console.log(position);
 
         if ( position < topBoundry || position > bottomBoundry ) {
           scrollTo(value);

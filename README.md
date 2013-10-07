@@ -79,9 +79,9 @@ To keep the plugin simple there are no styles added to the navigation, that's al
 				<a class="scroll-nav__link">
 ```
 
-There are loading hooks added to the body element (similar to how Typekit handles font loading) to allow for css transitions or any other changes in css you'd need.
+An `active` class is attached to the nav item matching the section that is the highest within the view bounds. An `in-view` class is attached to all nav items whose section is within the view bounds. If you have short sections at the end of your page and dislike that the last nav itmes are never activated, you can use the `in-view` hook to style all sections with in the view.
 
-`<body class="sn-loading">` becomes `<body class="sn-active">` unless it fails `<body class="sn-failed">`
+There are loading hooks added to the body element (similar to how Typekit handles font loading) to allow for css transitions or any other changes in css you'd need. When the plug-in starts `sn-loading` is added to the body class and is replaced by `sn-active` when the plugin is successful or `sn-failed` if it fails.
 
 ## Default `options`
 
