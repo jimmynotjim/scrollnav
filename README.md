@@ -99,7 +99,8 @@ $('.post-article').scrollNav({
 	scrollOffset: 40,
 	animated: true,
 	speed: 500,
-	location: 'insertBefore'
+	location: 'insertBefore',
+	arrowKeys: false
 });
 ```
 
@@ -143,9 +144,13 @@ The plugin animates the page scroll when clicking on a nav link by default. Set 
 
 Change this to either increase or decrease the animated page scroll speed.
 
-### Location
+### Insertion Location
 
 You can pass any of the following jQuery insertion methods to change where scrollNav is inserted in relation to the targeted container. `insertBefore`, `prependTo`, `appendTo`, or `insertAfter`
+
+### Arrow Key Navigation
+
+Set this to `true` to allow up/down arrow keys to jump through each section.
 
 ## Errors
 

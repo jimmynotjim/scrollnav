@@ -15,7 +15,8 @@
       scrollOffset: 40,
       animated: true,
       speed: 500,
-      location: 'insertBefore'
+      location: 'insertBefore',
+      arrowKeys: false
     }, options);
 
     // Set the variables from our page elements
@@ -203,7 +204,7 @@
 
     // Animate scrolling to hash
 
-    var scrollTo = function(value) {
+    var scrollToSection = function(value) {
       var destination = $(value).offset().top;
       var speed = (settings.animated) ? settings.speed : 0;
 
@@ -216,8 +217,39 @@
       $('.scroll-nav').find('a').click(function(e) {
         e.preventDefault();
 
-        scrollTo( $(this).attr('href') );
+        scrollToSection( $(this).attr('href') );
       });
+    };
+
+    // Scroll to section on arrow key press
+
+    var initiateKeyboardListeners = function() {
+      if (settings.arrowKeys) {
+        $(document).keydown(function(e) {
+          if (e.keyCode === 40 || e.keyCode === 38) {
+            var findSection = function(key) {
+              var i = 0;
+              var l = sectionArray.length;
+
+              for (i; i < l; i++) {
+                if (sectionArray[i].id === activeArray[0].id) {
+                  var offsetArray   = (key === 40) ? i + 1 : i -1;
+                  var $id           = (sectionArray[offsetArray] === undefined) ? undefined : sectionArray[offsetArray].id;
+
+                  return $id;
+                }
+              }
+            };
+            var targetSection = findSection(e.keyCode);
+
+            if (targetSection !== undefined) {
+              e.preventDefault();
+
+              scrollToSection( '#' + targetSection );
+            }
+          }
+        });
+      }
     };
 
     // Scroll to section if url has hash
@@ -227,7 +259,7 @@
         var position = $(value).offset().top;
 
         if ( position < topBoundry || position > bottomBoundry ) {
-          scrollTo(value);
+          scrollToSection(value);
         }
       }
     };
@@ -248,6 +280,7 @@
         positionCheck();
         navScrolling();
         initiateClickListeners();
+        initiateKeyboardListeners();
         swapLoadingClass(true);
         scrollToHash( getHash() );
       } else {
