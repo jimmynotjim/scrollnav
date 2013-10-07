@@ -1,4 +1,4 @@
-/*! Scrollnav - v2.0.0 - 2013-10-06
+/*! Scrollnav - v2.0.0 - 2013-10-07
 * http://scrollnav.com
 * Copyright (c) 2013 James Wilson; Licensed MIT */
 (function($) {
@@ -15,15 +15,19 @@
       scrollOffset: 40,
       animated: true,
       speed: 500,
-      location: 'insertBefore'
+      location: 'insertBefore',
+      arrowKeys: false
     }, options);
 
     // Set the variables from our page elements
 
     var viewPort;
     var navOffset;
+    var topBoundry;
+    var bottomBoundry;
     var sections     = [];
     var sectionArray = [];
+    var activeArray  = [];
     var $container   = this;
     var $headline    = $('<span />', {'class': 'scroll-nav__heading', text: settings.headlineText});
     var $wrapper     = $('<div />', {'class': 'scroll-nav__wrapper'});
@@ -155,10 +159,10 @@
     // class to any sections currently within the bounds of our view
 
     var positionCheck = function() {
-      var winTop        = $(window).scrollTop();
-      var topBoundry    = winTop + settings.scrollOffset;
-      var bottomBoundry = winTop + viewPort - settings.scrollOffset;
-      var activeArray   = [];
+      var winTop          = $(window).scrollTop();
+      topBoundry          = winTop + settings.scrollOffset;
+      bottomBoundry       = winTop + viewPort - settings.scrollOffset;
+      activeArray.length  = 0;
 
       if ( winTop > (navOffset - settings.fixedMargin) ) { $nav.addClass('fixed'); }
       else { $nav.removeClass('fixed'); }
@@ -195,29 +199,63 @@
 
     // Animate scrolling to hash
 
-    var scrollTo = function(value) {
+    var scrollToSection = function(value) {
       var destination = $(value).offset().top;
+      var speed = (settings.animated) ? settings.speed : 0;
 
-      $('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination - settings.scrollOffset }, settings.speed );
+      $('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination - settings.scrollOffset }, speed );
     };
 
-    // Animate scrolling on click
+    // Scroll to section on click
 
-    var animateClicks = function() {
-      if (settings.animated) {
-        $('.scroll-nav').find('a').click(function(e) {
-          e.preventDefault();
+    var initiateClickListeners = function() {
+      $('.scroll-nav').find('a').click(function(e) {
+        e.preventDefault();
 
-          scrollTo( $(this).attr('href') );
+        scrollToSection( $(this).attr('href') );
+      });
+    };
+
+    // Scroll to section on arrow key press
+
+    var initiateKeyboardListeners = function() {
+      if (settings.arrowKeys) {
+        $(document).keydown(function(e) {
+          if (e.keyCode === 40 || e.keyCode === 38) {
+            var findSection = function(key) {
+              var i = 0;
+              var l = sectionArray.length;
+
+              for (i; i < l; i++) {
+                if (sectionArray[i].id === activeArray[0].id) {
+                  var offsetArray   = (key === 40) ? i + 1 : i -1;
+                  var $id           = (sectionArray[offsetArray] === undefined) ? undefined : sectionArray[offsetArray].id;
+
+                  return $id;
+                }
+              }
+            };
+            var targetSection = findSection(e.keyCode);
+
+            if (targetSection !== undefined) {
+              e.preventDefault();
+
+              scrollToSection( '#' + targetSection );
+            }
+          }
         });
       }
     };
 
-    // If page url contains hash scroll to it
+    // Scroll to section if url has hash
 
     var scrollToHash = function(value) {
-      if ( value ) {
-        scrollTo( value);
+      if (value) {
+        var position = $(value).offset().top;
+
+        if ( position < topBoundry || position > bottomBoundry ) {
+          scrollToSection(value);
+        }
       }
     };
 
@@ -236,7 +274,8 @@
         setupPositions();
         positionCheck();
         navScrolling();
-        animateClicks();
+        initiateClickListeners();
+        initiateKeyboardListeners();
         swapLoadingClass(true);
         scrollToHash( getHash() );
       } else {
