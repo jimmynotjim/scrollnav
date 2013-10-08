@@ -195,7 +195,7 @@ In order to build and test scrollNav.js, you'll need to install its dev dependen
 ## With Help From
 
 * [Eric Clemmons (@ericclemmons)][8]
-* [Jeff Byrnes (@jeffByrnes)][9]
+* [Jeff Byrnes (@jeffbyrnes)][9]
 * [Jeff Coburn (@coburnicus)][10]
 * [Jen Germann (@germanny)][11]
 * [Wizcover (@wizcover)][12]
