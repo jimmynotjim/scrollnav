@@ -26,6 +26,10 @@ Download the [production version][min] or the [development version][max].
 
 	At 1.5kb min'd and GZip'd, scrollNav is pretty unintrusive. If you use Ajax to import and initiate it, it's almost negligable.
 
+## Requirements
+* For in-page usage jQuery 1.7.0 or greater
+* To build source Node 0.10.0 or greater and grunt 0.4.0 or greater
+
 ## Usage
 
 ### Import
