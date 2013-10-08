@@ -170,7 +170,7 @@ scrollNav is Copyright &copy; 2013 James Wilson, released under the [MIT license
 
 ## Version
 
-Latest stable version is 2.0.0. Make sure to view [the changelog][13] before updating, v2 is a complete re-write of the plugin.
+Latest stable version is 2.0.0. Make sure to view [the changelog][14] before updating, v2 is a complete re-write of the plugin.
 
 ## Testing
 
@@ -178,7 +178,7 @@ Tests are written using QUnit. To run the test suite with PhantomJS, run `$ grun
 
 ## Developers
 
-Please read the [contributing guidelines][12] and [issue tracker][5] before starting on code.
+Please read the [contributing guidelines][13] and [issue tracker][5] before starting on code.
 
 In order to build and test scrollNav.js, you'll need to install its dev dependencies ($ npm install) and have grunt-cli globally installed ($ npm install -g grunt-cli). Below is an overview of the available Grunt tasks that'll be useful in development.
 
@@ -195,9 +195,10 @@ In order to build and test scrollNav.js, you'll need to install its dev dependen
 ## With Help From
 
 * [Eric Clemmons (@ericclemmons)][8]
-* [Jeff Coburn (@coburnicus)][9]
-* [Jen Germann (@germanny)][10]
-* [Wizcover (@wizcover)][11]
+* [Jeff Byrnes (@jeffByrnes)][9]
+* [Jeff Coburn (@coburnicus)][10]
+* [Jen Germann (@germanny)][11]
+* [Wizcover (@wizcover)][12]
 
 [1]: http://scrollnav.com
 [2]: #
@@ -207,11 +208,12 @@ In order to build and test scrollNav.js, you'll need to install its dev dependen
 [6]: https://github.com/jimmynotjim/scrollNav/blob/master/LICENSE-MIT
 [7]: http://github.com/jimmynotjim
 [8]: https://github.com/ericclemmons
-[9]: https://github.com/coburnicus
-[10]: https://github.com/germanny
-[11]: https://github.com/wizcover
-[12]: https://github.com/jimmynotjim/scrollNav/blob/master/CONTRIBUTING.md
-[13]: https://github.com/jimmynotjim/scrollNav/blob/master/CHANGELOG.md
+[9]: https://github.com/jeffbyrnes
+[10]: https://github.com/coburnicus
+[11]: https://github.com/germanny
+[12]: https://github.com/wizcover
+[13]: https://github.com/jimmynotjim/scrollNav/blob/master/CONTRIBUTING.md
+[14]: https://github.com/jimmynotjim/scrollNav/blob/master/CHANGELOG.md
 
 
 
