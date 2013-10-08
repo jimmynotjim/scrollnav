@@ -1,14 +1,36 @@
 {
   "name": "scrollNav",
   "version": "2.0.0",
-  "author": "James Wilson <jimmynotjim@me.com>",
+  "title": "scrollNav",
+  "author": {
+    "name": "James Wilson",
+    "email": "jimmynotjim@me.com",
+    "url": "http://jimmynotjim.com"
+  },
   "description": "A jQuery plugin for building a scrolling side navigation menu",
   "keywords": [
+    "scrollnav",
     "jquery",
     "navigation",
-    "scrolling"
+    "scrolling",
+    "sticky nav",
+    "scrolling nav"
   ],
-  "license": "MIT",
+  "homepage": "http://scrollnav.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jimmynotjim/scrollNav.git"
+  },
+  "main": [
+    "./dist/jquery.scrollNav.min.js"
+  ],
+  "bugs": "https://github.com/jimmynotjim/scrollNav/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://scrollnav.com/blob/master/LICENSE-MIT"
+    }
+  ],
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -23,5 +45,8 @@
     "grunt-contrib-watch": "~0.2.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt": "~0.4.1"
+  },
+  "dependencies": {
+    "jquery": "~1.7.0"
   }
 }

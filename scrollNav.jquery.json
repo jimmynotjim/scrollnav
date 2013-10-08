@@ -1,8 +1,8 @@
 {
   "name": "scrollNav",
-  "title": "Scrollnav",
-  "description": "A jQuery plugin for building a scrolling side navigation menu",
   "version": "2.0.0",
+  "title": "scrollNav",
+  "description": "A jQuery plugin for building a scrolling side navigation menu",
   "homepage": "http://scrollnav.com",
   "author": {
     "name": "James Wilson",
