@@ -98,7 +98,7 @@
           }
         }
 
-        $thisSection.wrapAll('<' + settings.sectionElem + ' id="' + sectionID + '" />');
+        $thisSection.wrapAll('<' + settings.sectionElem + ' id="' + sectionID + '" class="scroll-nav__section" />');
         sectionArray.push( {id: sectionID, offset: offset, text: text, subSections: subArray} );
       });
     };
