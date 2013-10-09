@@ -20,7 +20,8 @@
       scrollOffset: 40,
       animated: true,
       speed: 500,
-      location: 'insertBefore',
+      insertTarget: this.selector,
+      insertLocation: 'insertBefore',
       arrowKeys: false
     }, options);
 
@@ -30,13 +31,14 @@
     var navOffset;
     var topBoundry;
     var bottomBoundry;
-    var sections     = [];
-    var sectionArray = [];
-    var activeArray  = [];
-    var $container   = this;
-    var $headline    = $('<span />', {'class': 'scroll-nav__heading', text: settings.headlineText});
-    var $wrapper     = $('<div />', {'class': 'scroll-nav__wrapper'});
-    var $nav         = $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
+    var sections      = [];
+    var sectionArray  = [];
+    var activeArray   = [];
+    var $container    = this;
+    var $insertTarget = $(settings.insertTarget);
+    var $headline     = $('<span />', {'class': 'scroll-nav__heading', text: settings.headlineText});
+    var $wrapper      = $('<div />', {'class': 'scroll-nav__wrapper'});
+    var $nav          = $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
 
     // Get url hash if one exists
 
@@ -143,7 +145,7 @@
     // Add the nav to our page
 
     var insertNav = function() {
-      $nav[settings.location]($container);
+      $nav[settings.insertLocation]($insertTarget);
     };
 
     // Find the offset positions of each section
@@ -282,14 +284,23 @@
 
         setupSections();
         setupNav();
-        insertNav();
-        setupPositions();
-        positionCheck();
-        navScrolling();
-        initiateClickListeners();
-        initiateKeyboardListeners();
-        swapLoadingClass(true);
-        scrollToHash( getHash() );
+
+        if ($insertTarget.length > 0) {
+          //Add to page
+
+          insertNav();
+          setupPositions();
+          positionCheck();
+          navScrolling();
+          initiateClickListeners();
+          initiateKeyboardListeners();
+          swapLoadingClass(true);
+          scrollToHash( getHash() );
+        } else {
+          console.log('Build failed, scrollNav could not find "' + settings.insertTarget + '"');
+          swapLoadingClass(false);
+        }
+
       } else {
         console.log('Build failed, scrollNav could not find any "' + settings.sections + 's" inside of "' + $container.selector + '"');
         swapLoadingClass(false);
@@ -299,6 +310,7 @@
       console.log('Build failed, scrollNav could not find "' + $container.selector + '"');
       swapLoadingClass(false);
     }
+
     return this;
   };
 })(jQuery);
