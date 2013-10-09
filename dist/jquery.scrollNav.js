@@ -1,4 +1,4 @@
-/*! scrollNav - v2.0.0 - 2013-10-08
+/*! scrollNav - v2.0.0 - 2013-10-09
 * http://scrollnav.com
 * Copyright (c) 2013 James Wilson; Licensed MIT */
 (function($) {
@@ -7,6 +7,7 @@
     var settings = $.extend({
       sections: 'h2',
       subSections: false,
+      sectionElem: 'section',
       showHeadline: true,
       headlineText: 'Scroll To',
       showTopLink: true,
@@ -97,7 +98,7 @@
           }
         }
 
-        $thisSection.wrapAll('<section id="' + sectionID + '" />');
+        $thisSection.wrapAll('<' + settings.sectionElem + ' id="' + sectionID + '" class="scroll-nav__section" />');
         sectionArray.push( {id: sectionID, offset: offset, text: text, subSections: subArray} );
       });
     };
