@@ -210,10 +210,12 @@
     // Animate scrolling to hash
 
     var scrollToSection = function(value) {
-      var destination = $(value).offset().top;
-      var speed = (settings.animated) ? settings.speed : 0;
+      if ( $(value).length > 0 ) {
+        var destination = $(value).offset().top;
+        var speed = (settings.animated) ? settings.speed : 0;
 
-      $('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination - settings.scrollOffset }, speed );
+        $('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination - settings.scrollOffset }, speed );
+      }
     };
 
     // Scroll to section on click
@@ -260,7 +262,7 @@
     // Scroll to section if url has hash
 
     var scrollToHash = function(value) {
-      if (value) {
+      if (value && $(value).length > 0) {
         var position = $(value).offset().top;
 
         if ( position < topBoundry || position > bottomBoundry ) {
