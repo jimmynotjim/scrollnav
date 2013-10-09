@@ -1,0 +1,34 @@
+{
+  "name": "scrollNav",
+  "version": "2.0.0",
+  "title": "scrollNav",
+  "description": "A jQuery plugin for building a scrolling side navigation menu",
+  "homepage": "http://scrollnav.com",
+  "author": {
+    "name": "James Wilson",
+    "email": "jimmynotjim@me.com",
+    "url": "http://jimmynotjim.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jimmynotjim/scrollNav.git"
+  },
+  "bugs": "https://github.com/jimmynotjim/scrollNav/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://scrollnav.com/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "~1.7.0"
+  },
+  "keywords": [
+    "scrollnav",
+    "jquery",
+    "navigation",
+    "scrolling",
+    "sticky nav",
+    "scrolling nav"
+  ]
+}

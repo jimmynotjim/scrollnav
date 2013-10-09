@@ -1,8 +1,5 @@
 # System Files
+.DS_Store
 
-*.DS_Store
-
-
-# Codekit Files
-
-/codekit-config.json
+# Node Files
+/node_modules/
