@@ -196,9 +196,14 @@
 			}
 		};
 
-		if ($target.length > 0) {
+		if ($container.length > 0) {
 			// Initialize
-
+			
+			if($target.length < 1){
+				console.log('Build failed, scrollNav could not find "' + $target.selector + '"');
+				return false;
+			}
+			
 			addLoadingClass();
 			findSections();
 
@@ -219,7 +224,7 @@
 			}
 
 		} else {
-			console.log('Build failed, scrollNav could not find "' + $target.selector + '"');
+			console.log('Build failed, scrollNav could not find "' + $container.selector + '"');
 			swapLoadingClass(false);
 		}
 	};
