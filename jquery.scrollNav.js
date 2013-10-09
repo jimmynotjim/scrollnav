@@ -23,7 +23,6 @@
 		var sections		= [];
 		var sectionArray	= [];
 		var $container		= this;
-		var $target		= $(settings.target);
 		var $headline		= $('<span />', {'class': 'scroll-nav__heading', text: settings.headlineText});
 		var $wrapper		= $('<div />', {'class': 'scroll-nav__wrapper'});
 		var $nav		= $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
@@ -122,7 +121,7 @@
 		// Add the nav to our page
 
 		var insertNav = function() {
-			$nav[settings.location]($target);
+			$nav[settings.location]($(settings.target));
 		};
 
 		// Find the offset positions of each section
@@ -199,8 +198,8 @@
 		if ($container.length > 0) {
 			// Initialize
 			
-			if($target.length < 1){
-				console.log('Build failed, scrollNav could not find "' + $target.selector + '"');
+			if($(settings.target).length < 1){
+				console.log('Build failed, scrollNav could not find "' + $(settings.target).selector + '"');
 				return false;
 			}
 			
