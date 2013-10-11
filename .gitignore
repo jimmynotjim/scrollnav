@@ -1,8 +1,7 @@
 # System Files
+*.swp
+.DS_Store
 
-*.DS_Store
-
-
-# Codekit Files
-
-/codekit-config.json
+# Node Files
+/node_modules/
+npm-debug.log
