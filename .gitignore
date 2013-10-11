@@ -1,5 +1,7 @@
 # System Files
+*.swp
 .DS_Store
 
 # Node Files
 /node_modules/
+npm-debug.log
