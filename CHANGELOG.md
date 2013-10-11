@@ -12,17 +12,22 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
-## v2.0.0 - October 7, 2013
+## v2.0.0 - October 11, 2013
 
 v2 is a complete re-write of scrollNav and includes better code organization, new options, updated options, grunt integration, and bugfixes. This update will most like break your options and markup from v1, please read through the following changes and reference the [readme](https://github.com/jimmynotjim/scrollNav/blob/master/README.md) for further details.
 
-* Updated to wrap each section in a `section` tag and support for sub-sections.
+* Updated to wrap each section in a `section` tag and support for sub-sections (as well as an option to change the wrapping element).
 * Fixed the active state when scrolling, no longer switches to the next nav item as the page finishes scrolling.
 * There are now two classes added to the nav item when scrolling, `active` and `in-view`. All sections within the view bounds are marked as `in-view` and the topmost section is marked as `active`.
 * Added grunt workflow. Edits to the plugin should be made in `/src/scrollNav.js` with tests to support them and jshint, qunit, concat and uglify should be run before submitting PRs.
 * Added parsing of url for an element hash. This fixes inbound urls with a hash not scrolling to the section if plugin loading is delayed.
 * Added arrow key navigation option. When enabled, users can jump from section to section using the up/down arrow keys.
+* Added option to change insertion target.
+* Added Bower support for easy project dependency management.
 * Updated the class names of scrollNav elements to follow BEM conventions.
+* Updated existing settings option naming for the following (*this may break your current setups*):
+  * `titleText` -> `headlineText`
+  * `location` -> `insertLocation`
 
 ## v1.2.0
 
