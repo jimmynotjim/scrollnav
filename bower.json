@@ -28,8 +28,8 @@
     "scrollnav",
     "jquery",
     "navigation",
-    "nav",
     "scrolling",
-    "sticky"
+    "sticky nav",
+    "scrolling nav"
   ]
 }
