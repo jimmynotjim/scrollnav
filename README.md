@@ -3,14 +3,17 @@
 A jQuery plugin for building a scrolling side navigation menu
 
 ## Getting Started
-Download the [production version][min] or the [development version][max].
+
+Install with Bower `bower install scrollNav`
+
+Or download the latest [production version][min] or the [development version][max].
 
 [min]: https://raw.github.com/jimmynotjim/scrollNav/master/dist/scrollNav.min.js
 [max]: https://raw.github.com/jimmynotjim/scrollNav/master/dist/scrollNav.js
 
 ## Examples
 
-*Check out [the homepage][1] to see it in action.*
+Check out [the homepage][1] to see it in action.
 
 ## Features
 
@@ -27,14 +30,14 @@ Download the [production version][min] or the [development version][max].
 	At 1.5kb min'd and GZip'd, scrollNav is pretty unintrusive. If you use Ajax to import and initiate it, it's almost negligable.
 
 ## Requirements
-* For in-page usage jQuery 1.7.0 or greater
-* To build source Node 0.10.0 or greater and grunt 0.4.0 or greater
+* For in-page usage [jQuery 1.7.0][16] or greater and [html5shiv][17]/[modernizr][18] for older browser support
+* To build source [Node 0.10.0][19] or greater and [grunt 0.4.0][20] or greater
 
 ## Usage
 
 ### Import
 
-Start by importing the script to your page, the best location is in the footer, but no matter what, make sure it follows your jquery file.
+Start by importing the script to your page, the best location is in the footer, but no matter what, make sure it follows your jQuery file.
 
 ```html
 <script src="jquery.scrollNav.min.js"></script>
@@ -89,12 +92,13 @@ There are loading hooks added to the body element (similar to how Typekit handle
 
 ## Default `options`
 
-There are a few customizable options in scrollNav using key : value pairs. Here are the defaults.
+There are a few customizable options in scrollNav using key : value pairs. These are the defaults.
 
 ```
 $('.post-article').scrollNav({
 	sections: 'h2',
 	subSections: false,
+	sectionElem: 'section',
 	showHeadline: true,
 	headlineText: 'Scroll To',
 	showTopLink: true,
@@ -103,18 +107,23 @@ $('.post-article').scrollNav({
 	scrollOffset: 40,
 	animated: true,
 	speed: 500,
-	location: 'insertBefore',
+	insertTarget: this.selector,
+	insertLocation: 'insertBefore',
 	arrowKeys: false
 });
 ```
 
 ### Sections
 
-As mentioned, the script automatically searches for `<h2>`s within the target article. If your page structure differs, feel free to target another selector, like a `<h3>` or `<h4>` or even a class, like `.scroll-headline`.
+As mentioned, the script automatically searches for `<h2>`s within the target article. If your page structure differs, feel free to target another selector, like an `<h3>` or `<h4>` or even a class, like `.scroll-headline`.
 
 ### Sub-Sections
 
-The plugin supports nesting sub-sections within each section in the final nav. Available selectors are the same as Sections.
+Set to `false` by default, the plugin supports nesting sub-sections within each section in the final nav. Available selectors are the same as Sections.
+
+### Section Wrapper Element
+
+If your article already contains `section` tags, you'll want to change this to `'div'`. Sub-sections aren't affected by this option.
 
 ### Show Headline
 
@@ -130,7 +139,7 @@ Set this to `false` to remove the Top Link nav item entirely.
 
 ### Top Link Text
 
-scrollNav's default return to the top link is 'Top', but feel free to modify it to whatever works for you.
+scrollNav's default return to the top link text is 'Top', but feel free to modify it to whatever works for you.
 
 ### Fixed Margin
 
@@ -148,6 +157,10 @@ The plugin animates the page scroll when clicking on a nav link by default. Set 
 
 Change this to either increase or decrease the animated page scroll speed.
 
+### Insertion Target
+
+If you need to insert the nav relative to an element other than the one scrollNav is initialized on, you can change it here.
+
 ### Insertion Location
 
 You can pass any of the following jQuery insertion methods to change where scrollNav is inserted in relation to the targeted container. `insertBefore`, `prependTo`, `appendTo`, or `insertAfter`
@@ -158,7 +171,7 @@ Set this to `true` to allow up/down arrow keys to jump through each section.
 
 ## Errors
 
-The plugin will refuse to build and log an error message if it doesn't find your desired container or any sections within the container. If the nav doesn't show up on load, check your browser's console.
+The plugin will refuse to build and log an error message if it doesn't find your desired container, the insertion target or any of the headlines specified within the container. If the nav doesn't show up on load, check your browser's console.
 
 ## Issues
 
@@ -166,27 +179,30 @@ There are a few known issues, including poor location updating when scrolling on
 
 ## License
 
-scrollNav is Copyright &copy; 2013 James Wilson, released under the [MIT license][6]. This means you can re-create, edit or share the plugin as long as you maintain the same open licensing.
+scrollNav is Copyright &copy; 2012-2013 James Wilson, released under the [MIT license][6]. This means you can re-create, edit or share the plugin as long as you maintain the same open licensing.
 
 ## Version
 
-Latest stable version is 2.0.0. Make sure to view [the changelog][14] before updating, v2 is a complete re-write of the plugin.
+Latest stable version is 2.0.0. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
 
 ## Testing
 
-Tests are written using QUnit. To run the test suite with PhantomJS, run `$ grunt qunit` or `$ grunt watch`.
+Tests are written using QUnit. To run the test suite with PhantomJS, run `$ grunt test` or `$ grunt watch`. To run the test in your default browser run `$ grunt test:browser`.
 
 ## Developers
 
-Please read the [contributing guidelines][13] and [issue tracker][5] before starting on code.
+Please read the [contributing guidelines][14] and [issue tracker][5] before starting on code.
 
-In order to build and test scrollNav.js, you'll need to install its dev dependencies ($ npm install) and have grunt-cli globally installed ($ npm install -g grunt-cli). Below is an overview of the available Grunt tasks that'll be useful in development.
+In order to build and test scrollNav.js, you'll need to install its dev dependencies `$ npm install` and have grunt-cli globally installed `$ npm install -g grunt-cli`.
 
-* grunt jshint – Runs source and test files through JSHint.
-* grunt qunit – Runs the test suite with PhantomJS.
-* grunt watch – Rebuilds from source whenever a file is modified.
+Available Grunt tasks that will be useful in development.
+
+* grunt lint – Runs source and test files through JSHint.
+* grunt test – Runs the test suite with PhantomJS.
 * grunt concat - Builds the source to /dist.
 * grunt uglify - Minifies the source to /dist.
+* grunt build - Runs all of the above and rebuilds from source .
+* grunt watch – Runs all of the above whenever a file is modified.
 
 ## Author
 
@@ -199,6 +215,7 @@ In order to build and test scrollNav.js, you'll need to install its dev dependen
 * [Jeff Coburn (@coburnicus)][10]
 * [Jen Germann (@germanny)][11]
 * [Wizcover (@wizcover)][12]
+* [MeghdadHadidi (@MeghdadHadidi)][13]
 
 [1]: http://scrollnav.com
 [2]: #
@@ -212,8 +229,14 @@ In order to build and test scrollNav.js, you'll need to install its dev dependen
 [10]: https://github.com/coburnicus
 [11]: https://github.com/germanny
 [12]: https://github.com/wizcover
-[13]: https://github.com/jimmynotjim/scrollNav/blob/master/CONTRIBUTING.md
-[14]: https://github.com/jimmynotjim/scrollNav/blob/master/CHANGELOG.md
+[13]: https://github.com/MeghdadHadidi
+[14]: https://github.com/jimmynotjim/scrollNav/blob/master/CONTRIBUTING.md
+[15]: https://github.com/jimmynotjim/scrollNav/blob/master/CHANGELOG.md
+[16]: http://jquery.com/
+[17]: https://github.com/aFarkas/html5shiv
+[18]: http://modernizr.com/
+[19]: http://nodejs.org/
+[20]: http://gruntjs.com/
 
 
 
