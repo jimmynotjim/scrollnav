@@ -1,3 +1,5 @@
+[![build status](https://secure.travis-ci.org/jimmynotjim/scrollNav.png?branch=v2.0)](http://travis-ci.org/jimmynotjim/scrollNav.js)
+
 # [jQuery scrollNav][1]
 
 A jQuery plugin for building a scrolling side navigation menu
