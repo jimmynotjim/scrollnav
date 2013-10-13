@@ -110,6 +110,9 @@ module.exports = function(grunt) {
       git_push: {
         cmd: 'git push && git push --tags'
       },
+      readme: {
+        cmd: 'sed -E -i "" \'s/[0-9]+\\.[0-9]+\\.[0-9]+/v<%= version %>/\' README.md',
+      },
       publish_assets: {
         cmd: [
           'cp -r <%= buildDir %> <%= name %>.js',
@@ -148,6 +151,7 @@ grunt.registerTask('release', 'Ship it.', function(version) {
       'test',
       'manifests:' + version,
       'build',
+      'exec:readme',
       'exec:git_add',
       'exec:git_commit:' + version,
       'exec:git_tag:' + version,
