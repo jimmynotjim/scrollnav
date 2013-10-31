@@ -1,7 +1,7 @@
-'use strict';
-var semver  = require('semver');
 var f       = require('util').format;
+var semver = require('semver');
 module.exports = function(grunt) {
+  'use strict';
 
   // Project configuration.
   grunt.initConfig({
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       dist: {
         src:  ['<%= sourceDir %>/<%= name %>.js'],
         dest: '<%= buildDir %>/jquery.<%= name %>.js'
-      },
+      }
     },
     uglify: {
       options: {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       dist: {
         src:  '<%= concat.dist.dest %>',
         dest: '<%= buildDir %>/jquery.<%= name %>.min.js'
-      },
+      }
     },
     qunit: {
       files: ['<%= testDir %>/**/*.html']
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
           jshintrc: 'test/.jshintrc'
         },
         src: ['<%= testDir %>/**/*.js']
-      },
+      }
     },
     watch: {
       gruntfile: {
@@ -86,7 +86,7 @@ module.exports = function(grunt) {
       test: {
         files:  '<%= jshint.test.src %>',
         tasks:  ['jshint:test', 'qunit']
-      },
+      }
     },
     exec: {
       open_qunit_browser: {
