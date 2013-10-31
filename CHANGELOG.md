@@ -12,6 +12,15 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v2.0.1 - October 31, 2013
+
+Bugfixes for the following:
+
+* package.json now includes semver: Ooops, sorry
+* Moved jQuery dependency from package.json to bower.json and updated jQuery dep to v1.8.*
+* Removed unneeded build dirs from bower install
+* Updated gitignore to ignore bower_components
+
 ## v2.0.0 - October 11, 2013
 
 v2 is a complete re-write of scrollNav and includes better code organization, new options, updated options, grunt integration, and bugfixes. This update will most like break your options and markup from v1, please read through the following changes and reference the [readme](https://github.com/jimmynotjim/scrollNav/blob/master/README.md) for further details.
