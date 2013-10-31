@@ -1,4 +1,4 @@
-var f       = require('util').format;
+var f      = require('util').format;
 var semver = require('semver');
 module.exports = function(grunt) {
   'use strict';

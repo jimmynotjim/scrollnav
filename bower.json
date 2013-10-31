@@ -14,13 +14,16 @@
     "./dist/jquery.scrollNav.min.js"
   ],
   "dependencies": {
-    "jquery": "~1.7.0"
+    "jquery": "~1.8.0"
   },
   "ignore": [
+    "node_modules",
+    "libs",
+    "src",
     "test",
     ".*",
     "*.json",
-    "*.md",
+    "CONTRIBUTING.md",
     "*.txt",
     "Gruntfile.js"
   ],
