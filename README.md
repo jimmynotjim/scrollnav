@@ -32,8 +32,8 @@ Check out [the homepage][1] to see it in action.
 	At 1.5kb min'd and GZip'd, scrollNav is pretty unintrusive. If you use Ajax to import and initiate it, it's almost negligable.
 
 ## Requirements
-* For in-page usage [jQuery 1.7.0][16] or greater and [html5shiv][17]/[modernizr][18] for older browser support
-* To build source [Node 0.10.0][19] or greater and [grunt 0.4.0][20] or greater
+* For in-page usage [jQuery v2.0.1][16] or greater and [html5shiv][17]/[modernizr][18] for older browser support
+* To build source [Node v2.0.1][19] or greater and [grunt 0.4.0][20] or greater
 
 ## Usage
 
@@ -185,7 +185,7 @@ scrollNav is Copyright &copy; 2012-2013 James Wilson, released under the [MIT li
 
 ## Version
 
-Latest stable version is 2.0.0. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
+Latest stable version is v2.0.1. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
 
 ## Testing
 
