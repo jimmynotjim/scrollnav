@@ -12,6 +12,10 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v2.0.2 - October 31, 2013
+
+Double releasing to include changelog and readme updates in Bower. One day I'll figure all this out :)
+
 ## v2.0.1 - October 31, 2013
 
 Bugfixes for the following:
