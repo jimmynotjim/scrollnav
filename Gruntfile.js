@@ -111,7 +111,7 @@ module.exports = function(grunt) {
         cmd: 'git push && git push --tags'
       },
       readme: {
-        cmd: 'sed -E -i "" \'s/[0-9]+\\.[0-9]+\\.[0-9]+/v<%= version %>/\' README.md',
+        cmd: 'sed -E -i "" \'s/v[0-9]+\\.[0-9]+\\.[0-9]+/v<%= version %>/\' README.md',
       },
       publish_assets: {
         cmd: [
