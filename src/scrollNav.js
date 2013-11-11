@@ -8,8 +8,29 @@
 
 (function($) {
 
-  $.fn.scrollNav = function(options) {
-    var settings = $.extend({
+  // Animate scrolling to section location
+  var scroll_to = function(value, speed, offset, animated) {
+    if ( $(value).length > 0 ) {
+      var destination = $(value).offset().top;
+      speed = animated ? speed : 0;
+
+      $('html:not(:animated),body:not(:animated)')
+        .animate({scrollTop: destination - offset }, speed );
+    }
+  };
+
+  // Get url hash if one exists
+  var get_hash = function() {
+    return window.location.hash;
+  };
+
+  var S = {
+    classes: {
+      loading: 'sn-loading',
+      failed: 'sn-failed',
+      success: 'sn-active'
+    },
+    defaults: {
       sections: 'h2',
       subSections: false,
       sectionElem: 'section',
@@ -21,169 +42,163 @@
       scrollOffset: 40,
       animated: true,
       speed: 500,
-      insertTarget: this.selector,
       insertLocation: 'insertBefore',
       arrowKeys: false
-    }, options);
+    },
+    _set_body_class: function(state) {
+      // Set and swap our loading hooks to the body
 
-    // Set the variables from our page elements
+      if (state === 'loading') {
+        $('body').addClass(S.classes.loading);
+      } else if (state === 'success') {
+        $('body').removeClass(S.classes.loading).addClass(S.classes.success);
+      } else {
+        $('body').removeClass(S.classes.loading).addClass(S.classes.failed);
+      }
+    },
+    _find_sections: function($el) {
+      // Find the html for each section
 
-    var viewPort;
-    var navOffset;
-    var topBoundry;
-    var bottomBoundry;
-    var sections      = [];
-    var sectionArray  = [];
-    var activeArray   = [];
-    var $container    = this;
-    var $insertTarget = $(settings.insertTarget);
-    var $headline     = $('<span />', {'class': 'scroll-nav__heading', text: settings.headlineText});
-    var $wrapper      = $('<div />', {'class': 'scroll-nav__wrapper'});
-    var $nav          = $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
+      var target_elems = S.settings.sections;
+      var raw_html = [];
 
-    // Get url hash if one exists
+      if (S.settings.showTopLink) {
+        var $firstElem = $el.children().first();
 
-    var getHash = function() {
-      return window.location.hash;
-    };
-
-    // Add loading hook to the body element
-
-    var addLoadingClass = function() {
-      $('body').addClass('sn-loading');
-    };
-
-    // Remove loading hook and add a loaded hook to the body
-
-    var swapLoadingClass = function(success) {
-      if (success) { $('body').removeClass('sn-loading').addClass('sn-active'); }
-      else { $('body').removeClass('sn-loading').addClass('sn-failed'); }
-    };
-
-    // Find the html for each section
-
-    var findSections = function() {
-      if (settings.showTopLink) {
-        var $firstElem = $container.children().first();
-        if ( !$firstElem.is(settings.sections) ) {
-          sections.push( $firstElem.nextUntil(settings.sections).andSelf() );
+        if ( !$firstElem.is(target_elems) ) {
+          raw_html.push( $firstElem.nextUntil(target_elems).andSelf() );
         }
       }
 
-      $container.find(settings.sections).each(function() {
-        sections.push( $(this).nextUntil(settings.sections).andSelf() );
+      $el.find(target_elems).each(function() {
+        raw_html.push( $(this).nextUntil(target_elems).andSelf() );
       });
-    };
 
-    // Wrap each sectin and add it's details to the section array
+      S.sections = {
+        raw: raw_html
+      };
+    },
+    _setup_sections: function(sections) {
+      // Wrap each section and add it's details to the section array
 
-    var setupSections = function() {
+      var section_data = [];
+
       $(sections).each(function(i) {
-        var subArray      = [];
-        var $thisSection  = $(this);
-        var sectionID     = 'scrollNav-' + (i + 1);
-        var offset        = $thisSection.offset().top;
+        var sub_data      = [];
+        var $this_section = $(this);
+        var section_id    = 'scrollNav-' + (i + 1);
         var isFirst       = function() { return i === 0; };
-        var hasHeading    = function() { return !$thisSection.eq(0).is(settings.sections); };
-        var text          = ( settings.showTopLink && isFirst() && hasHeading() ) ? settings.topLinkText : $thisSection.filter(settings.sections).text();
+        var hasHeading    = function() { return !$this_section.eq(0).is(S.settings.sections); };
+        var text          = ( S.settings.showTopLink && isFirst() && hasHeading() ) ? S.settings.topLinkText : $this_section.filter(S.settings.sections).text();
 
-        if (settings.subSections) {
-          var $subSections  = $thisSection.filter(settings.subSections);
+        if (S.settings.subSections) {
+          var $sub_sections  = $this_section.filter(S.settings.subSections);
 
-          if ($subSections.length > 0) {
-            $subSections.each(function(i) {
-              var subID     = sectionID + '-' + (i + 1);
-              var subOffset = $(this).offset().top;
-              var subText   = $(this).text();
-              var $thisSub  = $thisSection.filter($(this).nextUntil($subSections).andSelf());
+          if ($sub_sections.length > 0) {
+            $sub_sections.each(function(i) {
+              var sub_id      = section_id + '-' + (i + 1);
+              var sub_text    = $(this).text();
+              var $this_sub   = $this_section.filter($(this).nextUntil($sub_sections).andSelf());
 
-              $thisSub.wrapAll('<div id="' + subID + '" class="scroll-nav__sub-section" />');
-              subArray.push( {id: subID, offset: subOffset, text: subText} );
+              $this_sub.wrapAll('<div id="' + sub_id + '" class="scroll-nav__sub-section" />');
+              sub_data.push( {id: sub_id, text: sub_text} );
             });
-
-            $thisSection = $(this).nextUntil(settings.sections).andSelf();
+            $this_section = $( $(this).filter(S.settings.sections) ).nextUntil(S.settings.sections).andSelf();
           }
         }
 
-        $thisSection.wrapAll('<' + settings.sectionElem + ' id="' + sectionID + '" class="scroll-nav__section" />');
-        sectionArray.push( {id: sectionID, offset: offset, text: text, subSections: subArray} );
+        $this_section.wrapAll('<' + S.settings.sectionElem + ' id="' + section_id + '" class="scroll-nav__section" />');
+        section_data.push( {id: section_id, text: text, sub_sections: sub_data} );
       });
-    };
 
-
+      S.sections.data = section_data;
+    },
+    _setup_nav: function(sections) {
     // Populate an ordered list from the section array we built
 
-    var setupNav = function() {
-      var $navList  = $('<ol />', {'class': 'scroll-nav__list'});
+      var $headline = $('<span />', {'class': 'scroll-nav__heading', text: S.settings.headlineText});
+      var $wrapper  = $('<div />', {'class': 'scroll-nav__wrapper'});
+      var $nav      = $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
+      var $nav_list = $('<ol />', {'class': 'scroll-nav__list'});
 
-      $.each(sectionArray, function(i) {
+      $.each(sections, function(i) {
         var $item     = (i === 0) ? $('<li />', {'class': 'scroll-nav__item active'}) : $('<li />', {'class': 'scroll-nav__item'});
         var $link     = $('<a />', {'href': '#' + this.id, 'class': 'scroll-nav__link', text: this.text});
-        var $subNavList;
+        var $sub_nav_list;
 
-        if (this.subSections.length > 0) {
+        if (this.sub_sections.length > 0) {
           $item.addClass('is-parent-item');
-          $subNavList = $('<ol />', {'class': 'scroll-nav__sub-list'});
+          $sub_nav_list = $('<ol />', {'class': 'scroll-nav__sub-list'});
 
-          $.each(this.subSections, function() {
-            var $subItem = $('<li />', {'class': 'scroll-nav__sub-item'});
-            var $subLink = $('<a />', {'href': '#' + this.id, 'class': 'scroll-nav__sub-link', text: this.text});
+          $.each(this.sub_sections, function() {
+            var $sub_item = $('<li />', {'class': 'scroll-nav__sub-item'});
+            var $sub_link = $('<a />', {'href': '#' + this.id, 'class': 'scroll-nav__sub-link', text: this.text});
 
-            $subNavList.append( $subItem.append($subLink) );
+            $sub_nav_list.append( $sub_item.append($sub_link) );
           });
         }
 
-        $navList.append( $item.append($link).append($subNavList) );
+        $nav_list.append( $item.append($link).append($sub_nav_list) );
       });
 
-      if (settings.showHeadline) {
-        $nav.append( $wrapper.append($headline).append($navList) );
+      if (S.settings.showHeadline) {
+        $nav.append( $wrapper.append($headline).append($nav_list) );
       } else {
-        $nav.append( $wrapper.append($navList) );
+        $nav.append( $wrapper.append($nav_list) );
       }
-    };
 
-    // Add the nav to our page
+      S.nav = $nav;
+    },
+    _insert_nav: function() {
+      // Add the nav to our page
 
-    var insertNav = function() {
-      $nav[settings.insertLocation]($insertTarget);
-    };
+      var insert_location = S.settings.insertLocation;
+      var $insert_target = S.settings.insertTarget;
 
-    // Find the offset positions of each section
+      S.nav[insert_location]($insert_target);
+    },
+    _setup_pos: function() {
+      // Find the offset positions of each section
 
-    var setupPositions = function() {
-      viewPort  = $(window).height();
-      navOffset = $nav.offset().top;
+      var $nav = S.nav;
+      var vp_height  = $(window).height();
+      var nav_offset = $nav.offset().top;
 
-      $.each(sectionArray, function() {
-        var $thisSection  = $('#' + this.id);
-        var thisHeight    = $thisSection.height();
-        this.topOffset    = $thisSection.offset().top;
-        this.bottomOffset = this.topOffset + thisHeight;
+      $.each(S.sections.data, function() {
+        var $this_section  = $('#' + this.id);
+        var this_height    = $this_section.height();
+
+        this.top_offset    = $this_section.offset().top;
+        this.bottom_offset = this.top_offset + this_height;
       });
-    };
 
-    // Set nav to fixed after scrolling past the header and add an active
-    // class to any sections currently within the bounds of our view
+      S.dims = {
+        vp_height: vp_height,
+        nav_offset: nav_offset
+      };
+    },
+    _check_pos: function() {
+      // Set nav to fixed after scrolling past the header and add an active class to any
+      // sections currently within the bounds of our view
 
-    var positionCheck = function() {
-      var winTop          = $(window).scrollTop();
-      topBoundry          = winTop + settings.scrollOffset;
-      bottomBoundry       = winTop + viewPort - settings.scrollOffset;
-      activeArray.length  = 0;
+      var $nav            = S.nav;
+      var win_top         = $(window).scrollTop();
+      var boundry_top     = win_top + S.settings.scrollOffset;
+      var boundry_bottom  = win_top + S.dims.vp_height - S.settings.scrollOffset;
+      S.sections.active   = [];
 
-      if ( winTop > (navOffset - settings.fixedMargin) ) { $nav.addClass('fixed'); }
+      if ( win_top > (S.dims.nav_offset - S.settings.fixedMargin) ) { $nav.addClass('fixed'); }
       else { $nav.removeClass('fixed'); }
 
-      $.each(sectionArray, function() {
-        if ( (this.topOffset > topBoundry && this.topOffset < bottomBoundry) || (this.bottomOffset > topBoundry && this.bottomOffset < bottomBoundry) || (this.topOffset < topBoundry && this.bottomOffset > bottomBoundry) ) {
-          activeArray.push(this);
+      $.each(S.sections.data, function() {
+        if ( (this.top_offset > boundry_top && this.top_offset < boundry_bottom) || (this.bottom_offset > boundry_top && this.bottom_offset < boundry_bottom) || (this.top_offset < boundry_top && this.bottom_offset > boundry_bottom) ) {
+          S.sections.active.push(this);
         }
       });
 
       $nav.find('.scroll-nav__item').removeClass('active').removeClass('in-view');
 
-      $.each(activeArray, function(i) {
+      $.each(S.sections.active, function(i) {
         if (i === 0) {
           $nav.find('a[href="#' + this.id + '"]').parents('.scroll-nav__item').addClass('active').addClass('in-view');
         } else {
@@ -191,127 +206,123 @@
         }
         i++;
       });
-    };
-
-    var navScrolling = function() {
-
-      // Set a resize listener to change the offset values
-
-      $(window).resize(function() {
-        setupPositions();
-        positionCheck();
-      });
-
-      // Set a scroll listener to update the fixed and
-      // active classes
+    },
+    _init_scroll_listener: function() {
+      // Set a scroll listener to update the fixed and active classes
 
       $(window).scroll(function() {
-        positionCheck();
+        S._check_pos();
       });
-    };
+    },
+    _init_resize_listener: function() {
+      // Set a resize listener to update position values and the fixed and active classes
 
-    // Animate scrolling to hash
+      $(window).resize(function() {
+        S._setup_pos();
+        S._check_pos();
+      });
+    },
+    _init_click_listener: function() {
+      // Scroll to section on click
 
-    var scrollToSection = function(value) {
-      if ( $(value).length > 0 ) {
-        var destination = $(value).offset().top;
-        var speed = (settings.animated) ? settings.speed : 0;
-
-        $('html:not(:animated),body:not(:animated)').animate({ scrollTop: destination - settings.scrollOffset }, speed );
-      }
-    };
-
-    // Scroll to section on click
-
-    var initiateClickListeners = function() {
       $('.scroll-nav').find('a').click(function(e) {
         e.preventDefault();
 
-        scrollToSection( $(this).attr('href') );
+        var value     = $(this).attr('href');
+        var speed     = S.settings.speed;
+        var offset    = S.settings.scrollOffset;
+        var animated  = S.settings.animated;
+
+        scroll_to(value, speed, offset, animated);
       });
-    };
+    },
+    _init_keyboard_listener: function(sections) {
+      // Scroll to section on arrow key press
 
-    // Scroll to section on arrow key press
-
-    var initiateKeyboardListeners = function() {
-      if (settings.arrowKeys) {
+      if (S.settings.arrowKeys) {
         $(document).keydown(function(e) {
           if (e.keyCode === 40 || e.keyCode === 38) {
+
             var findSection = function(key) {
               var i = 0;
-              var l = sectionArray.length;
+              var l = sections.length;
 
               for (i; i < l; i++) {
-                if (sectionArray[i].id === activeArray[0].id) {
-                  var offsetArray   = (key === 40) ? i + 1 : i -1;
-                  var $id           = (sectionArray[offsetArray] === undefined) ? undefined : sectionArray[offsetArray].id;
+                if (sections[i].id === S.sections.active[0].id) {
+                  var array_offset  = (key === 40) ? i + 1 : i -1;
+                  var id            = (sections[array_offset] === undefined) ? undefined : sections[array_offset].id;
 
-                  return $id;
+                  return id;
                 }
               }
             };
-            var targetSection = findSection(e.keyCode);
 
-            if (targetSection !== undefined) {
+            var target_section = findSection(e.keyCode);
+
+            if (target_section !== undefined) {
               e.preventDefault();
 
-              scrollToSection( '#' + targetSection );
+              var value     = '#' + target_section;
+              var speed     = S.settings.speed;
+              var offset    = S.settings.scrollOffset;
+              var animated  = S.settings.animated;
+
+              scroll_to(value, speed, offset, animated);
             }
           }
         });
       }
-    };
+    },
+    init: function(el, options) {
+      var $el = $(el);
 
-    // Scroll to section if url has hash
+      S.settings = $.extend({}, S.defaults, options);
+      S.settings.insertTarget = S.settings.insertTarget ? $(S.settings.insertTarget) : $el;
 
-    var scrollToHash = function(value) {
-      if (value && $(value).length > 0) {
-        var position = $(value).offset().top;
+      if ($el.length > 0) {
+        // Initialize
 
-        if ( position < topBoundry || position > bottomBoundry ) {
-          scrollToSection(value);
-        }
-      }
-    };
+        S._set_body_class('loading');
+        S._find_sections($el);
 
-    if ($container.length > 0) {
-      // Initialize
+        if ( $el.find(S.settings.sections).length > 0 ) {
+          // BUILD!!!!
 
-      addLoadingClass();
-      findSections();
+          S._setup_sections(S.sections.raw);
+          S._setup_nav(S.sections.data);
 
-      if ($container.find(settings.sections).length > 0) {
-        // BUILD!!!!
+          if ( S.settings.insertTarget.length > 0 ) {
+            //Add to page
 
-        setupSections();
-        setupNav();
+            S._insert_nav();
+            S._setup_pos();
+            S._check_pos();
+            S._init_scroll_listener();
+            S._init_resize_listener();
+            S._init_click_listener();
+            S._init_keyboard_listener(S.sections.data);
+            S._set_body_class('success');
+            scroll_to( get_hash() );
+          } else {
+            console.log('Build failed, scrollNav could not find "' + S.settings.insertTarget + '"');
+            S._set_body_class('failed');
+          }
 
-        if ($insertTarget.length > 0) {
-          //Add to page
-
-          insertNav();
-          setupPositions();
-          positionCheck();
-          navScrolling();
-          initiateClickListeners();
-          initiateKeyboardListeners();
-          swapLoadingClass(true);
-          scrollToHash( getHash() );
         } else {
-          console.log('Build failed, scrollNav could not find "' + settings.insertTarget + '"');
-          swapLoadingClass(false);
+          console.log('Build failed, scrollNav could not find any "' + S.settings.sections + 's" inside of "' + $el.selector + '"');
+          S._set_body_class('failed');
         }
 
       } else {
-        console.log('Build failed, scrollNav could not find any "' + settings.sections + 's" inside of "' + $container.selector + '"');
-        swapLoadingClass(false);
+        console.log('Build failed, scrollNav could not find "' + $el.selector + '"');
+        S._set_body_class('failed');
       }
-
-    } else {
-      console.log('Build failed, scrollNav could not find "' + $container.selector + '"');
-      swapLoadingClass(false);
     }
+  };
 
-    return this;
+  $.fn.scrollNav = function(options) {
+    return this.each(function() {
+      S.init(this, options);
+    });
   };
 })(jQuery);
