@@ -113,6 +113,19 @@
 
       S.sections.data = section_data;
     },
+    _tear_down_sections: function(sections) {
+      $(sections).each(function() {
+        var sub_sections = this.sub_sections;
+
+        $('#' + this.id).children().unwrap();
+
+        if (sub_sections.length > 0) {
+          $(sub_sections).each(function() {
+            $('#' + this.id).children().unwrap();
+          });
+        }
+      });
+    },
     _setup_nav: function(sections) {
     // Populate an ordered list from the section array we built
 
@@ -212,17 +225,23 @@
     _init_scroll_listener: function() {
       // Set a scroll listener to update the fixed and active classes
 
-      $(window).scroll(function() {
+      $(window).on('scroll', function() {
         S._check_pos();
       });
+    },
+    _rm_scroll_listeners: function() {
+      $(window).off('scroll');
     },
     _init_resize_listener: function() {
       // Set a resize listener to update position values and the fixed and active classes
 
-      $(window).resize(function() {
+      $(window).on('resize', function() {
         S._setup_pos();
         S._check_pos();
       });
+    },
+    _rm_resize_listener: function() {
+      $(window).off('resize');
     },
     _init_click_listener: function() {
       // Scroll to section on click
@@ -242,7 +261,7 @@
       // Scroll to section on arrow key press
 
       if (S.settings.arrowKeys) {
-        $(document).keydown(function(e) {
+        $(document).on('keydown', function(e) {
           if (e.keyCode === 40 || e.keyCode === 38) {
             var findSection = function(key) {
               var i = 0;
@@ -273,6 +292,9 @@
           }
         });
       }
+    },
+    _rm_keyboard_listener: function() {
+      $(document).off('keydown');
     },
     init: function(options) {
       return this.each(function() {
@@ -308,6 +330,7 @@
               S._init_keyboard_listener(S.sections.data);
               S._set_body_class('success');
               scroll_to( get_hash() );
+
             } else {
               console.log('Build failed, scrollNav could not find "' + S.settings.insertTarget + '"');
               S._set_body_class('failed');
@@ -328,15 +351,18 @@
       return this.each(function() {
 
         // Unbind event listeners
-        $(document).unbind('keydown');
-        $(window).unbind('scroll');
-        $(window).unbind('resize');
+        S._rm_scroll_listeners();
+        S._rm_resize_listener();
+        S._rm_keyboard_listener();
 
         // Remove any of the loading hooks
         $('body').removeClass('sn-loading sn-active sn-failed');
 
         // Remove the nav from the dom
         $('.scroll-nav').remove();
+
+        // Teardown sections
+        S._tear_down_sections(S.sections.data);
 
         // Remove the saved settings
         S.settings = [];
