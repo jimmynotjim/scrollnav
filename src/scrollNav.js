@@ -91,6 +91,8 @@
         var hasHeading    = function() { return !$this_section.eq(0).is(S.settings.sections); };
         var text          = ( S.settings.showTopLink && isFirst() && hasHeading() ) ? S.settings.topLinkText : $this_section.filter(S.settings.sections).text();
 
+        $this_section.wrapAll('<' + S.settings.sectionElem + ' id="' + section_id + '" class="scroll-nav__section" />');
+
         if (S.settings.subSections) {
           var $sub_sections  = $this_section.filter(S.settings.subSections);
 
@@ -103,11 +105,9 @@
               $this_sub.wrapAll('<div id="' + sub_id + '" class="scroll-nav__sub-section" />');
               sub_data.push( {id: sub_id, text: sub_text} );
             });
-            $this_section = $( $(this).filter(S.settings.sections) ).nextUntil(S.settings.sections).andSelf();
           }
         }
 
-        $this_section.wrapAll('<' + S.settings.sectionElem + ' id="' + section_id + '" class="scroll-nav__section" />');
         section_data.push( {id: section_id, text: text, sub_sections: sub_data} );
       });
 
