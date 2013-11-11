@@ -242,6 +242,7 @@
       if (S.settings.arrowKeys) {
         $(document).keydown(function(e) {
           if (e.keyCode === 40 || e.keyCode === 38) {
+            console.log(S.sections.active);
             var findSection = function(key) {
               var i = 0;
               var l = sections.length;
@@ -324,7 +325,13 @@
     },
     destroy: function() {
       return this.each(function() {
-        // Remove any of the loading hooks on the body
+
+        // Unbind event listeners
+        $(document).unbind('keydown');
+        $(window).unbind('scroll');
+        $(window).unbind('resize');
+
+        // Remove any of the loading hooks
         $('body').removeClass('sn-loading sn-active sn-failed');
 
         // Remove the nav from the dom
@@ -332,6 +339,7 @@
 
         // Remove the saved settings
         S.settings = [];
+        S.sections = undefined;
       });
     }
   };
