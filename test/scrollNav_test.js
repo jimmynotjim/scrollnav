@@ -26,6 +26,8 @@
       this.elems = $('#qunit-fixture');
       this.init = this.elems.scrollNav();
       this.instances = $('.scroll-nav').length;
+      this.destroy = this.elems.scrollNav('destroy');
+      this.destroyed = $('.scroll-nav').length;
     }, teardown: function() {
       $('.scroll-nav').remove();
     }
@@ -42,6 +44,13 @@
     // Not a bad test to run on collection methods.
     strictEqual(this.instances, 1, 'should create one');
   });
+
+ test('is destroyable', function() {
+    expect(1);
+    // Scroll Nav shouldn't exist after destroy method is called.
+    strictEqual(this.destroyed, 0, 'should be zero');
+ });
+
   module('sections', {
     // This will run before each test in this module.
     setup: function() {

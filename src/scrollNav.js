@@ -242,7 +242,6 @@
       if (S.settings.arrowKeys) {
         $(document).keydown(function(e) {
           if (e.keyCode === 40 || e.keyCode === 38) {
-
             var findSection = function(key) {
               var i = 0;
               var l = sections.length;
@@ -273,56 +272,91 @@
         });
       }
     },
-    init: function(el, options) {
-      var $el = $(el);
+    init: function(options) {
+      return this.each(function() {
+        var $el = $(this);
 
-      S.settings = $.extend({}, S.defaults, options);
-      S.settings.insertTarget = S.settings.insertTarget ? $(S.settings.insertTarget) : $el;
+        // Merge default settings with user defined options
+        S.settings = $.extend({}, S.defaults, options);
 
-      if ($el.length > 0) {
-        // Initialize
+        // If the insert target isn't set, use the initialized element
+        S.settings.insertTarget = S.settings.insertTarget ? $(S.settings.insertTarget) : $el;
 
-        S._set_body_class('loading');
-        S._find_sections($el);
+        if ($el.length > 0) {
+          // Initialize
 
-        if ( $el.find(S.settings.sections).length > 0 ) {
-          // BUILD!!!!
+          S._set_body_class('loading');
+          S._find_sections($el);
 
-          S._setup_sections(S.sections.raw);
-          S._setup_nav(S.sections.data);
+          if ( $el.find(S.settings.sections).length > 0 ) {
+            // BUILD!!!!
 
-          if ( S.settings.insertTarget.length > 0 ) {
-            //Add to page
+            S._setup_sections(S.sections.raw);
+            S._setup_nav(S.sections.data);
 
-            S._insert_nav();
-            S._setup_pos();
-            S._check_pos();
-            S._init_scroll_listener();
-            S._init_resize_listener();
-            S._init_click_listener();
-            S._init_keyboard_listener(S.sections.data);
-            S._set_body_class('success');
-            scroll_to( get_hash() );
+            if ( S.settings.insertTarget.length > 0 ) {
+              //Add to page
+
+              S._insert_nav();
+              S._setup_pos();
+              S._check_pos();
+              S._init_scroll_listener();
+              S._init_resize_listener();
+              S._init_click_listener();
+              S._init_keyboard_listener(S.sections.data);
+              S._set_body_class('success');
+              scroll_to( get_hash() );
+            } else {
+              console.log('Build failed, scrollNav could not find "' + S.settings.insertTarget + '"');
+              S._set_body_class('failed');
+            }
+
           } else {
-            console.log('Build failed, scrollNav could not find "' + S.settings.insertTarget + '"');
+            console.log('Build failed, scrollNav could not find any "' + S.settings.sections + 's" inside of "' + $el.selector + '"');
             S._set_body_class('failed');
           }
 
         } else {
-          console.log('Build failed, scrollNav could not find any "' + S.settings.sections + 's" inside of "' + $el.selector + '"');
+          console.log('Build failed, scrollNav could not find "' + $el.selector + '"');
           S._set_body_class('failed');
         }
+      });
+    },
+    destroy: function() {
+      return this.each(function() {
+        // Remove any of the loading hooks on the body
+        $('body').removeClass('sn-loading sn-active sn-failed');
 
-      } else {
-        console.log('Build failed, scrollNav could not find "' + $el.selector + '"');
-        S._set_body_class('failed');
-      }
+        // Remove the nav from the dom
+        $('.scroll-nav').remove();
+
+        // Remove the saved settings
+        S.settings = [];
+      });
     }
   };
 
-  $.fn.scrollNav = function(options) {
-    return this.each(function() {
-      S.init(this, options);
-    });
+  $.fn.scrollNav = function() {
+    var options;
+    var method  = arguments[0];
+
+    if (S[method]) {
+      // Method exists, so use it
+
+      method  = S[method];
+      options = Array.prototype.slice.call(arguments, 1);
+    } else if (typeof(method) === 'object' || !method) {
+      // No method passed, default to init
+
+      method  = S.init;
+      options = arguments;
+    } else {
+      // Method doesn't exist
+
+      $.error( 'Method ' +  method + ' does not exist in the scrollNav plugin' );
+      return this;
+    }
+
+    return method.apply(this, options);
   };
 })(jQuery);
