@@ -185,26 +185,28 @@
       var win_top         = $(window).scrollTop();
       var boundry_top     = win_top + S.settings.scrollOffset;
       var boundry_bottom  = win_top + S.dims.vp_height - S.settings.scrollOffset;
-      S.sections.active   = [];
+      var sections_active = [];
 
       if ( win_top > (S.dims.nav_offset - S.settings.fixedMargin) ) { $nav.addClass('fixed'); }
       else { $nav.removeClass('fixed'); }
 
       $.each(S.sections.data, function() {
         if ( (this.top_offset > boundry_top && this.top_offset < boundry_bottom) || (this.bottom_offset > boundry_top && this.bottom_offset < boundry_bottom) || (this.top_offset < boundry_top && this.bottom_offset > boundry_bottom) ) {
-          S.sections.active.push(this);
+          sections_active.push(this);
         }
       });
 
       $nav.find('.scroll-nav__item').removeClass('active').removeClass('in-view');
 
-      $.each(S.sections.active, function(i) {
+      $.each(sections_active, function(i) {
         if (i === 0) {
           $nav.find('a[href="#' + this.id + '"]').parents('.scroll-nav__item').addClass('active').addClass('in-view');
         } else {
           $nav.find('a[href="#' + this.id + '"]').parents('.scroll-nav__item').addClass('in-view');
         }
         i++;
+
+        S.sections.active = sections_active;
       });
     },
     _init_scroll_listener: function() {
@@ -242,7 +244,6 @@
       if (S.settings.arrowKeys) {
         $(document).keydown(function(e) {
           if (e.keyCode === 40 || e.keyCode === 38) {
-            console.log(S.sections.active);
             var findSection = function(key) {
               var i = 0;
               var l = sections.length;
