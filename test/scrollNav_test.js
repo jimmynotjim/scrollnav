@@ -24,6 +24,8 @@
   // This will run before each test in this module.
     setup: function() {
       this.elems = $('#qunit-fixture');
+      this.init = this.elems.scrollNav();
+      this.instances = $('.scroll-nav').length;
     }, teardown: function() {
       $('.scroll-nav').remove();
     }
@@ -32,9 +34,14 @@
  test('is chainable', function() {
     expect(1);
     // Not a bad test to run on collection methods.
-    strictEqual(this.elems.scrollNav(), this.elems, 'should be chainable');
+    strictEqual(this.init, this.elems, 'should be chainable');
   });
 
+ test('correct instances', function() {
+    expect(1);
+    // Not a bad test to run on collection methods.
+    strictEqual(this.instances, 1, 'should create one');
+  });
   module('sections', {
     // This will run before each test in this module.
     setup: function() {
