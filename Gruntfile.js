@@ -209,6 +209,6 @@ grunt.registerTask('release', 'Ship it.', function(version) {
   grunt.registerTask('build', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('test', ['qunit']);
-  grunt.registerTask('test:browser', ['test', 'exec:open_qunit_browser']);
+  grunt.registerTask('test:browser', ['exec:open_qunit_browser']);
 
 };
