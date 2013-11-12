@@ -215,4 +215,48 @@
     notStrictEqual(linkURL, 'Another Test Heading', 'should not be #scrollNav-3');
   });
 
+  module('callbacks', {
+    // This will run before each test in this module.
+    setup: function() {
+      this.elems = $('#qunit-fixture');
+      this.scrollNav = this.elems.scrollNav({
+        onInit: function() {
+          $('body').addClass('init-callback');
+        },
+        onRender: function() {
+          $('body').addClass('render-callback');
+        },
+        onDestroy: function() {
+          $('body').removeClass('init-callback render-callback');
+        }
+      });
+      this.hasInitClass = $('body').hasClass('init-callback');
+      this.hasRenderClass = $('body').hasClass('render-callback');
+      this.destroy = this.elems.scrollNav('destroy');
+      this.destroyedInitClass = $('body').hasClass('init-callback');
+      this.destroyedRenderClass = $('body').hasClass('render-callback');
+    }, teardown: function() {
+      $('.scroll-nav').remove();
+    }
+  });
+
+  test('onInit callback', function() {
+    expect(1);
+
+    strictEqual(true, this.hasInitClass, 'init-callback class should exist');
+  });
+
+  test('onRender callback', function() {
+    expect(1);
+
+    strictEqual(true, this.hasRenderClass, 'render-callback class should exist');
+  });
+
+  test('onDestroy callback', function() {
+    expect(2);
+
+    strictEqual(false, this.destroyedInitClass, 'init-callback class should be removed');
+    strictEqual(false, this.destroyedRenderClass, 'render-callback class should be removed');
+  });
+
 }(jQuery));
