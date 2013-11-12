@@ -43,7 +43,10 @@
       animated: true,
       speed: 500,
       insertLocation: 'insertBefore',
-      arrowKeys: false
+      arrowKeys: false,
+      onInit: null,
+      onRender: null,
+      onDestroy: null
     },
     _set_body_class: function(state) {
       // Set and swap our loading hooks to the body
@@ -309,6 +312,9 @@
         if ($el.length > 0) {
           // Initialize
 
+          // Fire custom init callback
+          if (S.settings.onInit) { S.settings.onInit.call(this); }
+
           S._set_body_class('loading');
           S._find_sections($el);
 
@@ -330,6 +336,9 @@
               S._init_keyboard_listener(S.sections.data);
               S._set_body_class('success');
               scroll_to( get_hash() );
+
+              // Fire custom render callback
+              if (S.settings.onRender) { S.settings.onRender.call(this); }
 
             } else {
               console.log('Build failed, scrollNav could not find "' + S.settings.insertTarget + '"');
@@ -363,6 +372,9 @@
 
         // Teardown sections
         S._tear_down_sections(S.sections.data);
+
+        // Fire custom destroy callback
+        if (S.settings.onDestroy) { S.settings.onDestroy.call(this); }
 
         // Remove the saved settings
         S.settings = [];
