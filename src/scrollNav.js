@@ -358,8 +358,6 @@
     },
     destroy: function() {
       return this.each(function() {
-        // Fire custom destroy callback
-        if (S.settings.onDestroy) { S.settings.onDestroy.call(this); }
 
         // Unbind event listeners
         S._rm_scroll_listeners();
@@ -374,6 +372,9 @@
 
         // Teardown sections
         S._tear_down_sections(S.sections.data);
+
+        // Fire custom destroy callback
+        if (S.settings.onDestroy) { S.settings.onDestroy.call(this); }
 
         // Remove the saved settings
         S.settings = [];
