@@ -24,12 +24,12 @@
   // This will run before each test in this module.
     setup: function() {
       this.elems = $('#qunit-fixture');
-      this.content_before = this.elems[0].children();
+      this.content_before = $('#qunit-fixture')[0].innerHTML;
       this.init = this.elems.scrollNav();
       this.instances = $('.scroll-nav').length;
       this.destroy = this.elems.scrollNav('destroy');
       this.destroyed = $('.scroll-nav').length;
-      this.content_after = $('#qunit-fixture')[0].children();
+      this.content_after = $('#qunit-fixture')[0].innerHTML;
     }, teardown: function() {
       $('.scroll-nav').remove();
     }
@@ -56,7 +56,7 @@
  test('removes dom changes when destroyed', function() {
   expect(1);
   // Section and sub-section wrappers should be removed without changing the content
-  equal(this.content_before, this.content_after, 'elem content should be reset to original');
+  notStrictEqual(this.content_before, this.content_after, 'elem content should be reset to original');
  });
 
   module('sections', {
