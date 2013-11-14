@@ -51,12 +51,14 @@
     _set_body_class: function(state) {
       // Set and swap our loading hooks to the body
 
+      var $body = $('body');
+
       if (state === 'loading') {
-        $('body').addClass(S.classes.loading);
+        $body.addClass(S.classes.loading);
       } else if (state === 'success') {
-        $('body').removeClass(S.classes.loading).addClass(S.classes.success);
+        $body.removeClass(S.classes.loading).addClass(S.classes.success);
       } else {
-        $('body').removeClass(S.classes.loading).addClass(S.classes.failed);
+        $body.removeClass(S.classes.loading).addClass(S.classes.failed);
       }
     },
     _find_sections: function($el) {
