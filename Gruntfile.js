@@ -3,6 +3,9 @@ var semver = require('semver');
 module.exports = function(grunt) {
   'use strict';
 
+  // Load Grunt tasks declared in the package.json file
+  require('load-grunt-tasks')(grunt);
+
   // Project configuration.
   grunt.initConfig({
 
@@ -194,21 +197,11 @@ grunt.registerTask('release', 'Ship it.', function(version) {
     grunt.file.write('scrollNav.jquery.json', jqueryPlugin);
   });
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-sed');
-  grunt.loadNpmTasks('grunt-exec');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
   // Load Tasks.
   grunt.registerTask('default', 'build');
   grunt.registerTask('build', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('test', ['qunit']);
-  grunt.registerTask('test:browser', ['test', 'exec:open_qunit_browser']);
+  grunt.registerTask('test:browser', ['exec:open_qunit_browser']);
 
 };

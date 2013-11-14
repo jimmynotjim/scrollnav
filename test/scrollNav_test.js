@@ -24,6 +24,12 @@
   // This will run before each test in this module.
     setup: function() {
       this.elems = $('#qunit-fixture');
+      this.content_before = $('#qunit-fixture')[0].innerHTML;
+      this.init = this.elems.scrollNav();
+      this.instances = $('.scroll-nav').length;
+      this.destroy = this.elems.scrollNav('destroy');
+      this.destroyed = $('.scroll-nav').length;
+      this.content_after = $('#qunit-fixture')[0].innerHTML;
     }, teardown: function() {
       $('.scroll-nav').remove();
     }
@@ -32,8 +38,26 @@
  test('is chainable', function() {
     expect(1);
     // Not a bad test to run on collection methods.
-    strictEqual(this.elems.scrollNav(), this.elems, 'should be chainable');
+    strictEqual(this.init, this.elems, 'should be chainable');
   });
+
+ test('correct instances', function() {
+    expect(1);
+    // Not a bad test to run on collection methods.
+    strictEqual(this.instances, 1, 'should create one');
+  });
+
+ test('is destroyable', function() {
+    expect(1);
+    // Scroll Nav shouldn't exist after destroy method is called.
+    strictEqual(this.destroyed, 0, 'should be zero');
+ });
+
+ test('removes dom changes when destroyed', function() {
+  expect(1);
+  // Section and sub-section wrappers should be removed without changing the content
+  notStrictEqual(this.content_before, this.content_after, 'elem content should be reset to original');
+ });
 
   module('sections', {
     // This will run before each test in this module.
@@ -189,6 +213,50 @@
     strictEqual(linkURL, '#' + sectionID, 'should be #scrollNav-2');
     notStrictEqual(linkURL, 'lame test markup', 'should not be #scrollNav-1');
     notStrictEqual(linkURL, 'Another Test Heading', 'should not be #scrollNav-3');
+  });
+
+  module('callbacks', {
+    // This will run before each test in this module.
+    setup: function() {
+      this.elems = $('#qunit-fixture');
+      this.scrollNav = this.elems.scrollNav({
+        onInit: function() {
+          $('body').addClass('init-callback');
+        },
+        onRender: function() {
+          $('body').addClass('render-callback');
+        },
+        onDestroy: function() {
+          $('body').removeClass('init-callback render-callback');
+        }
+      });
+      this.hasInitClass = $('body').hasClass('init-callback');
+      this.hasRenderClass = $('body').hasClass('render-callback');
+      this.destroy = this.elems.scrollNav('destroy');
+      this.destroyedInitClass = $('body').hasClass('init-callback');
+      this.destroyedRenderClass = $('body').hasClass('render-callback');
+    }, teardown: function() {
+      $('.scroll-nav').remove();
+    }
+  });
+
+  test('onInit callback', function() {
+    expect(1);
+
+    strictEqual(true, this.hasInitClass, 'init-callback class should exist');
+  });
+
+  test('onRender callback', function() {
+    expect(1);
+
+    strictEqual(true, this.hasRenderClass, 'render-callback class should exist');
+  });
+
+  test('onDestroy callback', function() {
+    expect(2);
+
+    strictEqual(false, this.destroyedInitClass, 'init-callback class should be removed');
+    strictEqual(false, this.destroyedRenderClass, 'render-callback class should be removed');
   });
 
 }(jQuery));
