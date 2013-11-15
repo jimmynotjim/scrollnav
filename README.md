@@ -92,6 +92,14 @@ An `active` class is attached to the nav item matching the section that is the h
 
 There are loading hooks added to the body element (similar to how Typekit handles font loading) to allow for css transitions or any other changes in css you'd need. When the plug-in starts `sn-loading` is added to the body class and is replaced by `sn-active` when the plugin is successful or `sn-failed` if it fails.
 
+## Methods
+
+In addition to the initialization, there is now a destroy method available should you need it. To destroy scrollNav and remove all it's DOM changes use:
+
+```
+$('.post__article').scrollNav('destroy');
+```
+
 ## Default `options`
 
 There are a few customizable options in scrollNav using key : value pairs. These are the defaults.
@@ -111,7 +119,10 @@ $('.post-article').scrollNav({
 	speed: 500,
 	insertTarget: this.selector,
 	insertLocation: 'insertBefore',
-	arrowKeys: false
+	arrowKeys: false,
+	onInit: null,
+	onRender: null,
+	onDestroy: null
 });
 ```
 
@@ -171,6 +182,18 @@ You can pass any of the following jQuery insertion methods to change where scrol
 
 Set this to `true` to allow up/down arrow keys to jump through each section.
 
+### Callback functions
+
+There are three new callback functions that you can utilize to accomodate anything you need to run after specific scrollNav events. They are `onInit`, `onRender`, and `onDestroy`. Add them to your options just like any other and they should look like this:
+
+```
+$('.post__article').scrollNav({
+	onInit: function() {
+		callback actions in here
+	}
+});
+```
+
 ## Errors
 
 The plugin will refuse to build and log an error message if it doesn't find your desired container, the insertion target or any of the headlines specified within the container. If the nav doesn't show up on load, check your browser's console.
@@ -185,7 +208,7 @@ scrollNav is Copyright &copy; 2012-2013 James Wilson, released under the [MIT li
 
 ## Version
 
-Latest stable version is vv2.0.2. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
+Latest stable version is v2.1.0. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
 
 ## Testing
 
