@@ -12,6 +12,18 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v2.1.0 - November 15, 2013
+
+v2.1 adds support for public methods, a new destroy method, custom callbacks for init, render and destroy, and small bugfixes.
+
+* Reorganized core to allow for new public methods
+* Added destroy method to core to allow for breaking down the plugin and it's dom * changes
+* Added the option to add callback functions to init, render and destroy
+* Squashed a bug when wrapping sub-sections in their div
+* Updated core init in test for easier reuse
+* Fixed Grunt test:browser task to only run in the browser
+* Added destroy tests to core module and a new module for the callbacks
+
 ## v2.0.2 - October 31, 2013
 
 Double releasing to include changelog and readme updates in Bower. One day I'll figure all this out :)
