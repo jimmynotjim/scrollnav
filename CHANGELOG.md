@@ -12,6 +12,10 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v2.1.1 - December 13, 2013
+
+Added `scrollNav` namespace to event listeners to avoid crashing in to user defined event listeners.
+
 ## v2.1.0 - November 15, 2013
 
 v2.1 adds support for public methods, a new destroy method, custom callbacks for init, render and destroy, and small bugfixes.

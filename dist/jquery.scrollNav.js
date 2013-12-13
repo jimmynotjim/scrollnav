@@ -1,4 +1,4 @@
-/*! scrollNav - v2.1.0 - 2013-11-15
+/*! scrollNav - v2.1.1 - 2013-12-13
 * http://scrollnav.com
 * Copyright (c) 2013 James Wilson; Licensed MIT */
 (function($) {
@@ -225,28 +225,28 @@
     _init_scroll_listener: function() {
       // Set a scroll listener to update the fixed and active classes
 
-      $(window).on('scroll', function() {
+      $(window).on('scroll.scrollNav', function() {
         S._check_pos();
       });
     },
     _rm_scroll_listeners: function() {
-      $(window).off('scroll');
+      $(window).off('scroll.scrollNav');
     },
     _init_resize_listener: function() {
       // Set a resize listener to update position values and the fixed and active classes
 
-      $(window).on('resize', function() {
+      $(window).on('resize.scrollNav', function() {
         S._setup_pos();
         S._check_pos();
       });
     },
     _rm_resize_listener: function() {
-      $(window).off('resize');
+      $(window).off('resize.scrollNav');
     },
     _init_click_listener: function() {
       // Scroll to section on click
 
-      $('.scroll-nav').find('a').click(function(e) {
+      $('.scroll-nav').find('a').on('click.scrollNav', function(e) {
         e.preventDefault();
 
         var value     = $(this).attr('href');
@@ -257,11 +257,14 @@
         scroll_to(value, speed, offset, animated);
       });
     },
+    _rm_click_listener: function() {
+      $('.scroll-nav').find('a').off('click.scrollNav');
+    },
     _init_keyboard_listener: function(sections) {
       // Scroll to section on arrow key press
 
       if (S.settings.arrowKeys) {
-        $(document).on('keydown', function(e) {
+        $(document).on('keydown.scrollNav', function(e) {
           if (e.keyCode === 40 || e.keyCode === 38) {
             var findSection = function(key) {
               var i = 0;
@@ -294,7 +297,7 @@
       }
     },
     _rm_keyboard_listener: function() {
-      $(document).off('keydown');
+      $(document).off('keydown.scrollNav');
     },
     init: function(options) {
       return this.each(function() {
@@ -359,6 +362,7 @@
         // Unbind event listeners
         S._rm_scroll_listeners();
         S._rm_resize_listener();
+        S._rm_click_listener();
         S._rm_keyboard_listener();
 
         // Remove any of the loading hooks
