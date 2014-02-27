@@ -175,6 +175,14 @@
     equal(this.nav.length, true, 'nav should exist');
   });
 
+  test('nav has correct class', function() {
+    expect(2);
+    var navClass = this.nav.attr('class');
+
+    strictEqual(navClass, 'scroll-nav', 'should be scroll-nav');
+    notStrictEqual(navClass, '', 'should not be empty');
+  });
+
   test('first nav link has correct text', function() {
     expect(3);
     var headingText = this.sections.eq(0).children().eq(0).text();
