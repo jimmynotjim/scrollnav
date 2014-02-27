@@ -34,6 +34,7 @@
       sections: 'h2',
       subSections: false,
       sectionElem: 'section',
+      navClass: '',
       showHeadline: true,
       headlineText: 'Scroll To',
       showTopLink: true,
@@ -163,6 +164,10 @@
         $nav.append( $wrapper.append($headline).append($nav_list) );
       } else {
         $nav.append( $wrapper.append($nav_list) );
+      }
+
+      if (S.settings.navClass) {
+        $nav.addClass(S.settings.navClass);
       }
 
       S.nav = $nav;
