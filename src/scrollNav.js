@@ -166,10 +166,6 @@
         $nav.append( $wrapper.append($nav_list) );
       }
 
-      if (S.settings.navClass) {
-        $nav.addClass(S.settings.navClass);
-      }
-
       S.nav = $nav;
     },
     _insert_nav: function() {
