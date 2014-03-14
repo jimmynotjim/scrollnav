@@ -163,7 +163,7 @@
       this.elems = $('#qunit-fixture');
       this.scrollNav = this.elems.scrollNav();
       this.sections = this.scrollNav.children();
-      this.nav = this.scrollNav.siblings('.scroll-nav');
+      this.nav = this.scrollNav.siblings('nav');
     }, teardown: function() {
       $('.scroll-nav').remove();
     }
@@ -221,6 +221,28 @@
     strictEqual(linkURL, '#' + sectionID, 'should be #scrollNav-2');
     notStrictEqual(linkURL, 'lame test markup', 'should not be #scrollNav-1');
     notStrictEqual(linkURL, 'Another Test Heading', 'should not be #scrollNav-3');
+  });
+
+  module('test-options', {
+    // This will run before each test in this module.
+    setup: function() {
+      this.elems = $('#qunit-fixture');
+      this.scrollNav = this.elems.scrollNav({
+        navClass: 'nav-test'
+      });
+      this.nav = this.scrollNav.siblings('nav');
+    }, teardown: function() {
+      $('.scroll-nav').remove();
+    }
+  });
+
+  test('nav has correct class', function() {
+    expect(3);
+    var navClass = this.nav.attr('class');
+
+    strictEqual(navClass, 'scroll-nav nav-test', 'should be scroll-nav and nav-test');
+    notStrictEqual(navClass, 'scroll-nav', 'should not just be scroll-nav only')
+    notStrictEqual(navClass, '', 'should not be empty');
   });
 
   module('callbacks', {
