@@ -259,7 +259,7 @@
     var navClass = this.nav.attr('class');
 
     strictEqual(navClass, 'nav-test', 'should be nav-test');
-    notStrictEqual(navClass, 'scroll-nav', 'should not be scroll-nav')
+    notStrictEqual(navClass, 'scroll-nav', 'should not be scroll-nav');
     notStrictEqual(navClass, '', 'should not be empty');
   });
 
