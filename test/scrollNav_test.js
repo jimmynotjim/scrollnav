@@ -31,7 +31,7 @@
       this.destroyed = $('.scroll-nav').length;
       this.content_after = $('#qunit-fixture')[0].innerHTML;
     }, teardown: function() {
-      $('.scroll-nav').remove();
+      // already torn down when destroyed
     }
  });
 
@@ -65,7 +65,7 @@
       this.elems = $('#qunit-fixture');
       this.sections = this.elems.scrollNav().children();
     }, teardown: function() {
-      $('.scroll-nav').remove();
+      this.elems.scrollNav('destroy');
     }
   });
 
@@ -133,6 +133,15 @@
     notStrictEqual(sectionID, 'scrollNav-2-1', 'should not be scrollNav-2-1');
   });
 
+  test('firs section has correct class', function() {
+    expect(2);
+
+    var sectionClass = this.sections.eq(0).attr('class');
+
+    strictEqual(sectionClass, 'scroll-nav__section', 'should be scroll-nav__section');
+    notStrictEqual(sectionClass, '', 'should not be empty');
+  });
+
   module('subSections', {
     // This will run before each test in this module.
     setup: function() {
@@ -144,7 +153,7 @@
       });
       this.sections = this.scrollNav.children();
     }, teardown: function() {
-      $('.scroll-nav').remove();
+      this.elems.scrollNav('destroy');
     }
   });
 
@@ -163,9 +172,9 @@
       this.elems = $('#qunit-fixture');
       this.scrollNav = this.elems.scrollNav();
       this.sections = this.scrollNav.children();
-      this.nav = this.scrollNav.siblings('.scroll-nav');
+      this.nav = this.scrollNav.siblings('nav');
     }, teardown: function() {
-      $('.scroll-nav').remove();
+      this.elems.scrollNav('destroy');
     }
   });
 
@@ -173,6 +182,22 @@
     expect(1);
 
     equal(this.nav.length, true, 'nav should exist');
+  });
+
+  test('nav has correct class', function() {
+    expect(2);
+    var navClass = this.nav.attr('class');
+
+    strictEqual(navClass, 'scroll-nav', 'should be scroll-nav');
+    notStrictEqual(navClass, '', 'should not be empty');
+  });
+
+  test('wrapper has correct class', function() {
+    expect(2);
+    var wrapperClass = this.nav.children('div').attr('class');
+
+    strictEqual(wrapperClass, 'scroll-nav__wrapper', 'should be scroll-nav__wrapper');
+    notStrictEqual(wrapperClass, '', 'should not be empty');
   });
 
   test('first nav link has correct text', function() {
@@ -215,6 +240,48 @@
     notStrictEqual(linkURL, 'Another Test Heading', 'should not be #scrollNav-3');
   });
 
+  module('test-options', {
+    // This will run before each test in this module.
+    setup: function() {
+      this.elems = $('#qunit-fixture');
+      this.scrollNav = this.elems.scrollNav({
+        className: 'nav-test'
+      });
+      this.nav = this.scrollNav.siblings('nav');
+      this.sections = this.scrollNav.children();
+    }, teardown: function() {
+      this.elems.scrollNav('destroy');
+    }
+  });
+
+  test('nav has correct class', function() {
+    expect(3);
+    var navClass = this.nav.attr('class');
+
+    strictEqual(navClass, 'nav-test', 'should be nav-test');
+    notStrictEqual(navClass, 'scroll-nav', 'should not be scroll-nav');
+    notStrictEqual(navClass, '', 'should not be empty');
+  });
+
+  test('wrapper has correct class', function() {
+    expect(3);
+    var wrapperClass = this.nav.children('div').attr('class');
+
+    strictEqual(wrapperClass, 'nav-test__wrapper', 'should be nav-test__wrapper');
+    notStrictEqual(wrapperClass, 'scroll-nav__wrapper', 'schould not be scroll-nav__wrapper');
+    notStrictEqual(wrapperClass, '', 'should not be empty');
+  });
+
+  test('firs section has correct class', function() {
+    expect(3);
+
+    var sectionClass = this.sections.eq(0).attr('class');
+
+    strictEqual(sectionClass, 'nav-test__section', 'should be nav-test__section');
+    notStrictEqual(sectionClass, 'scroll-nav__section', 'should not be scroll-nav__section');
+    notStrictEqual(sectionClass, '', 'should not be empty');
+  });
+
   module('callbacks', {
     // This will run before each test in this module.
     setup: function() {
@@ -236,7 +303,7 @@
       this.destroyedInitClass = $('body').hasClass('init-callback');
       this.destroyedRenderClass = $('body').hasClass('render-callback');
     }, teardown: function() {
-      $('.scroll-nav').remove();
+      // already torn down when destroyed
     }
   });
 

@@ -14,7 +14,7 @@
     "./dist/jquery.scrollNav.min.js"
   ],
   "dependencies": {
-    "jquery": "~1.8.*"
+    "jquery": "~1.9.*"
   },
   "ignore": [
     "node_modules",

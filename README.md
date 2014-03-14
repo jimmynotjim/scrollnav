@@ -109,6 +109,7 @@ $('.post-article').scrollNav({
 	sections: 'h2',
 	subSections: false,
 	sectionElem: 'section',
+	className: 'scroll-nav',
 	showHeadline: true,
 	headlineText: 'Scroll To',
 	showTopLink: true,
@@ -137,6 +138,10 @@ Set to `false` by default, the plugin supports nesting sub-sections within each 
 ### Section Wrapper Element
 
 If your article already contains `section` tags, you'll want to change this to `'div'`. Sub-sections aren't affected by this option.
+
+### Class Name
+
+If you want to change the default `scroll-nav` class naming used throughout (including in the BEM syntax for the child elems), you can do so by changing this value to your own.
 
 ### Show Headline
 

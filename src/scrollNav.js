@@ -34,6 +34,7 @@
       sections: 'h2',
       subSections: false,
       sectionElem: 'section',
+      className: 'scroll-nav',
       showHeadline: true,
       headlineText: 'Scroll To',
       showTopLink: true,
@@ -96,7 +97,7 @@
         var hasHeading    = function() { return !$this_section.eq(0).is(S.settings.sections); };
         var text          = ( S.settings.showTopLink && isFirst() && hasHeading() ) ? S.settings.topLinkText : $this_section.filter(S.settings.sections).text();
 
-        $this_section.wrapAll('<' + S.settings.sectionElem + ' id="' + section_id + '" class="scroll-nav__section" />');
+        $this_section.wrapAll('<' + S.settings.sectionElem + ' id="' + section_id + '" class="' + S.settings.className + '__section" />');
 
         if (S.settings.subSections) {
           var $sub_sections  = $this_section.filter(S.settings.subSections);
@@ -107,7 +108,7 @@
               var sub_text    = $(this).text();
               var $this_sub   = $this_section.filter($(this).nextUntil($sub_sections).andSelf());
 
-              $this_sub.wrapAll('<div id="' + sub_id + '" class="scroll-nav__sub-section" />');
+              $this_sub.wrapAll('<div id="' + sub_id + '" class="' + S.settings.className + '__sub-section" />');
               sub_data.push( {id: sub_id, text: sub_text} );
             });
           }
@@ -134,23 +135,23 @@
     _setup_nav: function(sections) {
     // Populate an ordered list from the section array we built
 
-      var $headline = $('<span />', {'class': 'scroll-nav__heading', text: S.settings.headlineText});
-      var $wrapper  = $('<div />', {'class': 'scroll-nav__wrapper'});
-      var $nav      = $('<nav />', {'class': 'scroll-nav', 'role': 'navigation'});
-      var $nav_list = $('<ol />', {'class': 'scroll-nav__list'});
+      var $headline = $('<span />', {'class': S.settings.className + '__heading', text: S.settings.headlineText});
+      var $wrapper  = $('<div />', {'class': S.settings.className + '__wrapper'});
+      var $nav      = $('<nav />', {'class': S.settings.className, 'role': 'navigation'});
+      var $nav_list = $('<ol />', {'class': S.settings.className + '__list'});
 
       $.each(sections, function(i) {
-        var $item     = (i === 0) ? $('<li />', {'class': 'scroll-nav__item active'}) : $('<li />', {'class': 'scroll-nav__item'});
-        var $link     = $('<a />', {'href': '#' + this.id, 'class': 'scroll-nav__link', text: this.text});
+        var $item     = (i === 0) ? $('<li />', {'class': S.settings.className + '__item active'}) : $('<li />', {'class': S.settings.className + '__item'});
+        var $link     = $('<a />', {'href': '#' + this.id, 'class': S.settings.className + '__link', text: this.text});
         var $sub_nav_list;
 
         if (this.sub_sections.length > 0) {
           $item.addClass('is-parent-item');
-          $sub_nav_list = $('<ol />', {'class': 'scroll-nav__sub-list'});
+          $sub_nav_list = $('<ol />', {'class': S.settings.className + '__sub-list'});
 
           $.each(this.sub_sections, function() {
-            var $sub_item = $('<li />', {'class': 'scroll-nav__sub-item'});
-            var $sub_link = $('<a />', {'href': '#' + this.id, 'class': 'scroll-nav__sub-link', text: this.text});
+            var $sub_item = $('<li />', {'class': S.settings.className + '__sub-item'});
+            var $sub_link = $('<a />', {'href': '#' + this.id, 'class': S.settings.className + '__sub-link', text: this.text});
 
             $sub_nav_list.append( $sub_item.append($sub_link) );
           });
@@ -214,13 +215,13 @@
         }
       });
 
-      $nav.find('.scroll-nav__item').removeClass('active').removeClass('in-view');
+      $nav.find('.' + S.settings.className + '__item').removeClass('active').removeClass('in-view');
 
       $.each(sections_active, function(i) {
         if (i === 0) {
-          $nav.find('a[href="#' + this.id + '"]').parents('.scroll-nav__item').addClass('active').addClass('in-view');
+          $nav.find('a[href="#' + this.id + '"]').parents('.' + S.settings.className + '__item').addClass('active').addClass('in-view');
         } else {
-          $nav.find('a[href="#' + this.id + '"]').parents('.scroll-nav__item').addClass('in-view');
+          $nav.find('a[href="#' + this.id + '"]').parents('.' + S.settings.className + '__item').addClass('in-view');
         }
         i++;
 
@@ -251,7 +252,7 @@
     _init_click_listener: function() {
       // Scroll to section on click
 
-      $('.scroll-nav').find('a').on('click.scrollNav', function(e) {
+      $('.' + S.settings.className).find('a').on('click.scrollNav', function(e) {
         e.preventDefault();
 
         var value     = $(this).attr('href');
@@ -263,7 +264,7 @@
       });
     },
     _rm_click_listener: function() {
-      $('.scroll-nav').find('a').off('click.scrollNav');
+      $('.' + S.settings.className).find('a').off('click.scrollNav');
     },
     _init_keyboard_listener: function(sections) {
       // Scroll to section on arrow key press
@@ -374,7 +375,7 @@
         $('body').removeClass('sn-loading sn-active sn-failed');
 
         // Remove the nav from the dom
-        $('.scroll-nav').remove();
+        $('.' + S.settings.className).remove();
 
         // Teardown sections
         S._tear_down_sections(S.sections.data);
