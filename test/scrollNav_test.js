@@ -250,7 +250,7 @@
       this.nav = this.scrollNav.siblings('nav');
       this.sections = this.scrollNav.children();
     }, teardown: function() {
-      //this.elems.scrollNav('destroy');
+      this.elems.scrollNav('destroy');
     }
   });
 
