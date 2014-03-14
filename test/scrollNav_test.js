@@ -245,7 +245,7 @@
     setup: function() {
       this.elems = $('#qunit-fixture');
       this.scrollNav = this.elems.scrollNav({
-        navClass: 'nav-test'
+        className: 'nav-test'
       });
       this.nav = this.scrollNav.siblings('nav');
       this.sections = this.scrollNav.children();
