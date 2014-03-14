@@ -34,7 +34,7 @@
       sections: 'h2',
       subSections: false,
       sectionElem: 'section',
-      navClass: '',
+      navClass: null,
       showHeadline: true,
       headlineText: 'Scroll To',
       showTopLink: true,
