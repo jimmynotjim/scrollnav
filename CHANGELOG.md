@@ -12,6 +12,11 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v2.2.0 - March 14, 2014
+
+* Added option to change the classname used throughout the plugin.
+* Updated jQuery dep to 1.9.*
+
 ## v2.1.1 - December 13, 2013
 
 Added `scrollNav` namespace to event listeners to avoid crashing in to user defined event listeners.
