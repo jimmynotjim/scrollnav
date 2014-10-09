@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4.1",
-    "semver": "~2.2.1",
+    "semver": "~4.0.3",
     "load-grunt-tasks": "~0.2.0",
     "grunt-exec": "~0.4.2",
     "grunt-contrib-clean": "~0.4.0",
