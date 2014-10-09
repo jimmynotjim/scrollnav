@@ -1,6 +1,6 @@
 {
   "name": "scrollNav",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "title": "scrollNav",
   "author": {
     "name": "James Wilson",
@@ -32,21 +32,21 @@
     }
   ],
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
   "scripts": {
     "test": "grunt qunit"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
-    "semver": "~2.2.1",
-    "load-grunt-tasks": "~0.2.0",
+    "semver": "~4.0.3",
+    "load-grunt-tasks": "~0.6.0",
     "grunt-exec": "~0.4.2",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-concat": "~0.1.2",
-    "grunt-contrib-jshint": "~0.1.1",
-    "grunt-contrib-qunit": "~0.1.1",
-    "grunt-contrib-uglify": "~0.1.1",
-    "grunt-contrib-watch": "~0.2.0"
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-qunit": "~0.5.2",
+    "grunt-contrib-uglify": "~0.6.0",
+    "grunt-contrib-watch": "~0.6.1"
   }
 }
