@@ -12,6 +12,11 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v2.3.0 - October 9, 2014
+
+* Updated min Node to 0.10.*
+* Updated all Node plugins to latest
+
 ## v2.2.0 - March 14, 2014
 
 * Added option to change the classname used throughout the plugin.
