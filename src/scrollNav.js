@@ -210,7 +210,7 @@
       else { $nav.removeClass('fixed'); }
 
       $.each(S.sections.data, function() {
-        if ( (this.top_offset > boundry_top && this.top_offset < boundry_bottom) || (this.bottom_offset > boundry_top && this.bottom_offset < boundry_bottom) || (this.top_offset < boundry_top && this.bottom_offset > boundry_bottom) ) {
+        if ( (this.top_offset >= boundry_top && this.top_offset <= boundry_bottom) || (this.bottom_offset > boundry_top && this.bottom_offset < boundry_bottom) || (this.top_offset < boundry_top && this.bottom_offset > boundry_bottom) ) {
           sections_active.push(this);
         }
       });
