@@ -12,6 +12,10 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v2.3.1 - October 30, 2014
+
+* Patched an active section bug where no sections were active when a section matched the exact pixel offset calculated
+
 ## v2.3.0 - October 9, 2014
 
 * Updated min Node to 0.10.*
