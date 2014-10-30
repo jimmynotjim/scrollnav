@@ -1,4 +1,4 @@
-[![build status](https://secure.travis-ci.org/jimmynotjim/scrollNav.png?branch=v2.3.0)](http://travis-ci.org/jimmynotjim/scrollNav.js)
+[![build status](https://secure.travis-ci.org/jimmynotjim/scrollNav.png?branch=v2.3.1)](http://travis-ci.org/jimmynotjim/scrollNav.js)
 
 # [jQuery scrollNav][1]
 
@@ -213,7 +213,7 @@ scrollNav is Copyright &copy; 2012-2013 James Wilson, released under the [MIT li
 
 ## Version
 
-Latest stable version is v2.3.0. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
+Latest stable version is v2.3.1. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
 
 ## Testing
 
