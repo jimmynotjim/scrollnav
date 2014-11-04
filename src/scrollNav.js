@@ -48,7 +48,7 @@
       onInit: null,
       onRender: null,
       onDestroy: null,
-      onReset: null
+      onResetPos: null
     },
     _set_body_class: function(state) {
       // Set and swap our loading hooks to the body
@@ -389,12 +389,12 @@
         S.sections = undefined;
       });
     },
-    reset: function() {
+    resetPos: function() {
       S._setup_pos();
       S._check_pos();
 
-      // Fire custom reset callback
-      if (S.settings.onReset) { S.settings.onReset.call(this); }
+      // Fire custom reset position callback
+      if (S.settings.onResetPos) { S.settings.onResetPos.call(this); }
     }
   };
 
@@ -422,19 +422,3 @@
     return method.apply(this, options);
   };
 })(jQuery);
-
-// Mutation observer ( https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver )
-var $;
-var observer_target = document.querySelector('.post__article');
-var observer = new MutationObserver(function(mutations) {
-  mutations.forEach(function() {
-    $.fn.scrollNav('reset');
-  });
-});
-var observer_config = {
-  attributes: true,
-  childList: true,
-  characterData: true,
-  subtree: true
-};
-observer.observe(observer_target, observer_config);

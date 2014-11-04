@@ -199,6 +199,39 @@ $('.post__article').scrollNav({
 });
 ```
 
+## Reset Positions on DOM Change
+
+There are a couple of ways you can reset scrollNav's positions when the DOM changes:
+
+### Manually
+
+Simply call the `resetPos` method on your own:
+
+```
+$.fn.scrollNav('resetPos');
+```
+
+### Automatically
+
+Utilize [mutation observers][21] to call the `resetPos` method automatically:
+
+```
+var $;
+var observer_target = document.querySelector('.post__article');
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function() {
+    $.fn.scrollNav('resetPos');
+  });
+});
+var observer_config = {
+  attributes: true,
+  childList: true,
+  characterData: true,
+  subtree: true
+};
+observer.observe(observer_target, observer_config);
+```
+
 ## Errors
 
 The plugin will refuse to build and log an error message if it doesn't find your desired container, the insertion target or any of the headlines specified within the container. If the nav doesn't show up on load, check your browser's console.
@@ -267,6 +300,8 @@ Available Grunt tasks that will be useful in development.
 [18]: http://modernizr.com/
 [19]: http://nodejs.org/
 [20]: http://gruntjs.com/
+[21]: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
+[22]: http://caniuse.com/#search=mutation%20observer
 
 
 
