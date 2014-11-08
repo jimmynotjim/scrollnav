@@ -92,12 +92,46 @@ An `active` class is attached to the nav item matching the section that is the h
 
 There are loading hooks added to the body element (similar to how Typekit handles font loading) to allow for css transitions or any other changes in css you'd need. When the plug-in starts `sn-loading` is added to the body class and is replaced by `sn-active` when the plugin is successful or `sn-failed` if it fails.
 
-## Methods
+## Destroy scrollNav
 
 In addition to the initialization, there is now a destroy method available should you need it. To destroy scrollNav and remove all it's DOM changes use:
 
 ```
 $('.post__article').scrollNav('destroy');
+```
+
+
+## Reset Positions on DOM Change
+
+There are a couple of ways you can reset scrollNav's positions when the DOM changes:
+
+### Manually
+
+Simply call the `resetPos` method on your own:
+
+```
+$.fn.scrollNav('resetPos');
+```
+
+### Automatically
+
+Utilize [mutation observers][21] to call the `resetPos` method automatically:
+
+```
+var $;
+var observer_target = document.querySelector('.post__article');
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function() {
+    $.fn.scrollNav('resetPos');
+  });
+});
+var observer_config = {
+  attributes: true,
+  childList: true,
+  characterData: true,
+  subtree: true
+};
+observer.observe(observer_target, observer_config);
 ```
 
 ## Default `options`
@@ -197,39 +231,6 @@ $('.post__article').scrollNav({
 		callback actions in here
 	}
 });
-```
-
-## Reset Positions on DOM Change
-
-There are a couple of ways you can reset scrollNav's positions when the DOM changes:
-
-### Manually
-
-Simply call the `resetPos` method on your own:
-
-```
-$.fn.scrollNav('resetPos');
-```
-
-### Automatically
-
-Utilize [mutation observers][21] to call the `resetPos` method automatically:
-
-```
-var $;
-var observer_target = document.querySelector('.post__article');
-var observer = new MutationObserver(function(mutations) {
-  mutations.forEach(function() {
-    $.fn.scrollNav('resetPos');
-  });
-});
-var observer_config = {
-  attributes: true,
-  childList: true,
-  characterData: true,
-  subtree: true
-};
-observer.observe(observer_target, observer_config);
 ```
 
 ## Errors
