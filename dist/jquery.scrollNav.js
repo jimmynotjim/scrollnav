@@ -1,4 +1,4 @@
-/*! scrollNav - v2.3.1 - 2014-10-30
+/*! scrollNav - v2.4.0 - 2014-11-13
 * http://scrollnav.com
 * Copyright (c) 2014 James Wilson; Licensed MIT */
 (function($) {
@@ -42,7 +42,8 @@
       arrowKeys: false,
       onInit: null,
       onRender: null,
-      onDestroy: null
+      onDestroy: null,
+      onResetPos: null
     },
     _set_body_class: function(state) {
       // Set and swap our loading hooks to the body
@@ -382,6 +383,13 @@
         S.settings = [];
         S.sections = undefined;
       });
+    },
+    resetPos: function() {
+      S._setup_pos();
+      S._check_pos();
+
+      // Fire custom reset position callback
+      if (S.settings.onResetPos) { S.settings.onResetPos.call(this); }
     }
   };
 
