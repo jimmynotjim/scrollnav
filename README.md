@@ -8,10 +8,10 @@ A jQuery plugin for building a scrolling side navigation menu
 
 Install with Bower `bower install scrollNav`
 
-Or download the latest [production version][min] or the [development version][max].
+Or download the latest [zipped package][zip].
 
-[min]: https://raw.github.com/jimmynotjim/scrollNav/master/dist/scrollNav.min.js
-[max]: https://raw.github.com/jimmynotjim/scrollNav/master/dist/scrollNav.js
+[zip]: https://github.com/jimmynotjim/scrollNav/archive/master.zip
+
 
 ## Examples
 
