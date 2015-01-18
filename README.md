@@ -92,7 +92,7 @@ An `active` class is attached to the nav item matching the section that is the h
 
 There are loading hooks added to the body element (similar to how Typekit handles font loading) to allow for css transitions or any other changes in css you'd need. When the plug-in starts `sn-loading` is added to the body class and is replaced by `sn-active` when the plugin is successful or `sn-failed` if it fails.
 
-## Destroy scrollNav
+### Destroy scrollNav
 
 In addition to the initialization, there is now a destroy method available should you need it. To destroy scrollNav and remove all it's DOM changes use:
 
@@ -101,11 +101,11 @@ $('.post__article').scrollNav('destroy');
 ```
 
 
-## Reset Positions on DOM Change
+### Reset Positions on DOM Change
 
 There are a couple of ways you can reset scrollNav's positions when the DOM changes:
 
-### Manually
+#### Manually
 
 Simply call the `resetPos` method on your own:
 
@@ -113,7 +113,7 @@ Simply call the `resetPos` method on your own:
 $.fn.scrollNav('resetPos');
 ```
 
-### Automatically
+#### Automatically
 
 Utilize [mutation observers][21] to call the `resetPos` method automatically:
 
