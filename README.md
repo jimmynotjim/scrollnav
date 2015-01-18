@@ -1,4 +1,4 @@
-[![build status](https://secure.travis-ci.org/jimmynotjim/scrollNav.png?branch=v2.4.0)](http://travis-ci.org/jimmynotjim/scrollNav.js)
+[![build status](https://secure.travis-ci.org/jimmynotjim/scrollNav.png?branch=master)](http://travis-ci.org/jimmynotjim/scrollNav.js)
 
 # [jQuery scrollNav][1]
 
@@ -248,11 +248,11 @@ There are a few known issues, including poor location updating when scrolling on
 
 ## License
 
-scrollNav is Copyright &copy; 2012-2013 James Wilson, released under the [MIT license][6]. This means you can re-create, edit or share the plugin as long as you maintain the same open licensing.
+scrollNav is Copyright &copy; 2012-2015 James Wilson, released under the [MIT license][6]. This means you can re-create, edit or share the plugin as long as you maintain the same open licensing.
 
 ## Version
 
-Latest stable version is v2.4.0. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
+Latest stable version is v2.5.0. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
 
 ## Testing
 
@@ -285,6 +285,8 @@ Available Grunt tasks that will be useful in development.
 * [Jen Germann (@germanny)][11]
 * [Wizcover (@wizcover)][12]
 * [MeghdadHadidi (@MeghdadHadidi)][13]
+* [Marc Amos (@marcams)][23]
+* [Felix Borzik (@Borzik)][24]
 
 [1]: http://scrollnav.com
 [2]: #
@@ -308,6 +310,8 @@ Available Grunt tasks that will be useful in development.
 [20]: http://gruntjs.com/
 [21]: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
 [22]: http://caniuse.com/#search=mutation%20observer
+[23]: http://github.com/marcamos
+[24]: http://github.com/borzik
 
 
 

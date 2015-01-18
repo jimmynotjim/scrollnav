@@ -12,6 +12,14 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v2.5.0 - January 18, 2015
+
+* Add scrollToHash setting
+
+## v2.4.0 - November 13, 2014
+
+* Adds a new resetPos public function for updating the section positions when the page's content changes. Refer to the Readme for more details.
+
 ## v2.3.1 - October 30, 2014
 
 * Patched an active section bug where no sections were active when a section matched the exact pixel offset calculated

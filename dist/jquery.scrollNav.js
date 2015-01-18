@@ -1,6 +1,6 @@
-/*! scrollNav - v2.4.0 - 2014-12-24
+/*! scrollNav - v2.5.0 - 2015-01-18
 * http://scrollnav.com
-* Copyright (c) 2014 James Wilson; Licensed MIT */
+* Copyright (c) 2015 James Wilson; Licensed MIT */
 (function($) {
 
   // Animate scrolling to section location
