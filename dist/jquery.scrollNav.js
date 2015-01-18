@@ -1,4 +1,4 @@
-/*! scrollNav - v2.4.0 - 2014-11-13
+/*! scrollNav - v2.4.0 - 2014-12-24
 * http://scrollnav.com
 * Copyright (c) 2014 James Wilson; Licensed MIT */
 (function($) {
@@ -40,6 +40,7 @@
       speed: 500,
       insertLocation: 'insertBefore',
       arrowKeys: false,
+      scrollToHash: true,
       onInit: null,
       onRender: null,
       onDestroy: null,
@@ -337,7 +338,9 @@
               S._init_click_listener();
               S._init_keyboard_listener(S.sections.data);
               S._set_body_class('success');
-              scroll_to( get_hash() );
+              if (S.settings.scrollToHash){
+                scroll_to( get_hash() );
+              }
 
               // Fire custom render callback
               if (S.settings.onRender) { S.settings.onRender.call(this); }

@@ -155,6 +155,7 @@ $('.post-article').scrollNav({
 	insertTarget: this.selector,
 	insertLocation: 'insertBefore',
 	arrowKeys: false,
+	scrollToHash: true,
 	onInit: null,
 	onRender: null,
 	onDestroy: null
@@ -220,6 +221,10 @@ You can pass any of the following jQuery insertion methods to change where scrol
 ### Arrow Key Navigation
 
 Set this to `true` to allow up/down arrow keys to jump through each section.
+
+### Scroll to hash
+
+Set this to false if you use hashed (http://example.com/#home) values for routing.
 
 ### Callback functions
 
