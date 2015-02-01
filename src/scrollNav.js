@@ -185,12 +185,18 @@
       var vp_height  = $(window).height();
       var nav_offset = $nav.offset().top;
 
-      $.each(S.sections.data, function() {
-        var $this_section  = $('#' + this.id);
+      function augment_data(section) {
+        var $this_section  = $('#' + section.id);
         var this_height    = $this_section.height();
 
-        this.top_offset    = $this_section.offset().top;
-        this.bottom_offset = this.top_offset + this_height;
+        section.top_offset    = $this_section.offset().top;
+        section.bottom_offset = section.top_offset + this_height;
+      }
+      $.each(S.sections.data, function() {
+        augment_data(this);
+        $.each(this.sub_sections, function() {
+          augment_data(this);
+        });
       });
 
       S.dims = {
@@ -202,22 +208,32 @@
       // Set nav to fixed after scrolling past the header and add an active class to any
       // sections currently within the bounds of our view
 
-      var $nav            = S.nav;
-      var win_top         = $(window).scrollTop();
-      var boundry_top     = win_top + S.settings.scrollOffset;
-      var boundry_bottom  = win_top + S.dims.vp_height - S.settings.scrollOffset;
-      var sections_active = [];
+      var $nav                = S.nav;
+      var win_top             = $(window).scrollTop();
+      var boundry_top         = win_top + S.settings.scrollOffset;
+      var boundry_bottom      = win_top + S.dims.vp_height - S.settings.scrollOffset;
+      var sections_active     = [];
+      var sub_sections_active = [];
 
       if ( win_top > (S.dims.nav_offset - S.settings.fixedMargin) ) { $nav.addClass('fixed'); }
       else { $nav.removeClass('fixed'); }
 
+      function checkSection(data) {
+        return (data.top_offset >= boundry_top && data.top_offset <= boundry_bottom) || (data.bottom_offset > boundry_top && data.bottom_offset < boundry_bottom) || (data.top_offset < boundry_top && data.bottom_offset > boundry_bottom);
+      }
       $.each(S.sections.data, function() {
-        if ( (this.top_offset >= boundry_top && this.top_offset <= boundry_bottom) || (this.bottom_offset > boundry_top && this.bottom_offset < boundry_bottom) || (this.top_offset < boundry_top && this.bottom_offset > boundry_bottom) ) {
+        if (checkSection(this)) {
           sections_active.push(this);
         }
+        $.each(this.sub_sections, function() {
+          if (checkSection(this)) {
+            sub_sections_active.push(this);
+          }
+        });
       });
 
       $nav.find('.' + S.settings.className + '__item').removeClass('active').removeClass('in-view');
+      $nav.find('.' + S.settings.className + '__sub-item').removeClass('active').removeClass('in-view');
 
       $.each(sections_active, function(i) {
         if (i === 0) {
@@ -226,8 +242,16 @@
           $nav.find('a[href="#' + this.id + '"]').parents('.' + S.settings.className + '__item').addClass('in-view');
         }
         i++;
+      });
+      S.sections.active = sections_active;
 
-        S.sections.active = sections_active;
+      $.each(sub_sections_active, function(i) {
+        if (i === 0) {
+          $nav.find('a[href="#' + this.id + '"]').parents('.' + S.settings.className + '__sub-item').addClass('active').addClass('in-view');
+        } else {
+          $nav.find('a[href="#' + this.id + '"]').parents('.' + S.settings.className + '__sub-item').addClass('in-view');
+        }
+        i++;
       });
     },
     _init_scroll_listener: function() {
