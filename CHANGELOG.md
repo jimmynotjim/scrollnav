@@ -12,6 +12,10 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v2.6.0 - February 19, 2015
+
+* Added in-view and active logic to sub-sections
+
 ## v2.5.0 - January 18, 2015
 
 * Add scrollToHash setting

@@ -88,7 +88,7 @@ To keep the plugin simple there are no styles added to the navigation, that's al
 				<a class="scroll-nav__link">
 ```
 
-An `active` class is attached to the nav item matching the section that is the highest within the view bounds. An `in-view` class is attached to all nav items whose section is within the view bounds. If you have short sections at the end of your page and dislike that the last nav itmes are never activated, you can use the `in-view` hook to style all sections with in the view.
+An `active` class is attached to the nav item matching the section and sub-section that is the highest within the view bounds. An `in-view` class is attached to all nav items whose section or sub-section is within the view bounds. If you have short sections at the end of your page and dislike that the last nav itmes are never activated, you can use the `in-view` hook to style all sections with in the view.
 
 There are loading hooks added to the body element (similar to how Typekit handles font loading) to allow for css transitions or any other changes in css you'd need. When the plug-in starts `sn-loading` is added to the body class and is replaced by `sn-active` when the plugin is successful or `sn-failed` if it fails.
 
@@ -252,7 +252,7 @@ scrollNav is Copyright &copy; 2012-2015 James Wilson, released under the [MIT li
 
 ## Version
 
-Latest stable version is v2.5.0. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
+Latest stable version is v2.6.0. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
 
 ## Testing
 
