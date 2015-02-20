@@ -287,6 +287,7 @@ Available Grunt tasks that will be useful in development.
 * [MeghdadHadidi (@MeghdadHadidi)][13]
 * [Marc Amos (@marcams)][23]
 * [Felix Borzik (@Borzik)][24]
+* [Masud Rahman (@frutiger)][25]
 
 [1]: http://scrollnav.com
 [2]: #
@@ -312,6 +313,4 @@ Available Grunt tasks that will be useful in development.
 [22]: http://caniuse.com/#search=mutation%20observer
 [23]: http://github.com/marcamos
 [24]: http://github.com/borzik
-
-
-
+[25]: http://github.com/frutiger
