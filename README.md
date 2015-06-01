@@ -285,7 +285,7 @@ Available Grunt tasks that will be useful in development.
 * [Jen Germann (@germanny)][11]
 * [Wizcover (@wizcover)][12]
 * [MeghdadHadidi (@MeghdadHadidi)][13]
-* [Marc Amos (@marcams)][23]
+* [Marc Amos (@marcamos)][23]
 * [Felix Borzik (@Borzik)][24]
 * [Masud Rahman (@frutiger)][25]
 
