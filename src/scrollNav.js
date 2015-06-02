@@ -32,6 +32,7 @@
     },
     defaults: {
       sections: 'h2',
+      labelAttribute: 'scrollnav-label',
       subSections: false,
       sectionElem: 'section',
       className: 'scroll-nav',
@@ -97,7 +98,16 @@
         var section_id    = 'scrollNav-' + (i + 1);
         var isFirst       = function() { return i === 0; };
         var hasHeading    = function() { return !$this_section.eq(0).is(S.settings.sections); };
-        var text          = ( S.settings.showTopLink && isFirst() && hasHeading() ) ? S.settings.topLinkText : $this_section.filter(S.settings.sections).text();
+
+        var text;
+
+        if ( S.settings.showTopLink && isFirst() && hasHeading() ) {
+          text = S.settings.topLinkText;
+        } else if ( $this_section.filter(S.settings.sections).filter('[data-' + S.settings.labelAttribute + ']').length && $this_section.filter(S.settings.sections).data(S.settings.labelAttribute) !== "" ) {
+          text = $this_section.filter(S.settings.sections).data(S.settings.labelAttribute);
+        } else {
+          text = $this_section.filter(S.settings.sections).text();
+        }
 
         $this_section.wrapAll('<' + S.settings.sectionElem + ' id="' + section_id + '" class="' + S.settings.className + '__section" />');
 
