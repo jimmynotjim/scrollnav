@@ -228,7 +228,7 @@ Set this to false if you use hashed (http://example.com/#home) values for routin
 
 ### Callback functions
 
-There are three new callback functions that you can utilize to accomodate anything you need to run after specific scrollNav events. They are `onInit`, `onRender`, and `onDestroy`. Add them to your options just like any other and they should look like this:
+There are three new callback functions that you can utilize to accommodate anything you need to run after specific scrollNav events. They are `onInit`, `onRender`, and `onDestroy`. Add them to your options just like any other and they should look like this:
 
 ```
 $('.post__article').scrollNav({
