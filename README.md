@@ -154,6 +154,7 @@ $('.post-article').scrollNav({
 	speed: 500,
 	insertTarget: this.selector,
 	insertLocation: 'insertBefore',
+	activeClass: 'active',
 	arrowKeys: false,
 	scrollToHash: true,
 	onInit: null,
@@ -221,6 +222,10 @@ You can pass any of the following jQuery insertion methods to change where scrol
 ### Arrow Key Navigation
 
 Set this to `true` to allow up/down arrow keys to jump through each section.
+
+### Active Class
+
+By default, scrollNav will use the class `".active"` to indicate which nav item is currently in view. If you need a different class name, add it here.
 
 ### Scroll to hash
 
