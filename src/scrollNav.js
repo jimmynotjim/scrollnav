@@ -14,6 +14,10 @@
       var destination = $(value).offset().top;
       speed = animated ? speed : 0;
 
+	    // Add a class to the scrolled-to section
+	    $('.' + S.settings.className + '__focused-section').removeClass(S.settings.className + '__focused-section');
+	    $(value).addClass(S.settings.className + '__focused-section');
+	  
       $('html:not(:animated),body:not(:animated)')
         .animate({scrollTop: destination - offset }, speed );
     }
