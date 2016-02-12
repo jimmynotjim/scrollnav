@@ -257,7 +257,7 @@ scrollNav is Copyright &copy; 2012-2015 James Wilson, released under the [MIT li
 
 ## Version
 
-Latest stable version is v2.6.0. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
+Latest stable version is v2.7.0. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
 
 ## Testing
 

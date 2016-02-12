@@ -1,6 +1,6 @@
-/*! scrollNav - v2.6.0 - 2015-02-19
+/*! scrollNav - v2.7.0 - 2016-02-11
 * http://scrollnav.com
-* Copyright (c) 2015 James Wilson; Licensed MIT */
+* Copyright (c) 2016 James Wilson; Licensed MIT */
 (function($) {
 
   // Animate scrolling to section location
@@ -8,6 +8,10 @@
     if ( $(value).length > 0 ) {
       var destination = $(value).offset().top;
       speed = animated ? speed : 0;
+
+	    // Add a class to the scrolled-to section
+	    $('.' + S.settings.className + '__focused-section').removeClass(S.settings.className + '__focused-section');
+	    $(value).addClass(S.settings.className + '__focused-section');
 
       $('html:not(:animated),body:not(:animated)')
         .animate({scrollTop: destination - offset }, speed );

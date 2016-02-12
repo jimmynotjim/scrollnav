@@ -12,6 +12,11 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v2.7.0 - February 11, 2015
+
+* Add `activeClass` setting for custom styles
+* Add `__focused-section` when a section is scrolled to
+
 ## v2.6.0 - February 19, 2015
 
 * Added in-view and active logic to sub-sections
