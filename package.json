@@ -21,6 +21,9 @@
     "type": "git",
     "url": "https://github.com/jimmynotjim/scrollNav.git"
   },
+  "files": [
+    "dist"
+  ],
   "main": "dist/jquery.scrollNav.min.js",
   "bugs": "https://github.com/jimmynotjim/scrollNav/issues",
   "licenses": [
