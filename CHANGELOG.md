@@ -12,6 +12,10 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v2.7.1 - February 18, 2015
+
+* Fixed package.json
+
 ## v2.7.0 - February 11, 2015
 
 * Add `activeClass` setting for custom styles
