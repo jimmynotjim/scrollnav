@@ -60,19 +60,22 @@ module.exports = function(grunt) {
     jshint: {
       gruntfile: {
         options: {
-          jshintrc: '.jshintrc'
+          jshintrc: '.jshintrc',
+          reporterOutput: ''
         },
         src: 'Gruntfile.js'
       },
       src: {
         options: {
-          jshintrc: '<%= sourceDir %>/.jshintrc'
+          jshintrc: '<%= sourceDir %>/.jshintrc',
+          reporterOutput: ''
         },
         src: ['<%= sourceDir %>/**/*.js']
       },
       test: {
         options: {
-          jshintrc: 'test/.jshintrc'
+          jshintrc: 'test/.jshintrc',
+          reporterOutput: ''
         },
         src: ['<%= testDir %>/**/*.js']
       }
