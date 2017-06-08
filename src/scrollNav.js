@@ -45,6 +45,7 @@
       topLinkText: 'Top',
       fixedMargin: 40,
       scrollOffset: 40,
+      activeClass: 'active',
       animated: true,
       speed: 500,
       insertLocation: 'insertBefore',
@@ -147,7 +148,7 @@
       var $nav_list = $('<ol />', {'class': S.settings.className + '__list'});
 
       $.each(sections, function(i) {
-        var $item     = (i === 0) ? $('<li />', {'class': S.settings.className + '__item active'}) : $('<li />', {'class': S.settings.className + '__item'});
+        var $item     = (i === 0) ? $('<li />', {'class': S.settings.className + '__item' + S.settings.activeClass}) : $('<li />', {'class': S.settings.className + '__item'});
         var $link     = $('<a />', {'href': '#' + this.id, 'class': S.settings.className + '__link', text: this.text});
         var $sub_nav_list;
 
@@ -240,12 +241,12 @@
         });
       });
 
-      $nav.find('.' + S.settings.className + '__item').removeClass('active').removeClass('in-view');
-      $nav.find('.' + S.settings.className + '__sub-item').removeClass('active').removeClass('in-view');
+      $nav.find('.' + S.settings.className + '__item').removeClass(S.settings.activeClass).removeClass('in-view');
+      $nav.find('.' + S.settings.className + '__sub-item').removeClass(S.settings.activeClass).removeClass('in-view');
 
       $.each(sections_active, function(i) {
         if (i === 0) {
-          $nav.find('a[href="#' + this.id + '"]').parents('.' + S.settings.className + '__item').addClass('active').addClass('in-view');
+          $nav.find('a[href="#' + this.id + '"]').parents('.' + S.settings.className + '__item').addClass(S.settings.activeClass).addClass('in-view');
         } else {
           $nav.find('a[href="#' + this.id + '"]').parents('.' + S.settings.className + '__item').addClass('in-view');
         }
@@ -254,7 +255,7 @@
 
       $.each(sub_sections_active, function(i) {
         if (i === 0) {
-          $nav.find('a[href="#' + this.id + '"]').parents('.' + S.settings.className + '__sub-item').addClass('active').addClass('in-view');
+          $nav.find('a[href="#' + this.id + '"]').parents('.' + S.settings.className + '__sub-item').addClass(S.settings.activeClass).addClass('in-view');
         } else {
           $nav.find('a[href="#' + this.id + '"]').parents('.' + S.settings.className + '__sub-item').addClass('in-view');
         }
