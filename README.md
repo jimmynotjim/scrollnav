@@ -54,7 +54,7 @@ Include a class or id hook on the element you want to apply the plugin to and in
 	<article class="post__article">
 		<header class="post__header">
 			<h1 class="post__heading">This is the main heading for the article</h1>
-			<p class="post__sub-headling">This is a sub-heading for the article</p>
+			<p class="post__sub-heading">This is a sub-heading for the article</p>
 		</header>
 		<p>Yada yada yada...</p>
 		<h2>This is a section heading</h2>
