@@ -253,11 +253,11 @@ There are a few known issues, including poor location updating when scrolling on
 
 ## License
 
-scrollNav is Copyright &copy; 2012-2015 James Wilson, released under the [MIT license][6]. This means you can re-create, edit or share the plugin as long as you maintain the same open licensing.
+scrollNav is Copyright &copy; 2012-2018 James Wilson, released under the [MIT license][6]. This means you can re-create, edit or share the plugin as long as you maintain the same open licensing.
 
 ## Version
 
-Latest stable version is v2.7.1. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
+Latest stable version is v2.7.2. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
 
 ## Testing
 
@@ -293,6 +293,10 @@ Available Grunt tasks that will be useful in development.
 * [Marc Amos (@marcamos)][23]
 * [Felix Borzik (@Borzik)][24]
 * [Masud Rahman (@frutiger)][25]
+* [Rob Loach (@RobLoach)][26]
+* [Will Moore (@willthemoor)][27]
+* [Chris Garcia (@pixelbandito)][28]
+* [Jim Schmid (@sheeep)][29]
 
 [1]: http://scrollnav.com
 [2]: #
@@ -319,3 +323,7 @@ Available Grunt tasks that will be useful in development.
 [23]: http://github.com/marcamos
 [24]: http://github.com/borzik
 [25]: http://github.com/frutiger
+[26]: http://github.com/RobLoach
+[27]: http://github.com/willthemoor
+[28]: http://github.com/pixelbandito
+[29]: http://github.com/sheeep

@@ -1,6 +1,6 @@
 {
   "name": "scrollnav",
-  "version": "2.7.1",
+  "version": "2.7.2",
   "title": "scrollNav",
   "author": {
     "name": "James Wilson",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4.1",
-    "semver": "~4.0.3",
+    "semver": "~5.5.0",
     "load-grunt-tasks": "~0.6.0",
     "grunt-exec": "~0.4.2",
     "grunt-contrib-clean": "~0.6.0",

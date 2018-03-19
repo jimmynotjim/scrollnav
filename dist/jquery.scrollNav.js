@@ -1,6 +1,6 @@
-/*! scrollNav - v2.7.1 - 2017-05-26
+/*! scrollNav - v2.7.1 - 2018-03-18
 * http://scrollnav.com
-* Copyright (c) 2017 James Wilson; Licensed MIT */
+* Copyright (c) 2018 James Wilson; Licensed MIT */
 (function($) {
 
   // Animate scrolling to section location
@@ -73,12 +73,12 @@
         var $firstElem = $el.children().first();
 
         if ( !$firstElem.is(target_elems) ) {
-          raw_html.push( $firstElem.nextUntil(target_elems).andSelf() );
+          raw_html.push( $firstElem.nextUntil(target_elems).addBack() );
         }
       }
 
       $el.find(target_elems).each(function() {
-        raw_html.push( $(this).nextUntil(target_elems).andSelf() );
+        raw_html.push( $(this).nextUntil(target_elems).addBack() );
       });
 
       S.sections = {
@@ -107,7 +107,7 @@
             $sub_sections.each(function(i) {
               var sub_id      = section_id + '-' + (i + 1);
               var sub_text    = $(this).text();
-              var $this_sub   = $this_section.filter($(this).nextUntil($sub_sections).andSelf());
+              var $this_sub   = $this_section.filter($(this).nextUntil($sub_sections).addBack());
 
               $this_sub.wrapAll('<div id="' + sub_id + '" class="' + S.settings.className + '__sub-section" />');
               sub_data.push( {id: sub_id, text: sub_text} );
