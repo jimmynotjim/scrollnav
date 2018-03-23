@@ -1,3 +1,5 @@
+"use strict";
+
 /*
  * scrollNav
  * http://scrollnav.com
@@ -6,4 +8,4 @@
  * Licensed under the MIT license.
  */
 
-const scrollNav = {};
+var scrollNav = {};
