@@ -1,4 +1,4 @@
-[![build status](https://secure.travis-ci.org/jimmynotjim/scrollNav.png?branch=master)](http://travis-ci.org/jimmynotjim/scrollNav.js)
+[![build status](https://secure.travis-ci.org/jimmynotjim/scrollNav.png?branch=master)](http://travis-ci.org/jimmynotjim/scrollNav)
 
 # [jQuery scrollNav][1]
 
