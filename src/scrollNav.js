@@ -7,3 +7,7 @@
  */
 
 const scrollNav = {};
+
+scrollNav.foo = 'foo';
+
+console.log(scrollNav.foo);

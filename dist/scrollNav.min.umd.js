@@ -1,0 +1,15 @@
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(factory());
+}(this, (function () {
+
+var scrollNav = {};
+scrollNav.foo = 'foo';
+console.log(scrollNav.foo);
+
+
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNjcm9sbE5hdi5qcyhvcmlnaW5hbCkiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBUUEsS0FBQSxDQUFNLFlBQVk7QUFFbEIsU0FBQSxDQUFVLEdBQVYsQ0FBQSxDQUFBLENBQWdCO0FBRWhCLE9BQUEsQ0FBUSxHQUFSLENBQVksU0FBQSxDQUFVO0FBWnRCIiwiZmlsZSI6InNjcm9sbE5hdi5qcyhvcmlnaW5hbCkiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogc2Nyb2xsTmF2XG4gKiBodHRwOi8vc2Nyb2xsbmF2LmNvbVxuICpcbiAqIENvcHlyaWdodCAoYykgMjAxMy0yMDE4IEphbWVzIFdpbHNvblxuICogTGljZW5zZWQgdW5kZXIgdGhlIE1JVCBsaWNlbnNlLlxuICovXG5cbmNvbnN0IHNjcm9sbE5hdiA9IHt9O1xuXG5zY3JvbGxOYXYuZm9vID0gJ2Zvbyc7XG5cbmNvbnNvbGUubG9nKHNjcm9sbE5hdi5mb28pO1xuIl19
+
+})));
+//# sourceMappingURL=scrollNav.min.umd.js.map
