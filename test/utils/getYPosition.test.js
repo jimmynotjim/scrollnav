@@ -30,15 +30,15 @@ describe('getYPosition', () => {
     };
   });
 
-  it('should return error if first param is not an object', () => {
+  it('should return an error if first param is not an object', () => {
     return expect(this.getYPosition('elem')).rejects.toThrow(
-      'First argument is not an object'
+      'First argument must be an object'
     );
   });
 
-  it('should return error if second param is not an object', () => {
+  it('should return an error if second param is not an object', () => {
     return expect(this.getYPosition(this.elem, 'parent')).rejects.toThrow(
-      'Second argument is not an object'
+      'Second argument must be an object'
     );
   });
 
