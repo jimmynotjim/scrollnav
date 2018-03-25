@@ -1,4 +1,4 @@
-import getOrSetID from '../../src/utils/getOrSetID.js';
+import getOrSetID from '../../src/utils/getOrSetID';
 
 describe('getOrSetID', () => {
   let elem;

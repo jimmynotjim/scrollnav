@@ -1,4 +1,4 @@
-function getYPosition(elem, parent) {
+export default function getYPosition(elem, parent) {
   return new Promise((resolve, reject) => {
     if (typeof elem !== 'object') {
       return reject(new Error('First argument must be an object'));
@@ -15,5 +15,3 @@ function getYPosition(elem, parent) {
     resolve(elemRect.top - bodyRect.top);
   });
 }
-
-module.exports = getYPosition;

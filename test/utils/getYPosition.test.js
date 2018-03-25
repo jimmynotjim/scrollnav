@@ -1,4 +1,4 @@
-import getYPosition from '../../src/utils/getYPosition.js';
+import getYPosition from '../../src/utils/getYPosition';
 
 const WINDOW_TOP = 0;
 const PARENT_TOP = 140;

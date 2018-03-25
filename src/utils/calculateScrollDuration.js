@@ -1,4 +1,4 @@
-function calculateScrollDuration(distance) {
+export default function calculateScrollDuration(distance) {
   const halfDistance = distance / 2;
   let duration;
   if (halfDistance < 250) {
@@ -11,5 +11,3 @@ function calculateScrollDuration(distance) {
 
   return duration;
 }
-
-module.exports = calculateScrollDuration;
