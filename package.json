@@ -7,8 +7,7 @@
     "email": "jimmynotjim@me.com",
     "url": "http://jimmynotjim.com"
   },
-  "description":
-    "A simple JavaScript plugin that auto builds scrolling table of contents",
+  "description": "A simple JavaScript plugin that auto builds scrolling table of contents",
   "keywords": [
     "scrollnav",
     "javascript",
@@ -24,7 +23,9 @@
     "type": "git",
     "url": "https://github.com/jimmynotjim/scrollNav.git"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "dist/scrollNav.min.js",
   "bugs": "https://github.com/jimmynotjim/scrollNav/issues",
   "license": "MIT",

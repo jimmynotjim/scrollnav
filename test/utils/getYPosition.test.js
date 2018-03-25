@@ -1,8 +1,11 @@
+import getYPosition from '../../src/utils/getYPosition.js';
+
 const WINDOW_TOP = 0;
 const PARENT_TOP = 140;
 const ELEM_TOP = 260;
 
 describe('getYPosition', () => {
+  let elem;
   beforeAll(() => {
     document.body.getBoundingClientRect = () => {
       return {
@@ -16,9 +19,8 @@ describe('getYPosition', () => {
     };
   });
   beforeEach(() => {
-    this.elem = {};
-    this.getYPosition = require('../../src/utils/getYPosition.js');
-    this.elem.getBoundingClientRect = () => {
+    elem = {};
+    elem.getBoundingClientRect = () => {
       return {
         bottom: 700,
         height: 40,
@@ -31,27 +33,25 @@ describe('getYPosition', () => {
   });
 
   it('should return an error if first param is not an object', () => {
-    return expect(this.getYPosition('elem')).rejects.toThrow(
+    return expect(getYPosition('elem')).rejects.toThrow(
       'First argument must be an object'
     );
   });
 
   it('should return an error if second param is not an object', () => {
-    return expect(this.getYPosition(this.elem, 'parent')).rejects.toThrow(
+    return expect(getYPosition(elem, 'parent')).rejects.toThrow(
       'Second argument must be an object'
     );
   });
 
   it(`should return the Y position of the element relative to the window
       body if no parent is passed`, () => {
-    return expect(this.getYPosition(this.elem)).resolves.toEqual(
-      ELEM_TOP - WINDOW_TOP
-    );
+    return expect(getYPosition(elem)).resolves.toEqual(ELEM_TOP - WINDOW_TOP);
   });
 
   it(`should return the Y position of the element relative to the window body
       if the window body is passed`, () => {
-    return expect(this.getYPosition(this.elem, window.body)).resolves.toEqual(
+    return expect(getYPosition(elem, window.body)).resolves.toEqual(
       ELEM_TOP - WINDOW_TOP
     );
   });
@@ -70,7 +70,7 @@ describe('getYPosition', () => {
         };
       }
     };
-    return expect(this.getYPosition(this.elem, parentElem)).resolves.toEqual(
+    return expect(getYPosition(elem, parentElem)).resolves.toEqual(
       ELEM_TOP - PARENT_TOP
     );
   });
