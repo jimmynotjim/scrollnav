@@ -1,6 +1,6 @@
 import calculateScrollDuration from '../../src/utils/calculateScrollDuration.js';
 const MIN_DURATION = 250;
-const MAX_DURATION = 1000;
+const MAX_DURATION = 1200;
 describe('calculateScrollDuration', () => {
   it('should return the minimum duration', () => {
     const duration = calculateScrollDuration(200);
@@ -8,7 +8,7 @@ describe('calculateScrollDuration', () => {
   });
 
   it('should return the maximum duration', () => {
-    const duration = calculateScrollDuration(2500);
+    const duration = calculateScrollDuration(3000);
     expect(duration).toBe(MAX_DURATION);
   });
 
