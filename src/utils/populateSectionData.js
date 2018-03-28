@@ -12,7 +12,7 @@ function populateSectionData(sections, prefix, showSubItems) {
 
     if (showSubItems && elem.tagName === 'H2') {
       const subSectionDom = collectSubSections(elem);
-      subSectionData = populateSectionData(subSectionDom, id);
+      subSectionData = populateSectionData(subSectionDom, id, false);
     }
 
     sectionData.push({

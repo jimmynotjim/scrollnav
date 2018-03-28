@@ -1,5 +1,6 @@
 import { populateSectionData } from '../../src/utils/populateSectionData';
-import { html } from '../fixtures/sectionMarkup.js';
+import { html } from '../fixtures/sectionMarkup';
+import { onlyH2Data, allData } from '../fixtures/sectionData';
 
 describe('populateSectionData', () => {
   document.body.innerHTML = html;
@@ -47,38 +48,12 @@ describe('populateSectionData', () => {
     const data = populateSectionData(sections, 'scrollNav');
 
     expect(data.length).toBe(3);
-    expect(data).toEqual([
-      {
-        id: 'first-heading',
-        text: 'First heading',
-        offsetTop: 100,
-        subSections: []
-      },
-      {
-        id: 'second-heading',
-        text: 'Second heading',
-        offsetTop: 200,
-        subSections: []
-      },
-      {
-        id: 'third-heading',
-        text: 'Third heading',
-        offsetTop: 300,
-        subSections: []
-      }
-    ]);
+    expect(data).toEqual(onlyH2Data);
   });
 
   it('should find and add all h3 elements when showSubItems is enabled', () => {
     const data = populateSectionData(sections, 'scrollNav', true);
     expect(data[1].subSections.length).toBe(1);
-    expect(data[1].subSections).toEqual([
-      {
-        id: 'second-heading__1',
-        text: 'First sub-heading of the second heading',
-        offsetTop: 225,
-        subSections: []
-      }
-    ]);
+    expect(data[1].subSections).toEqual(allData[1].subSections);
   });
 });
