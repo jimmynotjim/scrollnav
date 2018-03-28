@@ -46,14 +46,12 @@ describe('getYPosition', () => {
 
   it(`should return the Y position of the element relative to the window
       body if no parent is passed`, () => {
-    return expect(getYPosition(elem)).resolves.toEqual(ELEM_TOP - WINDOW_TOP);
+    expect(getYPosition(elem)).toEqual(ELEM_TOP - WINDOW_TOP);
   });
 
   it(`should return the Y position of the element relative to the window body
       if the window body is passed`, () => {
-    return expect(getYPosition(elem, window.body)).resolves.toEqual(
-      ELEM_TOP - WINDOW_TOP
-    );
+    expect(getYPosition(elem, window.body)).toEqual(ELEM_TOP - WINDOW_TOP);
   });
 
   it(`should return the Y position of the element relative to a parent elem
@@ -70,8 +68,6 @@ describe('getYPosition', () => {
         };
       }
     };
-    return expect(getYPosition(elem, parentElem)).resolves.toEqual(
-      ELEM_TOP - PARENT_TOP
-    );
+    expect(getYPosition(elem, parentElem)).toEqual(ELEM_TOP - PARENT_TOP);
   });
 });

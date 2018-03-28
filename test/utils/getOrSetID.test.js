@@ -21,15 +21,14 @@ describe('getOrSetID', () => {
   it('should return the id property of an element that has an id', () => {
     elem.id = 'test-1-id';
 
-    return expect(getOrSetID(elem)).resolves.toEqual('test-1-id');
+    expect(getOrSetID(elem)).toEqual('test-1-id');
   });
 
   it('should not change the id property of an element that has an id', () => {
     elem.id = 'test-1-id';
 
-    return getOrSetID(elem, 'test-1-fail').then(() => {
-      expect(elem.id).toEqual('test-1-id');
-    });
+    getOrSetID(elem, 'test-1-fail');
+    expect(elem.id).toEqual('test-1-id');
   });
 
   it(`should return the passed id argument of an element
@@ -37,7 +36,7 @@ describe('getOrSetID', () => {
     elem.id;
 
     expect(elem.id).toEqual(undefined);
-    return expect(getOrSetID(elem, 'test-2-id')).resolves.toEqual('test-2-id');
+    expect(getOrSetID(elem, 'test-2-id')).toEqual('test-2-id');
   });
 
   it(`should set the id property of an element
@@ -45,8 +44,7 @@ describe('getOrSetID', () => {
     elem.id;
 
     expect(elem.id).toEqual(undefined);
-    return getOrSetID(elem, 'test-2-id').then(() => {
-      expect(elem.id).toEqual('test-2-id');
-    });
+    getOrSetID(elem, 'test-2-id');
+    expect(elem.id).toEqual('test-2-id');
   });
 });
