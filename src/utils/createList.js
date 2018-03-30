@@ -1,17 +1,16 @@
-export default function createList(data, prefix, showSubItems) {
-  const baseClass = prefix + '__';
-  const list = document.createElement('ol');
-  list.className = baseClass + 'list';
+export default function createList(data, prefix, isSubList = false) {
+  const suffix = isSubList ? '__sub-' : '__';
+  const baseClass = prefix + suffix;
 
   const itemsMarkup = `
     ${data
       .map(
         item =>
-          `<li class="${prefix}__item">
-            <a class="${prefix}__link" href="#${item.id}">${item.text}</a>
+          `<li class="${baseClass}item">
+            <a class="${baseClass}link" href="#${item.id}">${item.text}</a>
             ${
-              showSubItems && item.subSections.length
-                ? `${createSubList(item.subSections, prefix)}`
+              item.subSections && item.subSections.length
+                ? `${createList(item.subSections, prefix, true)}`
                 : ''
             }
           </li>`
@@ -19,25 +18,11 @@ export default function createList(data, prefix, showSubItems) {
       .join()}
   `;
 
-  list.innerHTML = itemsMarkup;
-
-  return list;
-}
-
-function createSubList(data, prefix) {
-  const baseClass = prefix + '__sub-';
-
-  const subListMarkup = `
+  const list = `
     <ol class="${baseClass}list">
-      ${data
-        .map(
-          item =>
-            `<li class="${baseClass}item">
-              <a class="${baseClass}link" href="#${item.id}">${item.text}</a>
-            </li>`
-        )
-        .join('')}
+      ${itemsMarkup}
     </ol>
   `;
-  return subListMarkup;
+
+  return list;
 }

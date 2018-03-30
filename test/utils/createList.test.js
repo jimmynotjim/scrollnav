@@ -1,16 +1,17 @@
 import jestDomCustomMatchers from '@jarmee/jest-dom-custom-matchers';
 import createList from '../../src/utils/createList';
 import { html } from '../fixtures/sectionMarkup';
-import { allData } from '../fixtures/sectionData';
+import { onlyH2Data, allData } from '../fixtures/sectionData';
 
-const expectedHtml = '<ol class="scroll-nav__list" />';
 expect.extend(jestDomCustomMatchers);
+const testContainer = document.createElement('div');
 
 describe('createList', () => {
   document.body.innerHTML = html;
 
   it('should create an ol element with the correct class name', () => {
-    const list = createList(allData, 'scroll-nav', false);
+    testContainer.innerHTML = createList(onlyH2Data, 'scroll-nav');
+    const list = testContainer.querySelector('ol');
 
     expect(list).toBeHTMLElement('ol');
     expect(list).toHaveClass('scroll-nav__list');
@@ -18,7 +19,8 @@ describe('createList', () => {
 
   it(`should include three li elements with the correct class name
       and data attributes`, () => {
-    const list = createList(allData, 'scroll-nav', false);
+    testContainer.innerHTML = createList(onlyH2Data, 'scroll-nav');
+    const list = testContainer.querySelector('ol');
     const items = list.querySelectorAll('li');
 
     expect(items.length).toBe(3);
@@ -28,7 +30,8 @@ describe('createList', () => {
 
   it(`should include a link with the correct class name, href,
       and inner text`, () => {
-    const list = createList(allData, 'scroll-nav', false);
+    testContainer.innerHTML = createList(onlyH2Data, 'scroll-nav');
+    const list = testContainer.querySelector('ol');
     const links = list.querySelectorAll('a');
 
     expect(links.length).toBe(3);
@@ -38,15 +41,17 @@ describe('createList', () => {
     expect(links[0]).toHaveAttribute('href', '#first-heading');
   });
 
-  it('should not include sub-items when the param is not passed', () => {
-    const list = createList(allData, 'scroll-nav', false);
+  it('should not include child ol element if the data does not exist', () => {
+    testContainer.innerHTML = createList(onlyH2Data, 'scroll-nav');
+    const list = testContainer.querySelector('ol');
     const subSections = list.querySelectorAll('ol');
 
     expect(subSections.length).toBe(0);
   });
 
   it('should include child ol element with the correct class name', () => {
-    const list = createList(allData, 'scroll-nav', true);
+    testContainer.innerHTML = createList(allData, 'scroll-nav');
+    const list = testContainer.querySelector('ol');
     const subSections = list.querySelectorAll('ol');
 
     expect(subSections.length).toBe(1);
@@ -56,7 +61,8 @@ describe('createList', () => {
 
   it(`should include an item in the child ol element with the correct class name
       and data attribute`, () => {
-    const list = createList(allData, 'scroll-nav', true);
+    testContainer.innerHTML = createList(allData, 'scroll-nav');
+    const list = testContainer.querySelector('ol');
     const subSections = list.querySelectorAll('ol');
     const subItems = subSections[0].querySelectorAll('li');
 
@@ -67,7 +73,8 @@ describe('createList', () => {
 
   it(`should include a link with the correct class name, href,
       and inner text`, () => {
-    const list = createList(allData, 'scroll-nav', true);
+    testContainer.innerHTML = createList(allData, 'scroll-nav');
+    const list = testContainer.querySelector('ol');
     const subSections = list.querySelectorAll('ol');
     const subLinks = subSections[0].querySelectorAll('a');
 
