@@ -1,4 +1,4 @@
-import { scrollTo } from '../src/scrollTo';
+import scrollTo from '../../src/scrollTo';
 
 jest.useFakeTimers();
 
@@ -15,17 +15,18 @@ describe('scrollTo', () => {
     );
   });
 
-  xit('should scroll the window to the passed value', () => {
+  xit('should resolve a Promise after scrolling', async () => {
+    expect.assertions(1);
+
     const callback = jest.fn();
     window.pageYOffset = 2200;
 
-    scrollTo(200, 'null', callback);
+    await scrollTo(200, null).then(() => {
+      callback();
+    });
 
-    expect(callback).not.toBeCalled();
-
-    jest.advanceTimersByTime(1500);
+    jest.runAllTimers();
 
     expect(callback).toBeCalled();
-    expect(callback).toHaveBeenCalledTimes(1);
   });
 });

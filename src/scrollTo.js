@@ -1,19 +1,18 @@
 import calculateScrollDuration from './util/calculateScrollDuration';
 import calculateEasedTimes from './util/calculateEasedTimes';
+import { easing } from './util/easing';
 
-function scrollTo(targetPosition, easingStyle, cb) {
-  if (typeof targetPosition !== 'number') {
-    return Promise.reject(new Error('First argument must be a number'));
-  }
+export default function scrollTo(targetPosition, easingStyle) {
+  return new Promise(async (resolve, reject) => {
+    if (typeof targetPosition !== 'number') {
+      return reject(new Error('First argument must be a number'));
+    }
 
-  easingStyle = easingStyle || 'linear';
-  if (typeof easingStyle !== 'string') {
-    return Promise.reject(new Error('Second argument must be a string'));
-  }
+    easingStyle = easingStyle || 'linear';
+    if (typeof easingStyle !== 'string') {
+      return reject(new Error('Second argument must be a string'));
+    }
 
-  /* It is impossible to test a nested setTimeout in jsdom */
-  /* istanbul ignore next */
-  (async function() {
     const startingPosition = window.pageYOffset;
     const distance = targetPosition - startingPosition;
     const duration = await calculateScrollDuration(distance);
@@ -21,6 +20,7 @@ function scrollTo(targetPosition, easingStyle, cb) {
     const increment = 1000 / framerate;
     let ellapsedTime = 0;
     let easedTime;
+    let next;
 
     function animateScroll() {
       ellapsedTime += increment;
@@ -29,17 +29,12 @@ function scrollTo(targetPosition, easingStyle, cb) {
       window.scroll(0, next);
 
       if (ellapsedTime < duration) {
-        cb();
         setTimeout(animateScroll, increment);
       } else {
-        if (cb) {
-          cb();
-        }
+        resolve();
       }
     }
 
     animateScroll();
-  })();
+  });
 }
-
-export { scrollTo };
