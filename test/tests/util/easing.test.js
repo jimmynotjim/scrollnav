@@ -1,6 +1,6 @@
-require('./pennerEasing');
+require('../../fixtures/pennerEasing');
 
-import { easing } from '../../src/utils/easing';
+import { easing } from '../../../src/util/easing';
 
 describe('easing', () => {
   const VAL_1 = 1;

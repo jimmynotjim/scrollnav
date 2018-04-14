@@ -1,7 +1,7 @@
 import jestDomCustomMatchers from '@jarmee/jest-dom-custom-matchers';
-import createNav from '../../src/utils/createNav';
-import { html as content } from '../fixtures/sectionMarkup';
-import { onlyH2Data, allData } from '../fixtures/sectionData';
+import createNav from '../../../src/util/createNav';
+import { html as content } from '../../fixtures/sectionMarkup';
+import { onlyH2Data, allData } from '../../fixtures/sectionData';
 
 expect.extend(jestDomCustomMatchers);
 const testDoc = document.createElement('body');

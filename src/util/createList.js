@@ -15,7 +15,7 @@ export default function createList(data, prefix, isSubList = false) {
             }
           </li>`
       )
-      .join()}
+      .join('')}
   `;
 
   const list = `

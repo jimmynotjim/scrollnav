@@ -1,5 +1,5 @@
-import collectSubSections from '../../src/utils/collectSubSections';
-import { html } from '../fixtures/sectionMarkup.js';
+import collectSubSections from '../../../src/util/collectSubSections';
+import { html } from '../../fixtures/sectionMarkup.js';
 
 describe('collectSubSections', () => {
   document.body.innerHTML = html;

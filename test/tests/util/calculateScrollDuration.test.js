@@ -1,4 +1,4 @@
-import calculateScrollDuration from '../../src/utils/calculateScrollDuration.js';
+import calculateScrollDuration from '../../../src/util/calculateScrollDuration.js';
 const MIN_DURATION = 250;
 const MAX_DURATION = 1200;
 describe('calculateScrollDuration', () => {

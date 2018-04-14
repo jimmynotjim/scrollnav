@@ -1,4 +1,4 @@
-import calculateEasedTimes from '../../src/utils/calculateEasedTimes';
+import calculateEasedTimes from '../../../src/util/calculateEasedTimes';
 
 describe('calculateEasedTimes', () => {
   it('should return a linear array', () => {

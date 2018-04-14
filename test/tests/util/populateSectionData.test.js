@@ -1,6 +1,6 @@
-import { populateSectionData } from '../../src/utils/populateSectionData';
-import { html } from '../fixtures/sectionMarkup';
-import { onlyH2Data, allData } from '../fixtures/sectionData';
+import { populateSectionData } from '../../../src/util/populateSectionData';
+import { html } from '../../fixtures/sectionMarkup';
+import { onlyH2Data, allData } from '../../fixtures/sectionData';
 
 describe('populateSectionData', () => {
   document.body.innerHTML = html;

@@ -1,5 +1,5 @@
-import calculateScrollDuration from './utils/calculateScrollDuration';
-import calculateEasedTimes from './utils/calculateEasedTimes';
+import calculateScrollDuration from './util/calculateScrollDuration';
+import calculateEasedTimes from './util/calculateEasedTimes';
 
 function scrollTo(targetPosition, easingStyle, cb) {
   if (typeof targetPosition !== 'number') {

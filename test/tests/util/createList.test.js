@@ -1,6 +1,6 @@
 import jestDomCustomMatchers from '@jarmee/jest-dom-custom-matchers';
-import createList from '../../src/utils/createList';
-import { onlyH2Data, allData } from '../fixtures/sectionData';
+import createList from '../../../src/util/createList';
+import { onlyH2Data, allData } from '../../fixtures/sectionData';
 
 expect.extend(jestDomCustomMatchers);
 const testContainer = document.createElement('div');
