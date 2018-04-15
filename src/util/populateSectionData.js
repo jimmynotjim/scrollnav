@@ -2,7 +2,7 @@ import getOrSetID from './getOrSetID';
 import getYPosition from './getYPosition';
 import collectSubSections from './collectSubSections';
 
-function populateSectionData(sections, prefix, showSubItems) {
+export default function populateSectionData(sections, prefix, showSubItems) {
   const sectionData = [];
   prefix = prefix + '__';
 
@@ -24,5 +24,3 @@ function populateSectionData(sections, prefix, showSubItems) {
   });
   return sectionData;
 }
-
-export { populateSectionData };

@@ -6,8 +6,22 @@
  * Licensed under the MIT license.
  */
 
-const scrollNav = {};
+import populateSectionData from './util/populateSectionData';
+import createNav from './util/createNav';
+import setupClickHandlers from './setupClickHandlers';
+import setupScrollHandler from './setupScrollHandler';
 
-scrollNav.foo = 'foo';
+const scrollNav = {
+  init(content, cb) {
+    const allSections = content.querySelectorAll('h2');
+    const data = populateSectionData(allSections, 'scroll-nav');
+    const nav = createNav(data, 'scroll-nav', content);
 
-console.log(scrollNav.foo);
+    setupClickHandlers(nav.querySelectorAll('a'), data);
+    setupScrollHandler(data, nav);
+
+    if (cb) return cb();
+  }
+};
+
+export default scrollNav;

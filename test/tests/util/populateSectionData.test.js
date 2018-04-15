@@ -1,4 +1,4 @@
-import { populateSectionData } from '../../../src/util/populateSectionData';
+import populateSectionData from '../../../src/util/populateSectionData';
 import { html } from '../../fixtures/sectionMarkup';
 import { onlyH2Data, allData } from '../../fixtures/sectionData';
 
