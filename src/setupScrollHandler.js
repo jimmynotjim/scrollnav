@@ -1,24 +1,17 @@
+import getActiveSection from './util/getActiveSection';
 import updateActiveNavItem from './util/updateActiveNavItem';
 
 /* istanbul ignore next */
 export default function setupScrollHandler(data, nav) {
   function scrollHandler() {
-    let activeSection;
     const top = window.scrollY || window.pageYOffset || document.body.scrollTop;
     const boundryTop = top + 80;
     const boundryBottom = boundryTop + window.innerHeight / 3;
-
-    data.forEach(section => {
-      if (section.offsetTop > boundryBottom) {
-        if (!activeSection && section.offsetTop < boundryTop) {
-          activeSection = section;
-        }
-      } else {
-        activeSection = section;
-      }
-    });
+    const activeSection = getActiveSection(data, boundryTop, boundryBottom);
 
     updateActiveNavItem(activeSection, nav);
+
+    return activeSection;
   }
 
   window.addEventListener('scroll', scrollHandler);
