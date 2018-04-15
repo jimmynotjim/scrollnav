@@ -1,10 +1,9 @@
 import setupClickHandlers from '../../src/setupClickHandlers';
 import { onlyH2Data } from '../fixtures/sectionData';
-import { html as sectionMarkup } from '../fixtures/sectionMarkup';
 import { html as navMarkup } from '../fixtures/navMarkup';
 import simulateEvent from '../util/simulateEvent';
 
-describe('clickHandler', () => {
+describe('setupClickHandlers', () => {
   document.body.innerHTML = navMarkup;
 
   it('should trigger a callback after click', async () => {
