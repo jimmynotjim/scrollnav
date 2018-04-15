@@ -23,6 +23,7 @@ describe('createList', () => {
     expect(items.length).toBe(3);
     expect(items[0]).toBeHTMLElement('li');
     expect(items[0]).toHaveClass('scroll-nav__item');
+    expect(items[0]).toHaveAttribute('data-sn-section', 'first-heading');
   });
 
   it(`should include a link with the correct class name, href,
@@ -65,6 +66,7 @@ describe('createList', () => {
     expect(subItems.length).toBe(1);
     expect(subItems[0]).toBeHTMLElement('li');
     expect(subItems[0]).toHaveClass('scroll-nav__sub-item');
+    expect(subItems[0]).toHaveAttribute('data-sn-section', 'second-heading__1');
   });
 
   it(`should include a link with the correct class name, href,

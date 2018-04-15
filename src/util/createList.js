@@ -6,7 +6,7 @@ export default function createList(data, prefix, isSubList = false) {
     ${data
       .map(
         item =>
-          `<li class="${baseClass}item">
+          `<li class="${baseClass}item" data-sn-section="${item.id}">
             <a class="${baseClass}link" href="#${item.id}">${item.text}</a>
             ${
               item.subSections && item.subSections.length
