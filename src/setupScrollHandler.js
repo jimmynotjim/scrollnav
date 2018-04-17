@@ -14,4 +14,6 @@ export default function setupScrollHandler(data, nav) {
   }
 
   window.addEventListener('scroll', scrollHandler);
+
+  return scrollHandler;
 }

@@ -15,4 +15,6 @@ export default function setupClickHandlers(links, data, cb) {
   links.forEach(link => {
     link.addEventListener('click', clickHandler);
   });
+
+  return clickHandler;
 }
