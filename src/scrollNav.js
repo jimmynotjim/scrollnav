@@ -31,7 +31,8 @@ function isElement(element) {
 
 function init(elem, options) {
   const defaults = {
-    sections: 'h2'
+    sections: 'h2',
+    insertTarget: elem
   };
   const settings = extend(defaults, options);
 
@@ -66,7 +67,7 @@ function init(elem, options) {
   }
 
   const data = populateSectionData(sectionsDom, 'scroll-nav', settings);
-  const nav = createNav(data, 'scroll-nav', elem);
+  const nav = createNav(data, 'scroll-nav', settings);
 
   clickHandler = setupClickHandlers(nav.querySelectorAll('a'), data);
   scrollHandler = setupScrollHandler(data, nav);
