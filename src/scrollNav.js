@@ -17,9 +17,21 @@ import teardownScrollHandler from './teardownScrollHandler';
 let clickHandler;
 let scrollHandler;
 
+function isElement(element) {
+  return element instanceof Element;
+}
+
 function init(elem, options) {
   const defaults = {};
   const settings = extend(defaults, options);
+
+  if (!isElement(elem)) {
+    if (settings.debug) {
+      console.error(`Build failed, "${elem}" is not an HTML Element`);
+    }
+    return;
+  }
+
   const allSections = elem.querySelectorAll('h2');
   const data = populateSectionData(allSections, 'scroll-nav');
   const nav = createNav(data, 'scroll-nav', elem);

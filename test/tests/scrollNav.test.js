@@ -10,6 +10,62 @@ describe('scrollNav', () => {
       document.body.innerHTML = sectionMarkup;
     });
 
+    it(`should not create a nav element if the first argument is a string`, () => {
+      const content = 'content';
+
+      scrollNav.init(content);
+
+      const nav = document.querySelector('nav');
+
+      expect(nav).toBe(null);
+    });
+
+    it(`should not create a nav element if the first argument is an function`, () => {
+      const content = function() {
+        return;
+      };
+
+      scrollNav.init(content);
+
+      const nav = document.querySelector('nav');
+
+      expect(nav).toBe(null);
+    });
+
+    it(`should not create a nav element if the first argument is an Object`, () => {
+      const content = new Object();
+
+      scrollNav.init(content);
+
+      const nav = document.querySelector('nav');
+
+      expect(nav).toBe(null);
+    });
+
+    it(`should log an error if the first argument is not an HTML Element and
+      the debug option is true`, () => {
+      console.error = jest.fn();
+      const content = 'content';
+
+      scrollNav.init(content, { debug: true });
+
+      const nav = document.querySelector('nav');
+
+      expect(console.error).toHaveBeenCalled();
+    });
+
+    it(`should not log an error if the first argument is an HTML Element and
+      the debug option is true`, () => {
+      console.error = jest.fn();
+      const content = document.querySelector('.test-content');
+
+      scrollNav.init(content, { debug: true });
+
+      const nav = document.querySelector('nav');
+
+      expect(console.error).not.toHaveBeenCalled();
+    });
+
     it('should create a nav element with the correct class name', () => {
       const content = document.querySelector('.test-content');
 
