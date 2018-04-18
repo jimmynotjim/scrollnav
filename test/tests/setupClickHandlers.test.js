@@ -1,20 +1,33 @@
 import setupClickHandlers from '../../src/setupClickHandlers';
-import { onlyH2Data } from '../fixtures/sectionData';
-import { html as navMarkup } from '../fixtures/navMarkup';
+import { onlyH2Data, allData } from '../fixtures/sectionData';
+import { onlyH2Nav, allNav } from '../fixtures/navMarkup';
 import simulateEvent from '../util/simulateEvent';
 
 describe('setupClickHandlers', () => {
-  document.body.innerHTML = navMarkup;
-
   it('should trigger a callback after click', async () => {
     expect.assertions(1);
 
     const callback = jest.fn();
+    document.body.innerHTML = onlyH2Nav;
     const nav = document.querySelector('nav');
     const links = nav.querySelectorAll('a');
 
     setupClickHandlers(links, onlyH2Data, callback);
     await simulateEvent('click', links[0]);
+
+    expect(callback).toBeCalled();
+  });
+
+  it('should trigger a callback after a sub-section link is clicked', async () => {
+    expect.assertions(1);
+
+    const callback = jest.fn();
+    document.body.innerHTML = allNav;
+    const nav = document.querySelector('nav');
+    const links = nav.querySelectorAll('a');
+
+    setupClickHandlers(links, allData, callback);
+    await simulateEvent('click', links[2]);
 
     expect(callback).toBeCalled();
   });

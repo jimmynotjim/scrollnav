@@ -4,6 +4,23 @@ export default function getTargetYPosition(target, data) {
     id = id.substr(1);
   }
 
-  const section = data.filter(section => section.id === id)[0];
-  return section.offsetTop;
+  const targetSection = filterData(data, id);
+
+  return targetSection.offsetTop;
+}
+
+function filterData(data, id) {
+  let targetSection;
+
+  data.forEach(section => {
+    if (section.id === id) {
+      targetSection = section;
+    }
+
+    if (section.subSections && targetSection === undefined) {
+      targetSection = filterData(section.subSections, id);
+    }
+  });
+
+  return targetSection;
 }

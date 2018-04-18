@@ -1,9 +1,9 @@
 import getTargetYPosition from '../../../src/util/getTargetYPosition';
 import { onlyH2Data } from '../../fixtures/sectionData';
-import { html as navMarkup } from '../../fixtures/navMarkup';
+import { onlyH2Nav } from '../../fixtures/navMarkup';
 
 describe('getTargetYPosition', () => {
-  document.body.innerHTML = navMarkup;
+  document.body.innerHTML = onlyH2Nav;
   const nav = document.querySelector('nav');
   const links = nav.querySelectorAll('a');
 

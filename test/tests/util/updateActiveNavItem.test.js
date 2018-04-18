@@ -1,12 +1,12 @@
 import jestDomCustomMatchers from '@jarmee/jest-dom-custom-matchers';
 import updateActiveNavItem from '../../../src/util/updateActiveNavItem';
 import { onlyH2Data } from '../../fixtures/sectionData';
-import { html as navMarkup } from '../../fixtures/navMarkup';
+import { onlyH2Nav } from '../../fixtures/navMarkup';
 
 expect.extend(jestDomCustomMatchers);
 
 describe('updateActiveNavItem', () => {
-  document.body.innerHTML = navMarkup;
+  document.body.innerHTML = onlyH2Nav;
 
   it('should add the active class and data attribute', () => {
     const nav = document.querySelector('nav');

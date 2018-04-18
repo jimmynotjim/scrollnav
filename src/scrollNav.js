@@ -18,6 +18,7 @@ let clickHandler;
 let scrollHandler;
 
 // matches() polyfill
+/* istanbul ignore next */
 if (!Element.prototype.matches) {
   Element.prototype.matches =
     Element.prototype.msMatchesSelector ||

@@ -2,13 +2,13 @@ import jestDomCustomMatchers from '@jarmee/jest-dom-custom-matchers';
 import setupScrollHandler from '../../src/setupScrollHandler';
 import { onlyH2Data } from '../fixtures/sectionData';
 import { html as sectionMarkup } from '../fixtures/sectionMarkup';
-import { html as navMarkup } from '../fixtures/navMarkup';
+import { onlyH2Nav } from '../fixtures/navMarkup';
 import simulateEvent from '../util/simulateEvent';
 
 expect.extend(jestDomCustomMatchers);
 
 describe(setupScrollHandler, function() {
-  document.body.innerHTML = navMarkup + sectionMarkup;
+  document.body.innerHTML = onlyH2Nav + sectionMarkup;
   const nav = document.querySelector('nav');
 
   beforeAll(() => {

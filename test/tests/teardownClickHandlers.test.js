@@ -1,11 +1,11 @@
 import setupClickHandlers from '../../src/setupClickHandlers';
 import teardownClickHandlers from '../../src/teardownClickHandlers';
 import { onlyH2Data } from '../fixtures/sectionData';
-import { html as navMarkup } from '../fixtures/navMarkup';
+import { onlyH2Nav } from '../fixtures/navMarkup';
 import simulateEvent from '../util/simulateEvent';
 
 describe('teardownClickHandlers', () => {
-  document.body.innerHTML = navMarkup;
+  document.body.innerHTML = onlyH2Nav;
 
   it('should not trigger a callback after click', async () => {
     expect.assertions(1);
