@@ -30,7 +30,7 @@ function init(elem, options) {
   if (!isElement(elem)) {
     if (settings.debug) {
       console.error(`
-        scrollNav build failed, "${elem}" is not an HTML Element
+        scrollNav build failed, content argument "${elem}" is not an HTML Element
       `);
     }
     return;
@@ -43,6 +43,15 @@ function init(elem, options) {
       console.error(`
         scrollNav build failed, could not find any "${settings.sections}"
         elements inside of "${elem}"
+      `);
+    }
+    return;
+  }
+
+  if (settings.insertTarget && !isElement(settings.insertTarget)) {
+    if (settings.debug) {
+      console.error(`
+        scrollNav build failed, option.insertTarget "${elem}" is not an HTML Element
       `);
     }
     return;

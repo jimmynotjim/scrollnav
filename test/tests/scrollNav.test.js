@@ -11,7 +11,8 @@ describe('scrollNav', () => {
       document.body.innerHTML = sectionMarkup;
     });
 
-    it(`should not create a nav element if the first argument is a string`, () => {
+    it(`should not create a nav element if the first argument is not an
+      HTML Element`, () => {
       const content = 'content';
 
       scrollNav.init(content);
@@ -21,8 +22,9 @@ describe('scrollNav', () => {
       expect(nav).toBe(null);
     });
 
-    it(`should not create a nav element if the first argument is an function`, () => {
-      const content = function() {
+    it(`should not create a nav element if the first argument is not an
+      HTML Element`, () => {
+      const content = () => {
         return;
       };
 
@@ -33,7 +35,8 @@ describe('scrollNav', () => {
       expect(nav).toBe(null);
     });
 
-    it(`should not create a nav element if the first argument is an Object`, () => {
+    it(`should not create a nav element if the first argument is not an
+      HTML Element`, () => {
       const content = new Object();
 
       scrollNav.init(content);
@@ -98,6 +101,75 @@ describe('scrollNav', () => {
       const content = document.querySelector('.test-content');
 
       scrollNav.init(content, { debug: true });
+
+      const nav = document.querySelector('nav');
+
+      expect(console.error).not.toHaveBeenCalled();
+    });
+
+    it(`should not create a nav element if the insertTarget option is not an
+      HTML Element`, () => {
+      const content = document.querySelector('.test-content');
+      const insertTarget = 'insertTarget';
+
+      scrollNav.init(content, { insertTarget: insertTarget });
+
+      const nav = document.querySelector('nav');
+
+      expect(nav).toBe(null);
+    });
+
+    it(`should not create a nav element if the insertTarget option is not an
+      HTML Element`, () => {
+      const content = document.querySelector('.test-content');
+      const insertTarget = () => {
+        return;
+      };
+
+      scrollNav.init(content, { insertTarget: insertTarget });
+
+      const nav = document.querySelector('nav');
+
+      expect(nav).toBe(null);
+    });
+
+    it(`should not create a nav element if the insertTarget option is not an
+      HTML Element`, () => {
+      const content = document.querySelector('.test-content');
+      const insertTarget = new Object();
+
+      scrollNav.init(content, { insertTarget: insertTarget });
+
+      const nav = document.querySelector('nav');
+
+      expect(nav).toBe(null);
+    });
+
+    it(`should log an error if the insertTarget option is not an HTML Element
+      and the debug option is true`, () => {
+      console.error = jest.fn();
+      const content = document.querySelector('.test-content');
+      const insertTarget = 'insertTarget';
+
+      scrollNav.init(content, {
+        debug: true,
+        insertTarget: insertTarget
+      });
+
+      const nav = document.querySelector('nav');
+
+      expect(console.error).toHaveBeenCalled();
+    });
+
+    it(`should not log an error if the insertTarget option is an HTML Element
+      and the debug option is true`, () => {
+      console.error = jest.fn();
+      const content = document.querySelector('.test-content');
+
+      scrollNav.init(content, {
+        debug: true,
+        insertTarget: content
+      });
 
       const nav = document.querySelector('nav');
 
