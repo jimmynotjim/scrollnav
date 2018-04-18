@@ -1,6 +1,6 @@
 import getOrSetID from './getOrSetID';
 import getYPosition from './getYPosition';
-import collectSubSections from './collectSubSections';
+import nextUntil from './nextUntil';
 
 export default function populateSectionData(sections, prefix, showSubItems) {
   const sectionData = [];
@@ -10,8 +10,8 @@ export default function populateSectionData(sections, prefix, showSubItems) {
     let subSectionData;
     const id = getOrSetID(elem, prefix + (i + 1));
 
-    if (showSubItems && elem.tagName === 'H2') {
-      const subSectionDom = collectSubSections(elem);
+    if (showSubItems && elem.matches('h2')) {
+      const subSectionDom = nextUntil(elem, 'h2', 'h3');
       subSectionData = populateSectionData(subSectionDom, id, false);
     }
 
