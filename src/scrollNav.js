@@ -29,7 +29,9 @@ function init(elem, options) {
 
   if (!isElement(elem)) {
     if (settings.debug) {
-      console.error(`Build failed, "${elem}" is not an HTML Element`);
+      console.error(`
+        scrollNav build failed, "${elem}" is not an HTML Element
+      `);
     }
     return;
   }
@@ -39,8 +41,8 @@ function init(elem, options) {
   if (!allSections.length) {
     if (settings.debug) {
       console.error(`
-        Build failed, scrollNav could not find any "${settings.sections}'s"
-        inside of "${elem}"
+        scrollNav build failed, could not find any "${settings.sections}"
+        elements inside of "${elem}"
       `);
     }
     return;
