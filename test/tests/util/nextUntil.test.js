@@ -8,6 +8,7 @@ describe('nextUntil', () => {
 
   it('should return the subsections that belong to a section', () => {
     const data = nextUntil(sections[1], 'h2', 'h3');
+
     expect(data.length).toBe(1);
     expect(data).toEqual([subSections[0]]);
   });

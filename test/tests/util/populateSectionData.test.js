@@ -6,6 +6,9 @@ describe('populateSectionData', () => {
   document.body.innerHTML = html;
   const sections = document.querySelectorAll('h2');
   const subSections = document.querySelectorAll('h3');
+  const settings = {
+    sections: 'h2'
+  };
 
   beforeAll(() => {
     document.body.getBoundingClientRect = () => {
@@ -45,14 +48,15 @@ describe('populateSectionData', () => {
   });
 
   it('should find and add all h2 elements to the array', () => {
-    const data = populateSectionData(sections, 'scrollNav');
+    const data = populateSectionData(sections, 'scrollNav', settings);
 
     expect(data.length).toBe(3);
     expect(data).toEqual(onlyH2Data);
   });
 
   it('should find and add all h3 elements when showSubItems is enabled', () => {
-    const data = populateSectionData(sections, 'scrollNav', true);
+    settings.subSections = 'h3';
+    const data = populateSectionData(sections, 'scrollNav', settings);
     expect(data[1].subSections.length).toBe(1);
     expect(data[1].subSections).toEqual(allData[1].subSections);
   });

@@ -43,9 +43,9 @@ function init(elem, options) {
     return;
   }
 
-  const allSections = elem.querySelectorAll(settings.sections);
+  const sectionsDom = elem.querySelectorAll(settings.sections);
 
-  if (!allSections.length) {
+  if (!sectionsDom.length) {
     if (settings.debug) {
       console.error(`
         scrollNav build failed, could not find any "${settings.sections}"
@@ -64,7 +64,7 @@ function init(elem, options) {
     return;
   }
 
-  const data = populateSectionData(allSections, 'scroll-nav');
+  const data = populateSectionData(sectionsDom, 'scroll-nav', settings);
   const nav = createNav(data, 'scroll-nav', elem);
 
   clickHandler = setupClickHandlers(nav.querySelectorAll('a'), data);

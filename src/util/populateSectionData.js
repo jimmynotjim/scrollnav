@@ -2,25 +2,30 @@ import getOrSetID from './getOrSetID';
 import getYPosition from './getYPosition';
 import nextUntil from './nextUntil';
 
-export default function populateSectionData(sections, prefix, showSubItems) {
+export default function populateSectionData(sections, prefix, settings) {
   const sectionData = [];
   prefix = prefix + '__';
 
   sections.forEach((elem, i) => {
-    let subSectionData;
+    let subSectionData = [];
     const id = getOrSetID(elem, prefix + (i + 1));
 
-    if (showSubItems && elem.matches('h2')) {
-      const subSectionDom = nextUntil(elem, 'h2', 'h3');
-      subSectionData = populateSectionData(subSectionDom, id, false);
+    if (settings.subSections && elem.matches(settings.sections)) {
+      const subSectionDom = nextUntil(
+        elem,
+        settings.sections,
+        settings.subSections
+      );
+      subSectionData = populateSectionData(subSectionDom, id, settings);
     }
 
     sectionData.push({
       id: id,
       text: elem.innerText || elem.textContent,
       offsetTop: getYPosition(elem),
-      subSections: subSectionData || []
+      subSections: subSectionData
     });
   });
+
   return sectionData;
 }
