@@ -50,7 +50,7 @@ describe('scrollNav', () => {
 
       const callback = jest.fn();
       const content = document.querySelector('.test-content');
-      await scrollNav.init(content, callback);
+      await scrollNav.init(content, { onInit: callback });
 
       expect(callback).toBeCalled();
     });
@@ -77,7 +77,7 @@ describe('scrollNav', () => {
 
       const callback = jest.fn();
 
-      scrollNav.destroy(callback);
+      scrollNav.destroy({ onDestroy: callback });
 
       expect(callback).toBeCalled();
     });

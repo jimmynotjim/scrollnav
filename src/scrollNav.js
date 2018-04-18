@@ -6,6 +6,7 @@
  * Licensed under the MIT license.
  */
 
+import extend from './util/extend';
 import populateSectionData from './util/populateSectionData';
 import createNav from './util/createNav';
 import setupClickHandlers from './setupClickHandlers';
@@ -16,25 +17,29 @@ import teardownScrollHandler from './teardownScrollHandler';
 let clickHandler;
 let scrollHandler;
 
-function init(content, cb) {
-  const allSections = content.querySelectorAll('h2');
+function init(elem, options) {
+  const defaults = {};
+  const settings = extend(defaults, options);
+  const allSections = elem.querySelectorAll('h2');
   const data = populateSectionData(allSections, 'scroll-nav');
-  const nav = createNav(data, 'scroll-nav', content);
+  const nav = createNav(data, 'scroll-nav', elem);
 
   clickHandler = setupClickHandlers(nav.querySelectorAll('a'), data);
   scrollHandler = setupScrollHandler(data, nav);
 
-  if (cb) return cb();
+  if (settings.onInit) return settings.onInit();
 }
 
-function destroy(cb) {
+function destroy(options) {
+  const defaults = {};
+  const settings = extend(defaults, options);
   const nav = document.querySelector('.scroll-nav');
 
   teardownClickHandlers(nav, clickHandler);
   teardownScrollHandler(scrollHandler);
   nav.remove();
 
-  if (cb) return cb();
+  if (settings.onDestroy) return settings.onDestroy();
 }
 
 const scrollNav = {
