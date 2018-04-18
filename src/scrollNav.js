@@ -22,7 +22,9 @@ function isElement(element) {
 }
 
 function init(elem, options) {
-  const defaults = {};
+  const defaults = {
+    sections: 'h2'
+  };
   const settings = extend(defaults, options);
 
   if (!isElement(elem)) {
@@ -32,7 +34,18 @@ function init(elem, options) {
     return;
   }
 
-  const allSections = elem.querySelectorAll('h2');
+  const allSections = elem.querySelectorAll(settings.sections);
+
+  if (!allSections.length) {
+    if (settings.debug) {
+      console.error(`
+        Build failed, scrollNav could not find any "${settings.sections}'s"
+        inside of "${elem}"
+      `);
+    }
+    return;
+  }
+
   const data = populateSectionData(allSections, 'scroll-nav');
   const nav = createNav(data, 'scroll-nav', elem);
 

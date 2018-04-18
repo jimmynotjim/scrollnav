@@ -1,6 +1,7 @@
 import jestDomCustomMatchers from '@jarmee/jest-dom-custom-matchers';
 import scrollNav from '../../src/scrollNav';
 import { html as sectionMarkup } from '../fixtures/sectionMarkup';
+import { html as noSectionsMarkup } from '../fixtures/noSectionsMarkup';
 
 expect.extend(jestDomCustomMatchers);
 
@@ -56,6 +57,43 @@ describe('scrollNav', () => {
 
     it(`should not log an error if the first argument is an HTML Element and
       the debug option is true`, () => {
+      console.error = jest.fn();
+      const content = document.querySelector('.test-content');
+
+      scrollNav.init(content, { debug: true });
+
+      const nav = document.querySelector('nav');
+
+      expect(console.error).not.toHaveBeenCalled();
+    });
+
+    it(`should not create a nav element if there are no section elements
+      within the element argument`, () => {
+      document.body.innerHTML = noSectionsMarkup;
+      const content = document.querySelector('.test-content');
+
+      scrollNav.init(content);
+
+      const nav = document.querySelector('nav');
+
+      expect(nav).toBe(null);
+    });
+
+    it(`should log an error if there are no section elements within the element
+      argument and the debug option is true`, () => {
+      console.error = jest.fn();
+      document.body.innerHTML = noSectionsMarkup;
+      const content = document.querySelector('.test-content');
+
+      scrollNav.init(content, { debug: true });
+
+      const nav = document.querySelector('nav');
+
+      expect(console.error).toHaveBeenCalled();
+    });
+
+    it(`should not log an error if there are section elements within the element
+      argument and the debug option is true`, () => {
       console.error = jest.fn();
       const content = document.querySelector('.test-content');
 
