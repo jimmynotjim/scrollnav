@@ -25,31 +25,4 @@ describe('createNav', () => {
     expect(list[0]).toBeHTMLElement('ol');
     expect(list[0].children.length).toBe(3);
   });
-
-  it('should inject the nav element before the content container', () => {
-    document.body.innerHTML = content;
-    const testContent = document.querySelector('.test-content');
-    options.insertTarget = testContent;
-
-    createNav(onlyH2Data, 'scroll-nav', options);
-
-    const nav = document.querySelector('nav');
-
-    expect(nav.nextElementSibling).toBeHTMLElement('div');
-    expect(nav.nextElementSibling).toHaveClass('test-content');
-  });
-
-  it('should inject the nav element before specified element', () => {
-    const testTarget = '<h1 class="test-target">Test target</h1>';
-    document.body.innerHTML = testTarget + content;
-    const insertTarget = document.querySelector('.test-target');
-    options.insertTarget = insertTarget;
-
-    createNav(onlyH2Data, 'scroll-nav', options);
-
-    const nav = document.querySelector('nav');
-
-    expect(nav.nextElementSibling).toBeHTMLElement('h1');
-    expect(nav.nextElementSibling).toHaveClass('test-target');
-  });
 });

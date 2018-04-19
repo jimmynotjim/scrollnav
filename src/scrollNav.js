@@ -9,6 +9,7 @@
 import extend from './util/extend';
 import populateSectionData from './util/populateSectionData';
 import createNav from './util/createNav';
+import insertNav from './util/insertNav';
 import setupClickHandlers from './setupClickHandlers';
 import setupScrollHandler from './setupScrollHandler';
 import teardownClickHandlers from './teardownClickHandlers';
@@ -32,7 +33,8 @@ function isElement(element) {
 function init(elem, options) {
   const defaults = {
     sections: 'h2',
-    insertTarget: elem
+    insertTarget: elem,
+    insertLocation: 'before'
   };
   const settings = extend(defaults, options);
 
@@ -69,6 +71,7 @@ function init(elem, options) {
   const data = populateSectionData(sectionsDom, 'scroll-nav', settings);
   const nav = createNav(data, 'scroll-nav', settings);
 
+  insertNav(nav, settings);
   clickHandler = setupClickHandlers(nav.querySelectorAll('a'), data);
   scrollHandler = setupScrollHandler(data, nav);
 
