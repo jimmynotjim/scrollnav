@@ -37,11 +37,32 @@ function init(elem, options) {
     insertLocation: 'before'
   };
   const settings = extend(defaults, options);
+  const locationOptions = ['append', 'prepend', 'after', 'before'];
 
   if (!isElement(elem)) {
     if (settings.debug) {
       console.error(`
         scrollNav build failed, content argument "${elem}" is not an HTML Element
+      `);
+    }
+    return;
+  }
+
+  if (settings.insertTarget && !isElement(settings.insertTarget)) {
+    if (settings.debug) {
+      console.error(`
+        scrollNav build failed, options.insertTarget "${elem}" is not an HTML Element
+      `);
+    }
+    return;
+  }
+
+  if (locationOptions.indexOf(settings.insertLocation) < 1) {
+    if (settings.debug) {
+      console.error(`
+        scrollNav build failed, options.insertLocation "${
+          settings.insertLocation
+        }" is not a valid option
       `);
     }
     return;
@@ -54,15 +75,6 @@ function init(elem, options) {
       console.error(`
         scrollNav build failed, could not find any "${settings.sections}"
         elements inside of "${elem}"
-      `);
-    }
-    return;
-  }
-
-  if (settings.insertTarget && !isElement(settings.insertTarget)) {
-    if (settings.debug) {
-      console.error(`
-        scrollNav build failed, option.insertTarget "${elem}" is not an HTML Element
       `);
     }
     return;
