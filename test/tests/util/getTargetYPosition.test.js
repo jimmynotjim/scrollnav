@@ -3,12 +3,14 @@ import { onlyH2Data } from '../../fixtures/sectionData';
 import { onlyH2Nav } from '../../fixtures/navMarkup';
 
 describe('getTargetYPosition', () => {
-  document.body.innerHTML = onlyH2Nav;
-  const nav = document.querySelector('nav');
-  const links = nav.querySelectorAll('a');
+  let nav;
+  let links;
 
   beforeAll(() => {
     window.innerHeight = 1000;
+    document.body.innerHTML = onlyH2Nav;
+    nav = document.querySelector('nav');
+    links = nav.querySelectorAll('a');
   });
 
   it('should return the Y position of the target element', () => {

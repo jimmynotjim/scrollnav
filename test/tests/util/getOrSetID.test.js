@@ -2,6 +2,7 @@ import getOrSetID from '../../../src/util/getOrSetID';
 
 describe('getOrSetID', () => {
   let elem;
+
   beforeEach(() => {
     elem = {};
   });
