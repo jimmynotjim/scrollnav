@@ -48,7 +48,7 @@ describe('populateSectionData', () => {
   });
 
   it('should find and add all h2 elements to the array', () => {
-    const data = populateSectionData(sections, 'scrollNav', settings);
+    const data = populateSectionData(sections, settings);
 
     expect(data.length).toBe(3);
     expect(data).toEqual(onlyH2Data);
@@ -56,7 +56,7 @@ describe('populateSectionData', () => {
 
   it('should find and add all h3 elements when showSubItems is enabled', () => {
     settings.subSections = 'h3';
-    const data = populateSectionData(sections, 'scrollNav', settings);
+    const data = populateSectionData(sections, settings);
     expect(data[1].subSections.length).toBe(1);
     expect(data[1].subSections).toEqual(allData[1].subSections);
   });

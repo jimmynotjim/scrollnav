@@ -85,7 +85,7 @@ function init(elem, options) {
     return;
   }
 
-  this.data = populateSectionData(sectionsDom, 'scroll-nav', this.settings);
+  this.data = populateSectionData(sectionsDom, this.settings);
   const nav = createNav(this.data, 'scroll-nav', this.settings);
 
   insertNav(nav, this.settings);

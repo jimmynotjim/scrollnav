@@ -2,9 +2,9 @@ import getOrSetID from './getOrSetID';
 import getYPosition from './getYPosition';
 import nextUntil from './nextUntil';
 
-export default function populateSectionData(sections, prefix, settings) {
+export default function populateSectionData(sections, settings, prefix) {
   const sectionData = [];
-  prefix = prefix + '__';
+  prefix = (prefix || 'scroll-nav') + '__';
 
   sections.forEach((elem, i) => {
     let subSectionData = [];
@@ -16,7 +16,7 @@ export default function populateSectionData(sections, prefix, settings) {
         settings.sections,
         settings.subSections
       );
-      subSectionData = populateSectionData(subSectionDom, id, settings);
+      subSectionData = populateSectionData(subSectionDom, settings, id);
     }
 
     sectionData.push({
