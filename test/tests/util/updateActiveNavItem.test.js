@@ -6,12 +6,16 @@ import { onlyH2Nav } from '../../fixtures/navMarkup';
 expect.extend(jestDomCustomMatchers);
 
 describe('updateActiveNavItem', () => {
-  document.body.innerHTML = onlyH2Nav;
+  let nav;
+  let items;
+
+  beforeAll(() => {
+    document.body.innerHTML = onlyH2Nav;
+    nav = document.querySelector('nav');
+    items = nav.querySelectorAll('li');
+  });
 
   it('should add the active class and data attribute', () => {
-    const nav = document.querySelector('nav');
-    const items = nav.querySelectorAll('li');
-
     updateActiveNavItem(onlyH2Data[0], nav);
 
     expect(items[0]).toHaveClass('scroll-nav__item--active');
@@ -19,9 +23,6 @@ describe('updateActiveNavItem', () => {
   });
 
   it('should remove the active class and data attribute', () => {
-    const nav = document.querySelector('nav');
-    const items = nav.querySelectorAll('li');
-
     items[0].classList.add('scroll-nav__item--active');
     items[0].setAttribute('data-sn-active', true);
 
@@ -32,9 +33,6 @@ describe('updateActiveNavItem', () => {
   });
 
   it('should switch the active class and data attributes', () => {
-    const nav = document.querySelector('nav');
-    const items = nav.querySelectorAll('li');
-
     items[0].classList.add('scroll-nav__item--active');
     items[0].setAttribute('data-sn-active', true);
 
@@ -47,9 +45,6 @@ describe('updateActiveNavItem', () => {
   });
 
   it('should do nothing if there is no previous active item', () => {
-    const nav = document.querySelector('nav');
-    const items = nav.querySelectorAll('li');
-
     updateActiveNavItem(undefined, nav);
 
     expect(items[0]).not.toHaveClass('scroll-nav__item--active');
@@ -60,9 +55,6 @@ describe('updateActiveNavItem', () => {
 
   it(`should do nothing if the previous active item is the same as the current
     active item`, () => {
-    const nav = document.querySelector('nav');
-    const items = nav.querySelectorAll('li');
-
     items[0].classList.add('scroll-nav__item--active');
     items[0].setAttribute('data-sn-active', true);
 
