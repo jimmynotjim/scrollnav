@@ -12,11 +12,13 @@ import createNav from './util/createNav';
 import insertNav from './util/insertNav';
 import setupClickHandlers from './setupClickHandlers';
 import setupScrollHandler from './setupScrollHandler';
+import setupResizeHandler from './setupResizeHandler';
 import teardownClickHandlers from './teardownClickHandlers';
 import teardownScrollHandler from './teardownScrollHandler';
 
 let clickHandler;
 let scrollHandler;
+let resizeHandler;
 
 // matches() polyfill
 /* istanbul ignore next */
@@ -80,12 +82,13 @@ function init(elem, options) {
     return;
   }
 
-  const data = populateSectionData(sectionsDom, 'scroll-nav', settings);
-  const nav = createNav(data, 'scroll-nav', settings);
+  this.data = populateSectionData(sectionsDom, 'scroll-nav', settings);
+  const nav = createNav(this.data, 'scroll-nav', settings);
 
   insertNav(nav, settings);
-  clickHandler = setupClickHandlers(nav.querySelectorAll('a'), data);
-  scrollHandler = setupScrollHandler(data, nav);
+  clickHandler = setupClickHandlers(nav.querySelectorAll('a'), this.data);
+  scrollHandler = setupScrollHandler(this.data, nav);
+  resizeHandler = setupResizeHandler(this);
 
   if (settings.onInit) return settings.onInit();
 }
