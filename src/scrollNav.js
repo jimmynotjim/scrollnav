@@ -90,7 +90,7 @@ function init(elem, options) {
 
   insertNav(this);
   clickHandler = setupClickHandlers(this);
-  scrollHandler = setupScrollHandler(this.data, this.nav);
+  scrollHandler = setupScrollHandler(this);
   resizeHandler = setupResizeHandler(this);
 
   if (this.settings.debug) insertVisualDebugger();

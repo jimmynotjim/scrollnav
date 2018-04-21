@@ -8,36 +8,33 @@ import simulateEvent from '../util/simulateEvent';
 expect.extend(jestDomCustomMatchers);
 
 describe(setupScrollHandler, function() {
-  document.body.innerHTML = onlyH2Nav + sectionMarkup;
-  const nav = document.querySelector('nav');
+  let nav;
+  let items;
+  let scrollNav;
 
-  beforeAll(() => {
-    document.body.getBoundingClientRect = () => {
-      return {
-        bottom: 1000,
-        height: 1000,
-        left: 0,
-        right: 800,
-        top: 0,
-        width: 800
-      };
+  beforeEach(() => {
+    document.body.innerHTML = onlyH2Nav + sectionMarkup;
+    nav = document.querySelector('nav');
+    items = nav.querySelectorAll('li');
+    scrollNav = {
+      data: onlyH2Data,
+      nav: nav
     };
   });
 
   it('should not activate any items on load', () => {
     window.innerHeight = 28;
-    const items = nav.querySelectorAll('li');
 
-    setupScrollHandler(onlyH2Data, nav);
+    setupScrollHandler(scrollNav);
+
     expect(items[0]).not.toHaveClass('scroll-nav__item--active');
     expect(items[0]).not.toHaveAttribute('data-sn-active');
   });
 
   it('should activate the first item if it is within the boundry', () => {
     window.innerHeight = 340;
-    const items = nav.querySelectorAll('li');
 
-    setupScrollHandler(onlyH2Data, nav);
+    setupScrollHandler(scrollNav);
     simulateEvent('scroll', window);
 
     expect(items[0]).toHaveClass('scroll-nav__item--active');
@@ -46,9 +43,8 @@ describe(setupScrollHandler, function() {
 
   it('should activate the second item and not the first if they are both within the boundry', () => {
     window.innerHeight = 625;
-    const items = nav.querySelectorAll('li');
 
-    setupScrollHandler(onlyH2Data, nav);
+    setupScrollHandler(scrollNav);
     simulateEvent('scroll', window);
 
     expect(items[0]).not.toHaveClass('scroll-nav__item--active');

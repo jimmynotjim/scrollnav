@@ -9,26 +9,23 @@ import simulateEvent from '../util/simulateEvent';
 expect.extend(jestDomCustomMatchers);
 
 describe(setupScrollHandler, function() {
-  document.body.innerHTML = onlyH2Nav + sectionMarkup;
-  const nav = document.querySelector('nav');
+  let nav;
+  let items;
+  let scrollNav;
 
-  beforeAll(() => {
-    document.body.getBoundingClientRect = () => {
-      return {
-        bottom: 1000,
-        height: 1000,
-        left: 0,
-        right: 800,
-        top: 0,
-        width: 800
-      };
+  beforeEach(() => {
+    document.body.innerHTML = onlyH2Nav + sectionMarkup;
+    nav = document.querySelector('nav');
+    items = nav.querySelectorAll('li');
+    scrollNav = {
+      data: onlyH2Data,
+      nav: nav
     };
   });
 
   it('should not activate the first item if it is within the boundry', () => {
     window.innerHeight = 340;
-    const items = nav.querySelectorAll('li');
-    const scrollHandler = setupScrollHandler(onlyH2Data, nav);
+    const scrollHandler = setupScrollHandler(scrollNav);
 
     teardownScrollHandler(scrollHandler);
     simulateEvent('scroll', window);
@@ -38,9 +35,8 @@ describe(setupScrollHandler, function() {
   });
 
   it('should not activate the second item and or the first if they are both within the boundry', () => {
-    window.innerHeight = 500;
-    const items = nav.querySelectorAll('li');
-    const scrollHandler = setupScrollHandler(onlyH2Data, nav);
+    window.innerHeight = 625;
+    const scrollHandler = setupScrollHandler(scrollNav);
 
     teardownScrollHandler(scrollHandler);
     simulateEvent('scroll', window);
