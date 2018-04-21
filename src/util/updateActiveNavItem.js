@@ -10,16 +10,16 @@ export default function updateActiveNavItem(activeSection, nav) {
     return;
   }
 
-  const currentActive = nav.querySelector(
+  const newActive = nav.querySelector(
     '[data-sn-section=' + activeSection.id + ']'
   );
 
-  if (currentActive && currentActive !== previousActive) {
+  if (newActive && newActive !== previousActive) {
     if (previousActive) {
       previousActive.classList.remove('scroll-nav__item--active');
       previousActive.removeAttribute('data-sn-active');
     }
-    currentActive.classList.add('scroll-nav__item--active');
-    currentActive.setAttribute('data-sn-active', true);
+    newActive.classList.add('scroll-nav__item--active');
+    newActive.setAttribute('data-sn-active', true);
   }
 }
