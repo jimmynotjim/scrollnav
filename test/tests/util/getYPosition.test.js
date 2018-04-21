@@ -1,11 +1,11 @@
 import getYPosition from '../../../src/util/getYPosition';
 
-const WINDOW_TOP = 0;
-const PARENT_TOP = 140;
-const ELEM_TOP = 260;
-
 describe('getYPosition', () => {
   let elem;
+  const WINDOW_TOP = 0;
+  const PARENT_TOP = 140;
+  const ELEM_TOP = 260;
+
   beforeAll(() => {
     document.body.getBoundingClientRect = () => {
       return {
@@ -18,6 +18,7 @@ describe('getYPosition', () => {
       };
     };
   });
+
   beforeEach(() => {
     elem = {};
     elem.getBoundingClientRect = () => {
@@ -68,6 +69,7 @@ describe('getYPosition', () => {
         };
       }
     };
+
     expect(getYPosition(elem, parentElem)).toEqual(ELEM_TOP - PARENT_TOP);
   });
 });
