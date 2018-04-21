@@ -86,15 +86,15 @@ function init(elem, options) {
   }
 
   this.data = populateSectionData(sectionsDom, this.settings);
-  const nav = createNav(this.data);
+  this.nav = createNav(this.data);
 
-  insertNav(nav, this.settings);
+  insertNav(this.nav, this.settings);
   clickHandler = setupClickHandlers(
-    nav.querySelectorAll('a'),
+    this.nav.querySelectorAll('a'),
     this.data,
     this.settings.onScroll
   );
-  scrollHandler = setupScrollHandler(this.data, nav);
+  scrollHandler = setupScrollHandler(this.data, this.nav);
   resizeHandler = setupResizeHandler(this);
 
   if (this.settings.debug) insertVisualDebugger();
@@ -103,12 +103,11 @@ function init(elem, options) {
 
 function destroy(options) {
   this.settings = extend(this.settings, options);
-  const nav = document.querySelector('.scroll-nav');
 
-  teardownClickHandlers(nav, clickHandler);
+  teardownClickHandlers(this.nav, clickHandler);
   teardownScrollHandler(scrollHandler);
   teardownResizeHandler(resizeHandler);
-  nav.remove();
+  this.nav.remove();
 
   if (this.settings.onDestroy) return this.settings.onDestroy();
 }
