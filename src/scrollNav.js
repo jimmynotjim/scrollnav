@@ -88,7 +88,11 @@ function init(elem, options) {
   const nav = createNav(this.data, 'scroll-nav', this.settings);
 
   insertNav(nav, this.settings);
-  clickHandler = setupClickHandlers(nav.querySelectorAll('a'), this.data);
+  clickHandler = setupClickHandlers(
+    nav.querySelectorAll('a'),
+    this.data,
+    this.settings.onScroll
+  );
   scrollHandler = setupScrollHandler(this.data, nav);
   resizeHandler = setupResizeHandler(this);
 
