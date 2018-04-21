@@ -365,7 +365,7 @@ describe('scrollNav', () => {
         };
       });
 
-      scrollNav.updatePositions(callback);
+      scrollNav.updatePositions({ onUpdatePositions: callback });
 
       expect(callback).toBeCalled();
     });

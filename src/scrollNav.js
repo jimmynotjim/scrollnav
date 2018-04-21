@@ -107,10 +107,11 @@ function destroy(options) {
   if (this.settings.onDestroy) return this.settings.onDestroy();
 }
 
-function updatePositions(callback) {
+function updatePositions(options) {
+  this.settings = extend(this.settings, options);
   this.data = updatePositionData(this.data);
 
-  if (callback) return callback();
+  if (this.settings.onUpdatePositions) return this.settings.onUpdatePositions();
 }
 
 const scrollNav = {
