@@ -6,8 +6,8 @@ export default function insertVisualDebugger() {
     'style',
     `
       position: fixed;
-      top: 80px;
-      height: 33%;
+      top: 8.33333%;
+      height: 33.33333%;
       background: red;
       width: 100%;
       opacity: .25;

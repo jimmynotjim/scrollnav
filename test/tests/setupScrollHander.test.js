@@ -45,7 +45,7 @@ describe(setupScrollHandler, function() {
   });
 
   it('should activate the second item and not the first if they are both within the boundry', () => {
-    window.innerHeight = 500;
+    window.innerHeight = 625;
     const items = nav.querySelectorAll('li');
 
     setupScrollHandler(onlyH2Data, nav);

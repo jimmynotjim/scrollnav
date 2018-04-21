@@ -5,9 +5,9 @@ export default function setupClickHandlers(links, data, cb) {
   function clickHandler(event) {
     event.preventDefault();
 
-    const activeOffset = window.innerHeight / 3 / 2 + 80;
+    const activeArea = window.innerHeight / 3;
     const targetYPosition = getTargetYPosition(event.target, data);
-    const scrollYTarget = targetYPosition - activeOffset;
+    const scrollYTarget = targetYPosition - activeArea;
 
     scrollTo(scrollYTarget, 'easeOutQuad').then(cb());
   }
