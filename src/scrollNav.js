@@ -11,6 +11,7 @@ import populateSectionData from './util/populateSectionData';
 import createNav from './util/createNav';
 import insertNav from './util/insertNav';
 import updatePositionData from './util/updatePositionData';
+import insertVisualDebugger from './util/insertVisualDebugger';
 import setupClickHandlers from './setupClickHandlers';
 import setupScrollHandler from './setupScrollHandler';
 import setupResizeHandler from './setupResizeHandler';
@@ -96,6 +97,7 @@ function init(elem, options) {
   scrollHandler = setupScrollHandler(this.data, nav);
   resizeHandler = setupResizeHandler(this);
 
+  if (this.settings.debug) insertVisualDebugger();
   if (this.settings.onInit) return this.settings.onInit();
 }
 
