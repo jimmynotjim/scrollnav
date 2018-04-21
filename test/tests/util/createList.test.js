@@ -7,7 +7,7 @@ const testContainer = document.createElement('div');
 
 describe('createList', () => {
   it('should create an ol element with the correct class name', () => {
-    testContainer.innerHTML = createList(onlyH2Data, 'scroll-nav');
+    testContainer.innerHTML = createList(onlyH2Data);
     const list = testContainer.children[0];
 
     expect(list).toBeHTMLElement('ol');
@@ -16,7 +16,7 @@ describe('createList', () => {
 
   it(`should include three li elements with the correct class name
       and data attributes`, () => {
-    testContainer.innerHTML = createList(onlyH2Data, 'scroll-nav');
+    testContainer.innerHTML = createList(onlyH2Data);
     const list = testContainer.children[0];
     const items = list.children;
 
@@ -28,7 +28,7 @@ describe('createList', () => {
 
   it(`should include a link with the correct class name, href,
       and inner text`, () => {
-    testContainer.innerHTML = createList(onlyH2Data, 'scroll-nav');
+    testContainer.innerHTML = createList(onlyH2Data);
     const list = testContainer.children[0];
     const links = list.querySelectorAll('a');
 
@@ -39,7 +39,7 @@ describe('createList', () => {
   });
 
   it('should not include child ol element if the data does not exist', () => {
-    testContainer.innerHTML = createList(onlyH2Data, 'scroll-nav');
+    testContainer.innerHTML = createList(onlyH2Data);
     const list = testContainer.children[0];
     const subSections = list.querySelectorAll('ol');
 
@@ -47,7 +47,7 @@ describe('createList', () => {
   });
 
   it('should include child ol element with the correct class name', () => {
-    testContainer.innerHTML = createList(allData, 'scroll-nav');
+    testContainer.innerHTML = createList(allData);
     const list = testContainer.children[0];
     const subSections = list.querySelectorAll('ol');
 
@@ -58,7 +58,7 @@ describe('createList', () => {
 
   it(`should include an item in the child ol element with the correct class
       name`, () => {
-    testContainer.innerHTML = createList(allData, 'scroll-nav');
+    testContainer.innerHTML = createList(allData);
     const list = testContainer.children[0];
     const subSections = list.querySelectorAll('ol');
     const subItems = subSections[0].querySelectorAll('li');
@@ -71,7 +71,7 @@ describe('createList', () => {
 
   it(`should include a link with the correct class name, href,
       and inner text`, () => {
-    testContainer.innerHTML = createList(allData, 'scroll-nav');
+    testContainer.innerHTML = createList(allData);
     const list = testContainer.children[0];
     const subSections = list.querySelectorAll('ol');
     const subLinks = subSections[0].querySelectorAll('a');

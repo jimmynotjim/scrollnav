@@ -231,7 +231,6 @@ describe('scrollNav', () => {
       const nav = document.querySelector('nav');
 
       expect(nav).toHaveClass('scroll-nav');
-      expect(nav).toHaveAttribute('role', 'navigation');
     });
 
     it('should inject the nav element before the content container', () => {

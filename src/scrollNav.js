@@ -86,7 +86,7 @@ function init(elem, options) {
   }
 
   this.data = populateSectionData(sectionsDom, this.settings);
-  const nav = createNav(this.data, 'scroll-nav', this.settings);
+  const nav = createNav(this.data);
 
   insertNav(nav, this.settings);
   clickHandler = setupClickHandlers(

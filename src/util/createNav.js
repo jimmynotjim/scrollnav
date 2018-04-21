@@ -1,11 +1,9 @@
 import createList from './createList';
 
-export default function createNav(data, prefix) {
+export default function createNav(data) {
   const nav = document.createElement('nav');
-  nav.className = prefix;
-  nav.setAttribute('role', 'navigation');
-
-  nav.innerHTML = createList(data, prefix);
+  nav.className = 'scroll-nav';
+  nav.innerHTML = createList(data);
 
   return nav;
 }

@@ -1,6 +1,6 @@
-export default function createList(data, prefix, isSubList = false) {
+export default function createList(data, isSubList = false) {
   const suffix = isSubList ? '__sub-' : '__';
-  const baseClass = prefix + suffix;
+  const baseClass = 'scroll-nav' + suffix;
 
   const itemsMarkup = `
     ${data
@@ -10,7 +10,7 @@ export default function createList(data, prefix, isSubList = false) {
             <a class="${baseClass}link" href="#${item.id}">${item.text}</a>
             ${
               item.subSections && item.subSections.length
-                ? `${createList(item.subSections, prefix, true)}`
+                ? `${createList(item.subSections, true)}`
                 : ''
             }
           </li>`

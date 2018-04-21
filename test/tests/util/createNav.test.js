@@ -10,15 +10,14 @@ describe('createNav', () => {
     insertTarget: null
   };
   it('should create a nav element with the correct class name', () => {
-    const nav = createNav(onlyH2Data, 'scroll-nav', options);
+    const nav = createNav(onlyH2Data, options);
 
     expect(nav).toBeHTMLElement('nav');
     expect(nav).toHaveClass('scroll-nav');
-    expect(nav).toHaveAttribute('role', 'navigation');
   });
 
   it('should contain the list of links', () => {
-    const nav = createNav(onlyH2Data, 'scroll-nav', options);
+    const nav = createNav(onlyH2Data, options);
     const list = nav.children;
 
     expect(list.length).toBe(1);
