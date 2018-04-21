@@ -10,6 +10,7 @@ import extend from './util/extend';
 import populateSectionData from './util/populateSectionData';
 import createNav from './util/createNav';
 import insertNav from './util/insertNav';
+import updatePositionData from './util/updatePositionData';
 import setupClickHandlers from './setupClickHandlers';
 import setupScrollHandler from './setupScrollHandler';
 import setupResizeHandler from './setupResizeHandler';
@@ -107,9 +108,14 @@ function destroy(options) {
   if (settings.onDestroy) return settings.onDestroy();
 }
 
+function updatePositions() {
+  this.data = updatePositionData(this.data);
+}
+
 const scrollNav = {
   init: init,
-  destroy: destroy
+  destroy: destroy,
+  updatePositions: updatePositions
 };
 
 export default scrollNav;

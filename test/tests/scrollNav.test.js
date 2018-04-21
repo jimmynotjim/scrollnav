@@ -295,4 +295,56 @@ describe('scrollNav', () => {
       expect(callback).toBeCalled();
     });
   });
+
+  describe('updatePositions method', () => {
+    let sections;
+    beforeEach(() => {
+      document.body.innerHTML = sectionMarkup;
+      const content = document.querySelector('.test-content');
+      sections = document.querySelectorAll('h2');
+      document.body.getBoundingClientRect = () => {
+        return {
+          bottom: 1000,
+          height: 1000,
+          left: 0,
+          right: 800,
+          top: 0,
+          width: 800
+        };
+      };
+      sections.forEach((elem, i) => {
+        elem.getBoundingClientRect = () => {
+          return {
+            bottom: 800,
+            height: 100,
+            left: 0,
+            right: 800,
+            top: 100 * (i + 1),
+            width: 800
+          };
+        };
+      });
+
+      scrollNav.init(content);
+    });
+
+    it('should update the position data', () => {
+      sections.forEach((elem, i) => {
+        elem.getBoundingClientRect = () => {
+          return {
+            bottom: 800,
+            height: 100,
+            left: 0,
+            right: 800,
+            top: 200 * (i + 1),
+            width: 800
+          };
+        };
+      });
+
+      scrollNav.updatePositions();
+
+      expect(scrollNav.data[0].offsetTop).toEqual(200);
+    });
+  });
 });
