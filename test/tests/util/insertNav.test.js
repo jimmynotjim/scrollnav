@@ -5,17 +5,27 @@ import { html as content } from '../../fixtures/sectionMarkup';
 expect.extend(jestDomCustomMatchers);
 
 describe('insertNav', () => {
+  let testContent;
+  let newDiv;
+  let scrollNav;
+
   beforeEach(() => {
     document.body.innerHTML = content;
+    testContent = document.querySelector('.test-content');
+    newDiv = document.createElement('div');
+    newDiv.className = 'new-div';
+    scrollNav = {
+      settings: { insertTarget: testContent },
+      nav: newDiv
+    };
   });
 
   it('should append the new element as the last child of the existing element', () => {
-    const testContent = document.querySelector('.test-content');
     const lastChild = testContent.lastChild;
-    const newDiv = document.createElement('div');
-    newDiv.className = 'new-div';
 
-    insertNav(newDiv, { insertTarget: testContent, insertLocation: 'append' });
+    scrollNav.settings.insertLocation = 'append';
+    insertNav(scrollNav);
+
     const foundDiv = document.querySelector('.new-div');
 
     expect(foundDiv.parentNode).toEqual(testContent);
@@ -24,12 +34,11 @@ describe('insertNav', () => {
   });
 
   it('should prepend the new element as the first child of the existing element', () => {
-    const testContent = document.querySelector('.test-content');
     const firstChild = testContent.firstChild;
-    const newDiv = document.createElement('div');
-    newDiv.className = 'new-div';
 
-    insertNav(newDiv, { insertTarget: testContent, insertLocation: 'prepend' });
+    scrollNav.settings.insertLocation = 'prepend';
+    insertNav(scrollNav);
+
     const foundDiv = document.querySelector('.new-div');
 
     expect(foundDiv.parentNode).toEqual(testContent);
@@ -38,12 +47,9 @@ describe('insertNav', () => {
   });
 
   it('should insert the new element as the previous sibling of the existing element', () => {
-    const testContent = document.querySelector('.test-content');
-    const firstChild = testContent.firstChild;
-    const newDiv = document.createElement('div');
-    newDiv.className = 'new-div';
+    scrollNav.settings.insertLocation = 'before';
+    insertNav(scrollNav);
 
-    insertNav(newDiv, { insertTarget: testContent, insertLocation: 'before' });
     const foundDiv = document.querySelector('.new-div');
 
     expect(foundDiv.parentNode).toEqual(document.body);
@@ -51,12 +57,9 @@ describe('insertNav', () => {
   });
 
   it('should insert the new element as the next sibling of the existing element', () => {
-    const testContent = document.querySelector('.test-content');
-    const firstChild = testContent.firstChild;
-    const newDiv = document.createElement('div');
-    newDiv.className = 'new-div';
+    scrollNav.settings.insertLocation = 'after';
+    insertNav(scrollNav);
 
-    insertNav(newDiv, { insertTarget: testContent, insertLocation: 'after' });
     const foundDiv = document.querySelector('.new-div');
 
     expect(foundDiv.parentNode).toEqual(document.body);

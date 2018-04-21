@@ -88,7 +88,7 @@ function init(elem, options) {
   this.data = populateSectionData(sectionsDom, this.settings);
   this.nav = createNav(this.data);
 
-  insertNav(this.nav, this.settings);
+  insertNav(this);
   clickHandler = setupClickHandlers(
     this.nav.querySelectorAll('a'),
     this.data,
