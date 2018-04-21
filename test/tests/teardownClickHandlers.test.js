@@ -5,14 +5,19 @@ import { onlyH2Nav } from '../fixtures/navMarkup';
 import simulateEvent from '../util/simulateEvent';
 
 describe('teardownClickHandlers', () => {
-  document.body.innerHTML = onlyH2Nav;
+  let nav;
+  let links;
 
-  it('should not trigger a callback after click', async () => {
+  beforeAll(() => {
+    document.body.innerHTML = onlyH2Nav;
+    nav = document.querySelector('nav');
+    links = nav.querySelectorAll('a');
+  });
+
+  it('should not trigger a callback after click', () => {
     expect.assertions(1);
 
     const callback = jest.fn();
-    const nav = document.querySelector('nav');
-    const links = nav.querySelectorAll('a');
     const scrollNav = {
       data: onlyH2Data,
       nav: nav,
@@ -23,7 +28,7 @@ describe('teardownClickHandlers', () => {
     const clickHandler = setupClickHandlers(scrollNav);
 
     teardownClickHandlers(nav, clickHandler);
-    await simulateEvent('click', links[0]);
+    simulateEvent('click', links[0]);
 
     expect(callback).not.toBeCalled();
   });
