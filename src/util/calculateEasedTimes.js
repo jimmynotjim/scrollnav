@@ -12,6 +12,5 @@ export default function calculateEasedTimes(easingStyle, duration, framerate) {
     easedTimes.push({ time: ellapsedTime, easedTime: easedTime });
   }
 
-  //console.log(easedTimes);
   return easedTimes;
 }
