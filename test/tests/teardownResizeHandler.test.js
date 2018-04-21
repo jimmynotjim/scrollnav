@@ -3,26 +3,20 @@ import teardownResizeHandler from '../../src/teardownResizeHandler';
 import { html } from '../fixtures/sectionMarkup';
 import { onlyH2Data } from '../fixtures/sectionData';
 import simulateEvent from '../util/simulateEvent';
-const scrollNav = {
-  data: onlyH2Data
-};
 
 describe('setupResizeHandler', () => {
-  document.body.innerHTML = html;
-  const sections = document.querySelectorAll('h2');
-  const resizeHandler = setupResizeHandler(scrollNav);
+  let sections;
+  let scrollNav;
+  let resizeHandler;
 
   beforeAll(() => {
-    document.body.getBoundingClientRect = () => {
-      return {
-        bottom: 1000,
-        height: 1000,
-        left: 0,
-        right: 800,
-        top: 0,
-        width: 800
-      };
+    document.body.innerHTML = html;
+    sections = document.querySelectorAll('h2');
+    scrollNav = {
+      data: onlyH2Data
     };
+    resizeHandler = setupResizeHandler(scrollNav);
+
     sections.forEach((elem, i) => {
       elem.getBoundingClientRect = () => {
         return {
@@ -40,7 +34,7 @@ describe('setupResizeHandler', () => {
   it('should not update the data when the window is resized', () => {
     teardownResizeHandler(resizeHandler);
 
-    const target = simulateEvent('resize', window);
+    simulateEvent('resize', window);
     const data = scrollNav.data;
 
     expect(data[0].offsetTop).toEqual(100);
