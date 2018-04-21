@@ -2,26 +2,20 @@ import setupResizeHandler from '../../src/setupResizeHandler';
 import { html } from '../fixtures/sectionMarkup';
 import { onlyH2Data } from '../fixtures/sectionData';
 import simulateEvent from '../util/simulateEvent';
-const scrollNav = {
-  data: onlyH2Data
-};
 
 describe('setupResizeHandler', () => {
-  document.body.innerHTML = html;
-  const sections = document.querySelectorAll('h2');
-  setupResizeHandler(scrollNav);
+  let sections;
+  let scrollNav;
 
   beforeAll(() => {
-    document.body.getBoundingClientRect = () => {
-      return {
-        bottom: 1000,
-        height: 1000,
-        left: 0,
-        right: 800,
-        top: 0,
-        width: 800
-      };
+    document.body.innerHTML = html;
+    sections = document.querySelectorAll('h2');
+    scrollNav = {
+      data: onlyH2Data
     };
+
+    setupResizeHandler(scrollNav);
+
     sections.forEach((elem, i) => {
       elem.getBoundingClientRect = () => {
         return {
@@ -36,8 +30,9 @@ describe('setupResizeHandler', () => {
     });
   });
 
-  it('should update the data when the window is resized', async () => {
-    const target = await simulateEvent('resize', window);
+  it('should update the data when the window is resized', () => {
+    simulateEvent('resize', window);
+
     const data = scrollNav.data;
 
     expect(data[0].offsetTop).toEqual(200);
