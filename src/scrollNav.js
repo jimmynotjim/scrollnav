@@ -15,6 +15,7 @@ import setupScrollHandler from './setupScrollHandler';
 import setupResizeHandler from './setupResizeHandler';
 import teardownClickHandlers from './teardownClickHandlers';
 import teardownScrollHandler from './teardownScrollHandler';
+import teardownResizeHandler from './teardownResizeHandler';
 
 let clickHandler;
 let scrollHandler;
@@ -100,6 +101,7 @@ function destroy(options) {
 
   teardownClickHandlers(nav, clickHandler);
   teardownScrollHandler(scrollHandler);
+  teardownResizeHandler(resizeHandler);
   nav.remove();
 
   if (settings.onDestroy) return settings.onDestroy();
