@@ -3,9 +3,14 @@ import createList from '../../../src/util/createList';
 import { onlyH2Data, allData } from '../../fixtures/sectionData';
 
 expect.extend(jestDomCustomMatchers);
-const testContainer = document.createElement('div');
 
 describe('createList', () => {
+  let testContainer;
+
+  beforeAll(() => {
+    testContainer = document.createElement('div');
+  });
+
   it('should create an ol element with the correct class name', () => {
     testContainer.innerHTML = createList(onlyH2Data);
     const list = testContainer.children[0];
@@ -17,8 +22,7 @@ describe('createList', () => {
   it(`should include three li elements with the correct class name
       and data attributes`, () => {
     testContainer.innerHTML = createList(onlyH2Data);
-    const list = testContainer.children[0];
-    const items = list.children;
+    const items = testContainer.children[0].children;
 
     expect(items.length).toBe(3);
     expect(items[0]).toBeHTMLElement('li');
@@ -29,8 +33,7 @@ describe('createList', () => {
   it(`should include a link with the correct class name, href,
       and inner text`, () => {
     testContainer.innerHTML = createList(onlyH2Data);
-    const list = testContainer.children[0];
-    const links = list.querySelectorAll('a');
+    const links = testContainer.querySelectorAll('a');
 
     expect(links.length).toBe(3);
     expect(links[0]).toHaveClass('scroll-nav__link');
@@ -40,16 +43,14 @@ describe('createList', () => {
 
   it('should not include child ol element if the data does not exist', () => {
     testContainer.innerHTML = createList(onlyH2Data);
-    const list = testContainer.children[0];
-    const subSections = list.querySelectorAll('ol');
+    const subSections = testContainer.querySelectorAll('ol ol');
 
     expect(subSections.length).toBe(0);
   });
 
   it('should include child ol element with the correct class name', () => {
     testContainer.innerHTML = createList(allData);
-    const list = testContainer.children[0];
-    const subSections = list.querySelectorAll('ol');
+    const subSections = testContainer.querySelectorAll('ol ol');
 
     expect(subSections.length).toBe(1);
     expect(subSections[0]).toBeHTMLElement('ol');
@@ -59,9 +60,7 @@ describe('createList', () => {
   it(`should include an item in the child ol element with the correct class
       name`, () => {
     testContainer.innerHTML = createList(allData);
-    const list = testContainer.children[0];
-    const subSections = list.querySelectorAll('ol');
-    const subItems = subSections[0].querySelectorAll('li');
+    const subItems = testContainer.querySelectorAll('ol ol li');
 
     expect(subItems.length).toBe(1);
     expect(subItems[0]).toBeHTMLElement('li');
@@ -72,9 +71,7 @@ describe('createList', () => {
   it(`should include a link with the correct class name, href,
       and inner text`, () => {
     testContainer.innerHTML = createList(allData);
-    const list = testContainer.children[0];
-    const subSections = list.querySelectorAll('ol');
-    const subLinks = subSections[0].querySelectorAll('a');
+    const subLinks = testContainer.querySelectorAll('ol ol a');
 
     expect(subLinks.length).toBe(1);
     expect(subLinks[0]).toBeHTMLElement('a');
