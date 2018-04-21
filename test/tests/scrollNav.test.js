@@ -285,7 +285,7 @@ describe('scrollNav', () => {
       expect(nav).toBe(null);
     });
 
-    it('should return a callback after the the nav is removed', async () => {
+    it('should return a callback after the the nav is removed', () => {
       expect.assertions(1);
 
       const callback = jest.fn();
@@ -345,6 +345,29 @@ describe('scrollNav', () => {
       scrollNav.updatePositions();
 
       expect(scrollNav.data[0].offsetTop).toEqual(200);
+    });
+
+    it('should return a callback after the positions are updated', () => {
+      expect.assertions(1);
+
+      const callback = jest.fn();
+
+      sections.forEach((elem, i) => {
+        elem.getBoundingClientRect = () => {
+          return {
+            bottom: 800,
+            height: 100,
+            left: 0,
+            right: 800,
+            top: 200 * (i + 1),
+            width: 800
+          };
+        };
+      });
+
+      scrollNav.updatePositions(callback);
+
+      expect(callback).toBeCalled();
     });
   });
 });

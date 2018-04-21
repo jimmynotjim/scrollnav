@@ -40,11 +40,11 @@ function init(elem, options) {
     insertTarget: elem,
     insertLocation: 'before'
   };
-  const settings = extend(defaults, options);
+  this.settings = extend(defaults, options);
   const locationOptions = ['append', 'prepend', 'after', 'before'];
 
   if (!isElement(elem)) {
-    if (settings.debug) {
+    if (this.settings.debug) {
       console.error(`
         scrollNav build failed, content argument "${elem}" is not an HTML Element
       `);
@@ -52,8 +52,8 @@ function init(elem, options) {
     return;
   }
 
-  if (settings.insertTarget && !isElement(settings.insertTarget)) {
-    if (settings.debug) {
+  if (this.settings.insertTarget && !isElement(this.settings.insertTarget)) {
+    if (this.settings.debug) {
       console.error(`
         scrollNav build failed, options.insertTarget "${elem}" is not an HTML Element
       `);
@@ -61,43 +61,42 @@ function init(elem, options) {
     return;
   }
 
-  if (locationOptions.indexOf(settings.insertLocation) < 1) {
-    if (settings.debug) {
+  if (locationOptions.indexOf(this.settings.insertLocation) < 1) {
+    if (this.settings.debug) {
       console.error(`
         scrollNav build failed, options.insertLocation "${
-          settings.insertLocation
+          this.settings.insertLocation
         }" is not a valid option
       `);
     }
     return;
   }
 
-  const sectionsDom = elem.querySelectorAll(settings.sections);
+  const sectionsDom = elem.querySelectorAll(this.settings.sections);
 
   if (!sectionsDom.length) {
-    if (settings.debug) {
+    if (this.settings.debug) {
       console.error(`
-        scrollNav build failed, could not find any "${settings.sections}"
+        scrollNav build failed, could not find any "${this.settings.sections}"
         elements inside of "${elem}"
       `);
     }
     return;
   }
 
-  this.data = populateSectionData(sectionsDom, 'scroll-nav', settings);
-  const nav = createNav(this.data, 'scroll-nav', settings);
+  this.data = populateSectionData(sectionsDom, 'scroll-nav', this.settings);
+  const nav = createNav(this.data, 'scroll-nav', this.settings);
 
-  insertNav(nav, settings);
+  insertNav(nav, this.settings);
   clickHandler = setupClickHandlers(nav.querySelectorAll('a'), this.data);
   scrollHandler = setupScrollHandler(this.data, nav);
   resizeHandler = setupResizeHandler(this);
 
-  if (settings.onInit) return settings.onInit();
+  if (this.settings.onInit) return this.settings.onInit();
 }
 
 function destroy(options) {
-  const defaults = {};
-  const settings = extend(defaults, options);
+  this.settings = extend(this.settings, options);
   const nav = document.querySelector('.scroll-nav');
 
   teardownClickHandlers(nav, clickHandler);
@@ -105,11 +104,13 @@ function destroy(options) {
   teardownResizeHandler(resizeHandler);
   nav.remove();
 
-  if (settings.onDestroy) return settings.onDestroy();
+  if (this.settings.onDestroy) return this.settings.onDestroy();
 }
 
-function updatePositions() {
+function updatePositions(callback) {
   this.data = updatePositionData(this.data);
+
+  if (callback) return callback();
 }
 
 const scrollNav = {
