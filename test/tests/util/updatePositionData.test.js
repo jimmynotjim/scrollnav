@@ -3,22 +3,15 @@ import { html } from '../../fixtures/sectionMarkup';
 import { onlyH2Data, allData } from '../../fixtures/sectionData';
 
 describe('updatePositionData', () => {
-  document.body.innerHTML = html;
-  const sections = document.querySelectorAll('h2');
-  const subSections = document.querySelectorAll('h3');
-  subSections[0].id = 'second-heading__1';
+  let sections;
+  let subSections;
 
   beforeAll(() => {
-    document.body.getBoundingClientRect = () => {
-      return {
-        bottom: 1000,
-        height: 1000,
-        left: 0,
-        right: 800,
-        top: 0,
-        width: 800
-      };
-    };
+    document.body.innerHTML = html;
+    sections = document.querySelectorAll('h2');
+    subSections = document.querySelectorAll('h3');
+    subSections[0].id = 'second-heading__1';
+
     sections.forEach((elem, i) => {
       elem.getBoundingClientRect = () => {
         return {
