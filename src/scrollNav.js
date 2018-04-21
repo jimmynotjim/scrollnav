@@ -89,11 +89,7 @@ function init(elem, options) {
   this.nav = createNav(this.data);
 
   insertNav(this);
-  clickHandler = setupClickHandlers(
-    this.nav.querySelectorAll('a'),
-    this.data,
-    this.settings.onScroll
-  );
+  clickHandler = setupClickHandlers(this);
   scrollHandler = setupScrollHandler(this.data, this.nav);
   resizeHandler = setupResizeHandler(this);
 

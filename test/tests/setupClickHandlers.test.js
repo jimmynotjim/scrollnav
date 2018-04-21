@@ -11,8 +11,15 @@ describe('setupClickHandlers', () => {
     document.body.innerHTML = onlyH2Nav;
     const nav = document.querySelector('nav');
     const links = nav.querySelectorAll('a');
+    const scrollNav = {
+      data: onlyH2Data,
+      nav: document.querySelector('nav'),
+      settings: {
+        onScroll: callback
+      }
+    };
 
-    setupClickHandlers(links, onlyH2Data, callback);
+    setupClickHandlers(scrollNav);
     await simulateEvent('click', links[0]);
 
     expect(callback).toBeCalled();
@@ -25,8 +32,15 @@ describe('setupClickHandlers', () => {
     document.body.innerHTML = allNav;
     const nav = document.querySelector('nav');
     const links = nav.querySelectorAll('a');
+    const scrollNav = {
+      data: allData,
+      nav: nav,
+      settings: {
+        onScroll: callback
+      }
+    };
 
-    setupClickHandlers(links, allData, callback);
+    setupClickHandlers(scrollNav);
     await simulateEvent('click', links[2]);
 
     expect(callback).toBeCalled();

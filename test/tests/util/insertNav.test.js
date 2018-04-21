@@ -1,8 +1,5 @@
-import jestDomCustomMatchers from '@jarmee/jest-dom-custom-matchers';
 import insertNav from '../../../src/util/insertNav';
 import { html as content } from '../../fixtures/sectionMarkup';
-
-expect.extend(jestDomCustomMatchers);
 
 describe('insertNav', () => {
   let testContent;

@@ -13,7 +13,14 @@ describe('teardownClickHandlers', () => {
     const callback = jest.fn();
     const nav = document.querySelector('nav');
     const links = nav.querySelectorAll('a');
-    const clickHandler = setupClickHandlers(links, onlyH2Data, callback);
+    const scrollNav = {
+      data: onlyH2Data,
+      nav: nav,
+      settings: {
+        onScroll: callback
+      }
+    };
+    const clickHandler = setupClickHandlers(scrollNav);
 
     teardownClickHandlers(nav, clickHandler);
     await simulateEvent('click', links[0]);
