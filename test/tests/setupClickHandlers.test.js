@@ -4,7 +4,7 @@ import { onlyH2Nav, allNav } from '../fixtures/navMarkup';
 import simulateEvent from '../util/simulateEvent';
 
 describe('setupClickHandlers', () => {
-  it('should trigger a callback after scrolling to a section', async () => {
+  it('should trigger a callback after scrolling to a section', () => {
     expect.assertions(1);
 
     const callback = jest.fn();
@@ -20,12 +20,12 @@ describe('setupClickHandlers', () => {
     };
 
     setupClickHandlers(scrollNav);
-    await simulateEvent('click', links[0]);
+    simulateEvent('click', links[0]);
 
     expect(callback).toBeCalled();
   });
 
-  it('should trigger a callback after scrolling to a sub-section', async () => {
+  it('should trigger a callback after scrolling to a sub-section', () => {
     expect.assertions(1);
 
     const callback = jest.fn();
@@ -41,7 +41,7 @@ describe('setupClickHandlers', () => {
     };
 
     setupClickHandlers(scrollNav);
-    await simulateEvent('click', links[2]);
+    simulateEvent('click', links[2]);
 
     expect(callback).toBeCalled();
   });
