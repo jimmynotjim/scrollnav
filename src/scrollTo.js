@@ -32,7 +32,7 @@ export default function scrollTo(targetPosition, easingStyle) {
       if (ellapsedTime < duration) {
         setTimeout(animateScroll, increment);
       } else {
-        resolve();
+        resolve(window.pageYOffset);
       }
     }
 
