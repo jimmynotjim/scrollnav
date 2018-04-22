@@ -4,7 +4,26 @@ import { onlyH2Nav, allNav } from '../fixtures/navMarkup';
 import simulateEvent from '../util/simulateEvent';
 
 describe('setupClickHandlers', () => {
-  it('should trigger a callback after scrolling to a section', () => {
+  it('should not trigger a callback after scrolling to a section', async () => {
+    expect.assertions(1);
+
+    const callback = jest.fn();
+    document.body.innerHTML = onlyH2Nav;
+    const nav = document.querySelector('nav');
+    const links = nav.querySelectorAll('a');
+    const scrollNav = {
+      data: onlyH2Data,
+      nav: document.querySelector('nav'),
+      settings: {}
+    };
+
+    setupClickHandlers(scrollNav);
+    await simulateEvent('click', links[0]);
+
+    expect(callback).not.toBeCalled();
+  });
+
+  xit('should trigger a callback after scrolling to a section', async () => {
     expect.assertions(1);
 
     const callback = jest.fn();
@@ -20,12 +39,12 @@ describe('setupClickHandlers', () => {
     };
 
     setupClickHandlers(scrollNav);
-    simulateEvent('click', links[0]);
+    await simulateEvent('click', links[0]);
 
     expect(callback).toBeCalled();
   });
 
-  it('should trigger a callback after scrolling to a sub-section', () => {
+  xit('should trigger a callback after scrolling to a sub-section', async () => {
     expect.assertions(1);
 
     const callback = jest.fn();
@@ -41,7 +60,7 @@ describe('setupClickHandlers', () => {
     };
 
     setupClickHandlers(scrollNav);
-    simulateEvent('click', links[2]);
+    await simulateEvent('click', links[2]);
 
     expect(callback).toBeCalled();
   });

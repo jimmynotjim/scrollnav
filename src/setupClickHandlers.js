@@ -5,11 +5,16 @@ export default function setupClickHandlers(scrollNav) {
   function clickHandler(event) {
     event.preventDefault();
 
-    const activeArea = window.innerHeight / 3;
+    const activeArea = window.innerHeight * 0.39;
     const targetYPosition = getTargetYPosition(event.target, scrollNav.data);
     const scrollYTarget = targetYPosition - activeArea;
 
-    scrollTo(scrollYTarget, 'easeOutQuad').then(scrollNav.settings.onScroll());
+    /* istanbul ignore next */
+    return scrollTo(scrollYTarget, 'easeOutQuad').then(() => {
+      if (scrollNav.settings.onScroll) {
+        scrollNav.settings.onScroll();
+      }
+    });
   }
 
   const links = scrollNav.nav.querySelectorAll('a');

@@ -6,11 +6,12 @@ export default function insertVisualDebugger() {
     'style',
     `
       position: fixed;
-      top: 8.33333%;
-      height: 33.33333%;
-      background: red;
+      top: 40%;
+      height: 0px;
+      border-bottom:5px solid red;
+      border-top: 5px solid blue;
       width: 100%;
-      opacity: .25;
+      opacity: .5;
       pointer-events: none;
     `
   );

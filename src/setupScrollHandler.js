@@ -4,8 +4,8 @@ import updateActiveNavItem from './util/updateActiveNavItem';
 export default function setupScrollHandler(scrollNav) {
   function scrollHandler() {
     const top = window.scrollY || window.pageYOffset || document.body.scrollTop;
-    const boundryTop = top + 10;
-    const boundryBottom = window.innerHeight / 3;
+    const boundryTop = top;
+    const boundryBottom = top + window.innerHeight * 0.4;
     const activeSection = getActiveSection(
       scrollNav.data,
       boundryTop,

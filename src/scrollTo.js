@@ -4,7 +4,7 @@ import { easing } from './util/easing';
 
 /* istanbul ignore next */
 export default function scrollTo(targetPosition, easingStyle) {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     if (typeof targetPosition !== 'number') {
       return reject(new Error('First argument must be a number'));
     }
@@ -16,7 +16,7 @@ export default function scrollTo(targetPosition, easingStyle) {
 
     const startingPosition = window.pageYOffset;
     const distance = targetPosition - startingPosition;
-    const duration = await calculateScrollDuration(distance);
+    const duration = calculateScrollDuration(distance);
     const framerate = 50;
     const increment = 1000 / framerate;
     let ellapsedTime = 0;
