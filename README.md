@@ -1,329 +1,340 @@
-[![build status](https://secure.travis-ci.org/jimmynotjim/scrollNav.png?branch=master)](http://travis-ci.org/jimmynotjim/scrollNav)
+# [scrollnav.js][1]
 
-# [jQuery scrollNav][1]
+[![npm](https://img.shields.io/npm/v/scrollnav.svg)](https://www.npmjs.com/package/scrollnav)
+[![Build Status](https://travis-ci.org/jimmynotjim/scrollnav.svg?branch=master)](https://travis-ci.org/jimmynotjim/scrollnav)
+[![Codecov](https://img.shields.io/codecov/c/github/codecov/example-python.svg)](https://codecov.io/gh/jimmynotjim/scrollnav)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/jimmynotjim/scrollnav/blob/master/LICENSE-MIT)
 
-A jQuery plugin for building a scrolling side navigation menu
+## Introduction
+
+scrollnav.js is a small (2.4kb gzipped), dependency free JavaScript plugin
+for auto generating single page navigation with active highlighting. Useful
+for creating a Table of Contents for a large document (think Wikis),
+navigation for a single page website, or anything else you might think of.
+
+scrollnav works by scanning a block of content for section landmarks
+(typically heading elements) and generating a list of links from those
+landmarks. It then tracks the scroll location of the document and highlights
+the appropriate link. While previous versions injected wrappers within the
+content, the current version (ver 3) takes a much lighter approach, only
+changing the DOM as necessary. Visit the live demo at [scrollnav.com][1]
+to see for yourself.
+
+## Browser Compatibility
+
+scrollnav supports all browsers that are ES5-compliant (IE8 and below are
+not supported).
 
 ## Getting Started
 
-Install with Bower `bower install scrollNav`
+The compiled, production ready plugin is available in the `dist` directory.
+Please don't use the `src` directory unless you plan to build the entire
+source.
 
-Or download the latest [zipped package][zip].
+### Install
 
-[zip]: https://github.com/jimmynotjim/scrollNav/archive/master.zip
+#### Download
 
-
-## Examples
-
-Check out [the homepage][1] to see it in action.
-
-## Features
-
-* ### Simple to set up
-
-	With a single file import and function in your footer, you're on your way.
-
-* ### Fully customizable
-
-	Very little styling is set for you, but the bit that is, is fully customizable.
-
-* ### Tiny Size
-
-	At 1.5kb min'd and GZip'd, scrollNav is pretty unintrusive. If you use Ajax to import and initiate it, it's almost negligable.
-
-## Requirements
-* For in-page usage [jQuery 1.8.0][16] or greater and [html5shiv][17]/[modernizr][18] for older browser support
-* To build source [Node 0.10.0][19] or greater and [grunt 0.4.0][20] or greater
-
-## Usage
-
-### Import
-
-Start by importing the script to your page, the best location is in the footer, but no matter what, make sure it follows your jQuery file.
+[scrollnav@v3.0.0](https://unpkg.com/scrollnav@3.0.0/dist/scrollnav.min.umd.js)
 
 ```html
-<script src="jquery.scrollNav.min.js"></script>
+<script src="[your assets directory]/scrollnav.min.umd.js"></script>
 ```
 
-### Build your page
-
-Include a class or id hook on the element you want to apply the plugin to and include an `<h2>` for each section you want to inlcude in the navigation.
+#### CDN
 
 ```html
-<div class="main">
-	<article class="post__article">
-		<header class="post__header">
-			<h1 class="post__heading">This is the main heading for the article</h1>
-			<p class="post__sub-heading">This is a sub-heading for the article</p>
-		</header>
-		<p>Yada yada yada...</p>
-		<h2>This is a section heading</h2>
-		<p>More yada yada...</p>
-		<h2>Another section heading</h2>
-		<p>More more yada...</p>
-	</article>
-</div>
+<script src="https://unpkg.com/scrollnav@3.0.0/dist/scrollnav.min.umd.js"></script>
 ```
 
-### Initialize
+#### Package manager
 
-Now initialize the plugin with your hook for the article
+[Yarn][13]: `yarn add scrollnav`
 
+It's the new hotness, it's also better at managing dependencies than all it's predecesors.
+
+[NPM][12]: `npm install scrollnav`
+
+Good'ol NPM, it's always there, except when it isn't. Things have settled down a bit, but it was dicey there for a while. Even still, there's a reason even Yarn uses the NPM registry.
+
+[Bower][11]: `bower install scrollnav --save`
+
+The folks from Bower no longer recommend using Bower. Luckily they've provided a guide on [how to migrate to Yarn](https://bower.io/blog/2017/how-to-migrate-away-from-bower/). If you don't want to or can't migrate, scrollnav will continue to be available on Bower as long as it continues to run.
+
+
+### Usage
+
+scrollnav works by scanning the given [HTML Node Element][25] for section
+landmarks, by default `h2` elements, that it then uses to generate the nav.
+If we were to look at a typical document, it might look like this:
+
+```html
+  <div class="main-content">
+    <h2>First section</h2>
+    ...
+    <h2>Second section</h2>
+    ...
+    <h2>Third section</h2>
+    ...
+  </div>
 ```
-$('.post__article').scrollNav();
+
+#### Initialize
+
+First, initialize scrollnav with the  HTML Element. In this example we'll use
+`.querySelector()` but you could also use `.getElementByID()` or
+`.getElementByClassName()`.
+
+```js
+const content = document.querySelector('.main-content');
+scrollnav.init(content);
 ```
 
-and the plugin scans the article, grabs all the `<h2>`s, adds them to the navigation list and inserts the list before the article. It's that easy...well almost.
-
-### Styling
-
-To keep the plugin simple there are no styles added to the navigation, that's all up to you. The nav structure looks like this and includes class names in the [BEM Methodology][3] style (for a good overview read [MindBEMding - getting your head 'round BEM syntax][4]):
+scrollnav will then loop through the the `h2` elements, add an ID if they don't
+already have one, build the nav, and then inject it just before the content
+Node. The result for our example document would look like this:
 
 ```html
 <nav class="scroll-nav">
-	<div class="scroll-nav__wrapper">
-		<span class="scroll-nav__heading">
-		<ol class="scroll-nav__list">
-			<li class="scroll-nav__item">
-				<a class="scroll-nav__link">
+  <ol class="scroll-nav__list">
+    <li class="scroll-nav__item">
+      <a class="scroll-nav__link" href="#scroll-nav__1">
+        First heading
+      <a>
+    </li>
+    ...
+  </ol>
+</nav>
+<div class="main-content">
+  <h2 id="scroll-nav__1">First Heading</h2>
+  ...
+</div>
 ```
 
-An `active` class is attached to the nav item matching the section and sub-section that is the highest within the view bounds. An `in-view` class is attached to all nav items whose section or sub-section is within the view bounds. If you have short sections at the end of your page and dislike that the last nav itmes are never activated, you can use the `in-view` hook to style all sections with in the view.
+#### Styles
 
-There are loading hooks added to the body element (similar to how Typekit handles font loading) to allow for css transitions or any other changes in css you'd need. When the plug-in starts `sn-loading` is added to the body class and is replaced by `sn-active` when the plugin is successful or `sn-failed` if it fails.
+To keep the plugin simple there are no styles added to the navigation, that's
+all up to you ([view the demo site][1] for exmaples of the most common use
+cases). The nav structure provides [BEM Methodology][23] class names for each
+of the elements to provide consistent styling hooks (for a good overview read
+[MindBEMding - getting your head 'round BEM syntax][24]). As the user scrolls
+the document, scrollnav adds a `scroll-nav__item--active` modifier for the
+item's relative section that currently intersects with the activation
+threshold ([enable `debug` mode](#additional-options) to highlight the
+threshold).
 
-### Destroy scrollNav
+### Settings and options
 
-In addition to the initialization, there is now a destroy method available should you need it. To destroy scrollNav and remove all it's DOM changes use:
+scrollnav includes some default settings that work for most situations, but if
+your project requires a bit more customization, scrollnav can most likely meet
+those. To modify either, pass in a single object (include settings and options
+as one object) as the second argument like this:
 
-```
-$('.post__article').scrollNav('destroy');
-```
-
-
-### Reset Positions on DOM Change
-
-There are a couple of ways you can reset scrollNav's positions when the DOM changes:
-
-#### Manually
-
-Simply call the `resetPos` method on your own:
-
-```
-$.fn.scrollNav('resetPos');
-```
-
-#### Automatically
-
-Utilize [mutation observers][21] to call the `resetPos` method automatically:
-
-```
-var $;
-var observer_target = document.querySelector('.post__article');
-var observer = new MutationObserver(function(mutations) {
-  mutations.forEach(function() {
-    $.fn.scrollNav('resetPos');
+```js
+  scrollnav.init(content, {
+    key: value
   });
-});
-var observer_config = {
-  attributes: true,
-  childList: true,
-  characterData: true,
-  subtree: true
-};
-observer.observe(observer_target, observer_config);
 ```
 
-## Default `options`
+#### Default settings
 
-There are a few customizable options in scrollNav using key : value pairs. These are the defaults.
+The following settings are editable to overwrite the default.
 
-```
-$('.post-article').scrollNav({
-	sections: 'h2',
-	subSections: false,
-	sectionElem: 'section',
-	className: 'scroll-nav',
-	showHeadline: true,
-	headlineText: 'Scroll To',
-	showTopLink: true,
-	topLinkText: 'Top',
-	fixedMargin: 40,
-	scrollOffset: 40,
-	animated: true,
-	speed: 500,
-	insertTarget: this.selector,
-	insertLocation: 'insertBefore',
-	activeClass: 'active',
-	arrowKeys: false,
-	scrollToHash: true,
-	onInit: null,
-	onRender: null,
-	onDestroy: null
-});
-```
+```js
+{
+  sections: 'selector',
+  // string
+  //
+  // Sets the querySelector for the content's section landmarks, by default
+  // it's 'h2'.
 
-### Sections
+  insertTarget: targetNode,
+  // HTML Node
+  //
+  // Sets the target Node for injecting the navigation, by default it's the
+  // content Node passed to scrollnav.
 
-As mentioned, the script automatically searches for `<h2>`s within the target article. If your page structure differs, feel free to target another selector, like an `<h3>` or `<h4>` or even a class, like `.scroll-headline`.
+  insertLocation: 'relativeLocation'
+  // string
+  //
+  // Sets the injection location relative to the insertTarget, by default it's
+  // 'before'.
+  //
+  // available options are 'append', 'prepend', 'after', or 'before'
 
-### Sub-Sections
+  easingStyle: 'easingName',
+  // string
+  //
+  // Sets the easing type for the scroll animation that is triggered by the
+  // click event on a nav item, by default it's 'easeOutQuad'.
+  //
+  // available options are 'linear' 'easeInQuad', 'easeOutQuad',
+  // 'easeInOutQuad', 'easeInCubic', 'easeOutCubic', 'easeInOutCubic',
+  // 'easeInQuart', 'easeOutQuart', 'easeInOutQuart', 'easeInQuint',
+  // 'easeOutQuint', easeInOutQuint
 
-Set to `false` by default, the plugin supports nesting sub-sections within each section in the final nav. Available selectors are the same as Sections.
-
-### Section Wrapper Element
-
-If your article already contains `section` tags, you'll want to change this to `'div'`. Sub-sections aren't affected by this option.
-
-### Class Name
-
-If you want to change the default `scroll-nav` class naming used throughout (including in the BEM syntax for the child elems), you can do so by changing this value to your own.
-
-### Show Headline
-
-Set this to `false` to remove the Headline Text entirely.
-
-### Headline Text
-
-scrollNav's default title text is 'Scroll To', but feel free to modify it to whatever works for you, like 'Article Sections' or 'Page Navigation'.
-
-### Show Top Link
-
-Set this to `false` to remove the Top Link nav item entirely.
-
-### Top Link Text
-
-scrollNav's default return to the top link text is 'Top', but feel free to modify it to whatever works for you.
-
-### Fixed Margin
-
-This is the `top` dimension you set for the `.scroll-nav.fixed` class, which is applied as the user scrolls down the page and is removed as they scroll above the article. You definitely want to set this if you don't use the default 40px, otherwise the nav will jump around as the user scrolls past the top of the article.
-
-### Scroll Offset
-
-This option affects two things. First is the "active state" boundries within the viewport. The bounderies are within a distance from the top and bottom of the viewport equal to this amount. Second is the destination when animating the page scroll. This will place the heading of the section right at the top of the "active state" boundry.
-
-### Animated Scrolling
-
-The plugin animates the page scroll when clicking on a nav link by default. Set this to `false` if you do not wish to animate the scroll.
-
-### Scrolling Speed
-
-Change this to either increase or decrease the animated page scroll speed.
-
-### Insertion Target
-
-If you need to insert the nav relative to an element other than the one scrollNav is initialized on, you can change it here.
-
-### Insertion Location
-
-You can pass any of the following jQuery insertion methods to change where scrollNav is inserted in relation to the targeted container. `insertBefore`, `prependTo`, `appendTo`, or `insertAfter`
-
-### Arrow Key Navigation
-
-Set this to `true` to allow up/down arrow keys to jump through each section.
-
-### Active Class
-
-By default, scrollNav will use the class `".active"` to indicate which nav item is currently in view. If you need a different class name, add it here.
-
-### Scroll to hash
-
-Set this to false if you use hashed (http://example.com/#home) values for routing.
-
-### Callback functions
-
-There are three new callback functions that you can utilize to accommodate anything you need to run after specific scrollNav events. They are `onInit`, `onRender`, and `onDestroy`. Add them to your options just like any other and they should look like this:
-
-```
-$('.post__article').scrollNav({
-	onInit: function() {
-		callback actions in here
-	}
-});
+  updateHistory: true
+  // boolean
+  //
+  // Sets the history behavior when a nav item is clicked, by default it's true
+}
 ```
 
-## Errors
+#### Additional options
 
-The plugin will refuse to build and log an error message if it doesn't find your desired container, the insertion target or any of the headlines specified within the container. If the nav doesn't show up on load, check your browser's console.
+These additional options are editable but are not set by default.
+
+```js
+{
+  subSections: '...',
+  // string
+  //
+  // Sets the querySelector for the content's sub-section landmarks.
+
+  onScroll: function() {...},
+  // function
+  //
+  // Sets the callback to be triggered after the window scrolls when triggered
+  // by the click event on a nav item.
+
+  onInit: function() {...},
+  // function
+  //
+  // Sets the callback to be triggered after the .init() method has completed.
+
+  onUpdatePositions: function() {...},
+  // function
+  //
+  // Sets the callback to be triggered after the .updatePositions() method
+  // has completed.
+
+  onDestroy: function() {...},
+  // function
+  //
+  // Sets the callback to be triggered after the .destroy() method has
+  // completed.
+
+  debug: false
+  // boolean
+  //
+  // Enables scrollnav's built in debug mode to log errors to the console and
+  // display the active area threshold on screen, helpful for when you've hit a
+  // snag you can't easily identify.
+}
+```
+
+#### Available methods
+
+In addition to the `.init()` method scrollnav provides two additional public
+methods.
+
+#### destroy()
+
+To remove the current instance of scrollnav call the destroy method. If you
+need to trigger a callback after scrollnav has been removed, use the
+`onDestroy` option described above (passed either in the original init or with
+the destroy method).
+
+```js
+scrollnav.destroy();
+```
+
+#### updatePositions()
+
+scrollnav doesn't track outside DOM changes. If your page's content is dynamic
+and updates after scrollnav is initialized you'll need to recalcuate the
+position data with the updatePositions method. If you need to trigger a
+callback after the position data has been recalculated, use the
+`onUpdatePositions` option described above (passed either in the original init
+or with the updatePositions method).
+
+```js
+scrollnav.updatePositions();
+```
 
 ## Issues
 
-There are a few known issues, including poor location updating when scrolling on touch devices. If you find any others please submit them to [the issue tracker][5].
+Please read and understand the [Contributing Guidelines][4] prior to [opening
+an issue][2]. Ensuring your issue conforms to the guidelines gives it a better
+chance I'll be able to help address it.
+
+## Questions
+For questions about using scrollnav in your own project, your best bet is to
+post it to [Stack Overflow][21]. The community there is great at lending a hand
+and can often respond faster than I can, plus it becomes searchable for future
+developers who may run into the same question. If you're still stuck, please
+feel free to reach out to me to ask for help or clarification, I'm [@jimmynotim
+on Twitter][22].
+
+## Changelog
+
+v3.0.0 is the current stable release. For detailed changes in each release
+please refer to the [release notes][5]. Please be sure you understand the
+changes before updating, v3 is a complete re-write of the plugin (as is v2
+compared to v1 before it).
+
+## Contributions
+
+scrollnav is built and maintained by [James Wilson (@jimmynotjim)][31].
+I wouldn't be able to continue this project without a lot of help from the
+Open Source community. I welcome feedback and enhancements, but first, please
+make sure to read the [Contributing Guide][4].
+
+Thank you to everyone who has already contributed to scrollnav!
+
+* [Chris Garcia (@pixelbandito)][43]
+* [Eric Clemmons (@ericclemmons)][32]
+* [Felix Borzik (@Borzik)][39]
+* [Jeff Byrnes (@jeffbyrnes)][33]
+* [Jeff Coburn (@coburnicus)][34]
+* [Jen Germann (@germanny)][35]
+* [Jim Schmid (@sheeep)][44]
+* [Marc Amos (@marcamos)][38]
+* [Masud Rahman (@frutiger)][40]
+* [Meghdad Hadidi (@MeghdadHadidi)][37]
+* [Michael Benin (@michael-benin-CN)][45]
+* [Rob Loach (@RobLoach)][41]
+* [Thomas Guillary @thomasguillory][46]
+* [Will Moore (@willthemoor)][42]
+* [Wizcover (@wizcover)][36]
 
 ## License
 
-scrollNav is Copyright &copy; 2012-2018 James Wilson, released under the [MIT license][6]. This means you can re-create, edit or share the plugin as long as you maintain the same open licensing.
+scrollnav is Copyright &copy; 2012-2018 James Wilson, released under the
+[MIT license][3]. This means you can re-create, edit or share the plugin as
+long as you maintain the same open licensing.
 
-## Version
-
-Latest stable version is v2.7.3. Make sure to view [the changelog][15] before updating, v2 is a complete re-write of the plugin.
-
-## Testing
-
-Tests are written using QUnit. To run the test suite with PhantomJS, run `$ grunt test` or `$ grunt watch`. To run the test in your default browser run `$ grunt test:browser`.
-
-## Developers
-
-Please read the [contributing guidelines][14] and [issue tracker][5] before starting on code.
-
-In order to build and test scrollNav.js, you'll need to install its dev dependencies `$ npm install` and have grunt-cli globally installed `$ npm install -g grunt-cli`.
-
-Available Grunt tasks that will be useful in development.
-
-* grunt lint – Runs source and test files through JSHint.
-* grunt test – Runs the test suite with PhantomJS.
-* grunt concat - Builds the source to /dist.
-* grunt uglify - Minifies the source to /dist.
-* grunt build - Runs all of the above and rebuilds from source .
-* grunt watch – Runs all of the above whenever a file is modified.
-
-## Author
-
-[James Wilson (@jimmynotjim)][7]
-
-## With Help From
-
-* [Eric Clemmons (@ericclemmons)][8]
-* [Jeff Byrnes (@jeffbyrnes)][9]
-* [Jeff Coburn (@coburnicus)][10]
-* [Jen Germann (@germanny)][11]
-* [Wizcover (@wizcover)][12]
-* [MeghdadHadidi (@MeghdadHadidi)][13]
-* [Marc Amos (@marcamos)][23]
-* [Felix Borzik (@Borzik)][24]
-* [Masud Rahman (@frutiger)][25]
-* [Rob Loach (@RobLoach)][26]
-* [Will Moore (@willthemoor)][27]
-* [Chris Garcia (@pixelbandito)][28]
-* [Jim Schmid (@sheeep)][29]
 
 [1]: http://scrollnav.com
-[2]: #
-[3]: http://bem.info/method/
-[4]: http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
-[5]: https://github.com/jimmynotjim/scrollNav/issues
-[6]: https://github.com/jimmynotjim/scrollNav/blob/master/LICENSE-MIT
-[7]: http://github.com/jimmynotjim
-[8]: https://github.com/ericclemmons
-[9]: https://github.com/jeffbyrnes
-[10]: https://github.com/coburnicus
-[11]: https://github.com/germanny
-[12]: https://github.com/wizcover
-[13]: https://github.com/MeghdadHadidi
-[14]: https://github.com/jimmynotjim/scrollNav/blob/master/CONTRIBUTING.md
-[15]: https://github.com/jimmynotjim/scrollNav/blob/master/CHANGELOG.md
-[16]: http://jquery.com/
-[17]: https://github.com/aFarkas/html5shiv
-[18]: http://modernizr.com/
-[19]: http://nodejs.org/
-[20]: http://gruntjs.com/
-[21]: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
-[22]: http://caniuse.com/#search=mutation%20observer
-[23]: http://github.com/marcamos
-[24]: http://github.com/borzik
-[25]: http://github.com/frutiger
-[26]: http://github.com/RobLoach
-[27]: http://github.com/willthemoor
-[28]: http://github.com/pixelbandito
-[29]: http://github.com/sheeep
+[2]: https://github.com/jimmynotjim/scrollnav/issues
+[3]: https://github.com/jimmynotjim/scrollnav/blob/master/LICENSE-MIT
+[4]: https://github.com/jimmynotjim/scrollnav/blob/master/CONTRIBUTING.md
+[5]: https://github.com/jimmynotjim/scrollnav/blob/master/CHANGELOG.md
+
+[11]: https://bower.io/
+[12]: https://www.npmjs.com/package/scrollnav
+[13]: https://yarnpkg.com/en/package/scrollnav
+
+[21]: https://stackoverflow.com/questions
+[22]: https://twitter.com/jimmynotjim
+[23]: http://bem.info/method/
+[24]: http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
+[25]: https://developer.mozilla.org/en-US/docs/Web/API/Element
+
+[31]: http://github.com/jimmynotjim
+[32]: https://github.com/ericclemmons
+[33]: https://github.com/jeffbyrnes
+[34]: https://github.com/coburnicus
+[35]: https://github.com/germanny
+[36]: https://github.com/wizcover
+[37]: https://github.com/MeghdadHadidi
+[38]: http://github.com/marcamos
+[39]: http://github.com/borzik
+[40]: http://github.com/frutiger
+[41]: http://github.com/RobLoach
+[42]: http://github.com/willthemoor
+[43]: http://github.com/pixelbandito
+[44]: http://github.com/sheeep
+[45]: http://github.com/michael-benin-CN
+[46]: http://github.com/thomasguillory
+

@@ -1,15 +1,17 @@
 {
   "name": "scrollnav",
-  "version": "2.7.3",
+  "version": "3.0.0",
   "title": "scrollNav",
   "author": {
     "name": "James Wilson",
     "email": "jimmynotjim@me.com",
     "url": "http://jimmynotjim.com"
   },
-  "description": "A jQuery plugin for building a scrolling side navigation menu",
+  "description": "A small, dependency free JavaScript plugin for auto generating single page navigation",
   "keywords": [
     "scrollnav",
+    "javascript",
+    "es6",
     "jquery",
     "navigation",
     "scrolling",
@@ -24,30 +26,44 @@
   "files": [
     "dist"
   ],
-  "main": "dist/jquery.scrollNav.min.js",
+  "main": "dist/scrollNav.min.umd.js",
   "bugs": "https://github.com/jimmynotjim/scrollNav/issues",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://scrollnav.com/blob/master/LICENSE-MIT"
-    }
-  ],
+  "license": "MIT",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 10.0.0"
   },
   "scripts": {
-    "test": "grunt qunit"
+    "build": "microbundle --compress false --name scrollNav",
+    "format": "npm-run-all format:*",
+    "format:source": "prettier --write 'src/**/*.js'",
+    "format:test": "prettier --write 'test/**/*.js' !/coverage",
+    "lint": "npm-run-all lint:*",
+    "lint:source": "eslint 'src/**/*.js'",
+    "lint:test": "eslint 'test/**/*.js'",
+    "precommit": "npm run format && npm run lint && npm run build",
+    "test": "jest --config .jestrc.json --no-cache",
+    "watch": "microbundle --watch"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "semver": "~5.5.0",
-    "load-grunt-tasks": "~0.6.0",
-    "grunt-exec": "~0.4.2",
-    "grunt-contrib-clean": "~0.6.0",
-    "grunt-contrib-concat": "~0.5.0",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-qunit": "~0.5.2",
-    "grunt-contrib-uglify": "~0.6.0",
-    "grunt-contrib-watch": "~0.6.1"
+    "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.2.3",
+    "@jarmee/jest-dom-custom-matchers": "^1.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.10.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^1.2.1",
+    "jest": "^23.6.0",
+    "microbundle": "^0.9.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.15.3"
+  },
+  "source": "src/scrollNav.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
   }
 }

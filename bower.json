@@ -1,6 +1,6 @@
 {
   "name": "scrollNav",
-  "version": "2.7.3",
+  "version": "3.0.0",
   "author": {
     "name": "James Wilson",
     "email": "jimmynotjim@me.com",
@@ -10,12 +10,8 @@
     "type": "git",
     "url": "https://github.com/jimmynotjim/scrollNav.git"
   },
-  "main": [
-    "./dist/jquery.scrollNav.min.js"
-  ],
-  "dependencies": {
-    "jquery": "~1.9.*"
-  },
+  "main": ["./dist/scrollNav.min.umd.js"],
+  "dependencies": {},
   "ignore": [
     "node_modules",
     "libs",
@@ -24,11 +20,12 @@
     ".*",
     "*.json",
     "CONTRIBUTING.md",
-    "*.txt",
-    "Gruntfile.js"
+    "*.txt"
   ],
   "keywords": [
     "scrollnav",
+    "javascript",
+    "es6",
     "jquery",
     "navigation",
     "scrolling",

@@ -12,6 +12,16 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v3.0.0 - December 22, 2018
+
+Version 3 is a complete re-write of scrollnav to move the project away from
+jQuery, update to the latest es6 features, and remove all production
+dependencies. This update also removes a number of user options to simplify
+the API and reduces the amount of DOM manipulation to reduce likelihood of
+browser bugs. Includes a full set of test suites for all modules (unless
+noted). Please read through the [readme](https://github.com/jimmynotjim/scrollNav/blob/master/README.md) for further
+details.
+
 ## v2.7.3 - March 19, 2018
 
 * Added BEM-style active classes
@@ -50,13 +60,13 @@ For more information on semantic versioning, please visit http://semver.org/.
 
 ## v2.3.0 - October 9, 2014
 
-* Updated min Node to 0.10.*
+* Updated min Node to 0.10.\*
 * Updated all Node plugins to latest
 
 ## v2.2.0 - March 14, 2014
 
 * Added option to change the classname used throughout the plugin.
-* Updated jQuery dep to 1.9.*
+* Updated jQuery dep to 1.9.\*
 
 ## v2.1.1 - December 13, 2013
 
@@ -67,7 +77,7 @@ Added `scrollNav` namespace to event listeners to avoid crashing in to user defi
 v2.1 adds support for public methods, a new destroy method, custom callbacks for init, render and destroy, and small bugfixes.
 
 * Reorganized core to allow for new public methods
-* Added destroy method to core to allow for breaking down the plugin and it's dom * changes
+* Added destroy method to core to allow for breaking down the plugin and it's dom \* changes
 * Added the option to add callback functions to init, render and destroy
 * Squashed a bug when wrapping sub-sections in their div
 * Updated core init in test for easier reuse
@@ -83,7 +93,7 @@ Double releasing to include changelog and readme updates in Bower. One day I'll 
 Bugfixes for the following:
 
 * package.json now includes semver: Ooops, sorry
-* Moved jQuery dependency from package.json to bower.json and updated jQuery dep to v1.8.*
+* Moved jQuery dependency from package.json to bower.json and updated jQuery dep to v1.8.\*
 * Removed unneeded build dirs from bower install
 * Updated gitignore to ignore bower_components
 
@@ -100,7 +110,7 @@ v2 is a complete re-write of scrollNav and includes better code organization, ne
 * Added option to change insertion target.
 * Added Bower support for easy project dependency management.
 * Updated the class names of scrollNav elements to follow BEM conventions.
-* Updated existing settings option naming for the following (*this may break your current setups*):
+* Updated existing settings option naming for the following (_this may break your current setups_):
   * `titleText` -> `headlineText`
   * `location` -> `insertLocation`
 
