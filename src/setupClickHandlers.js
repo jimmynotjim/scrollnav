@@ -13,6 +13,7 @@ export default function setupClickHandlers(scrollNav) {
     return scrollTo(scrollYTarget, 'easeOutQuad').then(() => {
       if (scrollNav.settings.onScroll) {
         scrollNav.settings.onScroll();
+        history.replaceState({}, '', href);
       }
     });
   }
