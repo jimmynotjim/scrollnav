@@ -1,8 +1,9 @@
 {
   "name": "scrollNav",
-  "version": "2.7.3",
+  "version": "3.0.0-0.0.1",
   "title": "scrollNav",
-  "description": "A jQuery plugin for building a scrolling side navigation menu",
+  "description":
+    "A simple JavaScript plugin that auto builds scrolling table of contents",
   "homepage": "http://scrollnav.com",
   "author": {
     "name": "James Wilson",

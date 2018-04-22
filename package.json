@@ -1,15 +1,17 @@
 {
   "name": "scrollnav",
-  "version": "2.7.3",
+  "version": "3.0.0-0.0.1",
   "title": "scrollNav",
   "author": {
     "name": "James Wilson",
     "email": "jimmynotjim@me.com",
     "url": "http://jimmynotjim.com"
   },
-  "description": "A jQuery plugin for building a scrolling side navigation menu",
+  "description": "A simple JavaScript plugin that auto builds scrolling table of contents",
   "keywords": [
     "scrollnav",
+    "javascript",
+    "es6",
     "jquery",
     "navigation",
     "scrolling",
@@ -24,30 +26,31 @@
   "files": [
     "dist"
   ],
-  "main": "dist/jquery.scrollNav.min.js",
+  "main": "dist/scrollNav.min.js",
   "bugs": "https://github.com/jimmynotjim/scrollNav/issues",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://scrollnav.com/blob/master/LICENSE-MIT"
-    }
-  ],
+  "license": "MIT",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 9.5.0"
   },
   "scripts": {
-    "test": "grunt qunit"
+    "lint": "eslint ./src/**/*.js",
+    "lint:test": "eslint ./test/**/*.js !/coverage",
+    "test": "jest --config .jestrc.json --no-cache",
+    "format": "prettier --write ./src/**/*.js",
+    "format:test": "prettier --write ./test/**/*.js !/coverage",
+    "build": "microbundle --compress false",
+    "watch": "microbundle --watch"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "semver": "~5.5.0",
-    "load-grunt-tasks": "~0.6.0",
-    "grunt-exec": "~0.4.2",
-    "grunt-contrib-clean": "~0.6.0",
-    "grunt-contrib-concat": "~0.5.0",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-qunit": "~0.5.2",
-    "grunt-contrib-uglify": "~0.6.0",
-    "grunt-contrib-watch": "~0.6.1"
-  }
+    "@jarmee/jest-dom-custom-matchers": "^1.0.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "jest": "^22.4.3",
+    "microbundle": "^0.4.4",
+    "prettier": "^1.12.1"
+  },
+  "source": "src/scrollNav.js"
 }

@@ -1,0 +1,10 @@
+{
+  "collectCoverage": true,
+  "coverageDirectory": "test/coverage",
+  "collectCoverageFrom": ["src/**/*.js"],
+  "coveragePathIgnorePatterns": ["/node_modules", "/src/scrollNav.v2-7-3.js"],
+  "transform": {
+    "^.+\\.js$": "<rootDir>/jest.transform.js"
+  },
+  "setupFiles": ["<rootDir>/jest.setup.js"]
+}
