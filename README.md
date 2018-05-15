@@ -1,8 +1,11 @@
-[![build status](https://secure.travis-ci.org/jimmynotjim/scrollNav.png?branch=master)](http://travis-ci.org/jimmynotjim/scrollNav)
-
 # [jQuery scrollNav][1]
 
 A jQuery plugin for building a scrolling side navigation menu
+
+[![npm](https://img.shields.io/npm/v/scrollnav.svg)](https://github.com/jimmynotjim/scrollNav/releases)
+[![Build Status](https://travis-ci.org/jimmynotjim/scrollNav.svg?branch=master)](https://travis-ci.org/jimmynotjim/scrollNav)
+[![Codecov](https://img.shields.io/codecov/c/github/codecov/example-python.svg)](https://codecov.io/gh/jimmynotjim/scrollNav)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/jimmynotjim/scrollNav/blob/master/LICENSE-MIT)
 
 ## Getting Started
 
@@ -12,7 +15,6 @@ Or download the latest [zipped package][zip].
 
 [zip]: https://github.com/jimmynotjim/scrollNav/archive/master.zip
 
-
 ## Examples
 
 Check out [the homepage][1] to see it in action.
@@ -21,17 +23,18 @@ Check out [the homepage][1] to see it in action.
 
 * ### Simple to set up
 
-	With a single file import and function in your footer, you're on your way.
+        With a single file import and function in your footer, you're on your way.
 
 * ### Fully customizable
 
-	Very little styling is set for you, but the bit that is, is fully customizable.
+        Very little styling is set for you, but the bit that is, is fully customizable.
 
 * ### Tiny Size
 
-	At 1.5kb min'd and GZip'd, scrollNav is pretty unintrusive. If you use Ajax to import and initiate it, it's almost negligable.
+        At 1.5kb min'd and GZip'd, scrollNav is pretty unintrusive. If you use Ajax to import and initiate it, it's almost negligable.
 
 ## Requirements
+
 * For in-page usage [jQuery 1.8.0][16] or greater and [html5shiv][17]/[modernizr][18] for older browser support
 * To build source [Node 0.10.0][19] or greater and [grunt 0.4.0][20] or greater
 
@@ -51,17 +54,17 @@ Include a class or id hook on the element you want to apply the plugin to and in
 
 ```html
 <div class="main">
-	<article class="post__article">
-		<header class="post__header">
-			<h1 class="post__heading">This is the main heading for the article</h1>
-			<p class="post__sub-heading">This is a sub-heading for the article</p>
-		</header>
-		<p>Yada yada yada...</p>
-		<h2>This is a section heading</h2>
-		<p>More yada yada...</p>
-		<h2>Another section heading</h2>
-		<p>More more yada...</p>
-	</article>
+  <article class="post__article">
+    <header class="post__header">
+      <h1 class="post__heading">This is the main heading for the article</h1>
+      <p class="post__sub-heading">This is a sub-heading for the article</p>
+    </header>
+    <p>Yada yada yada...</p>
+    <h2>This is a section heading</h2>
+    <p>More yada yada...</p>
+    <h2>Another section heading</h2>
+    <p>More more yada...</p>
+  </article>
 </div>
 ```
 
@@ -81,11 +84,11 @@ To keep the plugin simple there are no styles added to the navigation, that's al
 
 ```html
 <nav class="scroll-nav">
-	<div class="scroll-nav__wrapper">
-		<span class="scroll-nav__heading">
-		<ol class="scroll-nav__list">
-			<li class="scroll-nav__item">
-				<a class="scroll-nav__link">
+  <div class="scroll-nav__wrapper">
+    <span class="scroll-nav__heading">
+    <ol class="scroll-nav__list">
+      <li class="scroll-nav__item">
+        <a class="scroll-nav__link">
 ```
 
 An `active` class is attached to the nav item matching the section and sub-section that is the highest within the view bounds. An `in-view` class is attached to all nav items whose section or sub-section is within the view bounds. If you have short sections at the end of your page and dislike that the last nav itmes are never activated, you can use the `in-view` hook to style all sections with in the view.
@@ -99,7 +102,6 @@ In addition to the initialization, there is now a destroy method available shoul
 ```
 $('.post__article').scrollNav('destroy');
 ```
-
 
 ### Reset Positions on DOM Change
 
@@ -140,26 +142,26 @@ There are a few customizable options in scrollNav using key : value pairs. These
 
 ```
 $('.post-article').scrollNav({
-	sections: 'h2',
-	subSections: false,
-	sectionElem: 'section',
-	className: 'scroll-nav',
-	showHeadline: true,
-	headlineText: 'Scroll To',
-	showTopLink: true,
-	topLinkText: 'Top',
-	fixedMargin: 40,
-	scrollOffset: 40,
-	animated: true,
-	speed: 500,
-	insertTarget: this.selector,
-	insertLocation: 'insertBefore',
-	activeClass: 'active',
-	arrowKeys: false,
-	scrollToHash: true,
-	onInit: null,
-	onRender: null,
-	onDestroy: null
+  sections: 'h2',
+  subSections: false,
+  sectionElem: 'section',
+  className: 'scroll-nav',
+  showHeadline: true,
+  headlineText: 'Scroll To',
+  showTopLink: true,
+  topLinkText: 'Top',
+  fixedMargin: 40,
+  scrollOffset: 40,
+  animated: true,
+  speed: 500,
+  insertTarget: this.selector,
+  insertLocation: 'insertBefore',
+  activeClass: 'active',
+  arrowKeys: false,
+  scrollToHash: true,
+  onInit: null,
+  onRender: null,
+  onDestroy: null
 });
 ```
 
@@ -237,9 +239,9 @@ There are three new callback functions that you can utilize to accommodate anyth
 
 ```
 $('.post__article').scrollNav({
-	onInit: function() {
-		callback actions in here
-	}
+  onInit: function() {
+    callback actions in here
+  }
 });
 ```
 
