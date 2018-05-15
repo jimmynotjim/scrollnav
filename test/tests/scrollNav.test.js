@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import jestDomCustomMatchers from '@jarmee/jest-dom-custom-matchers';
 import scrollNav from '../../src/scrollNav';
 import { html as sectionMarkup } from '../fixtures/sectionMarkup';
@@ -182,7 +183,7 @@ describe('scrollNav', () => {
         expect(nav).toBe(null);
       });
 
-      it(`should log an error if the insertLocation option is invalid`, () => {
+      it('should log an error if the insertLocation option is invalid', () => {
         console.error = jest.fn();
         const content = document.querySelector('.test-content');
 
@@ -194,7 +195,7 @@ describe('scrollNav', () => {
         expect(console.error).toHaveBeenCalled();
       });
 
-      it(`should not log an error if the insertLocation option is valid`, () => {
+      it('should not log an error if the insertLocation option is valid', () => {
         console.error = jest.fn();
         const content = document.querySelector('.test-content');
 
