@@ -37,7 +37,7 @@
     "test": "jest --config .jestrc.json --no-cache",
     "format": "prettier --write ./src/**/*.js",
     "format:test": "prettier --write ./test/**/*.js !/coverage",
-    "build": "microbundle --compress false",
+    "build": "microbundle --compress false --name scrollNav",
     "watch": "microbundle --watch"
   },
   "devDependencies": {
