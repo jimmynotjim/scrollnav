@@ -10,10 +10,11 @@ export default function setupClickHandlers(scrollNav) {
     const scrollYTarget = targetYPosition - activeArea;
 
     /* istanbul ignore next */
-    return scrollTo(scrollYTarget, 'easeOutQuad').then(() => {
+    return scrollTo(scrollYTarget, scrollNav.scrollEasing).then(() => {
+      history.replaceState({}, '', href);
+
       if (scrollNav.settings.onScroll) {
         scrollNav.settings.onScroll();
-        history.replaceState({}, '', href);
       }
     });
   }

@@ -39,7 +39,8 @@ function init(elem, options) {
   const defaults = {
     sections: 'h2',
     insertTarget: elem,
-    insertLocation: 'before'
+    insertLocation: 'before',
+    scrollEasing: 'easeOutQuad'
   };
   this.settings = extend(defaults, options);
   const locationOptions = ['append', 'prepend', 'after', 'before'];
