@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1527436922543" clover="3.2.0">
-  <project timestamp="1527436922543" name="All files">
-    <metrics statements="207" coveredstatements="205" conditionals="115" coveredconditionals="107" methods="45" coveredmethods="45" elements="367" coveredelements="357" complexity="0" loc="207" ncloc="207" packages="2" files="24" classes="24">
+<coverage generated="1527522676734" clover="3.2.0">
+  <project timestamp="1527522676735" name="All files">
+    <metrics statements="209" coveredstatements="207" conditionals="115" coveredconditionals="107" methods="45" coveredmethods="45" elements="369" coveredelements="359" complexity="0" loc="209" ncloc="209" packages="2" files="24" classes="24">
       <package name="src">
-        <metrics statements="83" coveredstatements="82" conditionals="37" coveredconditionals="36" methods="18" coveredmethods="18"/>
+        <metrics statements="85" coveredstatements="84" conditionals="37" coveredconditionals="36" methods="18" coveredmethods="18"/>
         <file name="scrollNav.js" path="/Users/jw/repos/jw/scrollNav/src/scrollNav.js">
           <metrics statements="39" coveredstatements="39" conditionals="26" coveredconditionals="26" methods="4" coveredmethods="4"/>
           <line num="35" count="44" type="stmt"/>
@@ -70,15 +70,17 @@
           <line num="39" count="1" type="stmt"/>
         </file>
         <file name="setupClickHandlers.js" path="/Users/jw/repos/jw/scrollNav/src/setupClickHandlers.js">
-          <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-          <line num="6" count="1" type="stmt"/>
-          <line num="8" count="1" type="stmt"/>
+          <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="5" count="14" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
           <line num="9" count="1" type="stmt"/>
           <line num="10" count="1" type="stmt"/>
-          <line num="22" count="14" type="stmt"/>
-          <line num="23" count="14" type="stmt"/>
-          <line num="24" count="42" type="stmt"/>
-          <line num="27" count="14" type="stmt"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="24" count="14" type="stmt"/>
+          <line num="25" count="14" type="stmt"/>
+          <line num="26" count="42" type="stmt"/>
+          <line num="29" count="14" type="stmt"/>
         </file>
         <file name="setupResizeHandler.js" path="/Users/jw/repos/jw/scrollNav/src/setupResizeHandler.js">
           <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>

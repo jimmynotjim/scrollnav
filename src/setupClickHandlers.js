@@ -2,6 +2,7 @@ import getTargetYPosition from './util/getTargetYPosition';
 import scrollTo from './scrollTo';
 
 export default function setupClickHandlers(scrollNav) {
+  const settings = scrollNav.settings;
   function clickHandler(event) {
     event.preventDefault();
 
@@ -10,11 +11,13 @@ export default function setupClickHandlers(scrollNav) {
     const scrollYTarget = targetYPosition - activeArea;
 
     /* istanbul ignore next */
-    return scrollTo(scrollYTarget, scrollNav.scrollEasing).then(() => {
-      history.replaceState({}, '', href);
+    return scrollTo(scrollYTarget, settings.easingStyle).then(() => {
+      if (settings.updateHistory) {
+        history.replaceState({}, '', event.target.getAttribute('href'));
+      }
 
-      if (scrollNav.settings.onScroll) {
-        scrollNav.settings.onScroll();
+      if (settings.onScroll) {
+        settings.onScroll();
       }
     });
   }
