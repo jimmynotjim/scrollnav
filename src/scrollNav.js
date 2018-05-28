@@ -40,7 +40,8 @@ function init(elem, options) {
     sections: 'h2',
     insertTarget: elem,
     insertLocation: 'before',
-    scrollEasing: 'easeOutQuad'
+    easingStyle: 'easeOutQuad',
+    updateHistory: true
   };
   this.settings = extend(defaults, options);
   const locationOptions = ['append', 'prepend', 'after', 'before'];
