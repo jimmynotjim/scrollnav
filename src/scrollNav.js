@@ -64,7 +64,7 @@ function init(elem, options) {
     return;
   }
 
-  if (locationOptions.indexOf(this.settings.insertLocation) < 1) {
+  if (!locationOptions.includes(this.settings.insertLocation)) {
     if (this.settings.debug) {
       console.error(`
         scrollNav build failed, options.insertLocation "${

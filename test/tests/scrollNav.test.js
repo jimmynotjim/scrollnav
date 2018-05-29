@@ -206,6 +206,42 @@ describe('scrollNav', () => {
 
         expect(console.error).not.toHaveBeenCalled();
       });
+
+      it('should not log an error if the insertLocation option is valid', () => {
+        console.error = jest.fn();
+        const content = document.querySelector('.test-content');
+
+        scrollNav.init(content, {
+          debug: true,
+          insertLocation: 'before'
+        });
+
+        expect(console.error).not.toHaveBeenCalled();
+      });
+
+      it('should not log an error if the insertLocation option is valid', () => {
+        console.error = jest.fn();
+        const content = document.querySelector('.test-content');
+
+        scrollNav.init(content, {
+          debug: true,
+          insertLocation: 'append'
+        });
+
+        expect(console.error).not.toHaveBeenCalled();
+      });
+
+      it('should not log an error if the insertLocation option is valid', () => {
+        console.error = jest.fn();
+        const content = document.querySelector('.test-content');
+
+        scrollNav.init(content, {
+          debug: true,
+          insertLocation: 'prepend'
+        });
+
+        expect(console.error).not.toHaveBeenCalled();
+      });
     });
 
     it('should create a nav element with the correct class name', () => {
