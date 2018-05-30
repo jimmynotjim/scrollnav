@@ -1,5 +1,4 @@
 import calculateScrollDuration from './util/calculateScrollDuration';
-import calculateEasedTimes from './util/calculateEasedTimes';
 import { easing } from './util/easing';
 
 /* istanbul ignore next */

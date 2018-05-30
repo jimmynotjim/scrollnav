@@ -35,11 +35,11 @@
   "scripts": {
     "build": "microbundle --compress false --name scrollNav",
     "format": "npm-run-all format:*",
-    "format:source": "prettier --write ./src/**/*.js",
-    "format:test": "prettier --write ./test/**/*.js !/coverage",
+    "format:source": "prettier --write 'src/**/*.js'",
+    "format:test": "prettier --write 'test/**/*.js' !/coverage",
     "lint": "npm-run-all lint:*",
-    "lint:source": "eslint ./src/**/*.js",
-    "lint:test": "eslint ./test/**/*.js !/coverage",
+    "lint:source": "eslint 'src/**/*.js'",
+    "lint:test": "eslint 'test/**/*.js'",
     "precommit": "npm run format && npm run lint && npm run build",
     "test": "jest --config .jestrc.json --no-cache",
     "watch": "microbundle --watch"

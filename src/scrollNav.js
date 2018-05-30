@@ -48,6 +48,7 @@ function init(elem, options) {
 
   if (!isElement(elem)) {
     if (this.settings.debug) {
+      // eslint-disable-next-line no-console
       console.error(`
         scrollNav build failed, content argument "${elem}" is not an HTML Element
       `);
@@ -57,6 +58,7 @@ function init(elem, options) {
 
   if (this.settings.insertTarget && !isElement(this.settings.insertTarget)) {
     if (this.settings.debug) {
+      // eslint-disable-next-line no-console
       console.error(`
         scrollNav build failed, options.insertTarget "${elem}" is not an HTML Element
       `);
@@ -66,6 +68,7 @@ function init(elem, options) {
 
   if (!locationOptions.includes(this.settings.insertLocation)) {
     if (this.settings.debug) {
+      // eslint-disable-next-line no-console
       console.error(`
         scrollNav build failed, options.insertLocation "${
           this.settings.insertLocation
@@ -79,6 +82,7 @@ function init(elem, options) {
 
   if (!sectionsDom.length) {
     if (this.settings.debug) {
+      // eslint-disable-next-line no-console
       console.error(`
         scrollNav build failed, could not find any "${this.settings.sections}"
         elements inside of "${elem}"

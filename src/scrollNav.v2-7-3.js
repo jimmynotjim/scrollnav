@@ -6,6 +6,8 @@
  * Licensed under the MIT license.
  */
 
+/* eslint-disable */
+
 (function($) {
   // Animate scrolling to section location
   var scroll_to = function(value, speed, offset, animated) {

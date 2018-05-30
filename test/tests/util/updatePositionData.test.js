@@ -24,7 +24,7 @@ describe('updatePositionData', () => {
         };
       };
     });
-    subSections.forEach((elem, i) => {
+    subSections.forEach(elem => {
       elem.getBoundingClientRect = () => {
         return {
           bottom: 800,

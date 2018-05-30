@@ -1,6 +1,6 @@
 import jestDomCustomMatchers from '@jarmee/jest-dom-custom-matchers';
 import createNav from '../../../src/util/createNav';
-import { onlyH2Data, allData } from '../../fixtures/sectionData';
+import { onlyH2Data } from '../../fixtures/sectionData';
 
 expect.extend(jestDomCustomMatchers);
 
