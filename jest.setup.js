@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+import '@babel/polyfill';
 
 window.scrollTo = window.scroll = (xVal, yVal) => {
   window.pageXOffset = xVal;

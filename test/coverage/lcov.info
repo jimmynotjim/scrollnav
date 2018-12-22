@@ -1,5 +1,5 @@
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/scrollNav.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/scrollNav.js
 FN:34,isElement
 FN:38,init
 FN:106,destroy
@@ -81,7 +81,7 @@ BRF:26
 BRH:26
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/scrollTo.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/scrollTo.js
 FN:5,scrollTo
 FN:6,(anonymous_1)
 FN:25,animateScroll
@@ -124,7 +124,7 @@ BRF:8
 BRH:7
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/setupClickHandlers.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/setupClickHandlers.js
 FN:4,setupClickHandlers
 FN:6,clickHandler
 FN:26,(anonymous_2)
@@ -148,7 +148,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/setupResizeHandler.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/setupResizeHandler.js
 FN:3,setupResizeHandler
 FN:4,resizeHandler
 FNF:2
@@ -164,7 +164,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/setupScrollHandler.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/setupScrollHandler.js
 FN:4,setupScrollHandler
 FN:5,scrollHandler
 FNF:2
@@ -188,7 +188,7 @@ BRF:3
 BRH:3
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/teardownClickHandlers.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/teardownClickHandlers.js
 FN:1,teardownClickHandlers
 FN:3,(anonymous_1)
 FNF:2
@@ -204,7 +204,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/teardownResizeHandler.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/teardownResizeHandler.js
 FN:1,teardownResizelHandler
 FNF:1
 FNH:1
@@ -216,7 +216,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/teardownScrollHandler.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/teardownScrollHandler.js
 FN:1,teardownScrollHandler
 FNF:1
 FNH:1
@@ -228,7 +228,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/calculateScrollDuration.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/calculateScrollDuration.js
 FN:1,calculateScrollDuration
 FNF:1
 FNH:1
@@ -241,7 +241,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/createList.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/createList.js
 FN:1,createList
 FN:8,(anonymous_1)
 FNF:2
@@ -267,7 +267,7 @@ BRF:7
 BRH:7
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/createNav.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/createNav.js
 FN:3,createNav
 FNF:1
 FNH:1
@@ -282,7 +282,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/easing.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/easing.js
 FN:3,(anonymous_0)
 FN:3,(anonymous_1)
 FN:4,(anonymous_2)
@@ -310,7 +310,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/extend.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/extend.js
 FN:3,extend
 FNF:1
 FNH:1
@@ -333,7 +333,7 @@ BRF:4
 BRH:2
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/getActiveSection.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/getActiveSection.js
 FN:1,getActiveSection
 FN:4,(anonymous_1)
 FNF:2
@@ -368,7 +368,7 @@ BRF:12
 BRH:10
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/getOrSetID.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/getOrSetID.js
 FN:1,getOrSetID
 FNF:1
 FNH:1
@@ -394,7 +394,7 @@ BRF:6
 BRH:6
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/getTargetYPosition.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/getTargetYPosition.js
 FN:1,getTargetYPosition
 FN:12,filterData
 FN:15,(anonymous_2)
@@ -428,7 +428,7 @@ BRF:8
 BRH:7
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/getYPosition.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/getYPosition.js
 FN:1,getYPosition
 FNF:1
 FNH:1
@@ -453,7 +453,7 @@ BRF:6
 BRH:6
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/insertNav.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/insertNav.js
 FN:1,insertNav
 FNF:1
 FNH:1
@@ -482,7 +482,7 @@ BRF:8
 BRH:7
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/insertVisualDebugger.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/insertVisualDebugger.js
 FN:1,insertVisualDebugger
 FNF:1
 FNH:1
@@ -497,7 +497,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/nextUntil.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/nextUntil.js
 FN:3,nextUntil
 FNF:1
 FNH:1
@@ -524,7 +524,7 @@ BRF:6
 BRH:6
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/populateSectionData.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/populateSectionData.js
 FN:5,populateSectionData
 FN:13,(anonymous_1)
 FNF:2
@@ -554,7 +554,7 @@ BRF:7
 BRH:7
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/updateActiveNavItem.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/updateActiveNavItem.js
 FN:1,updateActiveNavItem
 FNF:1
 FNH:1
@@ -588,7 +588,7 @@ BRF:10
 BRH:9
 end_of_record
 TN:
-SF:/Users/jw/repos/jw/scrollNav/src/util/updatePositionData.js
+SF:/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/updatePositionData.js
 FN:3,updatePositionData
 FN:4,(anonymous_1)
 FNF:2

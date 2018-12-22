@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1527706428557" clover="3.2.0">
-  <project timestamp="1527706428557" name="All files">
+<coverage generated="1545450426020" clover="3.2.0">
+  <project timestamp="1545450426020" name="All files">
     <metrics statements="200" coveredstatements="198" conditionals="115" coveredconditionals="107" methods="44" coveredmethods="44" elements="359" coveredelements="349" complexity="0" loc="200" ncloc="200" packages="2" files="23" classes="23">
       <package name="src">
         <metrics statements="84" coveredstatements="83" conditionals="37" coveredconditionals="36" methods="18" coveredmethods="18"/>
-        <file name="scrollNav.js" path="/Users/jw/repos/jw/scrollNav/src/scrollNav.js">
+        <file name="scrollNav.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/scrollNav.js">
           <metrics statements="39" coveredstatements="39" conditionals="26" coveredconditionals="26" methods="4" coveredmethods="4"/>
           <line num="35" count="50" type="stmt"/>
           <line num="39" count="27" type="stmt"/>
@@ -46,7 +46,7 @@
           <line num="121" count="2" type="cond" truecount="2" falsecount="0"/>
           <line num="124" count="1" type="stmt"/>
         </file>
-        <file name="scrollTo.js" path="/Users/jw/repos/jw/scrollNav/src/scrollTo.js">
+        <file name="scrollTo.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/scrollTo.js">
           <metrics statements="20" coveredstatements="19" conditionals="8" coveredconditionals="7" methods="3" coveredmethods="3"/>
           <line num="6" count="3" type="stmt"/>
           <line num="7" count="3" type="cond" truecount="2" falsecount="0"/>
@@ -69,7 +69,7 @@
           <line num="34" count="0" type="stmt"/>
           <line num="38" count="1" type="stmt"/>
         </file>
-        <file name="setupClickHandlers.js" path="/Users/jw/repos/jw/scrollNav/src/setupClickHandlers.js">
+        <file name="setupClickHandlers.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/setupClickHandlers.js">
           <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
           <line num="5" count="17" type="stmt"/>
           <line num="7" count="1" type="stmt"/>
@@ -81,13 +81,13 @@
           <line num="27" count="51" type="stmt"/>
           <line num="30" count="17" type="stmt"/>
         </file>
-        <file name="setupResizeHandler.js" path="/Users/jw/repos/jw/scrollNav/src/setupResizeHandler.js">
+        <file name="setupResizeHandler.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/setupResizeHandler.js">
           <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
           <line num="5" count="1" type="stmt"/>
           <line num="8" count="17" type="stmt"/>
           <line num="10" count="17" type="stmt"/>
         </file>
-        <file name="setupScrollHandler.js" path="/Users/jw/repos/jw/scrollNav/src/setupScrollHandler.js">
+        <file name="setupScrollHandler.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/setupScrollHandler.js">
           <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
           <line num="6" count="5" type="cond" truecount="3" falsecount="0"/>
           <line num="7" count="5" type="stmt"/>
@@ -98,29 +98,29 @@
           <line num="20" count="20" type="stmt"/>
           <line num="22" count="20" type="stmt"/>
         </file>
-        <file name="teardownClickHandlers.js" path="/Users/jw/repos/jw/scrollNav/src/teardownClickHandlers.js">
+        <file name="teardownClickHandlers.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/teardownClickHandlers.js">
           <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
           <line num="2" count="3" type="stmt"/>
           <line num="3" count="3" type="stmt"/>
           <line num="4" count="9" type="stmt"/>
         </file>
-        <file name="teardownResizeHandler.js" path="/Users/jw/repos/jw/scrollNav/src/teardownResizeHandler.js">
+        <file name="teardownResizeHandler.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/teardownResizeHandler.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="2" count="3" type="stmt"/>
         </file>
-        <file name="teardownScrollHandler.js" path="/Users/jw/repos/jw/scrollNav/src/teardownScrollHandler.js">
+        <file name="teardownScrollHandler.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/teardownScrollHandler.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="2" count="4" type="stmt"/>
         </file>
       </package>
       <package name="src.util">
         <metrics statements="116" coveredstatements="115" conditionals="78" coveredconditionals="71" methods="26" coveredmethods="26"/>
-        <file name="calculateScrollDuration.js" path="/Users/jw/repos/jw/scrollNav/src/util/calculateScrollDuration.js">
+        <file name="calculateScrollDuration.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/calculateScrollDuration.js">
           <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="2" count="4" type="stmt"/>
           <line num="4" count="4" type="stmt"/>
         </file>
-        <file name="createList.js" path="/Users/jw/repos/jw/scrollNav/src/util/createList.js">
+        <file name="createList.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/createList.js">
           <metrics statements="6" coveredstatements="6" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
           <line num="2" count="27" type="cond" truecount="2" falsecount="0"/>
           <line num="3" count="27" type="stmt"/>
@@ -129,14 +129,14 @@
           <line num="21" count="27" type="stmt"/>
           <line num="27" count="27" type="stmt"/>
         </file>
-        <file name="createNav.js" path="/Users/jw/repos/jw/scrollNav/src/util/createNav.js">
+        <file name="createNav.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/createNav.js">
           <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="4" count="17" type="stmt"/>
           <line num="5" count="17" type="stmt"/>
           <line num="6" count="17" type="stmt"/>
           <line num="8" count="17" type="stmt"/>
         </file>
-        <file name="easing.js" path="/Users/jw/repos/jw/scrollNav/src/util/easing.js">
+        <file name="easing.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/easing.js">
           <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
           <line num="3" count="26" type="stmt"/>
           <line num="4" count="30" type="stmt"/>
@@ -144,7 +144,7 @@
           <line num="6" count="16" type="cond" truecount="2" falsecount="0"/>
           <line num="8" count="5" type="stmt"/>
         </file>
-        <file name="extend.js" path="/Users/jw/repos/jw/scrollNav/src/util/extend.js">
+        <file name="extend.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/extend.js">
           <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
           <line num="4" count="32" type="stmt"/>
           <line num="7" count="32" type="stmt"/>
@@ -155,7 +155,7 @@
           <line num="15" count="30" type="stmt"/>
           <line num="19" count="32" type="stmt"/>
         </file>
-        <file name="getActiveSection.js" path="/Users/jw/repos/jw/scrollNav/src/util/getActiveSection.js">
+        <file name="getActiveSection.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/getActiveSection.js">
           <metrics statements="10" coveredstatements="9" conditionals="12" coveredconditionals="10" methods="2" coveredmethods="2"/>
           <line num="4" count="10" type="stmt"/>
           <line num="5" count="28" type="cond" truecount="2" falsecount="0"/>
@@ -168,7 +168,7 @@
           <line num="24" count="1" type="stmt"/>
           <line num="28" count="10" type="stmt"/>
         </file>
-        <file name="getOrSetID.js" path="/Users/jw/repos/jw/scrollNav/src/util/getOrSetID.js">
+        <file name="getOrSetID.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/getOrSetID.js">
           <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
           <line num="2" count="58" type="cond" truecount="2" falsecount="0"/>
           <line num="3" count="1" type="stmt"/>
@@ -180,7 +180,7 @@
           <line num="14" count="3" type="stmt"/>
           <line num="16" count="56" type="stmt"/>
         </file>
-        <file name="getTargetYPosition.js" path="/Users/jw/repos/jw/scrollNav/src/util/getTargetYPosition.js">
+        <file name="getTargetYPosition.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/getTargetYPosition.js">
           <metrics statements="11" coveredstatements="11" conditionals="8" coveredconditionals="7" methods="3" coveredmethods="3"/>
           <line num="2" count="3" type="stmt"/>
           <line num="3" count="3" type="cond" truecount="1" falsecount="1"/>
@@ -194,7 +194,7 @@
           <line num="21" count="2" type="stmt"/>
           <line num="25" count="5" type="stmt"/>
         </file>
-        <file name="getYPosition.js" path="/Users/jw/repos/jw/scrollNav/src/util/getYPosition.js">
+        <file name="getYPosition.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/getYPosition.js">
           <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
           <line num="2" count="73" type="cond" truecount="2" falsecount="0"/>
           <line num="3" count="1" type="stmt"/>
@@ -205,7 +205,7 @@
           <line num="12" count="71" type="stmt"/>
           <line num="14" count="71" type="stmt"/>
         </file>
-        <file name="insertNav.js" path="/Users/jw/repos/jw/scrollNav/src/util/insertNav.js">
+        <file name="insertNav.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/insertNav.js">
           <metrics statements="10" coveredstatements="10" conditionals="8" coveredconditionals="7" methods="1" coveredmethods="1"/>
           <line num="2" count="19" type="stmt"/>
           <line num="3" count="19" type="stmt"/>
@@ -218,14 +218,14 @@
           <line num="11" count="2" type="cond" truecount="1" falsecount="1"/>
           <line num="12" count="2" type="stmt"/>
         </file>
-        <file name="insertVisualDebugger.js" path="/Users/jw/repos/jw/scrollNav/src/util/insertVisualDebugger.js">
+        <file name="insertVisualDebugger.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/insertVisualDebugger.js">
           <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="2" count="8" type="stmt"/>
           <line num="3" count="8" type="stmt"/>
           <line num="5" count="8" type="stmt"/>
           <line num="19" count="8" type="stmt"/>
         </file>
-        <file name="nextUntil.js" path="/Users/jw/repos/jw/scrollNav/src/util/nextUntil.js">
+        <file name="nextUntil.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/nextUntil.js">
           <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
           <line num="4" count="4" type="stmt"/>
           <line num="6" count="4" type="stmt"/>
@@ -238,7 +238,7 @@
           <line num="18" count="2" type="stmt"/>
           <line num="21" count="4" type="stmt"/>
         </file>
-        <file name="populateSectionData.js" path="/Users/jw/repos/jw/scrollNav/src/util/populateSectionData.js">
+        <file name="populateSectionData.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/populateSectionData.js">
           <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
           <line num="10" count="20" type="stmt"/>
           <line num="11" count="20" type="stmt"/>
@@ -251,7 +251,7 @@
           <line num="26" count="52" type="stmt"/>
           <line num="34" count="20" type="stmt"/>
         </file>
-        <file name="updateActiveNavItem.js" path="/Users/jw/repos/jw/scrollNav/src/util/updateActiveNavItem.js">
+        <file name="updateActiveNavItem.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/updateActiveNavItem.js">
           <metrics statements="13" coveredstatements="13" conditionals="10" coveredconditionals="9" methods="1" coveredmethods="1"/>
           <line num="2" count="10" type="stmt"/>
           <line num="4" count="10" type="cond" truecount="2" falsecount="0"/>
@@ -267,7 +267,7 @@
           <line num="22" count="7" type="stmt"/>
           <line num="23" count="7" type="stmt"/>
         </file>
-        <file name="updatePositionData.js" path="/Users/jw/repos/jw/scrollNav/src/util/updatePositionData.js">
+        <file name="updatePositionData.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/util/updatePositionData.js">
           <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
           <line num="4" count="6" type="stmt"/>
           <line num="5" count="16" type="stmt"/>
