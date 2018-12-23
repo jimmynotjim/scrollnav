@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1545519483584" clover="3.2.0">
-  <project timestamp="1545519483584" name="All files">
+<coverage generated="1545535163289" clover="3.2.0">
+  <project timestamp="1545535163289" name="All files">
     <metrics statements="200" coveredstatements="198" conditionals="115" coveredconditionals="107" methods="44" coveredmethods="44" elements="359" coveredelements="349" complexity="0" loc="200" ncloc="200" packages="2" files="23" classes="23">
       <package name="src">
         <metrics statements="84" coveredstatements="83" conditionals="37" coveredconditionals="36" methods="18" coveredmethods="18"/>
-        <file name="scrollNav.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/scrollNav.js">
+        <file name="scrollTo.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/scrollTo.js">
+          <metrics statements="20" coveredstatements="19" conditionals="8" coveredconditionals="7" methods="3" coveredmethods="3"/>
+          <line num="6" count="3" type="stmt"/>
+          <line num="7" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="11" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="12" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="31" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="32" count="1" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="38" count="1" type="stmt"/>
+        </file>
+        <file name="scrollnav.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/scrollnav.js">
           <metrics statements="39" coveredstatements="39" conditionals="26" coveredconditionals="26" methods="4" coveredmethods="4"/>
           <line num="35" count="50" type="stmt"/>
           <line num="39" count="27" type="stmt"/>
@@ -45,29 +68,6 @@
           <line num="119" count="2" type="stmt"/>
           <line num="121" count="2" type="cond" truecount="2" falsecount="0"/>
           <line num="124" count="1" type="stmt"/>
-        </file>
-        <file name="scrollTo.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/scrollTo.js">
-          <metrics statements="20" coveredstatements="19" conditionals="8" coveredconditionals="7" methods="3" coveredmethods="3"/>
-          <line num="6" count="3" type="stmt"/>
-          <line num="7" count="3" type="cond" truecount="2" falsecount="0"/>
-          <line num="8" count="1" type="stmt"/>
-          <line num="11" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="12" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="13" count="1" type="stmt"/>
-          <line num="16" count="1" type="stmt"/>
-          <line num="17" count="1" type="stmt"/>
-          <line num="18" count="1" type="stmt"/>
-          <line num="19" count="1" type="stmt"/>
-          <line num="20" count="1" type="stmt"/>
-          <line num="21" count="1" type="stmt"/>
-          <line num="26" count="1" type="stmt"/>
-          <line num="27" count="1" type="stmt"/>
-          <line num="28" count="1" type="stmt"/>
-          <line num="29" count="1" type="stmt"/>
-          <line num="31" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="32" count="1" type="stmt"/>
-          <line num="34" count="0" type="stmt"/>
-          <line num="38" count="1" type="stmt"/>
         </file>
         <file name="setupClickHandlers.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/setupClickHandlers.js">
           <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>

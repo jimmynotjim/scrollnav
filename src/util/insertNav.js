@@ -1,14 +1,14 @@
-export default function insertNav(scrollNav) {
-  const target = scrollNav.settings.insertTarget;
-  const location = scrollNav.settings.insertLocation;
+export default function insertNav(scrollnav) {
+  const target = scrollnav.settings.insertTarget;
+  const location = scrollnav.settings.insertLocation;
 
   if (location === 'append') {
-    target.appendChild(scrollNav.nav);
+    target.appendChild(scrollnav.nav);
   } else if (location === 'prepend') {
-    target.insertBefore(scrollNav.nav, target.firstChild);
+    target.insertBefore(scrollnav.nav, target.firstChild);
   } else if (location === 'before') {
-    target.parentNode.insertBefore(scrollNav.nav, target);
+    target.parentNode.insertBefore(scrollnav.nav, target);
   } else if (location === 'after') {
-    target.parentNode.insertBefore(scrollNav.nav, target.nextSibling);
+    target.parentNode.insertBefore(scrollnav.nav, target.nextSibling);
   }
 }

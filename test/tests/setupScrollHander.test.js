@@ -10,13 +10,13 @@ expect.extend(jestDomCustomMatchers);
 describe(setupScrollHandler, function() {
   let nav;
   let items;
-  let scrollNav;
+  let scrollnav;
 
   beforeEach(() => {
     document.body.innerHTML = onlyH2Nav + sectionMarkup;
     nav = document.querySelector('nav');
     items = nav.querySelectorAll('li');
-    scrollNav = {
+    scrollnav = {
       data: onlyH2Data,
       nav: nav
     };
@@ -25,7 +25,7 @@ describe(setupScrollHandler, function() {
   it('should not activate any items on load', () => {
     window.innerHeight = 28;
 
-    setupScrollHandler(scrollNav);
+    setupScrollHandler(scrollnav);
 
     expect(items[0]).not.toHaveClass('scroll-nav__item--active');
     expect(items[0]).not.toHaveAttribute('data-sn-active');
@@ -34,7 +34,7 @@ describe(setupScrollHandler, function() {
   it('should activate the first item if it is within the boundry', () => {
     window.innerHeight = 340;
 
-    setupScrollHandler(scrollNav);
+    setupScrollHandler(scrollnav);
     simulateEvent('scroll', window);
 
     expect(items[0]).toHaveClass('scroll-nav__item--active');
@@ -44,7 +44,7 @@ describe(setupScrollHandler, function() {
   it('should activate the second item and not the first if they are both within the boundry', () => {
     window.innerHeight = 625;
 
-    setupScrollHandler(scrollNav);
+    setupScrollHandler(scrollnav);
     simulateEvent('scroll', window);
 
     expect(items[0]).not.toHaveClass('scroll-nav__item--active');

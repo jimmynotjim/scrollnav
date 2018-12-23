@@ -11,13 +11,13 @@ describe('setupClickHandlers', () => {
     document.body.innerHTML = onlyH2Nav;
     const nav = document.querySelector('nav');
     const links = nav.querySelectorAll('a');
-    const scrollNav = {
+    const scrollnav = {
       data: onlyH2Data,
       nav: document.querySelector('nav'),
       settings: {}
     };
 
-    setupClickHandlers(scrollNav);
+    setupClickHandlers(scrollnav);
     await simulateEvent('click', links[0]);
 
     expect(callback).not.toBeCalled();
@@ -30,7 +30,7 @@ describe('setupClickHandlers', () => {
     document.body.innerHTML = onlyH2Nav;
     const nav = document.querySelector('nav');
     const links = nav.querySelectorAll('a');
-    const scrollNav = {
+    const scrollnav = {
       data: onlyH2Data,
       nav: document.querySelector('nav'),
       settings: {
@@ -38,7 +38,7 @@ describe('setupClickHandlers', () => {
       }
     };
 
-    setupClickHandlers(scrollNav);
+    setupClickHandlers(scrollnav);
     await simulateEvent('click', links[0]);
 
     expect(callback).toBeCalled();
@@ -51,7 +51,7 @@ describe('setupClickHandlers', () => {
     document.body.innerHTML = allNav;
     const nav = document.querySelector('nav');
     const links = nav.querySelectorAll('a');
-    const scrollNav = {
+    const scrollnav = {
       data: allData,
       nav: nav,
       settings: {
@@ -59,7 +59,7 @@ describe('setupClickHandlers', () => {
       }
     };
 
-    setupClickHandlers(scrollNav);
+    setupClickHandlers(scrollnav);
     await simulateEvent('click', links[2]);
 
     expect(callback).toBeCalled();

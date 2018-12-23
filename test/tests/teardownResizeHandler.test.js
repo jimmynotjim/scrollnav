@@ -6,16 +6,16 @@ import simulateEvent from '../util/simulateEvent';
 
 describe('setupResizeHandler', () => {
   let sections;
-  let scrollNav;
+  let scrollnav;
   let resizeHandler;
 
   beforeAll(() => {
     document.body.innerHTML = html;
     sections = document.querySelectorAll('h2');
-    scrollNav = {
+    scrollnav = {
       data: onlyH2Data
     };
-    resizeHandler = setupResizeHandler(scrollNav);
+    resizeHandler = setupResizeHandler(scrollnav);
 
     sections.forEach((elem, i) => {
       elem.getBoundingClientRect = () => {
@@ -35,7 +35,7 @@ describe('setupResizeHandler', () => {
     teardownResizeHandler(resizeHandler);
 
     simulateEvent('resize', window);
-    const data = scrollNav.data;
+    const data = scrollnav.data;
 
     expect(data[0].offsetTop).toEqual(100);
     expect(data[1].offsetTop).toEqual(200);

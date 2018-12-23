@@ -35,7 +35,7 @@ source.
 
 #### Download
 
-[scrollnav@v3.0.0](https://unpkg.com/scrollnav@3.0.0/dist/scrollnav.min.umd.js)
+[scrollnav@v3.0.1](https://unpkg.com/scrollnav@3.0.1/dist/scrollnav.min.umd.js)
 
 ```html
 <script src="[your assets directory]/scrollnav.min.umd.js"></script>
@@ -44,7 +44,7 @@ source.
 #### CDN
 
 ```html
-<script src="https://unpkg.com/scrollnav@3.0.0/dist/scrollnav.min.umd.js"></script>
+<script src="https://unpkg.com/scrollnav@3.0.1/dist/scrollnav.min.umd.js"></script>
 ```
 
 #### Package manager
@@ -268,7 +268,7 @@ on Twitter][22].
 
 ## Changelog
 
-v3.0.0 is the current stable release. For detailed changes in each release
+v3.0.1 is the current stable release. For detailed changes in each release
 please refer to the [release notes][5]. Please be sure you understand the
 changes before updating, v3 is a complete re-write of the plugin (as is v2
 compared to v1 before it).

@@ -18,14 +18,14 @@ describe('teardownClickHandlers', () => {
     expect.assertions(1);
 
     const callback = jest.fn();
-    const scrollNav = {
+    const scrollnav = {
       data: onlyH2Data,
       nav: nav,
       settings: {
         onScroll: callback
       }
     };
-    const clickHandler = setupClickHandlers(scrollNav);
+    const clickHandler = setupClickHandlers(scrollnav);
 
     teardownClickHandlers(nav, clickHandler);
     simulateEvent('click', links[0]);

@@ -1,6 +1,6 @@
 # Contributing Guideline
 
-Thanks for contributing to scrollNav. Without you and the Open Source community
+Thanks for contributing to scrollnav. Without you and the Open Source community
 this project wouldn't be possible. Before you get started, please familiarize
 yourself with the project and its standards.
 
@@ -77,11 +77,11 @@ best to work with the Long Term Support (LTS), currently version 8.
 1. Update the documentation to reflect any changes in functionality.
 1. Commit and push your the branch to Github.
 1. Navigate to your branch on Github and then to the
-   `dist/scrollNav.min.js` file.
+   `dist/scrollnav.min.js` file.
 1. Select the "Raw" button and copy the file URL.
 1. Fork the starter demo in Codepen and then click settings.
 1. Under "Add External Scripts/Pens" replace the existing
-   `dist/scrollNav.min.js` file URL with your raw file URL.
+   `dist/scrollnav.min.js` file URL with your raw file URL.
 1. Test the interactions and ensure your intended changes work as expected.
 1. Submit a Pull Request making sure to write a descriptive comment and
    include your forked Codepen URL.
@@ -92,7 +92,7 @@ or clarification, I'm [@jimmynotim on Twitter][21].**
 
 To view all available build tasks run `npm run` without any arguments.
 
-[1]: https://github.com/jimmynotjim/scrollNav/issues
+[1]: https://github.com/jimmynotjim/scrollnav/issues
 [2]: https://codepen.io/jimmynotjim/pen/OZKeyd
 
 [11]: https://prettier.io/

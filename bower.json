@@ -1,6 +1,6 @@
 {
-  "name": "scrollNav",
-  "version": "3.0.0",
+  "name": "scrollnav",
+  "version": "3.0.1",
   "author": {
     "name": "James Wilson",
     "email": "jimmynotjim@me.com",
@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jimmynotjim/scrollNav.git"
+    "url": "https://github.com/jimmynotjim/scrollnav.git"
   },
-  "main": ["./dist/scrollNav.min.umd.js"],
+  "main": ["./dist/scrollnav.min.umd.js"],
   "dependencies": {},
   "ignore": [
     "node_modules",

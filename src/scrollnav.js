@@ -1,5 +1,5 @@
 /*
- * scrollNav
+ * scrollnav
  * http://scrollnav.com
  *
  * Copyright (c) 2013-2018 James Wilson
@@ -50,7 +50,7 @@ function init(elem, options) {
     if (this.settings.debug) {
       // eslint-disable-next-line no-console
       console.error(`
-        scrollNav build failed, content argument "${elem}" is not an HTML Element
+        scrollnav build failed, content argument "${elem}" is not an HTML Element
       `);
     }
     return;
@@ -60,7 +60,7 @@ function init(elem, options) {
     if (this.settings.debug) {
       // eslint-disable-next-line no-console
       console.error(`
-        scrollNav build failed, options.insertTarget "${elem}" is not an HTML Element
+        scrollnav build failed, options.insertTarget "${elem}" is not an HTML Element
       `);
     }
     return;
@@ -70,7 +70,7 @@ function init(elem, options) {
     if (this.settings.debug) {
       // eslint-disable-next-line no-console
       console.error(`
-        scrollNav build failed, options.insertLocation "${
+        scrollnav build failed, options.insertLocation "${
           this.settings.insertLocation
         }" is not a valid option
       `);
@@ -84,7 +84,7 @@ function init(elem, options) {
     if (this.settings.debug) {
       // eslint-disable-next-line no-console
       console.error(`
-        scrollNav build failed, could not find any "${this.settings.sections}"
+        scrollnav build failed, could not find any "${this.settings.sections}"
         elements inside of "${elem}"
       `);
     }
@@ -121,10 +121,10 @@ function updatePositions(options) {
   if (this.settings.onUpdatePositions) return this.settings.onUpdatePositions();
 }
 
-const scrollNav = {
+const scrollnav = {
   init: init,
   destroy: destroy,
   updatePositions: updatePositions
 };
 
-export default scrollNav;
+export default scrollnav;

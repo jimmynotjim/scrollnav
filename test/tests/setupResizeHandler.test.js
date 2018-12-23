@@ -5,16 +5,16 @@ import simulateEvent from '../util/simulateEvent';
 
 describe('setupResizeHandler', () => {
   let sections;
-  let scrollNav;
+  let scrollnav;
 
   beforeAll(() => {
     document.body.innerHTML = html;
     sections = document.querySelectorAll('h2');
-    scrollNav = {
+    scrollnav = {
       data: onlyH2Data
     };
 
-    setupResizeHandler(scrollNav);
+    setupResizeHandler(scrollnav);
 
     sections.forEach((elem, i) => {
       elem.getBoundingClientRect = () => {
@@ -33,7 +33,7 @@ describe('setupResizeHandler', () => {
   it('should update the data when the window is resized', () => {
     simulateEvent('resize', window);
 
-    const data = scrollNav.data;
+    const data = scrollnav.data;
 
     expect(data[0].offsetTop).toEqual(200);
     expect(data[1].offsetTop).toEqual(400);

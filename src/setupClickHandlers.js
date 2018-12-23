@@ -1,13 +1,13 @@
 import getTargetYPosition from './util/getTargetYPosition';
 import scrollTo from './scrollTo';
 
-export default function setupClickHandlers(scrollNav) {
-  const settings = scrollNav.settings;
+export default function setupClickHandlers(scrollnav) {
+  const settings = scrollnav.settings;
   function clickHandler(event) {
     event.preventDefault();
 
     const activeArea = window.innerHeight * 0.39;
-    const targetYPosition = getTargetYPosition(event.target, scrollNav.data);
+    const targetYPosition = getTargetYPosition(event.target, scrollnav.data);
     const scrollYTarget = targetYPosition - activeArea;
 
     /* istanbul ignore next */
@@ -22,7 +22,7 @@ export default function setupClickHandlers(scrollNav) {
     });
   }
 
-  const links = scrollNav.nav.querySelectorAll('a');
+  const links = scrollnav.nav.querySelectorAll('a');
   links.forEach(link => {
     link.addEventListener('click', clickHandler);
   });

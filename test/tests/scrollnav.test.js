@@ -1,12 +1,12 @@
 /* eslint no-console: 0 */
 import jestDomCustomMatchers from '@jarmee/jest-dom-custom-matchers';
-import scrollNav from '../../src/scrollNav';
+import scrollnav from '../../src/scrollnav';
 import { html as sectionMarkup } from '../fixtures/sectionMarkup';
 import { html as noSectionsMarkup } from '../fixtures/noSectionsMarkup';
 
 expect.extend(jestDomCustomMatchers);
 
-describe('scrollNav', () => {
+describe('scrollnav', () => {
   describe('init method', () => {
     beforeEach(() => {
       document.body.innerHTML = sectionMarkup;
@@ -17,7 +17,7 @@ describe('scrollNav', () => {
         HTML Element`, () => {
         const content = 'content';
 
-        scrollNav.init(content);
+        scrollnav.init(content);
 
         const nav = document.querySelector('nav');
 
@@ -30,7 +30,7 @@ describe('scrollNav', () => {
           return;
         };
 
-        scrollNav.init(content);
+        scrollnav.init(content);
 
         const nav = document.querySelector('nav');
 
@@ -41,7 +41,7 @@ describe('scrollNav', () => {
         HTML Element`, () => {
         const content = new Object();
 
-        scrollNav.init(content);
+        scrollnav.init(content);
 
         const nav = document.querySelector('nav');
 
@@ -53,7 +53,7 @@ describe('scrollNav', () => {
         console.error = jest.fn();
         const content = 'content';
 
-        scrollNav.init(content, { debug: true });
+        scrollnav.init(content, { debug: true });
 
         expect(console.error).toHaveBeenCalled();
       });
@@ -63,7 +63,7 @@ describe('scrollNav', () => {
         console.error = jest.fn();
         const content = document.querySelector('.test-content');
 
-        scrollNav.init(content, { debug: true });
+        scrollnav.init(content, { debug: true });
 
         expect(console.error).not.toHaveBeenCalled();
       });
@@ -75,7 +75,7 @@ describe('scrollNav', () => {
         document.body.innerHTML = noSectionsMarkup;
         const content = document.querySelector('.test-content');
 
-        scrollNav.init(content);
+        scrollnav.init(content);
 
         const nav = document.querySelector('nav');
 
@@ -88,7 +88,7 @@ describe('scrollNav', () => {
         document.body.innerHTML = noSectionsMarkup;
         const content = document.querySelector('.test-content');
 
-        scrollNav.init(content, { debug: true });
+        scrollnav.init(content, { debug: true });
 
         expect(console.error).toHaveBeenCalled();
       });
@@ -98,7 +98,7 @@ describe('scrollNav', () => {
         console.error = jest.fn();
         const content = document.querySelector('.test-content');
 
-        scrollNav.init(content, { debug: true });
+        scrollnav.init(content, { debug: true });
 
         expect(console.error).not.toHaveBeenCalled();
       });
@@ -110,7 +110,7 @@ describe('scrollNav', () => {
         const content = document.querySelector('.test-content');
         const insertTarget = 'insertTarget';
 
-        scrollNav.init(content, { insertTarget: insertTarget });
+        scrollnav.init(content, { insertTarget: insertTarget });
 
         const nav = document.querySelector('nav');
 
@@ -124,7 +124,7 @@ describe('scrollNav', () => {
           return;
         };
 
-        scrollNav.init(content, { insertTarget: insertTarget });
+        scrollnav.init(content, { insertTarget: insertTarget });
 
         const nav = document.querySelector('nav');
 
@@ -136,7 +136,7 @@ describe('scrollNav', () => {
         const content = document.querySelector('.test-content');
         const insertTarget = new Object();
 
-        scrollNav.init(content, { insertTarget: insertTarget });
+        scrollnav.init(content, { insertTarget: insertTarget });
 
         const nav = document.querySelector('nav');
 
@@ -149,7 +149,7 @@ describe('scrollNav', () => {
         const content = document.querySelector('.test-content');
         const insertTarget = 'insertTarget';
 
-        scrollNav.init(content, {
+        scrollnav.init(content, {
           debug: true,
           insertTarget: insertTarget
         });
@@ -162,7 +162,7 @@ describe('scrollNav', () => {
         console.error = jest.fn();
         const content = document.querySelector('.test-content');
 
-        scrollNav.init(content, {
+        scrollnav.init(content, {
           debug: true,
           insertTarget: content
         });
@@ -176,7 +176,7 @@ describe('scrollNav', () => {
         invalid`, () => {
         const content = document.querySelector('.test-content');
 
-        scrollNav.init(content, { insertLocation: 'appendTo' });
+        scrollnav.init(content, { insertLocation: 'appendTo' });
 
         const nav = document.querySelector('nav');
 
@@ -187,7 +187,7 @@ describe('scrollNav', () => {
         console.error = jest.fn();
         const content = document.querySelector('.test-content');
 
-        scrollNav.init(content, {
+        scrollnav.init(content, {
           debug: true,
           insertLocation: 'appendTo'
         });
@@ -199,7 +199,7 @@ describe('scrollNav', () => {
         console.error = jest.fn();
         const content = document.querySelector('.test-content');
 
-        scrollNav.init(content, {
+        scrollnav.init(content, {
           debug: true,
           insertLocation: 'after'
         });
@@ -211,7 +211,7 @@ describe('scrollNav', () => {
         console.error = jest.fn();
         const content = document.querySelector('.test-content');
 
-        scrollNav.init(content, {
+        scrollnav.init(content, {
           debug: true,
           insertLocation: 'before'
         });
@@ -223,7 +223,7 @@ describe('scrollNav', () => {
         console.error = jest.fn();
         const content = document.querySelector('.test-content');
 
-        scrollNav.init(content, {
+        scrollnav.init(content, {
           debug: true,
           insertLocation: 'append'
         });
@@ -235,7 +235,7 @@ describe('scrollNav', () => {
         console.error = jest.fn();
         const content = document.querySelector('.test-content');
 
-        scrollNav.init(content, {
+        scrollnav.init(content, {
           debug: true,
           insertLocation: 'prepend'
         });
@@ -247,7 +247,7 @@ describe('scrollNav', () => {
     it('should create a nav element with the correct class name', () => {
       const content = document.querySelector('.test-content');
 
-      scrollNav.init(content);
+      scrollnav.init(content);
 
       const nav = document.querySelector('nav');
 
@@ -257,7 +257,7 @@ describe('scrollNav', () => {
     it('should inject the nav element before the content container', () => {
       const content = document.querySelector('.test-content');
 
-      scrollNav.init(content);
+      scrollnav.init(content);
 
       const nav = document.querySelector('nav');
 
@@ -268,7 +268,7 @@ describe('scrollNav', () => {
     it('should contain the list of links', () => {
       const content = document.querySelector('.test-content');
 
-      scrollNav.init(content);
+      scrollnav.init(content);
 
       const nav = document.querySelector('nav');
       const list = nav.children;
@@ -281,7 +281,7 @@ describe('scrollNav', () => {
     it('should return a callback after the nav is added', () => {
       const callback = jest.fn();
       const content = document.querySelector('.test-content');
-      scrollNav.init(content, { onInit: callback });
+      scrollnav.init(content, { onInit: callback });
 
       expect(callback).toBeCalled();
     });
@@ -292,11 +292,11 @@ describe('scrollNav', () => {
       document.body.innerHTML = sectionMarkup;
       const content = document.querySelector('.test-content');
 
-      scrollNav.init(content);
+      scrollnav.init(content);
     });
 
     it('should remove the nav from the document', () => {
-      scrollNav.destroy();
+      scrollnav.destroy();
 
       const nav = document.querySelector('nav');
 
@@ -306,7 +306,7 @@ describe('scrollNav', () => {
     it('should return a callback after the the nav is removed', () => {
       const callback = jest.fn();
 
-      scrollNav.destroy({ onDestroy: callback });
+      scrollnav.destroy({ onDestroy: callback });
 
       expect(callback).toBeCalled();
     });
@@ -332,7 +332,7 @@ describe('scrollNav', () => {
         };
       });
 
-      scrollNav.init(content);
+      scrollnav.init(content);
     });
 
     it('should update the position data', () => {
@@ -349,9 +349,9 @@ describe('scrollNav', () => {
         };
       });
 
-      scrollNav.updatePositions();
+      scrollnav.updatePositions();
 
-      expect(scrollNav.data[0].offsetTop).toEqual(200);
+      expect(scrollnav.data[0].offsetTop).toEqual(200);
     });
 
     it('should return a callback after the positions are updated', () => {
@@ -370,7 +370,7 @@ describe('scrollNav', () => {
         };
       });
 
-      scrollNav.updatePositions({ onUpdatePositions: callback });
+      scrollnav.updatePositions({ onUpdatePositions: callback });
 
       expect(callback).toBeCalled();
     });
