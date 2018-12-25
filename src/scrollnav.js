@@ -23,14 +23,6 @@ let clickHandler;
 let scrollHandler;
 let resizeHandler;
 
-// matches() polyfill
-/* istanbul ignore next */
-if (!Element.prototype.matches) {
-  Element.prototype.matches =
-    Element.prototype.msMatchesSelector ||
-    Element.prototype.webkitMatchesSelector;
-}
-
 function isElement(element) {
   return element instanceof Element;
 }

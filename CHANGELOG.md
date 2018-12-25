@@ -12,6 +12,11 @@ And constructed with these guidelines:
 
 For more information on semantic versioning, please visit http://semver.org/.
 
+## v3.0.2 - December 25, 2018
+
+Improved the documentation for browser support and removed polyfills covered by
+polyfills.io.
+
 ## v3.0.1 - December 22, 2018
 
 Update file name casing for consistency.

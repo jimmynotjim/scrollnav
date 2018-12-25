@@ -22,8 +22,19 @@ to see for yourself.
 
 ## Browser Compatibility
 
-scrollnav supports all browsers that are ES5-compliant (IE8 and below are
-not supported).
+To keep scrollnav small, default support starts with
+[ES6 compatible browsers](https://caniuse.com/#feat=arrow-functions). To support
+[ES5 compatible browsers](https://caniuse.com/#feat=es5) you must provide your
+own polyfills or rely on a third party library like pollyfills.io. I personally
+use the following
+[polyfill.io](https://github.com/Financial-Times/polyfill-service) feature
+parameters to support scrollnav in IE 10 & 11.
+
+```hmlt
+<script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=default,NodeList.prototype.forEach,Array.prototype.includes"></script>
+```
+
+To add your own polyfills you will need to build the project from source.
 
 ## Getting Started
 
@@ -35,7 +46,7 @@ source.
 
 #### Download
 
-[scrollnav@v3.0.1](https://unpkg.com/scrollnav@3.0.1/dist/scrollnav.min.umd.js)
+[scrollnav@v3.0.2](https://unpkg.com/scrollnav@3.0.2/dist/scrollnav.min.umd.js)
 
 ```html
 <script src="[your assets directory]/scrollnav.min.umd.js"></script>
@@ -44,7 +55,7 @@ source.
 #### CDN
 
 ```html
-<script src="https://unpkg.com/scrollnav@3.0.1/dist/scrollnav.min.umd.js"></script>
+<script src="https://unpkg.com/scrollnav@3.0.2/dist/scrollnav.min.umd.js"></script>
 ```
 
 #### Package manager
@@ -268,7 +279,7 @@ on Twitter][22].
 
 ## Changelog
 
-v3.0.1 is the current stable release. For detailed changes in each release
+v3.0.2 is the current stable release. For detailed changes in each release
 please refer to the [release notes][5]. Please be sure you understand the
 changes before updating, v3 is a complete re-write of the plugin (as is v2
 compared to v1 before it).

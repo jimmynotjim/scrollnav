@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1545535163289" clover="3.2.0">
-  <project timestamp="1545535163289" name="All files">
+<coverage generated="1545624250638" clover="3.2.0">
+  <project timestamp="1545624250638" name="All files">
     <metrics statements="200" coveredstatements="198" conditionals="115" coveredconditionals="107" methods="44" coveredmethods="44" elements="359" coveredelements="349" complexity="0" loc="200" ncloc="200" packages="2" files="23" classes="23">
       <package name="src">
         <metrics statements="84" coveredstatements="83" conditionals="37" coveredconditionals="36" methods="18" coveredmethods="18"/>
@@ -29,45 +29,45 @@
         </file>
         <file name="scrollnav.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/scrollnav.js">
           <metrics statements="39" coveredstatements="39" conditionals="26" coveredconditionals="26" methods="4" coveredmethods="4"/>
-          <line num="35" count="50" type="stmt"/>
-          <line num="39" count="27" type="stmt"/>
-          <line num="46" count="27" type="stmt"/>
-          <line num="47" count="27" type="stmt"/>
-          <line num="49" count="27" type="cond" truecount="2" falsecount="0"/>
-          <line num="50" count="4" type="cond" truecount="2" falsecount="0"/>
-          <line num="52" count="1" type="stmt"/>
-          <line num="56" count="4" type="stmt"/>
-          <line num="59" count="23" type="cond" truecount="4" falsecount="0"/>
-          <line num="60" count="4" type="cond" truecount="2" falsecount="0"/>
-          <line num="62" count="1" type="stmt"/>
-          <line num="66" count="4" type="stmt"/>
-          <line num="69" count="19" type="cond" truecount="2" falsecount="0"/>
-          <line num="70" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="72" count="1" type="stmt"/>
-          <line num="78" count="2" type="stmt"/>
-          <line num="81" count="17" type="stmt"/>
-          <line num="83" count="17" type="cond" truecount="2" falsecount="0"/>
-          <line num="84" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="86" count="1" type="stmt"/>
-          <line num="91" count="2" type="stmt"/>
-          <line num="94" count="15" type="stmt"/>
-          <line num="95" count="15" type="stmt"/>
-          <line num="97" count="15" type="stmt"/>
-          <line num="98" count="15" type="stmt"/>
-          <line num="99" count="15" type="stmt"/>
-          <line num="100" count="15" type="stmt"/>
-          <line num="102" count="15" type="cond" truecount="2" falsecount="0"/>
-          <line num="103" count="15" type="cond" truecount="2" falsecount="0"/>
-          <line num="107" count="2" type="stmt"/>
-          <line num="109" count="2" type="stmt"/>
-          <line num="110" count="2" type="stmt"/>
-          <line num="111" count="2" type="stmt"/>
-          <line num="112" count="2" type="stmt"/>
-          <line num="114" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="118" count="2" type="stmt"/>
-          <line num="119" count="2" type="stmt"/>
-          <line num="121" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="124" count="1" type="stmt"/>
+          <line num="100" count="50" type="stmt"/>
+          <line num="104" count="27" type="stmt"/>
+          <line num="111" count="27" type="stmt"/>
+          <line num="112" count="27" type="stmt"/>
+          <line num="114" count="27" type="cond" truecount="2" falsecount="0"/>
+          <line num="115" count="4" type="cond" truecount="2" falsecount="0"/>
+          <line num="117" count="1" type="stmt"/>
+          <line num="121" count="4" type="stmt"/>
+          <line num="124" count="23" type="cond" truecount="4" falsecount="0"/>
+          <line num="125" count="4" type="cond" truecount="2" falsecount="0"/>
+          <line num="127" count="1" type="stmt"/>
+          <line num="131" count="4" type="stmt"/>
+          <line num="134" count="19" type="cond" truecount="2" falsecount="0"/>
+          <line num="135" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="137" count="1" type="stmt"/>
+          <line num="143" count="2" type="stmt"/>
+          <line num="146" count="17" type="stmt"/>
+          <line num="148" count="17" type="cond" truecount="2" falsecount="0"/>
+          <line num="149" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="151" count="1" type="stmt"/>
+          <line num="156" count="2" type="stmt"/>
+          <line num="159" count="15" type="stmt"/>
+          <line num="160" count="15" type="stmt"/>
+          <line num="162" count="15" type="stmt"/>
+          <line num="163" count="15" type="stmt"/>
+          <line num="164" count="15" type="stmt"/>
+          <line num="165" count="15" type="stmt"/>
+          <line num="167" count="15" type="cond" truecount="2" falsecount="0"/>
+          <line num="168" count="15" type="cond" truecount="2" falsecount="0"/>
+          <line num="172" count="2" type="stmt"/>
+          <line num="174" count="2" type="stmt"/>
+          <line num="175" count="2" type="stmt"/>
+          <line num="176" count="2" type="stmt"/>
+          <line num="177" count="2" type="stmt"/>
+          <line num="179" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="183" count="2" type="stmt"/>
+          <line num="184" count="2" type="stmt"/>
+          <line num="186" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="189" count="1" type="stmt"/>
         </file>
         <file name="setupClickHandlers.js" path="/Users/jimmyw/repos/jimmynotjim/scrollNav/src/setupClickHandlers.js">
           <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
