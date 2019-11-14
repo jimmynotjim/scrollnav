@@ -7,8 +7,8 @@ const onlyH2Nav = `
       <li class="scroll-nav__item" data-sn-section="second-heading">
         <a href="#second-heading" class="scroll-nav__link">Second heading</a>
       </li>
-      <li class="scroll-nav__item" data-sn-section="third-heading">
-        <a href="#third-heading" class="scroll-nav__link">Third heading</a>
+      <li class="scroll-nav__item" data-sn-section="3rd-heading">
+        <a href="#3rd-heading" class="scroll-nav__link">3rd heading</a>
       </li>
     </ul>
   </nav>`;
@@ -29,8 +29,8 @@ const allNav = `
           </li>
         </ol>
       </li>
-      <li class="scroll-nav__item" data-sn-section="third-heading">
-        <a href="#third-heading" class="scroll-nav__link">Third heading</a>
+      <li class="scroll-nav__item" data-sn-section="3rd-heading">
+        <a href="#3rd-heading" class="scroll-nav__link">3rd heading</a>
       </li>
     </ol>
   </nav>`;
