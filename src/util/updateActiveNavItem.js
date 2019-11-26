@@ -11,7 +11,7 @@ export default function updateActiveNavItem(activeSection, nav) {
   }
 
   const newActive = nav.querySelector(
-    '[data-sn-section="' + activeSection.id + '"]'
+    `[data-sn-section="${activeSection.id}"]`
   );
 
   if (newActive && newActive !== previousActive) {
