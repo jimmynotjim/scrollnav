@@ -12,8 +12,8 @@ const onlyH2Data = [
     subSections: []
   },
   {
-    id: 'third-heading',
-    text: 'Third heading',
+    id: '3rd-heading',
+    text: '3rd heading',
     offsetTop: 300,
     subSections: []
   }
@@ -40,8 +40,8 @@ const allData = [
     ]
   },
   {
-    id: 'third-heading',
-    text: 'Third heading',
+    id: '3rd-heading',
+    text: '3rd heading',
     offsetTop: 300,
     subSections: []
   }
