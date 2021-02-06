@@ -62,9 +62,7 @@ function init(elem, options) {
     if (this.settings.debug) {
       // eslint-disable-next-line no-console
       console.error(`
-        scrollnav build failed, options.insertLocation "${
-          this.settings.insertLocation
-        }" is not a valid option
+        scrollnav build failed, options.insertLocation "${this.settings.insertLocation}" is not a valid option
       `);
     }
     return;
