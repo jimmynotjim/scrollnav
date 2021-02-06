@@ -2,27 +2,27 @@ export default function createList(data, isSubList = false) {
   const suffix = isSubList ? '__sub-' : '__';
   const baseClass = 'scroll-nav' + suffix;
 
-  const itemsMarkup = `
-    ${data
-      .map(
-        item =>
-          `<li class="${baseClass}item" data-sn-section="${item.id}">
-            <a class="${baseClass}link" href="#${item.id}">${item.text}</a>
-            ${
-              item.subSections && item.subSections.length
-                ? `${createList(item.subSections, true)}`
-                : ''
-            }
-          </li>`
-      )
-      .join('')}
-  `;
+  let olElem = document.createElement('ol');
+  olElem.classList.add(baseClass + 'list');
 
-  const list = `
-    <ol class="${baseClass}list">
-      ${itemsMarkup}
-    </ol>
-  `;
+  data.forEach(function(item) {
+    let liElem = document.createElement('li');
+    liElem.classList.add(baseClass + 'item');
+    liElem.setAttribute('data-sn-section', item.id);
+    olElem.appendChild(liElem);
 
-  return list;
+    let aElem = document.createElement('a');
+    aElem.classList.add(baseClass + 'link');
+    aElem.setAttribute('href', '#' + item.id);
+    let linkText = document.createTextNode(item.text);
+    aElem.appendChild(linkText);
+    liElem.appendChild(aElem);
+
+    if (item.subSections.length) {
+      let subList = createList(item.subSections, true);
+      liElem.appendChild(subList);
+    }
+  });
+
+  return olElem;
 }
