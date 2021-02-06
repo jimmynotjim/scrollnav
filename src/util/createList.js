@@ -13,13 +13,15 @@ export default function createList(data, isSubList = false) {
 
     let aElem = document.createElement('a');
     aElem.classList.add(baseClass + 'link');
-    aElem.setAttribute('href', item.id);
+    aElem.setAttribute('href', '#' + item.id);
     let linkText = document.createTextNode(item.text);
     aElem.appendChild(linkText);
     liElem.appendChild(aElem);
 
-    let subList = createList(item.subSections, true);
-    liElem.appendChild(subList);
+    if (item.subSections.length) {
+      let subList = createList(item.subSections, true);
+      liElem.appendChild(subList);
+    }
   });
 
   return olElem;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1612582888154" clover="3.2.0">
-  <project timestamp="1612582888155" name="All files">
-    <metrics statements="214" coveredstatements="212" conditionals="111" coveredconditionals="103" methods="44" coveredmethods="44" elements="369" coveredelements="359" complexity="0" loc="214" ncloc="214" packages="2" files="23" classes="23">
+<coverage generated="1612647096602" clover="3.2.0">
+  <project timestamp="1612647096602" name="All files">
+    <metrics statements="213" coveredstatements="211" conditionals="113" coveredconditionals="105" methods="44" coveredmethods="44" elements="370" coveredelements="360" complexity="0" loc="213" ncloc="213" packages="2" files="23" classes="23">
       <package name="src">
         <metrics statements="84" coveredstatements="83" conditionals="37" coveredconditionals="36" methods="18" coveredmethods="18"/>
         <file name="scrollTo.js" path="/home/makro/0001/scrollnav/src/scrollTo.js">
@@ -44,30 +44,30 @@
           <line num="61" count="19" type="cond" truecount="2" falsecount="0"/>
           <line num="62" count="2" type="cond" truecount="2" falsecount="0"/>
           <line num="64" count="1" type="stmt"/>
-          <line num="70" count="2" type="stmt"/>
-          <line num="73" count="17" type="stmt"/>
-          <line num="75" count="17" type="cond" truecount="2" falsecount="0"/>
-          <line num="76" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="78" count="1" type="stmt"/>
-          <line num="83" count="2" type="stmt"/>
-          <line num="86" count="15" type="stmt"/>
+          <line num="68" count="2" type="stmt"/>
+          <line num="71" count="17" type="stmt"/>
+          <line num="73" count="17" type="cond" truecount="2" falsecount="0"/>
+          <line num="74" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="76" count="1" type="stmt"/>
+          <line num="81" count="2" type="stmt"/>
+          <line num="84" count="15" type="stmt"/>
+          <line num="85" count="15" type="stmt"/>
           <line num="87" count="15" type="stmt"/>
+          <line num="88" count="15" type="stmt"/>
           <line num="89" count="15" type="stmt"/>
           <line num="90" count="15" type="stmt"/>
-          <line num="91" count="15" type="stmt"/>
-          <line num="92" count="15" type="stmt"/>
-          <line num="94" count="15" type="cond" truecount="2" falsecount="0"/>
-          <line num="95" count="15" type="cond" truecount="2" falsecount="0"/>
+          <line num="92" count="15" type="cond" truecount="2" falsecount="0"/>
+          <line num="93" count="15" type="cond" truecount="2" falsecount="0"/>
+          <line num="97" count="2" type="stmt"/>
           <line num="99" count="2" type="stmt"/>
+          <line num="100" count="2" type="stmt"/>
           <line num="101" count="2" type="stmt"/>
           <line num="102" count="2" type="stmt"/>
-          <line num="103" count="2" type="stmt"/>
-          <line num="104" count="2" type="stmt"/>
-          <line num="106" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="110" count="2" type="stmt"/>
-          <line num="111" count="2" type="stmt"/>
-          <line num="113" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="116" count="1" type="stmt"/>
+          <line num="104" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="108" count="2" type="stmt"/>
+          <line num="109" count="2" type="stmt"/>
+          <line num="111" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="114" count="1" type="stmt"/>
         </file>
         <file name="setupClickHandlers.js" path="/home/makro/0001/scrollnav/src/setupClickHandlers.js">
           <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
@@ -114,34 +114,33 @@
         </file>
       </package>
       <package name="src.util">
-        <metrics statements="130" coveredstatements="129" conditionals="74" coveredconditionals="67" methods="26" coveredmethods="26"/>
+        <metrics statements="129" coveredstatements="128" conditionals="76" coveredconditionals="69" methods="26" coveredmethods="26"/>
         <file name="calculateScrollDuration.js" path="/home/makro/0001/scrollnav/src/util/calculateScrollDuration.js">
           <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="2" count="4" type="stmt"/>
           <line num="4" count="4" type="stmt"/>
         </file>
         <file name="createList.js" path="/home/makro/0001/scrollnav/src/util/createList.js">
-          <metrics statements="20" coveredstatements="20" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
-          <line num="2" count="99" type="cond" truecount="2" falsecount="0"/>
-          <line num="3" count="99" type="stmt"/>
-          <line num="5" count="99" type="stmt"/>
-          <line num="6" count="99" type="stmt"/>
-          <line num="8" count="99" type="stmt"/>
-          <line num="9" count="75" type="stmt"/>
-          <line num="10" count="75" type="stmt"/>
-          <line num="11" count="75" type="stmt"/>
-          <line num="12" count="75" type="stmt"/>
-          <line num="14" count="75" type="stmt"/>
-          <line num="15" count="75" type="stmt"/>
-          <line num="16" count="75" type="stmt"/>
-          <line num="17" count="75" type="stmt"/>
-          <line num="18" count="75" type="stmt"/>
-          <line num="19" count="75" type="stmt"/>
-          <line num="21" count="75" type="stmt"/>
-          <line num="22" count="75" type="stmt"/>
-          <line num="25" count="99" type="stmt"/>
-          <line num="26" count="99" type="stmt"/>
-          <line num="28" count="99" type="stmt"/>
+          <metrics statements="19" coveredstatements="19" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="2"/>
+          <line num="2" count="20" type="cond" truecount="2" falsecount="0"/>
+          <line num="3" count="20" type="stmt"/>
+          <line num="5" count="20" type="stmt"/>
+          <line num="6" count="20" type="stmt"/>
+          <line num="8" count="20" type="stmt"/>
+          <line num="9" count="58" type="stmt"/>
+          <line num="10" count="58" type="stmt"/>
+          <line num="11" count="58" type="stmt"/>
+          <line num="12" count="58" type="stmt"/>
+          <line num="14" count="58" type="stmt"/>
+          <line num="15" count="58" type="stmt"/>
+          <line num="16" count="58" type="stmt"/>
+          <line num="17" count="58" type="stmt"/>
+          <line num="18" count="58" type="stmt"/>
+          <line num="19" count="58" type="stmt"/>
+          <line num="21" count="58" type="cond" truecount="2" falsecount="0"/>
+          <line num="22" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="27" count="20" type="stmt"/>
         </file>
         <file name="createNav.js" path="/home/makro/0001/scrollnav/src/util/createNav.js">
           <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
