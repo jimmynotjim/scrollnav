@@ -178,11 +178,12 @@ The following settings are editable to overwrite the default.
   //
   // Sets the easing type for the scroll animation that is triggered by the
   // click event on a nav item, by default it's 'easeOutQuad'.
+  // To disable scrolling animation, choose 'none'.
   //
   // available options are 'linear' 'easeInQuad', 'easeOutQuad',
   // 'easeInOutQuad', 'easeInCubic', 'easeOutCubic', 'easeInOutCubic',
   // 'easeInQuart', 'easeOutQuart', 'easeInOutQuart', 'easeInQuint',
-  // 'easeOutQuint', easeInOutQuint
+  // 'easeOutQuint', easeInOutQuint, 'none'
 
   updateHistory: true
   // boolean
