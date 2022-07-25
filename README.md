@@ -1,3 +1,5 @@
+> This project is currently archived. I unfortunately don't have the time to maintain it. Thanks to everyone that contributed along the way, it wouldn't have been possible without you.
+
 # [scrollnav.js][1]
 
 [![npm](https://img.shields.io/npm/v/scrollnav.svg)](https://www.npmjs.com/package/scrollnav)
