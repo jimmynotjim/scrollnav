@@ -28,7 +28,7 @@ const html = `
     accusamus. Pro graecis vituperatoribus in, delicata splendide ullamcorper
     ex duo.</p>
 
-    <h2 id="third-heading">Third heading</h2>
+    <h2 id="3rd-heading">3rd heading</h2>
     <p>In est nonumy populo. Usu no natum percipitur reprehendunt. Vitae
     nominavi in cum, eleifend delicatissimi no cum. Sea an omnis denique
     gloriatur. Probo comprehensam at sit, amet ipsum repudiandae duo ei.<p>

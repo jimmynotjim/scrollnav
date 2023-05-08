@@ -2,7 +2,7 @@ import getYPosition from './getYPosition';
 
 export default function updatePositionData(data) {
   data.forEach(section => {
-    const sectionDom = document.querySelector(`#${section.id}`);
+    const sectionDom = document.getElementById(section.id);
     section.offsetTop = getYPosition(sectionDom);
 
     if (section.subSections.length) {
