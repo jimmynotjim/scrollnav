@@ -35,6 +35,10 @@ export default function scrollTo(targetPosition, easingStyle) {
       }
     }
 
-    animateScroll();
+    if (easingStyle == 'none') {
+      window.scroll(0, targetPosition);
+    } else {
+      animateScroll();
+    }
   });
 }
